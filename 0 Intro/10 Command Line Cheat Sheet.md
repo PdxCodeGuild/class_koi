@@ -109,3 +109,113 @@ The previous arguments given to `cd` have been **relative filepaths**.  This is 
 ```
 
 #### Note: in most bash terminals, `cd` with no arguments has the same effect as `cd ~`.  Both commands go to the home directory.
+
+## Making and Removing Directories: `mkdir` & `rmdir`
+
+### `mkdir [dirname]`
+`mkdir`, or **make directory**, creates a new folder (directory/folder: same difference).  The dirname argument is the name of the new folder you are creating.  Let's say we're inside of the `code/pete/` folder, which is currently empty:
+```sh
+> pwd
+/Users/pete/code-guild/class_koi/code/pete
+> ls # shows us nothing becuase there's nothing to show
+> mkdir test1
+> ls
+test1/
+> # you can pass multiple arguments to mkdir to create multiple directories at once
+> mkdir test2 test3 test4
+> ls
+test1/  test2/  test3/  test4/
+```
+
+### `rmdir [dirname]`
+`rmdir`, or **remove directory**, will remove an empty directory.  Like `mkdir`, it can take multiple arguments:
+
+```sh
+> pwd
+/Users/pete/code-guild/class_koi/code/pete
+> ls
+test1/  test2/  test3/  test4/
+> rmdir test2
+> ls
+test1/  test3/  test4/
+> rmdir test3 test4 test1
+> ls
+> # we see nothing since it's empty now
+```
+
+#### Note: using `rmdir` on a non-empty directory will give you feedback saying the directory is not empty instead of deleting it:
+```sh
+> pwd
+/Users/pete/code-guild/class_koi
+> ls # check what's here...
+> 0 Intro/  1 Python/  2 Flask/  3 HTML + CSS/  4 Django/  5 JavaScript/  6 Capstone/  code/  koi.png  LICENSE  README.md
+> # trying to remove code/, even though it has other directories inside of it:
+> rmdir code
+rmdir: code: Directory not empty
+> ls # see that code is still here
+> 0 Intro/  1 Python/  2 Flask/  3 HTML + CSS/  4 Django/  5 JavaScript/  6 Capstone/  code/  koi.png  LICENSE  README.md
+```
+
+## Working With Files: `touch`, `cp` & `rm`
+
+### `touch [filename]`
+`touch` can be used to **create files**.  It's original purpose was to change the last-modified date of a file to the present.  However, like many of these old Unix commands, it has a secondary effect for which it is *way* more commonly used: if the file does not yet exist, `touch` will create it:
+```sh
+> # let's say were trying to create a python file
+> pwd
+/Users/pete/code-guild/class_koi/code/pete/python
+> ls
+> # we're in my python directory, it's empty right now
+> touch lab01.py
+> ls
+lab01.py
+> # touch can also take multiple arguments
+> touch lab02.py lab03.py
+> ls
+lab01.py  lab02.py  lab03.py
+```
+
+### `cp [filepath-to-copy] [filepath-to-be-copied-to]`
+`cp`, or **copy**, can be used to copy one or many files to another location:
+```sh
+> ls # let's see the current files
+lab01.py  lab02.py  lab03.py
+> cp lab01.py lab01_copy.py
+> ls
+lab01.py  lab01_copy.py  lab02.py  lab03.py
+```
+
+You can also pass a directory as the last argument (`[filepath-to-be-copied-to]`) to copy a file to a different directory but with the same filename:
+```sh
+> mkdir copies
+> ls
+copies/  lab01.py  lab02.py  lab03.py
+> cp lab01.py copies
+> ls copies # list what's inside of copies/
+lab01.py
+> # just like touch or mkdir, you can give multiple arguments of files to copy
+> cp lab02.py lab03.py copies
+> ls copies
+lab01.py  lab02.py  lab03.py
+```
+
+### `cp -r`
+With the `-r` (**recursive**) flag, you can copy the contents of an entire directory:
+
+```sh
+> pwd
+/Users/pete/code-guild/class_koi
+> ls
+0 Intro/  1 Python/  2 Flask/  3 HTML + CSS/  4 Django/  5 JavaScript/  6 Capstone/  code/  koi.png  LICENSE  README.md
+> cp -r code code-backup
+> ls
+0 Intro/  1 Python/  2 Flask/  3 HTML + CSS/  4 Django/  5 JavaScript/  6 Capstone/  code/  code-backup/  koi.png  LICENSE  README.md
+> # code-backup/ has the exact same contents as code/
+```
+
+### `rm [filepath]`
+`rm`, or **remove**, can be used to delete files:
+
+```sh
+> pwd
+/Users/pete/code-guild/class_koi/code
