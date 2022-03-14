@@ -4,7 +4,7 @@ Repo for the PDX Code Guild Python Full Stack day course starting 3/14/2021
 Class is held from **March 14th, 2022 to June 24th, 2022**
 M-F 9:30 am – 4:30 pm
 
-![koi](koi.jpg)
+![koi](koi.png)
 
 ### Holidays / Days Off
 
