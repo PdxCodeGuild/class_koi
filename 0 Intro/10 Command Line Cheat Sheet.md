@@ -218,4 +218,65 @@ With the `-r` (**recursive**) flag, you can copy the contents of an entire direc
 
 ```sh
 > pwd
-/Users/pete/code-guild/class_koi/code
+/Users/pete/code-guild/class_koi/code/pete/python
+> ls
+lab01.py  lab02.py  lab03.py
+> rm lab01.py
+> ls
+lab02.py  lab03.py
+```
+
+#### Note: `rm` can be given multiple files to remove.  Removed files are not placed in your trash/recycling and are **permanently** deleted.
+
+### `rm -r`
+The `-r` flag indicates recursion.  `rm -r` will recursively delete everything inside of a directory.  Unlike `rmdir`, `rm -r` is what you use to delete a directory that is not empty:
+
+```sh
+> pwd
+/Users/pete/code-guild/class_koi/code/pete
+> ls # see what's in my code folder
+javascript/  python/
+> ls python # see what's inside of python
+lab02.py  lab03.py
+> rm -r python # delete the python folder and everything in it
+> ls
+javascript
+```
+
+## `echo`
+`echo` does just what it sounds like, given a string it will echo that text back to the shell:
+
+```sh
+> echo hello world
+hello world
+```
+
+#### Note: this might not seem very useful on its own, but you can combine this functionality with other unix tools, like `>`, the **output redirector**:
+
+```sh
+> echo "It was a dark and stormy night." > story.txt
+```
+
+That command wrote the contents of that string to `story.txt`.  Let's see how we can read its contents with...
+
+## `cat`
+`cat`, short for **concatenate**, it is another old Unix command made for the purpose of concatenating the contents of text files.  But, given just filepath as an argument, it will print out the contents of that file:
+
+```sh
+> cat story.txt
+It was a dark and stormy night.
+> # that read the contents of the file
+> # let's add more to the end of it
+> echo "And they lived happily ever after." >> story.txt
+> cat story.txt
+It was a dark and stormy night.
+And they lived happily ever after.
+```
+
+#### Note: `>>` is another **output redirector**, but instead of overwriting the entire contents of the file, it will append that string to the end.
+
+`bat` is a not a standard Unix tool, but a special package that works like `cat` but has other helpful features like syntax-highlighting and line numbers. 
+
+Check out how to install it on the github repo: 
+
+[https://github.com/sharkdp/bat](https://github.com/sharkdp/bat)
