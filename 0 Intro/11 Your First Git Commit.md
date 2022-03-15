@@ -120,7 +120,24 @@ Now that there's a file there, git sees something new.
 ```sh
 > git add .gitkeep
 > git status # let's see what that did!
+On branch pete/first-commit
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   .gitkeep
+```
 
+Now the file has been added, but more needs to be done.  `git add` is like putting something in an envelope.  It still needs to be sealed and delivered.
+
+### `git commit -m "[your commit message]"`
+`git commit` saves a version of your branch in the git history.  The `-m` flag stands for message.  Then, you can put a commit message in quotes.  Every commit must have a message:
+
+```sh
+> git commit -m "created code folder"
+> # you can say something different for your commit message if you want
+> # the idea is to briefly summarize what you did on the commit
+> git status # let's see how the status has changed
+On branch pete/first-commit
+Changes to be commited
 
 ## Using Git With VS Code:
 [https://code.visualstudio.com/docs/editor/versioncontrol](https://code.visualstudio.com/docs/editor/versioncontrol)
