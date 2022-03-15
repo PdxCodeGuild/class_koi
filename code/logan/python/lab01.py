@@ -125,7 +125,7 @@ elif unit_conversion == "mi":
 elif unit_conversion == "yard" or unit_conversion == "yards":
     print(f"\n{distance_input} {unit_input} is {meters_to_yards(value_in_meters)} yard/s.")
 elif unit_conversion == "inch" or unit_conversion == "inches":
-    print(f"\n{distance_input} {unit_input} is {meters_to_inches(value_in_meters)} inch/es.")   
+    print(f"\n{distance_input} {unit_input} is {meters_to_inches(value_in_meters)} inch/es.")  
 
 
 
