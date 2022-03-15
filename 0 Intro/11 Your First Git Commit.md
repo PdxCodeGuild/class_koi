@@ -126,6 +126,11 @@ Changes to be committed:
         new file:   .gitkeep
 ```
 
+#### Note: there are other ways to use `git add`:
+`git add .` will add changes in your working directory and everything inside of it. 
+
+`git add -A` will add all changes you've made throughout the repo
+
 Now the file has been added, but more needs to be done.  `git add` is like putting something in an envelope.  It still needs to be sealed and delivered.
 
 ### `git commit -m "[your commit message]"`
@@ -137,7 +142,58 @@ Now the file has been added, but more needs to be done.  `git add` is like putti
 > # the idea is to briefly summarize what you did on the commit
 > git status # let's see how the status has changed
 On branch pete/first-commit
-Changes to be commited
+nothing to commit, working tree clean
+```
+
+#### Note: running `git commit` without the `-m` flag will put you into your default terminal text editor, likely vim.
+
+Now the commit has been added to your local git history.  You have sealed the envelope.  All that's left is to send it away with `git push`.
+
+### `git push`
+`git push` uploads your branch and its changes to the repository on GitHub.  From there, anyone else can pull down your work.  When you first create a branch there is nowhere yet to push it to:
+
+```sh
+> git push
+fatal: The current branch pete/first-commit has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin pete/first-commit
+```
+
+So we will do what they say, but there's actually a shortcut for it:
+
+### `git push -u origin [branch-name]`
+The `-u` flag is a shorthand for `--set-upstream`.  `origin` is the GitHub repository.  For me, I'd run this command:
+
+```sh
+> git push -u origin pete/first-commit
+> # you should get some feedback as it uploads your code,
+> # including a link to creating a pull request
+```
+
+#### Note: you only have to use the `-u` flag the first time you push up to GitHub.  Once your branch exists on GitHub, and you want to push up changes, you can just use `git push`.
+
+Congratulations, you've commited to the repo.  (Check out your profile page, there will be a green square indicating that you pushed up a commit.)  Now all that's left is to make a Pull Request so I can merge your changes into `main`.
+
+## Step 5: Make a Pull Request
+
+If you open up the class repo on GitHub, you should see a notification that you have pushed up changes to a branch recently, with a prompt to create a pull request.  Follow that prompt. And click "Create Pull Request".
+
+#### Note: I will be reviewing and merging all these PRs myself.  For future labs, you will tag the TAs as reviewers to your code.  More on that later.
+
+And that's it!  You've contributed to the repo and made a pull request.  I will review the PRs and merge them into `main`.  By the way, it's a good idea to go back to `main` now.
+
+### `git checkout [branch-name]`
+`git checkout` will take you to a different branch.  Go back to main and pull the latest changes down:
+
+```sh
+> git checkout main
+> git pull
+```
+
+Please make a habit of checking out main and pulling the latest changes down often.  You should always pull the latest changes down to main before creating the new branch for each lab.
 
 ## Using Git With VS Code:
+I recommend everyone learn to do this with the command line.  But you can do absolutely everything here in VS Code's GUI.  You can create folders and files and add, commit, push and pull with VS Code's Source Control tab.  If you're interested, check out their docs here:  
+
 [https://code.visualstudio.com/docs/editor/versioncontrol](https://code.visualstudio.com/docs/editor/versioncontrol)
