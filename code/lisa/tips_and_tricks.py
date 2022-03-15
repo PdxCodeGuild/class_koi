@@ -54,7 +54,7 @@
 # -Push a new branch to github:
 #   git add . (or filename, if you don't want to add everything)
 #   git commit -m 'made a new branch'
-#   git push -u origin <branchname>
+#   git push --set-upstream origin <branchname>
 #   note: if you follow the standard committing procedure below, github will tell you the push command you need, which makes it nice and easy to do. 
 
 # –Switch branches (replace branchname with the name of your own branch)
