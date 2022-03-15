@@ -67,10 +67,12 @@ Presentation Day: June 24th, 2022
 * [Lab 03 Contacts List Redux](2%20Flask/labs/03%20Contacts%20List%20Redux.md) -->
 
 ## Python Labs Assigned:
-> Coming Soon...
-<!-- * [Lab 01 Turtle](1%20Python/labs/01%20Turtle.md)
-* [Lab 02 Average Numbers](1%20Python/labs/02%20Average%20Numbers.md)
-* [Lab 03 Make Change](1%20Python/labs/03%20Make%20Change.md)
+| Lab   | Name                   | Date Assigned | Due By Start Of Class | Hard Due Date |
+| ----- | ---------------------- | ------------- | --------------------- | ------------- |
+| 01    | Unit Converter         | Mar 15th      | Mar 21st              | Mar 29th      |
+| 02    | Average Numbers        | Mar 15th      | Mar 21st              | Mar 29th      |
+
+<!-- * [Lab 03 Make Change](1%20Python/labs/03%20Make%20Change.md)
 * [Lab 04 Number To Phrase](1%20Python/labs/04%20Number%20To%20Phrase.md)
 * [Lab 05 Blackjack Advice](1%20Python/labs/05%20Blackjack%20Advice.md)
 * [Lab 06 Pick 6](1%20Python/labs/06%20Pick%206.md)
