@@ -114,5 +114,13 @@ Now that there's a file there, git sees something new.
 
 ## Step 4: Add, Commit & Push
 
+### `git add [filepath]`
+`git add`, given a filepath, will add that file to version control.  Since the only file you need to add is your `.gitkeep`, you can do this:
+
+```sh
+> git add .gitkeep
+> git status # let's see what that did!
+
+
 ## Using Git With VS Code:
 [https://code.visualstudio.com/docs/editor/versioncontrol](https://code.visualstudio.com/docs/editor/versioncontrol)
