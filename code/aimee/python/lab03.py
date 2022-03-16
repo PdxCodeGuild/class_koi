@@ -19,15 +19,7 @@ pennies = remainder_3 // 1
 
 print(f'{quarters} quarter(s), {dimes} dime(s), {nickels} nickel(s), and {pennies} penny(s)')
 
-# ver 2 ---- #
 
-coins = [
-    ('half-dollar', 50),
-    ('quarter', 25),
-    ('dime', 10),
-    ('nickel', 5),
-    ('penny', 1)
-]
 
 
 
