@@ -64,23 +64,26 @@
 # Version 4
 # Now we'll ask the user for the distance, the starting units, and the units to convert to.
 
-# distance = int(input('what is the distance? '))
+#created dictionary of all conversion values
+convert_dict = {'m':1, 'ft':0.3048, 'mi':1609.34, 'km':1000, 'yd':0.9144, 'in':0.0254}
 
-# unit  = input('what are the units? (ft, mi, m, km, yd, or in) ')
+#inputs needed from user
+distance = int(input('what is the distance? '))
 
-# output_unit = input('what are the output units? (ft, mi, m, km, yd, or in) ')
+input_units = input('what are the input units? (ft, mi, m, km, yd, or in) ')
 
-# if unit == 'm':
-    
+output_units = input('what are the output units? ')
 
-# elif unit != 'm':
-#     if unit  == 'ft':
-#         conversion = round(distance*0.3048, 4)
-#     elif unit == 'mi':
-#         conversion = round(distance*1609.34, 4)
-#     elif unit == 'km':
-#         conversion = round(distance*1000, 4)
-#     elif unit == 'yd':
-#         conversion = round(distance*0.9144, 4)
-#     elif unit == 'in':
-#         conversion = round(distance*0.0254, 4)
+
+#convert any unit to meters, 
+
+meter_convert = distance * convert_dict[input_units]
+
+
+# #then convert the distance in meters to any other unit.
+
+other_convert = meter_convert / convert_dict[output_units]
+
+total = round(other_convert, 4)
+
+print(f'{distance} {input_units} is {total} {output_units}')
