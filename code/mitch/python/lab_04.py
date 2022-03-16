@@ -48,11 +48,13 @@ if number_input in teens_phrase_dict.keys():
 elif number_input in ones_phrase_dict.keys():
     number_phrase.append(ones_phrase_dict[number_input])
 
-else:
+
+elif len(number_input) == 2:
     tens_str = str(int(number_input)//10)
     number_phrase.append(tens_phrase_dict[tens_str])
     ones_str = str(int(number_input)%10)
-    number_phrase.append(ones_phrase_dict[ones_str])
+    if ones_str != "0":
+        number_phrase.append(ones_phrase_dict[ones_str])
 
 
 print("-".join(number_phrase))
