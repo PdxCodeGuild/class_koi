@@ -8,6 +8,7 @@ M-F 9:30 am – 4:30 pm
 
 ### Holidays / Days Off
 
+- April 4th (Day Off)
 - May 30th (Memorial Day)
 
 ### Staff
@@ -23,6 +24,7 @@ M-F 9:30 am – 4:30 pm
 ## Capstone Dates:
 
 Capstone proposal due: TBD 
+
 Presentation Day: June 24th, 2022  
 
 <!-- ## JavaScript Labs Assigned:
