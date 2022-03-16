@@ -1,5 +1,6 @@
 ## Did it with conditionals this time...much harder!  Note: no support for invalid input.
-## Here is version 1:
+## Version 1
+## Code:
 
 # def feet_to_meters(x):
 #     return int(x) * .3048
@@ -8,7 +9,8 @@
 
 # print(f"\n{distance_feet} ft is {feet_to_meters(distance_feet)}.")
 
-## Here is version 2
+## Version 2
+## Code:
 
 # def feet_to_meters(x):
 #     return int(x) * .3048
@@ -31,7 +33,8 @@
 # elif unit_input == "mi":
 #     print(f"\n{distance_input} {unit_input} is {miles_to_meters(distance_input)} m.")
 
-# Here is version 3:
+## Version 3
+## Code:
 
 # def feet_to_meters(x):
 #     return int(x) * .3048
@@ -64,8 +67,10 @@
 # elif unit_input == "inches" or unit_input == "inch":
 #     print(f"\n{distance_input} {unit_input} is {inches_to_meters(distance_input)} m.")
 
-# Version 4:
+# Version 4
+## Code:
 
+# These are a bunch
 def feet_to_meters(x):
     return int(x) * .3048
 
@@ -101,6 +106,8 @@ distance_input = input("\nGive me a distance:  ")
 unit_input = input("\nWhat are the units?:  ")
 unit_conversion = input("\nWhat are the desired units?:  ")
 
+# This just gets everything into meters
+
 if unit_input == "ft":
     value_in_meters = feet_to_meters(distance_input)
 elif unit_input == "m":
@@ -113,6 +120,8 @@ elif unit_input == "yards" or unit_input == "yard":
     value_in_meters = yards_to_meters(distance_input)
 elif unit_input == "inches" or unit_input == "inch":
     value_in_meters = inches_to_meters(distance_input)
+
+# This converts to desired units and prints.
 
 if unit_conversion == "ft":
     print(f"\n{distance_input} {unit_input} is {meters_to_feet(value_in_meters)} ft.")
