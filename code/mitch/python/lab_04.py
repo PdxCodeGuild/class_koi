@@ -40,7 +40,7 @@ tens_phrase_dict = {
 number_phrase = []
 
 print("\nThis is the number to phrase machine!\n")
-number_input = input("Please enter a two digit whole number (0-99): ")
+number_input = input("Please enter up to a two digit whole number (0-99): ")
 
 if number_input in teens_phrase_dict.keys():
     number_phrase.append(teens_phrase_dict[number_input])
@@ -49,7 +49,7 @@ elif number_input in ones_phrase_dict.keys():
     number_phrase.append(ones_phrase_dict[number_input])
 
 
-elif len(number_input) == 2:
+else:
     tens_str = str(int(number_input)//10)
     number_phrase.append(tens_phrase_dict[tens_str])
     ones_str = str(int(number_input)%10)
