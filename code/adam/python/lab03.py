@@ -1,7 +1,7 @@
 # Lab 03: Make Change
 #-----------------------------------------------------------------------
 # Version 1 - take input dollar amount and output number of coins
-'''
+
 # get dollar amount from user 
 dollar_amount = input("Enter a dollar amount: ")
 # change input string to float
@@ -24,10 +24,10 @@ cents_pennies = cents_nickels % 5
 pennies = cents_pennies
 
 print(f'{quarters} quarters, {dimes} dimes, {nickels} nickels, {pennies} pennies')
-'''
+
 #---------------------------------------------------------------------------------
 # Version 2 - store coin values in a list of tuples
-
+'''
 coins = [
     ('half-dollar', 50),
     ('quarter', 25),
@@ -36,3 +36,8 @@ coins = [
     ('penny', 1)
 ]
 
+for i in coins:
+    coin = i[0]
+    value = i[1] 
+    print(coin, value)
+'''
