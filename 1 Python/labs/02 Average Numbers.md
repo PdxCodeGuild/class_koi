@@ -49,6 +49,6 @@ average: 4
 ```sh
 > git add files-to-be-added
 > git commit -m "your commit message goes here"
-> git push -u origin your-name/python/lab01
+> git push -u origin your-name/python/lab02
 ```
 Then go to the repository to create a PR.
