@@ -1,5 +1,5 @@
 # Guess the Number
-# Version 2
+# Version 3
 # Mitch Chapman
 
 import random
@@ -29,12 +29,13 @@ def game():
         if NUMBER == guess:
             print(f"Congrats you win! 😃😃😃\nIt took you {try_count} guesses to get it right.")
             break
-        elif guess != NUMBER:
-            print("Sorry, that's not it. Guess again.")  
+        elif guess > NUMBER:
+            print("Too high! Guess again.")
+        elif guess < NUMBER:
+            print("Too low! Guess again.")    
+
 
 
 #game function runs here
 game()
-    
-    
     
