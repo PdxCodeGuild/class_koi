@@ -11,6 +11,7 @@
 # Ctrl + z = undo
 # Ctrl + y = redo
 # Ctrl + f = find in page (works on all internet browsers, vs code, the terminal, and more)
+# Alt + click = select multiple different areas of code at once
 
 #-------------------------------------------------------------
 
