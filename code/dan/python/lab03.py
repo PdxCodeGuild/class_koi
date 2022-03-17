@@ -6,20 +6,23 @@
    # ('penny', 1)
 #]
 
-total = input("Please enter a dollar amount" )
-total = float(total)
-print (total)
-
-
-total = total // .25
-print (f"This uses {total} quarters")
-total = total / .10
-print (f"This uses {total} dimes")
-total = total / .05
-print (f"This uses {total} nickels")
-total = total /.01
-print (f"This uses {total} pennies")
-
-
 #doesthiswork = total / coins[0][1]
 #print (doesthiswork)
+
+#Version 1 of Lab 03 / not complete 
+
+amount = input("Please enter a dollar amount" )
+amount = float (amount)
+print (amount) 
+
+
+quarters = amount // .25
+new_total =  amount - (quarters * 25)
+print (new_total)
+dimes = new_total  / .10
+nickels = amount / .05
+pennies = amount  / .01
+print (f"This uses {quarters} quarters, {dimes} dimes , {nickels} nickels , {pennies} pennies") 
+
+
+ 
