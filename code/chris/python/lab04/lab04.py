@@ -62,8 +62,10 @@ if hundreds_digit >= 1 and tens_digit > 1: # ex 122 -> one hundred twenty two
     print(f'{numbers_dict[hundreds_digit]} hundred {tens_dict[tens_digit]} {numbers_dict[ones_digit]}')
 elif hundreds_digit >= 1 and tens_digit == 1: # ex 111 -> one hundred eleven
     print(f'{numbers_dict[hundreds_digit]} hundred {teens_dict[ones_digit]}')
-elif hundreds_digit < 1 and tens_digit > 1: # ex 22 -> twenty two
+elif hundreds_digit < 1 and tens_digit > 1 and ones_digit != 0: # ex 22 -> twenty two
     print(tens_dict[tens_digit], numbers_dict[ones_digit])
+elif hundreds_digit < 1 and tens_digit > 1 and ones_digit == 0: # ex 22 -> twenty two
+    print(tens_dict[tens_digit])
 elif hundreds_digit < 1 and tens_digit == 1: # ex 11 -> eleven
     print(teens_dict[ones_digit])
 elif hundreds_digit < 1 and tens_digit == 0: # 1 -> one
