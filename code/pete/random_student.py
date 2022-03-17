@@ -19,5 +19,5 @@ students = [
     'shaine',
 ]
 
-print(students[randint(0, len(students))])
+print(students[randint(0, len(students) - 1)])
 # print(choice(students))
