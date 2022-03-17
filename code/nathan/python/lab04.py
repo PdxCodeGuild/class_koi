@@ -150,9 +150,78 @@ def versionTwo(number):
     
     print(f"{onesAndHundreds[hundredsDigit]} hundred {tensPlace[tensDigit]}-{onesAndHundreds[onesDigit]}")
     return
-    
-for i in range(100):
-     versionOne(i)
 
-for i in range(1000):
-    versionTwo(i)
+# Convert a number to roman numerals.
+def versionThree(number):
+    '''
+    i = 1
+    iv = 4
+    v = 5
+    ix = 9
+    x = 10
+    xl = 40
+    l = 50
+    xc = 90
+    c = 100
+
+    3 = iii
+    14 = xiv
+
+    numerals = {
+        1 : "i",
+        4 : "iv",
+        5 : "v",
+        9 : "ix",
+        10 : "x",
+        40 : "xl",
+        50 : "l",
+        90 : "xc",
+        100 : "c",
+    }
+    DICTIONARIES ARE NOT ORDERED
+    FOR LOOPS NO WORKY
+    '''
+
+    numerals = [
+        (100, "c"),
+        (90, "xc"),
+        (50, "l"),
+        (40, "xl"),
+        (10, "x"),
+        (9, "ix"),
+        (5, "v"),
+        (4, "iv"),
+        (3, "iii"),
+        (2, "ii"),
+        (1, "i"),
+    ]
+
+    tempList = []
+
+    for i in numerals:
+        temp = number // i[0]
+        number -= temp * i[0]
+
+        if(temp > 0):
+            tempList.append(i[1])
+
+    tempList = ''.join(tempList)
+    print(tempList)
+    return tempList # If they want it I guess
+
+# Convert a time given in hours and minutes to a phrase.
+def versionFour(time):
+    time = time.split(':')
+    versionOne(int(time[0])), versionOne(int(time[1]))
+    
+
+
+# for i in range(100):
+#      versionOne(i)
+
+# for i in range(1000):
+#     versionTwo(i)
+
+# versionThree(12)
+
+versionFour("12:30")
