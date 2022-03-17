@@ -58,13 +58,17 @@ tens_digit = ((user_number // 10) - (hundreds_digit * 10))
 
 ones_digit = user_number % 10
 
-if hundreds_digit >= 1 and tens_digit > 1: # ex 122 -> one hundred twenty two
+if hundreds_digit >= 1 and tens_digit > 1 and ones_digit != 0: # ex 122 -> one hundred twenty two
     print(f'{numbers_dict[hundreds_digit]} hundred {tens_dict[tens_digit]} {numbers_dict[ones_digit]}')
-elif hundreds_digit >= 1 and tens_digit == 1: # ex 111 -> one hundred eleven
+elif hundreds_digit >= 1 and tens_digit == 1 and ones_digit != 0: # ex 111 -> one hundred eleven
     print(f'{numbers_dict[hundreds_digit]} hundred {teens_dict[ones_digit]}')
-elif hundreds_digit < 1 and tens_digit > 1 and ones_digit != 0: # ex 22 -> twenty two
+elif hundreds_digit >= 1 and tens_digit >= 1 and ones_digit == 0: # ex 120
+    print(f'{numbers_dict[hundreds_digit]} hundred {tens_dict[tens_digit]}')
+elif hundreds_digit >= 1 and tens_digit == 0 and ones_digit == 0: # ex 100
+    print(f'{numbers_dict[hundreds_digit]} hundred')
+elif hundreds_digit < 1 and tens_digit > 1 and ones_digit != 0: # ex 99
     print(tens_dict[tens_digit], numbers_dict[ones_digit])
-elif hundreds_digit < 1 and tens_digit > 1 and ones_digit == 0: # ex 22 -> twenty two
+elif hundreds_digit < 1 and tens_digit > 1 and ones_digit == 0: # ex 20
     print(tens_dict[tens_digit])
 elif hundreds_digit < 1 and tens_digit == 1: # ex 11 -> eleven
     print(teens_dict[ones_digit])
