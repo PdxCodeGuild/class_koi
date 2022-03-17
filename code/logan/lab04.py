@@ -57,12 +57,57 @@
 #     print(stringwriter(num_input))
 
 ##Version 2##
+
 # Here are a bunch of variables
+
 special = False
-d_ones = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight", 9: "nine"}
-d_tens = {2: "twenty", 3: "thirty", 4: "forty", 5: "fifty", 6: "sixty", 7: "seventy", 8: "eighty", 9: "ninety"}
-d_hundreds = {1: "one hundred", 2: "two hundred", 3: "three hundred", 4: "four hundred", 5: "five hundred", 6: "six hundred", 7: "seven hundred", 8: "eight hundred", 9: "nine hundred"}
-d_special = {10: "ten", 11: "eleven", 12: "twelve", 13: "thirteen", 14: "fourteen", 15: "fifteen", 16: "sixteen", 17: "seventeen", 18: "eighteen", 19: "nineteen"}
+
+d_ones = {1: "one",
+2: "two",
+3: "three",
+4: "four",
+5: "five",
+6: "six",
+7: "seven",
+8: "eight",
+9: "nine",
+}
+
+d_tens = {
+2: "twenty",
+3: "thirty",
+4: "forty",
+5: "fifty",
+6: "sixty",
+7: "seventy",
+8: "eighty",
+9: "ninety",
+}
+
+d_hundreds = {
+1: "one hundred", 
+2: "two hundred", 
+3: "three hundred", 
+4: "four hundred", 
+5: "five hundred", 
+6: "six hundred", 
+7: "seven hundred", 
+8: "eight hundred", 
+9: "nine hundred",
+}
+
+d_special = {
+10: "ten", 
+11: "eleven", 
+12: "twelve", 
+13: "thirteen", 
+14: "fourteen", 
+15: "fifteen", 
+16: "sixteen", 
+17: "seventeen", 
+18: "eighteen", 
+19: "nineteen"}
+
 num_input = int(input("\nPlease input a number 0 - 999:  "))
 snum_input = str(num_input)
 ones = num_input % 10
@@ -94,7 +139,7 @@ def superstringwriter():
     else:
         return(d_hundreds[hundreds] + " and " + d_tens[int(snum_input[1])] + "-" + d_ones[ones])
 
-##The Specials 0, 10 - 19 -- these have no good, regular convention for generation##
+## The Specials 0, 10 - 19 -- these have no good, regular convention for generation##
 if num_input == 0:
     print("zero")
     special = True
@@ -133,3 +178,5 @@ if special == False:
         print(stringwriter(num_input))
     else:
         print(superstringwriter())
+
+print("\n")
