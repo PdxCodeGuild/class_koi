@@ -1,4 +1,4 @@
-# Lab 5: Blackjack Advice
+# Lab 5 Version 1: Blackjack Advice
 # Mitch Chapman
 
 phrase = {
@@ -47,18 +47,3 @@ elif 17 <= points < 21:
     print(f"{points} Stay 🤨😅🤨")
 else:
     print(f"{points} Hit 😬🤔😬")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
