@@ -1,5 +1,5 @@
-##Version 1##
-##Code##
+# #Version 1##
+# #Code##
 
 # special = False
 # d_ones = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight", 9: "nine"}
@@ -24,7 +24,7 @@
 #     print("zero")
 #     special = True
 # elif num_input == 10:
-#     print("10")
+#     print("ten")
 #     special = True
 # elif num_input == 11:
 #     print("eleven")
@@ -56,6 +56,8 @@
 # if special == False:
 #     print(stringwriter(num_input))
 
+# print("\n")
+
 ##Version 2##
 
 # Here are a bunch of variables
@@ -74,6 +76,7 @@ d_ones = {1: "one",
 }
 
 d_tens = {
+1: "ten",
 2: "twenty",
 3: "thirty",
 4: "forty",
@@ -153,7 +156,7 @@ if num_input == 0:
     print("zero")
     special = True
 elif num_input == 10:
-    print("10")
+    print("ten")
     special = True
 elif num_input == 11:
     print("eleven")
