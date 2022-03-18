@@ -1,7 +1,7 @@
 # This generates advice in all circumstances but the triple A scenario.
 def advice(x):
     int(x)
-    if x < 17:
+    if x <= 17:
         return("Hit!")
     elif (x > 17) and (x < 21):
         return("Stay")

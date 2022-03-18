@@ -4,7 +4,7 @@
 # This generates advice based on the hand total.
 def advice(x):
     int(x)
-    if x < 17:
+    if x <= 17:
         return("Hit!")
     elif (x > 17) and (x < 21):
         return("Stay")
