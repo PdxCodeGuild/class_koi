@@ -11,17 +11,21 @@
 
 ## Version 2 ##
 ## Code ##
-# No code for invalid input, let me know if it needs to be added!
 
 numlist = []
 running_sum = 0
 
+
 while True:
-    num_add = input("\nPlease enter a number, or 'done' to quit:  ")
-    if num_add == "done":
-        break
-    else:
-        numlist.append(int(num_add))
+    try: 
+        num_add = input("\nPlease enter a number, or 'done' to quit:  ")
+        if num_add == "done":
+            break
+        else:
+            int(num_add)
+            numlist.append(int(num_add))
+    except:
+        print("Invalid input.")
 
 for x in numlist:
     running_sum += x
