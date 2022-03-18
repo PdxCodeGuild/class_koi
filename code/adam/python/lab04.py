@@ -73,8 +73,14 @@ elif number <= 999:
     hundreds_digit = number//100
     tens_digit = number%100//10
     ones_digit = number%100%10
+    # print(hundreds_digit)
+    # print(tens_digit)
+    # print(ones_digit)
     if ones_digit == 0:
         print(f'{hundreds_list[hundreds_digit]} {tens_list[tens_digit]}{ones_list[ones_digit]}')
+    elif tens_digit < 2:
+        tens_digit = tens_digit * 10 + ones_digit
+        print(f'{hundreds_list[hundreds_digit]} {ones_list[tens_digit]}')
     else:
         print(f'{hundreds_list[hundreds_digit]} {tens_list[tens_digit]}-{ones_list[ones_digit]}')
 else:
