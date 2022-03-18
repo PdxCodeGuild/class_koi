@@ -179,6 +179,8 @@ Congratulations, you've commited to the repo.  (Check out your profile page, the
 
 If you open up the class repo on GitHub, you should see a notification that you have pushed up changes to a branch recently, with a prompt to create a pull request.  Follow that prompt. And click "Create Pull Request".
 
+![Pull Request Prompt](create-pull-request.png)
+
 #### Note: I will be reviewing and merging all these PRs myself.  For future labs, you will tag the TAs as reviewers to your code.  More on that later.
 
 And that's it!  You've contributed to the repo and made a pull request.  I will review the PRs and merge them into `main`.  By the way, it's a good idea to go back to `main` now.
