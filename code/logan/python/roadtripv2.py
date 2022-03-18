@@ -8,7 +8,7 @@ city_to_accessible_cities = {
   'New York': ['Boston', 'Albany', 'Philadelphia'],
   'Albany': ['Boston', 'New York', 'Portland'],
   'Portland': ['Boston', 'Albany'],
-  'Philadelphia': {'New York'}
+  'Philadelphia': ['New York']
 }
 
 city_to_accessible_cities_with_travel_time = {
@@ -41,17 +41,17 @@ initiald.update({initial: 0})
 initial_ld.append(initiald)
 feedvalue = initial_ld
 
-# Generates 1 permutation, stores all possible branch destinations paired with their travel times
+# Generates 1 batch of permutations, stores all possible branch destinations paired with their travel times
 
 def permutate(x):
     bigset = []
     for dict in x:
         listkeys = list(dict.keys())
         key = listkeys[0]
-        subsubdict = (city_to_accessible_cities_with_travel_time[key])
-        for destination in list(subsubdict):
+        subset = (city_to_accessible_cities_with_travel_time[key])
+        for destination in list(subset):
             newentry = {}
-            dist = dict[key] + subsubdict[destination]
+            dist = dict[key] + subset[destination]
             newentry.update({destination: dist})
             bigset.append(newentry)
     return bigset
