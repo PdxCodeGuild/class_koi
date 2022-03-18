@@ -8,6 +8,7 @@ M-F 9:30 am – 4:30 pm
 
 ### Holidays / Days Off
 
+- April 4th (Day Off)
 - May 30th (Memorial Day)
 
 ### Staff
@@ -23,6 +24,7 @@ M-F 9:30 am – 4:30 pm
 ## Capstone Dates:
 
 Capstone proposal due: TBD 
+
 Presentation Day: June 24th, 2022  
 
 <!-- ## JavaScript Labs Assigned:
@@ -67,16 +69,17 @@ Presentation Day: June 24th, 2022
 * [Lab 03 Contacts List Redux](2%20Flask/labs/03%20Contacts%20List%20Redux.md) -->
 
 ## Python Labs Assigned:
-| Lab   | Name                                                          | Date Assigned | Due By      | Hard Due Date |
-| ----- | ------------------------------------------------------------- | ------------- | ------------| ------------- |
-| 01    | [Unit Converter](1%20Python/labs/01%20Unit%20Converter.md)    | Mar 15th      | Mar 21st    | Mar 29th      |
-| 02    | [Average Numbers](1%20Python/labs/02%20Average%20Numbers.md)  | Mar 15th      | Mar 21st    | Mar 29th      |
-| 03    | [Make Change](1%20Python/labs/03%20Make%20Change.md)          | Mar 16th      | Mar 21st    | Mar 29th      |
+| Lab   | Name                                                                | Date Assigned | Due By      | Hard Due Date |
+| ----- | ------------------------------------------------------------------- | ------------- | ------------| ------------- |
+| 01    | [Unit Converter](1%20Python/labs/01%20Unit%20Converter.md)          | Mar 15th      | Mar 18th    | Mar 29th      |
+| 02    | [Average Numbers](1%20Python/labs/02%20Average%20Numbers.md)        | Mar 15th      | Mar 18th    | Mar 29th      |
+| 03    | [Make Change](1%20Python/labs/03%20Make%20Change.md)                | Mar 16th      | Mar 18th    | Mar 30th      |
+| 04    | [Number To Phrase](1%20Python/labs/04%20Number%20To%20Phrase.md)    | Mar 16th      | Mar 18th    | Mar 30th      |
+| 05    | [Blackjack Advice](1%20Python/labs/05%20Blackjack%20Advice.md)      | Mar 16th      | Mar 18th    | Mar 30th      |
 
 
-<!-- * [Lab 04 Number To Phrase](1%20Python/labs/04%20Number%20To%20Phrase.md)
-* [Lab 05 Blackjack Advice](1%20Python/labs/05%20Blackjack%20Advice.md)
-* [Lab 06 Pick 6](1%20Python/labs/06%20Pick%206.md)
+
+<!-- * [Lab 06 Pick 6](1%20Python/labs/06%20Pick%206.md)
 * [Lab 07 Mob Jackalope](1%20Python/labs/07%20Mob%20Jackalope.md)
 * [Lab 08 Credit Card Validation](1%20Python/labs/08%20Credit%20Card%20Validation.md)
 * [Lab 09 Peaks And Valleys](1%20Python/labs/09%20Peaks%20And%20Valleys.md)
