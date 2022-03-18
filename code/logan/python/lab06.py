@@ -32,9 +32,15 @@ def payout(x):
 def pick6():
 # This is used to set the player ticket and dealer ticket.
     ticket = []
+    numbers = []
+    for x in range (1,100):
+        numbers.append(x)
+    # numbers_refresh = numbers
     for i in range(0,6):
-        selection = str(random.randint(1, 99))
-        ticket.append(selection)
+        selection_str = str(random.choice(numbers))
+        selection_int = int(selection_str)
+        ticket.append(selection_str)
+        numbers.remove(selection_int)
     return ticket
 
 # This determines the number of matches between the player and dealer ticket
@@ -78,5 +84,5 @@ Your career earnings: {balance}.
 Your ROI: {roi(total_earnings, total_expenses)}.
 """)
 
-# Dang...it's hard to win the lottery. :(
+# It's hard to win the lottery. :(
 
