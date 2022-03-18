@@ -54,9 +54,14 @@ else:
         number_phrase.append(ones_phrase_dict[hundreds_str] + "-hundred")
         number_input = str(int(number_input) % 100)
 
-    if len(number_input) == 2:
+    if number_input in teens_phrase_dict.keys():
+        number_phrase.append(teens_phrase_dict[number_input])
+
+    else:
         tens_str = str(int(number_input)//10)
-        number_phrase.append(tens_phrase_dict[tens_str])
+        if tens_str != "0" and tens_str != "1":
+            number_phrase.append(tens_phrase_dict[tens_str])
+        
         ones_str = str(int(number_input)%10)
         if ones_str != "0":
             number_phrase.append(ones_phrase_dict[ones_str])
@@ -64,3 +69,4 @@ else:
 
 
 print("-".join(number_phrase))
+
