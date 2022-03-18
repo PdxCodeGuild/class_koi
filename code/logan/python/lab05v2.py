@@ -29,8 +29,16 @@ card_values = {
     "K":10,
     }
 
+#""""
+# This first set here merely collects the inputs.
+# The second sorts the aces in front...
+# ...that way I know where to count the non-aces.
+# """
+
 player_cards = []
 player_cards_sorted = []
+
+# Gathering inputs...
 
 while True:
     first = input("\nWhat is your first card?...")
@@ -51,15 +59,19 @@ while True:
     else:
         break
 
+# Make the base hand...
+
 player_cards.append(first)
 player_cards.append(second)
 player_cards.append(third)
+
+# Count the aces...
 
 for x in player_cards:
     if x == "A":
         ace_counter += 1
 
-# This all just remakes the player card list with the aces loaded in front.  I'm sure there's a better way to do this... 
+# Loads aces in front of sorted hand, removes from initial hand.  Could have used a for loop probably... 
 
 if ace_counter == 1:
         player_cards_sorted.append("A")
@@ -77,8 +89,14 @@ elif ace_counter == 3:
     player_cards.remove("A")
     player_cards.remove("A")
 
+# Pulls remaining non-aces into the sorted hand.
+
 for x in player_cards:
     player_cards_sorted.append(x)
+
+# Output.  Gives advice depending on # of aces in hand.  Only gives live possibilities...
+# Easier to code that way, and anyway, it'd be weird if the advice was like...
+# "You can bust on a 33 if you want!!"
 
 if ace_counter == 0:
     total_noA = (card_values[player_cards_sorted[0]] + card_values[player_cards_sorted[1]] + card_values[player_cards_sorted[2]])
