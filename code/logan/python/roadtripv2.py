@@ -20,9 +20,18 @@ city_to_accessible_cities_with_travel_time = {
 }
 
 # Inputs
-
-initial = input("\nEnter a starting city...").title()
-num_hops = int(input("\nEnter a number of hops..."))
+while True:
+    initial = input("\nEnter a starting city...").title()
+    if initial not in city_to_accessible_cities.keys():
+        print("That's not a valid destination.")
+    else:
+        break
+while True:
+    try:
+        num_hops = int(input("\nEnter a number of hops..."))
+        break
+    except:
+        print("Invalid input.  Please input a number in digits.")
 
 # Changing data types around
 
