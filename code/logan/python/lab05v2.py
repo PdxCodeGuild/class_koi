@@ -26,15 +26,30 @@ card_values = {
     "10":10,
     "J":10,
     "Q":10,
-    "K":11,
+    "K":10,
     }
 
 player_cards = []
 player_cards_sorted = []
 
-first = input("\nWhat is your first card?...")
-second = input("What is your second card?...")
-third = input("What is your third card?...")
+while True:
+    first = input("\nWhat is your first card?...")
+    if first not in card_values.keys():
+        print("Invalid input.")
+    else:
+        break
+while True:
+    second = input("What is your second card?...")
+    if second not in card_values.keys():
+        print("Invalid input.")
+    else:
+        break
+while True:
+    third = input("What is your third card?...")
+    if third not in card_values.keys():
+        print("Invalid input.")
+    else:
+        break
 
 player_cards.append(first)
 player_cards.append(second)
