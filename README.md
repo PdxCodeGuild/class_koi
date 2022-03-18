@@ -8,6 +8,7 @@ M-F 9:30 am – 4:30 pm
 
 ### Holidays / Days Off
 
+- April 4th (Day Off)
 - May 30th (Memorial Day)
 
 ### Staff
@@ -23,6 +24,7 @@ M-F 9:30 am – 4:30 pm
 ## Capstone Dates:
 
 Capstone proposal due: TBD 
+
 Presentation Day: June 24th, 2022  
 
 <!-- ## JavaScript Labs Assigned:
@@ -67,13 +69,17 @@ Presentation Day: June 24th, 2022
 * [Lab 03 Contacts List Redux](2%20Flask/labs/03%20Contacts%20List%20Redux.md) -->
 
 ## Python Labs Assigned:
-> Coming Soon...
-<!-- * [Lab 01 Turtle](1%20Python/labs/01%20Turtle.md)
-* [Lab 02 Average Numbers](1%20Python/labs/02%20Average%20Numbers.md)
-* [Lab 03 Make Change](1%20Python/labs/03%20Make%20Change.md)
-* [Lab 04 Number To Phrase](1%20Python/labs/04%20Number%20To%20Phrase.md)
-* [Lab 05 Blackjack Advice](1%20Python/labs/05%20Blackjack%20Advice.md)
-* [Lab 06 Pick 6](1%20Python/labs/06%20Pick%206.md)
+| Lab   | Name                                                                | Date Assigned | Due By      | Hard Due Date |
+| ----- | ------------------------------------------------------------------- | ------------- | ------------| ------------- |
+| 01    | [Unit Converter](1%20Python/labs/01%20Unit%20Converter.md)          | Mar 15th      | Mar 18th    | Mar 29th      |
+| 02    | [Average Numbers](1%20Python/labs/02%20Average%20Numbers.md)        | Mar 15th      | Mar 18th    | Mar 29th      |
+| 03    | [Make Change](1%20Python/labs/03%20Make%20Change.md)                | Mar 16th      | Mar 18th    | Mar 30th      |
+| 04    | [Number To Phrase](1%20Python/labs/04%20Number%20To%20Phrase.md)    | Mar 16th      | Mar 18th    | Mar 30th      |
+| 05    | [Blackjack Advice](1%20Python/labs/05%20Blackjack%20Advice.md)      | Mar 16th      | Mar 18th    | Mar 30th      |
+
+
+
+<!-- * [Lab 06 Pick 6](1%20Python/labs/06%20Pick%206.md)
 * [Lab 07 Mob Jackalope](1%20Python/labs/07%20Mob%20Jackalope.md)
 * [Lab 08 Credit Card Validation](1%20Python/labs/08%20Credit%20Card%20Validation.md)
 * [Lab 09 Peaks And Valleys](1%20Python/labs/09%20Peaks%20And%20Valleys.md)
@@ -87,24 +93,24 @@ Presentation Day: June 24th, 2022
 * [Lab 17 Quotes API](1%20Python/labs/17%20Quotes%20API.md)
 * [Lab 18 Mini-Capstone](1%20Python/labs/../../1%20Python/labs/18%20Mini-Capstone.md) -->
 
-<!-- #### Optional Python Labs
+#### Optional Python Labs
 
-[Count Words](1%20Python/labs/count_words.md),
+<!-- [Count Words](1%20Python/labs/count_words.md), -->
 [Grading](1%20Python/labs/grading.md),
 [Guess The Number](1%20Python/labs/guess_the_number.md),
-[Image Manipulation](1%20Python/labs/image_manipulation.md),
+<!-- [Image Manipulation](1%20Python/labs/image_manipulation.md), -->
 [LCR](1%20Python/labs/LCR.md),
 [Mad Libs](1%20Python/labs/madlib.md),
 [Magic 8 Ball](1%20Python/labs/magic_8_ball.md),
-[Rain Data](1%20Python/labs/rain_data.md),
+<!-- [Rain Data](1%20Python/labs/rain_data.md), -->
 [Random Emoticon Generator](1%20Python/labs/random_emoticon_generator.md),
 [Random Password Generator](1%20Python/labs/random_password.md),
 [Road Trip](1%20Python/labs/road_trip.md),
 [Rock, Paper, Scissors](1%20Python/labs/rock_paper_scissors.md),
 [Simple Calculator](1%20Python/labs/simple_calculator.md),
 [Sock Sorter](1%20Python/labs/sock_sorter.md),
-[Stack And Linked List](1%20Python/labs/stack_and_linked_list.md),
-[Unit Converter](1%20Python/labs/unit_converter.md) -->
+<!-- [Stack And Linked List](1%20Python/labs/stack_and_linked_list.md), -->
+
 
 
 
