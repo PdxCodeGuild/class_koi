@@ -112,7 +112,7 @@ else:
 # Output
 
 print(f"""
-Shortest {num_hops}-hop flights to each city:
+Shortest {num_hops}-hop trips to each city:
 Boston...{shortest_boston} hrs
 New York...{shortest_new_york} hrs
 Albany...{shortest_albany} hrs
