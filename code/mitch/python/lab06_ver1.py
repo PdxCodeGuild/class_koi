@@ -53,7 +53,7 @@ print(f"""
       ****** This gambling simulator just played the 'Pick Six' lottery 100,000 times. ******
       
       There were {num_of_winning_tickets} winning tickets.
-      Starting at $0.00, the final balance after 100,000 games is:  ${"{:.2f}".format(balance)}
+      Starting at $0.00, the final balance after 100,000 games is:  ${balance:.2f}
       """
 )
 
