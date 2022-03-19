@@ -59,10 +59,6 @@ city_to_accessible_cities = {
   'Philadelphia': {'New York': 9},
 }
 
-# function to add "&" before last item in list while joining
-def join_list(list_to_join):
-    return ', '.join(list_to_join[:-1]) + ', & ' + (list_to_join[-1])
-
 # function to calculate shortest distance from starting location to all valid destinations
 def list_cities(starting,hops):
     destinations = [] # empty list to store valid destinations
