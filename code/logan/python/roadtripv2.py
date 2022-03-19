@@ -59,7 +59,6 @@ def permutate(x):
 # Repeats permutation as many times as user wants...I chickened out when I typed in '37' and bailed on my terminal.
 
 for i in range (0, num_hops):
-    permutate(feedvalue)
     feedvalue = permutate(feedvalue)
 
 # Gather distances and determines shortest route
