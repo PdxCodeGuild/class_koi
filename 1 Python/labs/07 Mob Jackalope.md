@@ -23,13 +23,6 @@ The goal is to calculate how many years it will take for two age 0 jackalopes to
 
 With these conditions in mind, we can represent our population as a list of ints.
 
-### Git Add, Commit & Push:
-```sh
-> git add files-to-be-added
-> git commit -m "your commit message goes here"
-> git push -u origin your-team-name/python/lab07
-```
-
 ## Version 2 (Optional)
 
 Now let's give the jackalopes distinct sexes and extend their gestation period to one year. We can represent each jackalope with a dictionary, thus our population will be a list of dictionaries. A jackalope will have the following properties:
@@ -40,6 +33,13 @@ Now let's give the jackalopes distinct sexes and extend their gestation period t
 - whether they're pregnant
 
 Jackalopes can only mate with those immediately around them. Every generation Jackalopes are randomly shuffled.
+
+### Git Add, Commit & Push:
+```sh
+> git add files-to-be-added
+> git commit -m "your commit message goes here"
+> git push -u origin your-team-name/python/lab07
+```
 
 ### Git Checkout Existing Branch
 When it's time for a new driver to type:
