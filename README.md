@@ -17,7 +17,7 @@ M-F 9:30 am – 4:30 pm
   
     - pete@pdxcodeguild.com
  
-- Lisa Brown, TA
+- Kelsey Canoy, TA
  
 - Dustin Olsen, TA
 
