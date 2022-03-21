@@ -11,7 +11,6 @@ students = [
    'chris',
    'dan',
    'logan',
-   'lujock',
    'matt',
    'mitch',
    'moss',
