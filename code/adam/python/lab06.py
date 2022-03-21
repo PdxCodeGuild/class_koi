@@ -2,6 +2,7 @@
 # Program to pick 6 numbers check against winning numbers loop many times
 
 # import random module
+
 import random
 # create list of numbers 1-99
 # nums = list(range(1,100))
@@ -13,19 +14,20 @@ def pick6():
     random.shuffle(nums)
     temp_ticket = nums[:7]
     return temp_ticket
-# winning_ticket = pick6(nums)
-winning_ticket = pick6()
-ticket = pick6()
-def num_matches(winning_ticket, ticket):
-    i = 0
-    if winning_ticket[0] == ticket[0]:
-        i += i
-    else:
-        i = 0
-    return i
 
-winning_ticket = [1,2,3,4,5,6]
-ticket = [1,2,3,4,5,6]
+winning_ticket = pick6() # winning_ticket = pick6(nums)
+ticket = pick6() # purchased ticket
+
+# function to check winning ticket and purchased ticket
+def num_matches(winning_ticket, ticket):
+    matches = 0
+    for i in range(6):
+        if winning_ticket[i] == ticket[i]:
+            matches += 1
+    return matches
+
+# winning_ticket = [1,2,3,4,5,6]
+# ticket = [1,2,3,4,5,6]
 
 print(winning_ticket)
 print(ticket)
