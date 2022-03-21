@@ -19,14 +19,11 @@ run function in while loop until population is >= 1000
 
 def aging(input):
     # population placeholder
-    temp_jack = input
+    temp_jack = [0,0,0,0,0,0,0,0,0,0]
     # iterate through each index position of input
     for x in range(len(input)):
-        if x == 9:
-            temp_jack[x] -= input[x]
-        else:
+        if x != 9:
             temp_jack[x + 1] = input[x]
-            temp_jack[x] -= input[x]
 
     return temp_jack
 
@@ -41,7 +38,9 @@ population = 0
 years = 0
 
 # run loop until population is at or above 1000
-while population < 1000:
+# while population < 1000:
+
+while years < 10:
     # update jackalope variable with function output
     jackalope = aging(jackalope)
     # iterate year variable
