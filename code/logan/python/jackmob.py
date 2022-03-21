@@ -1,3 +1,5 @@
+# lab 07, jackmob - Logan, Chris, Aimee
+
 jackalopes = [0, 0]
 jackalope_population = 0
 years = 0
