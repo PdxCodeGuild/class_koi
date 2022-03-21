@@ -21,10 +21,36 @@ def pickSix():
 
 def numMatches(winningTicket, myTicket):
     count = 0
-    for i in winningTicket:
-        for j in myTicket:
-            if(i == j):
+
+    # Order Doesn't Matter
+    # for i in winningTicket:
+    #     for j in myTicket:
+    #         if(i == j):
+    #             count += 1
+    # if(count > 0):
+    #     print(f"winningTicket = {winningTicket}")
+    #     print(f"myTicket = {myTicket}\n")
+
+    # Order Loosely Matters
+    for i in range(6):
+        limit = 0
+        for j in range(limit, 6):
+            if(winningTicket[i] == myTicket[j]):
+                # If a match is found, j shouldnt go anywhere before where the match is found
+                limit = i
                 count += 1
+    # if(count > 0):
+    #     print(f"winningTicket = {winningTicket}")
+    #     print(f"myTicket = {myTicket}\n")
+
+    # Order Strictly Matters
+    # for i in range(6):
+    #     if(winningTicket[i] == myTicket[i]):
+    #         count += 1
+    # if(count > 0):
+    #     print(f"winningTicket = {winningTicket}")
+    #     print(f"myTicket = {myTicket}\n")
+
     return count
 
 
