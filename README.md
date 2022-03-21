@@ -76,7 +76,7 @@ Presentation Day: June 24th, 2022
 | 03    | [Make Change](1%20Python/labs/03%20Make%20Change.md)                | Mar 16th      | Mar 18th    | Mar 30th      |
 | 04    | [Number To Phrase](1%20Python/labs/04%20Number%20To%20Phrase.md)    | Mar 16th      | Mar 18th    | Mar 30th      |
 | 05    | [Blackjack Advice](1%20Python/labs/05%20Blackjack%20Advice.md)      | Mar 16th      | Mar 18th    | Mar 30th      |
-| 06    | [Pick 6](1%20Python/labs/06%20Pick%206.md)                          | Mar 21st      | Mar 25th    | Mar 30th      |
+| 06    | [Pick 6](1%20Python/labs/06%20Pick%206.md)                          | Mar 21st      | Mar 25th    | Apr  4th      |
 | 07    | [Mob Jackalope](1%20Python/labs/07%20Mob%20Jackalope.md)            | Mar 21st      | NA          | NA            |
 
 
