@@ -4,7 +4,14 @@
 # teststring = "4556737586899855" 
 # This was for testing the program.
 
-card = input("\nInput your card number:...")
+while True:
+    try:
+        card = input("\nInput your card number:...")
+        int(card)
+        break
+    except:
+        print("Invalid input.  Please input a number.")
+
 
 def conversion(string):
 # Converts input string into list of ints
