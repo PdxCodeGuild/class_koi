@@ -1,17 +1,8 @@
 # Lab 06, Pick6 ---- #
 from random import randint
 
-prizes = {
-    'ticket':2,
-    '1':4,
-    '2':7,
-    '3':100,
-    '4':50000,
-    '5':1000000,
-    '6':25000000,
-}
-
 balance = 0
+total_matches = 0
 
 def pick6():
     '''
@@ -22,57 +13,52 @@ def pick6():
        ticket.append(randint(1, 99))
     return ticket
 
-# using function to save values to winning ticket
-winning_ticket = pick6()
-print(winning_ticket)
-user_ticket = pick6()
-print(user_ticket)
-       
-
 def num_matches(winning_ticket, user_ticket):
     """
     return the number of matches between the 2 tickets
     """
-    for x in range(6): # if any ints from either list of 6 match
-        if winning_ticket[x] == user_ticket[x]:
-            matches += 1 # add 1 to match for each match?
-        return matches
+    match = 0
+    if winning_ticket[0] == user_ticket[0]:
+        match += 1
+    elif winning_ticket[1] == user_ticket[1]:
+        match += 1
+    elif winning_ticket[2] == user_ticket[2]:
+        match += 1
+    elif winning_ticket[3] == user_ticket[3]:
+        match += 1
+    elif winning_ticket[4] == user_ticket[4]:
+        match += 1
+    elif winning_ticket[5] == user_ticket[5]:
+        match += 1
+    return match 
 
-for n in range(100000):
+for x in range(1, 100001):
     winning_ticket = pick6()
     user_ticket = pick6()
-    print(f'Winning ticket: {winning_ticket}  Your ticket: {user_ticket} Matches: {matches}') # just reiterates the same ticket 100,000 times
 
-# def num_matches(winning_ticket, user_ticket):
-#     """
-#     return the number of matches between the 2 tickets
-#     """
-#     if winning_ticket == user_ticket:
-
-#         return matches
-
-
-
-
-# ticket_matches = num_matches(winning_ticket, user_ticket)
-# print(ticket_matches)
-
-
-'''
-[10, 69, 12, 20, 10, 5]
-[81, 86, 44, 20, 21, 60]
-0 - isn't working, had 1 match
-'''
-
-
+    matches = num_matches(winning_ticket, user_ticket)
     
+    if matches == 1:
+        balance += 2 # accounting for cost of ticket
+        total_matches += 1
+    elif matches == 2:
+        balance += 5
+        total_matches += 2
+    elif matches == 3:
+        balance += 98
+        total_matches += 3
+    elif matches == 4:
+        balance += 49998
+        total_matches += 4
+    elif matches == 5:
+        balance += 999998
+        total_matches += 5
+    elif matches == 6:
+        balance += 249999998
+        total_matches += 6
+    elif matches == 0:
+        balance -= 2 # subtracts 2 if no matches
+        
+print(f"You had {str(total_matches)} match(s). Your balance is ${str(balance)}.")  
 
-
-
-
-# winning_ticket = []
-# for i in range(0, 6):
-#     x = random.randint(1, 99)
-#     winning_ticket.append(x)
-#     print(f'The winning ticket is {winning_ticket}')
     
