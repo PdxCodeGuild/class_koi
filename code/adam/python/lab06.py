@@ -2,15 +2,13 @@
 # Program to pick 6 numbers check against winning numbers loop many times
 
 # import random module
-
 import random
-# create list of numbers 1-99
-# nums = list(range(1,100))
 
 # funtion to pick 6 random numbers from 1-99 without duplicates
 def pick6():
-     # use random shuffle module to shuffle list
+    # create list of numbers 1-99
     nums = list(range(1,100))
+    # use random shuffle module to shuffle list
     random.shuffle(nums)
     temp_ticket = nums[:7]
     return temp_ticket
@@ -23,6 +21,8 @@ def num_matches(winning_ticket, ticket):
             matches_temp += 1
     return matches_temp
 
+# define dictionary of winnings
+# key is number of matches on ticket and value is amount won in dollars
 winnings_dict = {
     0 : 0,
     1 : 4,
@@ -32,24 +32,33 @@ winnings_dict = {
     5 : 1000000,
     6 : 25000000,
 }
-
-# winning_ticket = [1,2,3,4,5,6]
-# ticket = [1,2,3,4,5,6]
-# print(winning_ticket)
-# print(ticket)
-# print (num_matches(winning_ticket, ticket))
-# matches = num_matches(winning_ticket, ticket)
-# print(f'${winnings_dict[matches]}')
+# Allow user to determine amount of pick 6 games
+times_played = int(input('Enter the number of times you will play the Pick 6: '))
 
 i = 0
-while i < 10:
-    i =+ 1
-    cost = 0
+cost = 0
+winnings_sum = 0
+while i < times_played:
+    i += 1
+    cost = cost -2
     winning_ticket = pick6() # winning_ticket = pick6(nums)
     ticket = pick6() # purchased ticket
     matches = num_matches(winning_ticket, ticket)
     winnings = winnings_dict[matches]
-    cost = cost - 2 + winnings
-    print(winning_ticket)
-    print(ticket)
-    print(matches)
+    winnings_sum += winnings
+    balance = cost + winnings_sum
+    
+print(f'Total Lottery tickets purchased: {i}')
+# print(f'Amount spent on lottery tickets: ${cost}')
+# print(f'Sum of winnings: ${winnings_sum}')
+print(f'Net balance: ${balance}')
+
+
+# Version 2 Calculate ROI along with earnings and expenses
+earnings = winnings_sum
+expenses = cost
+roi = (earnings - expenses) / expenses
+
+print(f'ROI: {roi}%')
+print(f'Earnings: ${earnings}')
+print(f'Expenses: ${expenses}')
