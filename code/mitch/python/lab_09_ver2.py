@@ -45,7 +45,7 @@ def peaks_and_valleys(data:list):
     list_of_peaks_and_valleys_indecies = []
     
     height = max(data)
-    x_matrix = {}
+    x_matrix = {9: []}
     
     
     for index, _ in enumerate(data):
@@ -56,7 +56,8 @@ def peaks_and_valleys(data:list):
     
     for index, num in enumerate(data):
         if num == height:
-            x_matrix[height] = index
+            index_list = []
+            x_matrix[height] = index_list
             data[index] = num - 1
             height -= 1
             
