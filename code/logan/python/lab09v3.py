@@ -1,13 +1,20 @@
+## Lab09 V3
+## Code
+
 # art = ["XX X ", " X XX"]
 
 data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 5, 6, 7, 8, 9, 8, 7, 6, 7, 8, 9]
 
+# This just turns the data into a string.
 data_as_string = ""
 for item in data:
     data_as_string += str(item)
 
 def line_saver(input):
-# returns set of lines that would have been printed by line printer
+#"""
+# Converts list of data into a list of strings that can be 
+# later 'stacked' on each other to visualize the data.
+# """
     art = []
     for value in range(0, max(input)):
         string = ""
@@ -21,6 +28,15 @@ def line_saver(input):
     return art
 
 def rainfall(input_art):
+#"""
+# This 'pours water' on the mountains in the appropriate places,
+# allowing it to be visualized and counted later.
+#
+#
+# Really what it does is output a new list of stackable strings that
+# have Os everywhere water would come to rest in our visual 
+# model.
+# """
     art_after_rain = []
     for line in input_art:
         string_after_rain = ""
@@ -60,6 +76,11 @@ def rainfall(input_art):
     return art_after_rain
 
 def total_rainfall(rainy_art):
+#"""
+# This just counts the Os across all strings in the list 
+# spit out by the rainfall function,
+# which will give the total amount of rainfall.
+#"""
     counter = 0
     for level in rainy_art:
         for character in level:
@@ -67,10 +88,11 @@ def total_rainfall(rainy_art):
                 counter += 1
     return counter
 
-
-
+# generates some data using functions
 mountains = line_saver(data)
 rainy_mountains = rainfall(mountains)
+
+# output
 
 print("""
 Mountains...
