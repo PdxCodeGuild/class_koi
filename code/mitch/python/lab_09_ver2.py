@@ -2,7 +2,6 @@
 # Version 2
 # Mitch Chapman
 
-
 def peaks(data):
     """Returns the indices of peaks. A peak has a lower number on both the left and the right."""
     peaks = {}
@@ -17,7 +16,6 @@ def peaks(data):
             if data[indx - 1] < num > data[indx + 1]:
                 peaks[indx] = 'peak'
     return peaks
-    
     
 
 def valleys(data):
@@ -35,9 +33,11 @@ def valleys(data):
     return valleys
     
     
-
 def peaks_and_valleys(data:list):
-    """Uses the functions peaks() and valleys() to compile a single list of the peaks and valleys in order of appearance in the original data."""
+    """
+    Uses the functions peaks() and valleys() to compile a single list of the peaks and valleys in order of appearance in the original data. 
+    Also prints 'x' above each number in the terminal for a visualization of the peaks and valleys.
+    """
     
     dict_of_peak_indecies = peaks(data)
     dict_of_valley_indices = valleys(data)
@@ -45,7 +45,11 @@ def peaks_and_valleys(data:list):
     list_of_peaks_and_valleys_indecies = []
     
     height = max(data)
-    x_matrix = {9: []}
+    x_matrix = {}
+    
+    
+    for i in range(1, height+1):
+        x_matrix[i] = []
     
     
     for index, _ in enumerate(data):
@@ -53,17 +57,23 @@ def peaks_and_valleys(data:list):
             input_data = index, dict_of_peaks_and_valleys_indecies[index]
             list_of_peaks_and_valleys_indecies.append(input_data)
 
-    
-    for index, num in enumerate(data):
-        if num == height:
-            index_list = []
-            x_matrix[height] = index_list
-            data[index] = num - 1
-            height -= 1
+    for key in reversed(x_matrix.keys()):
+        for index, num in enumerate(data):
+            if num == key or num > key:
+                x_matrix[key].append(index)
+
+    for key in reversed(x_matrix.keys()):
+        temp_list = []
+        for index, _ in enumerate(data):
+            if index in x_matrix[key]:
+                temp_list.append("x")
+            else:
+                temp_list.append(" ")
+        print("                             " + "  ".join(temp_list))
+        
             
-            
-    print(x_matrix)        
-    print(f"\nFor the dataset of heights: {data}:")
+     
+    print(f"For the dataset of heights: {data}:")
     return(f"Peaks and valleys can be found at these list index/indices: {list_of_peaks_and_valleys_indecies}")
 
 
