@@ -47,5 +47,5 @@ data_list = list(enumerate(data))
 
 # print(data_list[0])
 
-print('x'*8,'','x')
-xxxxxxxx  xx
+print(' '*0,'x','x')
+print(' '*13,'x')
