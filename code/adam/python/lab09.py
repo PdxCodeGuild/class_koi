@@ -10,7 +10,7 @@ def peaks (data):
             peaks_index_list.append(i)
     return peaks_index_list
 
-print(peaks(data))
+# print(peaks(data))
 
 # define function 'valleys'
 # -Returns the indices of 'valleys'. A valley is a number with a higher number on both the left and the right.
@@ -21,7 +21,7 @@ def valleys(data):
             valleys_index_list.append(i)
     return valleys_index_list
 
-print(valleys(data))
+# print(valleys(data))
 
 # define function peaks_and_valleys
 # -uses the above two functions to compile a single list of the peaks and valleys 
@@ -31,5 +31,21 @@ def peaks_and_valleys():
     peaks_and_valleys_list.sort()
     return peaks_and_valleys_list
 
-print(peaks_and_valleys())
+# print(peaks_and_valleys())
 
+#---------------------------------------------------------------------------------------
+
+# max_data = max(data)
+# print(max_data)
+# print(data)
+# print(data.count(9))
+
+data_list = list(enumerate(data))
+# print(data_list)
+# for i in data_list:
+#     print(i)
+
+# print(data_list[0])
+
+print('x'*8,'','x')
+xxxxxxxx  xx
