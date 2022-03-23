@@ -1,5 +1,11 @@
 # Lab 8: Credit Card Validation
 
+### Git Setup:
+```sh
+> git checkout main
+> git pull
+> git checkout -b your-name/python/lab08
+```
 
 Let's write a function which returns whether a string containing a credit card number is valid as a boolean. The steps are as follows:
 
@@ -22,3 +28,11 @@ For example, the worked out steps would be:
 6. 85
 7. 5
 8. Valid!
+
+### Git Add, Commit & Push:
+```sh
+> git add files-to-be-added
+> git commit -m "your commit message goes here"
+> git push -u origin your-name/python/lab08
+```
+Then go to the repository to create a PR.
