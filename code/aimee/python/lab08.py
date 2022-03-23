@@ -1,7 +1,7 @@
 # lab 08, credit card validation ---- #
 
 def validation(user_input):
-    user_input = ('4 5 5 6 7 3 7 5 8 6 8 9 9 8 5 5')
+    user_input = ('4 5 5 6 7 3 7 5 8 6 9 9 8 5 5')
     user_input = user_input.split()
     for i in range(len(user_input)):
         user_input[i] = int(user_input[i])
@@ -25,5 +25,7 @@ def validation(user_input):
     if True:
         if digits[1] == user_input[15]:
             return 'Valid'
+        else:
+            return 'Card number is invalid.'
 
 print(validation('4 5 5 6 7 3 7 5 8 6 8 9 9 8 5 5'))
