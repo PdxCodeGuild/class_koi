@@ -12,7 +12,7 @@ def valid_str(prompt,choices,error=None,case_sensitive=True,return_case=None):
     -   (optional) error is the error message displayed if invalid
     -   (optional) case_sensitive uses bool to validate with/without case-sensitivity (default is case-sensitive)
     -   (optional) return_case allows the string to be returned with built-in string case methods
-    Use None as needed for default functionality of optional arguments
+    -   Use None as needed for default functionality of optional arguments
     """
     # list of built-in string case methods
     cases = ['upper','lower','title','capitalize']
@@ -49,7 +49,7 @@ def valid_int(prompt,error=None,min=None,max=None):
     -   (optional) error is the error message displayed if invalid
     -   (optional) min is the smallest integer accepted (inclusive)
     -   (optional) max is the largest integer accepted (inclusive)
-    Use None as needed for default functionality of optional arguments
+    -   Use None as needed for default functionality of optional arguments
     """
     # continue looping until valid input is given
     while True:
@@ -88,7 +88,7 @@ def valid_flt(prompt,error=None,min=None,max=None,rounded=None):
     -   (optional) min is the smallest float accepted (inclusive)
     -   (optional) max is the largest float accepted (inclusive)
     -   (optional) rounded is the number of decimal points to round the result to
-    Use None as needed for default functionality of optional arguments
+    -   Use None as needed for default functionality of optional arguments
     """
     # continue looping until valid input is given
     while True:
@@ -122,16 +122,29 @@ def valid_flt(prompt,error=None,min=None,max=None,rounded=None):
             else:
                 print(error)
 
-def valid_lst(prompt,error=None,min_lenth=None,max_length=None,delineator=','):
+def valid_lst(prompt,error=None,item_type=None,min_lenth=None,max_length=None,delineator=','):
     """
     Validate list input by attempting to convert string to list
     -   (required) prompt is the string that will prompt the user for input
     -   (optional) error is the error message displayed if invalid
+    -   (optional) item_type is the type to convert list items to (default will return list of strings)
     -   (optional) min_length is the minimum number of items in the list
     -   (optional) max_length is the maximum number of items in the list
     -   (optional) delineator is the seperator to look for
-    Use None as needed for default functionality of optional arguments
+    -   Use None as needed for default functionality of optional arguments
     """
-    print('not implemented')
-    pass
+    
+    # refactor to use functions above for item_type == int/flt
+    # consider how to implement item_type == list (possibly specify number of items in each list)
 
+    # continue looping until valid input is given
+    while True:
+        # prompt for input
+        user_input = input(prompt)
+        user_input = user_input.strip('][').split(',') ########## temporary functionality
+        for i in range(len(user_input)): ########## temporary functionality
+            user_input[i] = user_input[i].strip() ########## temporary functionality
+        break ########## temporary functionality
+    return user_input ########## temporary functionality
+
+# consider adding valid_dict - this is much more complex
