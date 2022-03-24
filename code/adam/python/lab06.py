@@ -40,13 +40,13 @@ cost = 0
 winnings_sum = 0
 while i < times_played:
     i += 1
-    cost = cost -2
+    cost = cost + 2
     winning_ticket = pick6() # winning_ticket = pick6(nums)
     ticket = pick6() # purchased ticket
     matches = num_matches(winning_ticket, ticket)
     winnings = winnings_dict[matches]
     winnings_sum += winnings
-    balance = cost + winnings_sum
+    balance = winnings_sum - cost
     
 print(f'Total Lottery tickets purchased: {i}')
 # print(f'Amount spent on lottery tickets: ${cost}')
@@ -57,9 +57,11 @@ print(f'Total Lottery tickets purchased: {i}')
 # Version 2 Calculate ROI along with earnings and expenses
 earnings = winnings_sum
 expenses = cost
-roi = (earnings - expenses) / expenses
+roi = ((earnings - expenses) / expenses) * 100 # returns ROI as %
+net_profit = earnings - expenses
 
 print(f'ROI: {roi}%')
+print(f'Net profit: {net_profit}')
 print(f'Earnings: ${earnings}')
 print(f'Expenses: ${expenses}')
 print(f'Net balance: ${balance}')
