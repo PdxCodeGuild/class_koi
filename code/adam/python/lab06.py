@@ -10,7 +10,7 @@ def pick6():
     nums = list(range(1,100))
     # use random shuffle module to shuffle list
     random.shuffle(nums)
-    temp_ticket = nums[:7]
+    temp_ticket = nums[:6]
     return temp_ticket
 
 # function to check winning ticket and purchased ticket
@@ -51,7 +51,7 @@ while i < times_played:
 print(f'Total Lottery tickets purchased: {i}')
 # print(f'Amount spent on lottery tickets: ${cost}')
 # print(f'Sum of winnings: ${winnings_sum}')
-print(f'Net balance: ${balance}')
+
 
 
 # Version 2 Calculate ROI along with earnings and expenses
@@ -62,3 +62,4 @@ roi = (earnings - expenses) / expenses
 print(f'ROI: {roi}%')
 print(f'Earnings: ${earnings}')
 print(f'Expenses: ${expenses}')
+print(f'Net balance: ${balance}')
