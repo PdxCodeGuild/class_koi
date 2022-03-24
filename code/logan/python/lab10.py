@@ -22,7 +22,7 @@ def swap_rot13(string):
 
 # grabs user input
 
-message = input("\nInput a message to be encrypted to ROT13:\n")
+message = input("\nInput a message to be encrypted or decrypted with ROT13:\n")
 
 # output
 
