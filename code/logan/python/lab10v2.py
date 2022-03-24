@@ -1,3 +1,5 @@
+# Work in progress
+
 standard_s = "abcdefghijklmnopqrstuvwxyz"
 
 message = input("\nInput a message to be encrypted to ROT13:\n")
@@ -10,4 +12,6 @@ def encryptor(string, number):
         if char in standard_s:
             i = standard_s.index(char)
             imod = i + number
-            if 
+            while imod > 25:
+                imod -= 26
+        
