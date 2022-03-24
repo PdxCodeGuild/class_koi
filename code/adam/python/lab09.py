@@ -36,19 +36,24 @@ print(f'Peaks and Valleys: {peaks_and_valleys()}')
 #---------------------------------------------------------------------------------------
 # Optional Version 2 - Using the data draw the image of x's
 
-data = [1,2,3,4,3,2,3,4,5,6,7,6,5,4,5,6,7,8,9,9,8,7,6,5,6,7,8,9,8]
+# data = [1,2,3,4,3,2,3,4,5,6,7,6,5,4,5,6,7,8,9,10,11,12,13,12,11,10,9,8,7,6,5,6,7,8,9,8]
 max_data = max(data)
 new_list = []
 i = max_data
 while i > 0:
     variable_concatenation = ''
     for num in data:
-        if num >= i:
+        if num >= i and len(str(num)) == 1:
             variable_concatenation += (' x ')
-        else:
-            variable_concatenation += ('   ')              
+        elif num >= i and len(str(num)) == 2: #formatting for double digit number in list
+            variable_concatenation += ('  x ')
+        elif len(str(num)) == 1:
+            variable_concatenation += ('   ') 
+        elif len(str(num)) == 2:    # formatting for double digit number in list
+            variable_concatenation += ('    ')            
     i -= 1
     print(variable_concatenation)
 print(data)
 
 #--------------------------------------------------------------------------------------------
+# Optional Version 3 - add o's in the valleys to the hight of lowest peak between the valleys
