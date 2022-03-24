@@ -80,24 +80,6 @@ def valid_int(prompt,error=None,min=None,max=None):
             else:
                 print(error)
 
-def valid_int_flt_lite(num,valid_type=None):
-    """
-    Basic integer or float validation
-    -   (required) num is the input number to validate
-    -   (optional) valid_type is int or float (will choose if unspecified)
-    -   Use None as needed for default functionality of optional arguments
-    -   Returns False if invalid
-    """
-    try:
-        if valid_type is int:
-            return int(num)
-        elif valid_type is float:
-            return float(num)
-        else:
-            return int(num) if num % 1 == 0 else float(num)
-    except:
-        return False
-
 def valid_flt(prompt,error=None,min=None,max=None,rounded=None):
     """
     Prompt for and validate float input by attempting to convert string to float
@@ -124,7 +106,7 @@ def valid_flt(prompt,error=None,min=None,max=None,rounded=None):
             if user_input >= min and user_input <= max and rounded is not None:
                 return round(user_input,rounded)
             # return input as rounded float if within range
-            if user_input >= min and user_input <= max:
+            elif user_input >= min and user_input <= max:
                 return user_input
             # display min/max error message if outside range
             elif user_input > max:
@@ -139,6 +121,24 @@ def valid_flt(prompt,error=None,min=None,max=None,rounded=None):
             # display error message if specified
             else:
                 print(error)
+
+def valid_int_flt_lite(num,valid_type=None):
+    """
+    Basic integer or float validation
+    -   (required) num is the input number to validate
+    -   (optional) valid_type is int or float (will choose if unspecified)
+    -   Use None as needed for default functionality of optional arguments
+    -   Returns False if invalid
+    """
+    try:
+        if valid_type is int:
+            return int(num)
+        elif valid_type is float:
+            return float(num)
+        else:
+            return int(num) if num % 1 == 0 else float(num)
+    except:
+        return False
 
 def valid_lst(prompt,error=None,item_type=None,min_length=None,max_length=None,delineator=','):
     """
