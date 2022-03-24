@@ -311,10 +311,10 @@ text = 'Hey!'
 for char in text:
   print(char)
 ```
-> H
-> e
-> y
-> !
+> H 
+> e 
+> y 
+> ! 
 
 ## Docstrings
 
