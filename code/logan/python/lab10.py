@@ -8,8 +8,8 @@ standard_s = "abcdefghijklmnopqrstuvwxyz"
 rot13_s = "nopqrstuvwxyzabcdefghijklm"
 
 # function
-def encode_rot13(string):
-# takes in a string, returns that string in lowercase ROT13
+def swap_rot13(string):
+# encodes or decodes rot13
     string_lower = string.lower()
     encoded_string = ""
     for char in string_lower:
@@ -26,8 +26,8 @@ message = input("\nInput a message to be encrypted to ROT13:\n")
 
 # output
 
-output = encode_rot13(message)
+output = swap_rot13(message)
 print(f"""
-Your message in ROT13:
+Your encoded/decoded message:
 {output}
 """)
