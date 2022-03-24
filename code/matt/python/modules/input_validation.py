@@ -146,7 +146,7 @@ def valid_int_flt_lite(num,valid_type=None):
     except:
         return False
 
-def valid_list(prompt=None,error=None,item_type=None,min_length=None,max_length=None,delineator=','):
+def valid_list(prompt=None,error=None,item_type=None,min_length=None,max_length=None,delimiter=','):
     """
     Validate and convert list input by attempting to convert string to list
     -   (optional) prompt is the string that will prompt the user for input
@@ -154,38 +154,37 @@ def valid_list(prompt=None,error=None,item_type=None,min_length=None,max_length=
     -   (optional) item_type is the type to convert list items to (default will return list of strings)
     -   (optional) min_length is the minimum number of items in the list
     -   (optional) max_length is the maximum number of items in the list
-    -   (optional) delineator is the seperator to look for
+    -   (optional) delimiter is the seperator to look for
     -   Use None as needed for default functionality of optional arguments
     """
     # set input prompt if blank
     if prompt is None:
-        prompt = f'Please enter a list separated by "{delineator}": '
+        prompt = f'Please enter a list separated by "{delimiter}": '
     # continue looping until valid input is given
     while True:
         # set/reset int/flt validation error flag
         int_flt_error = False
         # prompt for input
         user_input = input(prompt)
-        # strip brackets if they exist and split at delineator
-        user_input = user_input.strip('][').split(delineator)
+        # strip brackets if they exist and split at delimiter
+        user_input = user_input.strip('][}{)(').split(delimiter)
         # iterate through items on list and strip leading/trailing whitespace
         for i in range(len(user_input)):
             user_input[i] = user_input[i].strip()
             # convert to int or float if chosen and valid
             if item_type is int or item_type is float:
-                # display error if validation fails
+                # # set error flag and break if validation fails
                 if valid_int_flt_lite(user_input[i],item_type) is False:
-                    if error is None:
-                        print('An error has occurred.')
-                        # set variable to trigger reset
-                        int_flt_error = True
-                        break
-                    else:
-                        print(error)
+                    int_flt_error = True
+                    break
                 else:
                     user_input[i] = valid_int_flt_lite(user_input[i],item_type)
         # reset if error triggered above
         if int_flt_error:
+            if error is None:
+                print('An error has occurred.')
+            else:
+                print(error)
             continue
         # return list if min/max length not specified
         if min_length is None and max_length is None:
@@ -207,30 +206,113 @@ def valid_list(prompt=None,error=None,item_type=None,min_length=None,max_length=
         else:
             return user_input
 
-def valid_dict(prompt=None,error=None,num_dicts=1,key_type=None,value_type=None,key_value_split=':',pair_split=','):
+def valid_dict(prompt=None,error=None,num_dicts=1,key_type=None,value_type=None,key_value_delimiter=':',pair_delimiter=','):
     """
     Validate and convert dictionary input by attempting to convert string to dictionary
     Supports construction of list of dictionaries
     -   (optional) prompt is the string that will prompt the user for input
     -   (optional) error is the error message displayed if invalid
-    -   (optional) num_dicts is the number of dictionaries you would like to create within a list (default is 1, not in a list)
-    -   (optional) key_type is the type to convert keys to
-    -   (optional) value_type is the type to convert values to
-    -   (optional) key_value_split is the delineator between keys and values
-    -   (optional) pair_split is the delineator between pairs
+    -   (optional) num_dicts is the number of dictionaries you would like to create within a list (default: 1, not in a list)
+    -   (optional) key_type is the type to convert keys to (default: string)
+    -   (optional) value_type is the type to convert values to (default: string)
+    -   (optional) key_value_split is the delimiter between keys and values (default: ':')
+    -   (optional) pair_split is the delimiter between pairs (default: ',')
     """
+    # check to make sure key/value and pair delimiters don't match
+    if key_value_delimiter == pair_delimiter:
+        print(f'Error: both delimiters are set to "{pair_delimiter}".')
+        pass
+    else:
+        print(f'Enter dictionaries with keys/values separated by "{key_value_delimiter}" and pairs separated by "{pair_delimiter}".')
+    # create empty list if necessary
+    if num_dicts > 1:
+        new_list = []
     # variables to modify dictionary prompts and loop specified number of times
     first_loop = True
     num_loops = num_dicts
     # loop number of times specified in num_dicts
     while num_loops > 0:
         num_loops -= 1
-        # dictionary creation                           ##########
-        print('This function is not yet ready.')        ##########
-        #
+        # create/reset dictionary
+        new_dict = {}
+        # set/reset error flag variables
+        pair_error = False
+        int_flt_error = False
+        # display default or specified prompt
         if prompt is None:
-            user_input = input(f'Please enter {"a" if num_dicts == 1 else "the first" if first_loop else "the last" if num_loops == 0 else "the next"} dictionary: ')
+            # setup variable to improve prompt then display
+            if num_dicts == 1:
+                first_last_next = 'a'
+            elif first_loop:
+                first_last_next = 'the first'
+            elif num_loops == 0:
+                first_last_next = 'the last'
+            else:
+                first_last_next = 'the next'
+            user_input = input(f'Please enter {first_last_next} dictionary: ')
         else:
+            # display specified prompt
             user_input = input(prompt)
+        # strip brackets if they exist and split at delimiter
+        user_input = user_input.strip('][}{)(').split(pair_delimiter)
+        # iterate through items on list and strip leading/trailing whitespace
+        for i in range(len(user_input)):
+            user_input[i] = user_input[i].strip()
+            # split resulting pairs
+            user_input[i] = user_input[i].strip('][}{)(').split(key_value_delimiter)
+            # check to make sure a pair exists
+            if len(user_input[i]) != 2:
+                pair_error = True
+                break
+            # check to make sure a pair exists
+            if len(user_input[i]) != 2 and error is None:
+                print(f'"{user_input[i]}" is not a valid pair.')
+                break
+            elif len(user_input[i]) != 2:
+                print(error)
+                break
+            # convert key to int or float if chosen an valid
+            if key_type is int or key_type is float:
+                # display error if validation fails
+                if valid_int_flt_lite(user_input[i][0],key_type) is False:
+                    # set variable to trigger reset
+                    int_flt_error = True
+                    break
+                else:
+                    user_input[i][0] = valid_int_flt_lite(user_input[i][0],key_type)
+            # convert value to int or float if chosen and valid
+            if value_type is int or value_type is float:
+                # display error if validation fails
+                if valid_int_flt_lite(user_input[i][1],value_type) is False:
+                    # set variable to trigger reset
+                    int_flt_error = True
+                    break
+                else:
+                    user_input[i][1] = valid_int_flt_lite(user_input[i][1],value_type)
+            # add to dictionary
+            new_dict[user_input[i][0]] = user_input[i][1]
+        # catch errors and reset
+        if pair_error:
+            if error is None:
+                print(f'"{user_input[i]}" is not a valid pair.')
+            else:
+                print(error)
+            num_loops += 1
+            continue
+        if int_flt_error:
+            if error is None:
+                print('An error has occurred.')
+            else:
+                print(error)
+            num_loops += 1
+            continue
+        # add to list if more than one dictionary
+        if num_dicts > 1:
+            new_list.append(new_dict)
         first_loop = False
-    pass
+    # return list of dictionaries if multiple
+    if num_dicts > 1:
+        return new_list
+    # otherwise return single dictionary
+    else:
+        return new_dict
