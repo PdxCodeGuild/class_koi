@@ -80,10 +80,10 @@ Presentation Day: June 24th, 2022
 | 07    | [Mob Jackalope](1%20Python/labs/07%20Mob%20Jackalope.md)                     | Mar 21st      | NA          | NA            |
 | 08    | [Credit Card Validation](1%20Python/labs/08%20Credit%20Card%20Validation.md) | Mar 22nd      | Mar 25th    | Apr  5th      |
 | 09    | [Peaks And Valleys](1%20Python/labs/09%20Peaks%20And%20Valleys.md)           | Mar 22nd      | Mar 25th    | Apr  5th      |
+| 10    | [ROT13](1%20Python/labs/10%20ROT13.md)                                       | Mar 24th      | Mar 30th    | Apr  7th      |
 
 
-<!-- * [Lab 10 ROT13](1%20Python/labs/10%20ROT13.md)
-* [Lab 11 ARI](1%20Python/labs/11%20ARI.md)
+<!-- * [Lab 11 ARI](1%20Python/labs/11%20ARI.md)
 * [Lab 12 Contact List](1%20Python/labs/12%20Contact%20List.md)
 * [Lab 13 ATM](1%20Python/labs/13%20ATM.md)
 * [Lab 14 Mob Tic Tac Toe](1%20Python/labs/14%20Mob%20Tic%20Tac%20Toe.md)
