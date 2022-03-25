@@ -29,7 +29,7 @@ print(encode(input('Please enter a string to encode with ROT13: ')))
 from string import ascii_lowercase as letters
 # import custom module - run from class_koi - if issues, comment next 3 lines out & toggle commenting on lines 50 & 51#########################################
 import sys
-sys.path.append('./code/matt/python/modules') # run from class_koi
+sys.path.append('./code/matt/python/modules')
 from input_validation import valid_int, valid_str
 
 def encode_decode(s,n,m):
