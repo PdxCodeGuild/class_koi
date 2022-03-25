@@ -1,4 +1,5 @@
 import string
+import math
 
 #  *'-.-'*'-.-'*'-.-'*'--'*
 #     Project: Python 
@@ -9,43 +10,74 @@ import string
 #       Date: Mar, 2022
 # *'-.-'*'-.-'*'-.-'*'--'*
 
+ari_scale = {
+     1: {'ages':   '5-6', 'grade_level': 'Kindergarten'},
+     2: {'ages':   '6-7', 'grade_level':    '1st Grade'},
+     3: {'ages':   '7-8', 'grade_level':    '2nd Grade'},
+     4: {'ages':   '8-9', 'grade_level':    '3rd Grade'},
+     5: {'ages':  '9-10', 'grade_level':    '4th Grade'},
+     6: {'ages': '10-11', 'grade_level':    '5th Grade'},
+     7: {'ages': '11-12', 'grade_level':    '6th Grade'},
+     8: {'ages': '12-13', 'grade_level':    '7th Grade'},
+     9: {'ages': '13-14', 'grade_level':    '8th Grade'},
+    10: {'ages': '14-15', 'grade_level':    '9th Grade'},
+    11: {'ages': '15-16', 'grade_level':   '10th Grade'},
+    12: {'ages': '16-17', 'grade_level':   '11th Grade'},
+    13: {'ages': '17-18', 'grade_level':   '12th Grade'},
+    14: {'ages': '18-22', 'grade_level':      'College'}
+}
 
 with open('class_koi/code/shaine/python/data/little_women.txt', mode='r', encoding='utf-8') as f:
     contents = f.read().split('\n')
 
 # print(contents)
 
-
-str_cont = str(contents)
-# print(str_cont)
-
-sentences = str_cont.count('.') + str_cont.count('!') + str_cont.count('?') 
+# converts content back to a string
+string_content = str(contents)
 
 
+# counts all of the sentences 
+sentences = string_content.count('.') + string_content.count('!') + string_content.count('?') 
 
-# https://stackoverflow.com/questions/16050952/how-to-remove-all-the-punctuation-in-a-string-python
-remove_puncs = "".join(char for char in str_cont if char not in string.punctuation)
+print(f'sentences: {sentences}')
 
-split = remove_punc.split()
 
-words = strip.split(" ")
+# ''' I got the code snipit for remove_puncs from: 
+#  https://stackoverflow.com/questions/16050952/how-to-remove-all-the-punctuation-in-a-string-python
+# I understand that it runs a for loop over all the charaters 
+# in string_content and uses .join() to replace/remove all puntuations 
+# imported from the string module'''
 
-print(words.count("''"))
+remove_puncs = "".join(char for char in string_content if char not in string.punctuation)
 
-# sentences = len(contents.split('. '))
+# removes all the whitespace
+split_words = remove_puncs.split()
 
-# print(sentences)
+# counts all the words in the list
+words = len(split_words)
 
-# use .count(.) to count sentences
+print(f'words: {words}')
 
-# use len() to count the splits in a list
+# counts all the charaters of each word
+charcters = 0
+for word in split_words:
+    charcters += len(word)
 
-# strip(string.punctuation) maybe use this to count sents
+print(f'characters: {charcters}')
 
-# new = str(sentences)
+# calculates ARI
+calc = 4.71*(charcters/words)+(words/sentences)-21.43
 
-# print(new)
+# rounds ARI up 
+ari = math.ceil(calc)
 
-# more_new = new.count('. ')
+# Scores greater than 14 should be presented as having the same age and grade level as scores of 14 
+if ari > 14:
+    ari = 14
 
-# print(more_new)
+output  = (f'''
+The ARI for little_women.txt is {ari}
+This corresponds to a {ari_scale[ari]['grade_level']} level of difficulty
+that is suitable for an average person {ari_scale[ari]['ages']} years old.''')
+
+print(output)
