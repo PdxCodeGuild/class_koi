@@ -59,7 +59,9 @@ def ari(inp):
     # store float result
     result = (4.71 * (characters/words)) + (.5 * (words/sentences)) - 21.43
     # return results rounding up if needed
-    if result % 1 == 0:
+    if result > 14:
+        return 14
+    elif result % 1 == 0:
         return int(result)
     return int(result) + 1
 
