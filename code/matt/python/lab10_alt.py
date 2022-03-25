@@ -27,7 +27,7 @@ print(encode(input('Please enter a string to encode with ROT13: ')))
 
 # import alphabet string
 from string import ascii_lowercase as letters
-# import custom module - run from class_koi - if issues, comment next 3 lines out & toggle commenting on lines 50 & 51#########################################
+# import custom module - run from class_koi - if issues, comment next 3 lines out & toggle commenting on lines 49 & 50
 import sys
 sys.path.append('./code/matt/python/modules')
 from input_validation import valid_int, valid_str
@@ -47,6 +47,6 @@ def encode_decode(s,n,m):
 # prompt for input and display encoded message
 m = valid_str('Please choose a mode (e for encode, d for decode): ',['e','d'],None,False)
 n = valid_int('Please enter the number of rotations to use in encoding: ',None,1,26)
-s = input(f'Please enter a string to encode with ROT{n}: ')
 # n = int(input('Please enter the number of rotations to use in encoding: ')) # uncomment if import issues with input_validation module
+s = input(f'Please enter a string to encode with ROT{n}: ')
 print(encode_decode(s,n,m))
