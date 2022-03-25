@@ -1,6 +1,5 @@
 # Lab 11 - Compute Automated Readability Index
 import string
-punct = string.punctuation
 
 # create path to text file
 path_to_file = 'data/alice_in_wonderland.txt'
@@ -19,24 +18,23 @@ with open(path_to_file, 'r', encoding='utf-8') as f:
 # get word count of book
 words_list = contents.split()
 num_of_words = len(words_list)
-print(f'word count spliting by space: {num_of_words}')
+# print(f'word count spliting by space: {num_of_words}')
 
 # sentence count of book
 sent_punct_count = 0
 for i in contents:
     if i == '!' or i == '?' or i == '.':
         sent_punct_count += 1
-print(f'sentence count by !-.-?: {sent_punct_count}')
+# print(f'sentence count by !-.-?: {sent_punct_count}')
 
 # length of characters in book
 character_count = 0
 for i in contents:
     if i.isalpha:
         character_count += 1
-print(f'total amount of character: {character_count}')
+# print(f'total amount of character: {character_count}')
 
 ari = (4.71 * character_count / num_of_words) + (0.5 * num_of_words / sent_punct_count) - 21.43
-
 ari_rounded = (round(ari + 0.5))
 
 ari_scale = {
@@ -56,3 +54,8 @@ ari_scale = {
     14: {'ages': '18-22', 'grade_level':      'College'}
 }
 
+print('-'* 56)
+print(f"\nThe ARI for alice_in_wonderland.txt is {ari_rounded}")
+print(f"This corresponds to a {ari_scale[ari_rounded]['grade_level']} level of difficulty")
+print(f"that is suitable for an average person {ari_scale[ari_rounded]['ages']} years old.")
+print('\n' + '-'* 56)
