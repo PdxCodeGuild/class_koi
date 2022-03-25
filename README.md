@@ -17,7 +17,7 @@ M-F 9:30 am – 4:30 pm
   
     - pete@pdxcodeguild.com
  
-- Lisa Brown, TA
+- Kelsey Canoy, TA
  
 - Dustin Olsen, TA
 
@@ -69,23 +69,23 @@ Presentation Day: June 24th, 2022
 * [Lab 03 Contacts List Redux](2%20Flask/labs/03%20Contacts%20List%20Redux.md) -->
 
 ## Python Labs Assigned:
-| Lab   | Name                                                                | Date Assigned | Due By      | Hard Due Date |
-| ----- | ------------------------------------------------------------------- | ------------- | ------------| ------------- |
-| 01    | [Unit Converter](1%20Python/labs/01%20Unit%20Converter.md)          | Mar 15th      | Mar 18th    | Mar 29th      |
-| 02    | [Average Numbers](1%20Python/labs/02%20Average%20Numbers.md)        | Mar 15th      | Mar 18th    | Mar 29th      |
-| 03    | [Make Change](1%20Python/labs/03%20Make%20Change.md)                | Mar 16th      | Mar 18th    | Mar 30th      |
-| 04    | [Number To Phrase](1%20Python/labs/04%20Number%20To%20Phrase.md)    | Mar 16th      | Mar 18th    | Mar 30th      |
-| 05    | [Blackjack Advice](1%20Python/labs/05%20Blackjack%20Advice.md)      | Mar 16th      | Mar 18th    | Mar 30th      |
+| Lab   | Name                                                                         | Date Assigned | Due By      | Hard Due Date |
+| ----- | ---------------------------------------------------------------------------- | ------------- | ------------| ------------- |
+| 01    | [Unit Converter](1%20Python/labs/01%20Unit%20Converter.md)                   | Mar 15th      | Mar 18th    | Mar 29th      |
+| 02    | [Average Numbers](1%20Python/labs/02%20Average%20Numbers.md)                 | Mar 15th      | Mar 18th    | Mar 29th      |
+| 03    | [Make Change](1%20Python/labs/03%20Make%20Change.md)                         | Mar 16th      | Mar 18th    | Mar 30th      |
+| 04    | [Number To Phrase](1%20Python/labs/04%20Number%20To%20Phrase.md)             | Mar 16th      | Mar 18th    | Mar 30th      |
+| 05    | [Blackjack Advice](1%20Python/labs/05%20Blackjack%20Advice.md)               | Mar 16th      | Mar 18th    | Mar 30th      |
+| 06    | [Pick 6](1%20Python/labs/06%20Pick%206.md)                                   | Mar 21st      | Mar 25th    | Apr  4th      |
+| 07    | [Mob Jackalope](1%20Python/labs/07%20Mob%20Jackalope.md)                     | Mar 21st      | NA          | NA            |
+| 08    | [Credit Card Validation](1%20Python/labs/08%20Credit%20Card%20Validation.md) | Mar 22nd      | Mar 25th    | Apr  5th      |
+| 09    | [Peaks And Valleys](1%20Python/labs/09%20Peaks%20And%20Valleys.md)           | Mar 22nd      | Mar 25th    | Apr  5th      |
+| 10    | [ROT13](1%20Python/labs/10%20ROT13.md)                                       | Mar 24th      | Mar 30th    | Apr  7th      |
+| 11    | [ARI](1%20Python/labs/11%20ARI.md)                                           | Mar 24th      | Mar 30th    | Apr  7th      |
+| 12    | [Contact List](1%20Python/labs/12%20Contact%20List.md)                       | Mar 28th      | Apr  1st    | Apr 11th      |
 
 
-
-<!-- * [Lab 06 Pick 6](1%20Python/labs/06%20Pick%206.md)
-* [Lab 07 Mob Jackalope](1%20Python/labs/07%20Mob%20Jackalope.md)
-* [Lab 08 Credit Card Validation](1%20Python/labs/08%20Credit%20Card%20Validation.md)
-* [Lab 09 Peaks And Valleys](1%20Python/labs/09%20Peaks%20And%20Valleys.md)
-* [Lab 10 ROT13](1%20Python/labs/10%20ROT13.md)
-* [Lab 11 ARI](1%20Python/labs/11%20ARI.md)
-* [Lab 12 Contact List](1%20Python/labs/12%20Contact%20List.md)
+<!-- * [Lab 12 Contact List](1%20Python/labs/12%20Contact%20List.md)
 * [Lab 13 ATM](1%20Python/labs/13%20ATM.md)
 * [Lab 14 Mob Tic Tac Toe](1%20Python/labs/14%20Mob%20Tic%20Tac%20Toe.md)
 * [Lab 15 Searching And Sorting](1%20Python/labs/15%20Searching%20And%20Sorting.md)
@@ -95,7 +95,7 @@ Presentation Day: June 24th, 2022
 
 #### Optional Python Labs
 
-<!-- [Count Words](1%20Python/labs/count_words.md), -->
+[Count Words](1%20Python/labs/count_words.md),
 [Grading](1%20Python/labs/grading.md),
 [Guess The Number](1%20Python/labs/guess_the_number.md),
 <!-- [Image Manipulation](1%20Python/labs/image_manipulation.md), -->
