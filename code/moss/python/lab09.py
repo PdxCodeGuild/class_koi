@@ -27,5 +27,14 @@ def valleys(data):
 peaks_data = peaks(data)
 valleys_data = valleys(data)
 
-print(peaks_data)
-print(valleys_data)
+def peaks_and_valleys(peaks_data,valleys_data):
+
+    peaks_data.extend(valleys_data)
+    return sorted(peaks_data)
+
+peaks_x_valleys = peaks_and_valleys(peaks_data,valleys_data)
+
+print("\nWelcome to Topography Highs and Lows!")
+print(f'\n1. Peaks: {peaks_data}')
+print(f'\n2. Valleys: {valleys_data}')
+print(f'\n3. Peaks and Valleys: {peaks_x_valleys}\n')
