@@ -29,8 +29,11 @@ valleys_data = valleys(data)
 
 def peaks_and_valleys(peaks_data,valleys_data):
 
-    peaks_data.extend(valleys_data)
-    return sorted(peaks_data)
+    peaks_x_valleys = []
+    
+    peaks_x_valleys.extend(peaks_data)
+    peaks_x_valleys.extend(valleys_data)
+    return sorted(peaks_x_valleys)
 
 peaks_x_valleys = peaks_and_valleys(peaks_data,valleys_data)
 
