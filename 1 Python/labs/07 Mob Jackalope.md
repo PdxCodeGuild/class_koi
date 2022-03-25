@@ -2,15 +2,9 @@
 
 # Lab 7:  Jackalope Simulator –– Mob
 
-<<<<<<< HEAD
-### Note1: there is now a `code/mobs/` folder in the repo.  Create a folder for your mob team inside of that folder and put your python script in there: `code/mobs/team-jackalope/lab07.py`
-
-### Note2: this is a mob lab.  There is only need for one branch.  Whoever drives (types) first can create the branch and push it up.  Then the next driver will checkout the branch and start working on their computer.
-=======
 #### Note 1: there is now a `code/mobs/` folder in the repo.  Create a folder for your mob team inside of that folder and put your python script in there: `code/mobs/team-jackalope/lab07.py`
 
 #### Note 2: this is a mob lab.  There is only need for one branch.  Whoever drives (types) first can create the branch and push it up.  Then the next driver will checkout the branch and start working on their computer.
->>>>>>> 595f0c6ff23f6b8bdcafff063e70fcf34b5894b2
 
 ### Git Setup:
 ```sh
