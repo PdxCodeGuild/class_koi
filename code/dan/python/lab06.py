@@ -1,3 +1,6 @@
+#Version 1 & 2
+
+
 # Dictionary "Number of matches", "Jackpot Amount"
 winnings_dict= {1:"$4",
                 2: "$7",
@@ -33,9 +36,9 @@ matches = 0
 def num_matches(ticket, winning_ticket):
    global matches # global used to return matches outside of function 
 for x in range (len(ticket)):
-    if ticket[x] == winning_ticket[x]:
-     matches += 1
-    print (matches)
+        if ticket[x] == winning_ticket[x]:
+            matches += 1
+        print (matches)
          
 
 # print winner logic
@@ -53,4 +56,13 @@ elif matches == 5:
     print (f"You've won {winnings_dict[5]} + {balance}")
 elif matches == 6:
     print (f"You've won the grand prize {winnings_dict[6]} + {balance}")
+    
+    
+
+for i in range (100000):
+    pick6(ticket)
+    num_matches(winning_ticket, ticket) 
+
+
+ROI = balance + winning_ticket[]
     
