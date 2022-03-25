@@ -1,47 +1,37 @@
 # Version 1
 
-# get 16 digit credit card input
-string_input = input("Please enter your 16 digit card number with no spaces: ")
-print (string_input)
+user_input = input("Please enter your 16 digit card number with no spaces: ")
 
-#convert string to list
-string_of_ints = [] # empty list to append integers 
-for item in string_input: # loop though number strings convert to numbers
-    item = int(item) 
-    string_of_ints.append(item)
-    print (string_of_ints)
-
-# slice off the last digit
-check_digit = string_of_ints[14:15:]
-print (check_digit)
-
-#reverse the list
-string_of_ints.reverse()
-print (string_of_ints)
-
-# create list of every other digit
-every_other_num = string_of_ints[::2]
-print (every_other_num)
-
-# double every element in list
-doubled_list = [num ** 2 for num in every_other_num]
-print(doubled_list)
-
-# subtract 9 for numbers of 9
-minus_nine = [num-9 for num in doubled_list if num >= 9]
-print (minus_nine)
-
-# sum all values
-all_values = sum(minus_nine)
-print (all_values)
-
-# get second digit 
-all_values = str(all_values)
-validation_digit = all_values[1]
-print (validation_digit)
-
-# validate card logic
-if validation_digit == check_digit:
-    print ("This is a valid card")
+# create a function to for cc validation
+def cc_check(card):
+    num_list = list(card) # Create a list 
+    check_digit = num_list[14:15:]# Store check digit
+    print (check_digit)
+    num_list.reverse() # reverse the list
+    every_other = num_list[::2] # get every other element and add to new list 
+    every_other = [int(i) for i in every_other] #turn list items to integers
+    doubled_list = [num * 2 for num in every_other]
+    print (doubled_list)
+    # for loop to find integers larger then 9 to subtract 9
+    counter = 0
+    for num in doubled_list:
+        if num >= 9:
+            num -= 9 
+            doubled_list[counter] = num
+        counter += 1
+    print (doubled_list)
+    # sum all values on list
+    all_values = sum(doubled_list)
+    print (all_values)
+    all_values = str(all_values)
+    validation_digit = all_values[1]
+    if validation_digit == check_digit:
+        return True
+    else:
+        return False 
+        
+results = cc_check (user_input)       
+if results == True:
+    print("This credit card is valid")
 else:
-    print ("This card is invalid")
+    print ("This credit card is invalid")
