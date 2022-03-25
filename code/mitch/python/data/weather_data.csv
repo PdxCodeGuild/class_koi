@@ -1,8 +1,8 @@
-Day,Temperature,Condition
-Monday,65,Sunny
-Tuesday,50,Rainy
-Wednesday,52,Rainy
-Thursday,54,Cloudy
-Friday,70,Sunny
-Saturday,75,Sunny
-Sunday,72,Sunny
+City,Temperature,Condition
+San Diego,65,Sunny
+Portland,50,Rainy
+Seattle,52,Rainy
+Yachats,54,Cloudy
+Sacramento,70,Sunny
+Bend,75,Sunny
+Los Angeles,72,Sunny
