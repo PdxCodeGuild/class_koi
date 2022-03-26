@@ -191,7 +191,7 @@ You may also enter L to list current states or Q to quit.
 
 # Version 3
 
-# import custom module - run from class_koi - if issues, uncomment lines 41-77 ########################################################################################################
+# import custom module - run from class_koi
 import sys
 sys.path.append('./code/matt/python/modules')
 from input_validation import valid_str
