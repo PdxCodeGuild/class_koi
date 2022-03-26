@@ -360,4 +360,5 @@ You may also enter L to list current states or Q to quit.
     elif action == 'q':
         break
 
+# write back to csv
 dict_to_csv()
