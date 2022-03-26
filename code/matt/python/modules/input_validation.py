@@ -24,8 +24,8 @@ def valid_str(prompt,choices,error=None,case_sensitive=True,return_case=None):
         if not case_sensitive:
             original_input = user_input
             user_input = user_input.lower()
-            for choice in choices:
-                choice = choice.lower()
+            for i in range(len(choices)):
+                choices[i] = choices[i].lower()
         # return input if valid and no return case selected
         if user_input in choices and return_case is None:
             return original_input
