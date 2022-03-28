@@ -20,9 +20,9 @@ def valid_str(prompt,choices,error=None,case_sensitive=True,return_case=None):
     while True:
         # prompt for input
         user_input = input(prompt)
+        original_input = user_input
         # normalizes cases if case-sensitivity has been toggled off
         if not case_sensitive:
-            original_input = user_input
             user_input = user_input.lower()
             for i in range(len(choices)):
                 choices[i] = choices[i].lower()
