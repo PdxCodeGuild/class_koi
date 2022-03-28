@@ -102,7 +102,7 @@ Presentation Day: June 24th, 2022
 [LCR](1%20Python/labs/LCR.md),
 [Mad Libs](1%20Python/labs/madlib.md),
 [Magic 8 Ball](1%20Python/labs/magic_8_ball.md),
-<!-- [Rain Data](1%20Python/labs/rain_data.md), -->
+[Rain Data](1%20Python/labs/rain_data.md),
 [Random Emoticon Generator](1%20Python/labs/random_emoticon_generator.md),
 [Random Password Generator](1%20Python/labs/random_password.md),
 [Road Trip](1%20Python/labs/road_trip.md),
