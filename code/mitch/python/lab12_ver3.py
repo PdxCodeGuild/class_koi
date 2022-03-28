@@ -38,7 +38,7 @@ def create():
     new_condition = input("Please enter the condition for the city data: ").title()
     data = {'City': new_city, 'Temperature': new_temperature, 'Condition': new_condition}
     weather_list.append(data)
-
+    print("Data was added, returning to main menu...")
     
 
 def retrieve():
@@ -57,7 +57,7 @@ def update():
         if city_to_update in weather_data['City']:
             weather_data['Temperature'] = input("Enter the updated temperature: ")
             weather_data['Condition'] = input("Enter the updated condition: ").title()
-
+            print("Data was updated, returning to main menu...")
             
 
 
@@ -69,6 +69,7 @@ def delete():
             delete_check = input(f"Are you sure you want to delete the data for {weather_data['City']}? ('y' or 'n'): ").lower()
             if delete_check == 'y':
                 weather_list.pop(i)
+                print("Data was deleted, returning to main menu...")
             else:
                 print("Data was not deleted, returning to main menu...")
 
@@ -98,8 +99,8 @@ while True:
     if user_input == 'q':
         print("Thanks for using the weather records system. Any changes have been saved.")
         
-        weather_data_strings = ["City,Temperature,Condition"]
-        
+        weather_data_strings = [",".join(keys)]
+
         for weather_data in weather_list:
             data = []
             data.append(weather_data["City"])
@@ -107,7 +108,6 @@ while True:
             data.append(weather_data["Condition"])
             weather_data_strings.append(",".join(data))
 
-        
         with open(filepath + 'weather_data.csv', 'w') as csv_file:
             csv_file.write("\n".join(weather_data_strings))
         
