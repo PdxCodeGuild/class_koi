@@ -15,7 +15,7 @@ def peaks(data):
 
     for i in range(1, len(data)-1):
         if data[i] > data[i+1] and data[i] > data[i-1]:
-            peaks.append(data[i])
+            peaks.append(i)
 
     return peaks
 
@@ -25,7 +25,7 @@ def valleys(data):
 
     for i in range(1, len(data)-1):
         if data[i] < data[i+1] and data[i] < data[i-1]:
-            valleys.append(data[i])
+            valleys.append(i)
 
     return valleys
 
