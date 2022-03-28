@@ -2,7 +2,6 @@
 # Version 3
 # Mitch Chapman
 
-
 filepath = 'code/mitch/python/data/'
 
 
@@ -32,8 +31,8 @@ weather_list = [{key:value for key, value in zip(keys, value)} for value in valu
 
 def create():
     """Adds a new weather record for a city."""
-    print("\nThis system will add new weather data to the weather system.")
-    city_to_add = input(f"Please enter the new city: ").title()
+    print("\nThis will add new weather data to the weather system.")
+    city_to_add = input(f"Please enter the new city: ").title().strip()
     
     cities = []
     for weather_data in weather_list:
@@ -43,7 +42,7 @@ def create():
         new_values = []
         new_values.append(city_to_add)
         for key in keys[1:]:
-            new_values.append(input(f"Please enter the new {key.lower()}: ").title())
+            new_values.append(input(f"Please enter the new {key.lower()}: ").title().strip())
         data = {}
         for key, value in zip(keys, new_values):
             data[key] = value
@@ -56,7 +55,7 @@ def create():
 
 def retrieve():
     """Looks up and displays a weather record."""
-    city_name = input("Please enter the name of a city you would like to look up. ").title()
+    city_name = input("\nPlease enter the name of a city you would like to look up. ").title().strip()
     for weather_data in weather_list:
         if city_name in weather_data['City']:
             print(f"Here is the weather data for {weather_data['City']}:")
@@ -67,21 +66,24 @@ def retrieve():
 
 def update():
     """Pulls up a weather record and asks for temperature and/or condition updates."""
-    city_to_update = input("Please enter the city name you wish to update: ").title()
+    city_to_update = input("\nPlease enter the city name you wish to update: ").title().strip()
     for weather_data in weather_list:
         if city_to_update in weather_data['City']:
-            for key in keys[1:]:
-                weather_data[key] = input(f"Enter the updated {key.lower()}: ").title()
-            print("Data was updated, returning to main menu...")
-            
+            update_check = input(f"Are you sure you want to update the data for {weather_data['City']}? ('y' or 'n'): ").lower().strip()
+            if update_check == 'y':
+                for key in keys[1:]:
+                    weather_data[key] = input(f"Enter the updated {key.lower()}: ").title().strip()
+                print("Data was updated, returning to main menu...")
+            else:
+                print("Data was not updated, returning to main menu...")
 
 
 def delete():
     """Finds a weather record and askes if you want to delete it (before deleting it)."""
-    city_to_delete = input("Please enter the city name you wish to delete: ").title()
+    city_to_delete = input("\nPlease enter the city name you wish to delete: ").title().strip()
     for i, weather_data in enumerate(weather_list):
         if city_to_delete in weather_data['City']:
-            delete_check = input(f"Are you sure you want to delete the data for {weather_data['City']}? ('y' or 'n'): ").lower()
+            delete_check = input(f"Are you sure you want to delete the data for {weather_data['City']}? ('y' or 'n'): ").lower().strip()
             if delete_check == 'y':
                 weather_list.pop(i)
                 print("Data was deleted, returning to main menu...")
@@ -98,7 +100,7 @@ print("""\n∙ Welcome to the weather records system. --------------------------
 )
 while True:
     print("\n-------------------------------------MAIN MENU-------------------------------------")
-    user_input = input("Would you like to [c]reate new, [r]etrieve, [u]pdate, [d]elete?, or [q]uit? ").lower()
+    user_input = input("Would you like to [c]reate new, [r]etrieve, [u]pdate, [d]elete?, or [q]uit? ").lower().strip()
     if user_input not in ['c', 'r', 'u', 'd', 'q']:
         print("This is not a valid input, plese enter 'c', 'r', 'u', 'd', or 'q'.")
     if user_input == 'c':
