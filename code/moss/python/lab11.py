@@ -1,14 +1,21 @@
 import re
 import math
 
-with open('', 'r') as f:
+path_to_data_folder = 'count_monte_cristo.txt'
+
+with open(path_to_data_folder, 'r', encoding='utf-8') as f:
     contents = f.read()
 
 def ari(contents):
-
-
-
-
+    no_dash = contents.replace('-',' ')
+    list_sentences = re.split('[.?!]', contents)
+    list_words = no_dash.split(' ')
+    list_char = re.findall(r'[A-Za-z0-9]',contents)
+    sentences = len(list_sentences)
+    words = len(list_words)
+    char = len(list_char)
+    ari_score = math.ceil(4.74 * (char/words) + .5 * (words/sentences) - 21.43)
+    return ari_score
 
 ari_scale = {
      
@@ -27,3 +34,15 @@ ari_scale = {
     13:{'ages': '17-18', 'grade_level':   '12th grade'},
     14:{'ages': '18-22', 'grade_level':      'College'},
     }
+
+ari_result = ari(contents)
+ari_output = ari_scale[ari_result]
+ari_ages = ari_output['ages']
+ari_grade = ari_output['grade_level']
+# print(ari_output)
+
+print('-'*72)
+print(f'\nThe ARI for {f.name} is {ari_result}.')
+print(f'This corresponds to a {ari_grade} level of difficulty')
+print(f'that is suitable for an average person of {ari_ages} years old.\n')
+print('-'*72)
