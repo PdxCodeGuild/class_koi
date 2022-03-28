@@ -2,8 +2,11 @@
 # Version 2
 # Mitch Chapman
 
+filepath = 'code/mitch/python/data/'
+
+
 # Opens the csv file for reading. It is read then split at the '\n' designation, resulting in the lines.
-with open('code/mitch/python/data/weather_data.csv', 'r') as csv_file:
+with open(filepath + 'weather_data.csv', 'r') as csv_file:
     lines = csv_file.read().split('\n')
 
 # The first line is the headers or keys, these are split here by the comma.
@@ -23,13 +26,19 @@ results in a list of dictionaries called 'weather_list'.
 """
 weather_list = [{key:value for key, value in zip(keys, value)} for value in values]
 
-print(f"weather: {weather_list}")
+
 
 
 def create():
     """Adds a new weather record for a city."""
-    ...
+    print("\nThis system will add new weather data to the weather system.")
+    new_city = input("Please enter the new city name: ").title()
+    new_temperature = int(input("Please enter the temerature for the city data: "))
+    new_condition = input("Please enter the condition for the city data: ").title()
+    data = {'City': new_city, 'Temperature': new_temperature, 'Condition': new_condition}
+    weather_list.append(data)
 
+    
 
 def retrieve():
     """Looks up and displays a weather record."""
@@ -42,28 +51,38 @@ def retrieve():
 
 def update():
     """Pulls up a weather record and asks for temperature and/or condition updates."""
-    ...
-    
+    city_to_update = input("Please enter the city name you wish to update: ").title()
+    for weather_data in weather_list:
+        if city_to_update in weather_data['City']:
+            weather_data['Temperature'] = int(input("Enter the updated temperature: "))
+            weather_data['Condition'] = input("Enter the updated condition: ").title()
+
+            
+
 
 def delete():
     """Finds a weather record and askes if you want to delete it (before deleting it)."""
-    ...
+    city_to_delete = input("Please enter the city name you wish to update: ").title()
+    for i, weather_data in enumerate(weather_list):
+        if city_to_delete in weather_data['City']:
+            delete_check = input(f"Are you sure you want to delete the data for {weather_data['City']}? ('y' or 'n'): ").lower()
+            if delete_check == 'y':
+                weather_list.pop(i)
+            else:
+                print("Data was not deleted, returning to main menu...")
 
 
 
 
 
-
-
-
-
-
-print("\nWelcome to the weather records system.")
-print("The following are your options for what you can do with weather data points.")
+print("""\nWelcome to the weather records system. ---------------------------------------------------
+    If at any point the system returns you to the main menu, the data was not found.
+    The following are your options for what you can do with weather data points."""
+)
 while True:
-    user_input = input("\nWould you like to  [c]reate new, [r]etrieve, [u]pdate, [d]elete?, or [q]uit? ").lower()
-    if user_input not in ['c', 'r', 'u', 'd', 'q']:
-        print("This is not a valid input, plese enter 'c', 'r', 'u', 'd', or 'q'.")
+    user_input = input("\n------------MAIN MENU------------\nWould you like to [c]reate new, [r]etrieve, [u]pdate, [d]elete?, or [q]uit? ").lower()
+    if user_input not in ['c', 'r', 'u', 'd', 'q', 'p']:
+        print("This is not a valid input, plese enter 'p', 'c', 'r', 'u', 'd', or 'q'.")
     if user_input == 'q':
         print("Thanks for using the weather records system.")
         break
@@ -75,7 +94,8 @@ while True:
         update()
     if user_input == 'd':
         delete()
-        
+    if user_input == 'p':
+        print(f"weather: {weather_list}")
 
 
 
