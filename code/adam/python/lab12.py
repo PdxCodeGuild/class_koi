@@ -22,4 +22,8 @@ for line in lines[1:]:
     contacts_list.append(character_dict)
 print(contacts_list)
 
+#---------------------------------------------------------------------
+# Version 2
+while True:
+    choice = input('[C]reate, 
 
