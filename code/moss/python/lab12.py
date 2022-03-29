@@ -13,9 +13,8 @@ key_list = rows_list.pop(0)
 
 contact_list = []
 
-
 for row in rows_list:
-    contact_list.append({key_list[0]:row[0],key_list[2]:row[2],key_list[3]:row[3]})
+    contact_list.append({key_list[0]:row[0],key_list[1]:row[1],key_list[2]:row[2],key_list[3]:row[3]})
 
 # print(lines)
 # print('-'*72)
@@ -32,7 +31,7 @@ def create(contact_list,key_list):
     add_contact = {}
 
     for i, key in enumerate(key_list):
-        add_contact[key] = input(f"What is your contact's {key_list[i]}? ")
+        add_contact[key] = input(f"\nWhat is your contact's {key_list[i]}? ")
         contact_list.append(add_contact)
     return add_contact
 
@@ -41,8 +40,9 @@ def create(contact_list,key_list):
 def read(contact_list,key_list):
     
     key_string = '\n' + '\n'.join(key_list) + '\n'*2
+    print('-'*72)
     key_input = input(f"\nWhat would you like to search by? Choose from:{key_string}")
-    contact_input = input("\nWhat is your search term?")
+    contact_input = input("\nWhat is your search term? ")
 
     for contact in contact_list:
         if contact[key_input] == contact_input:
@@ -57,7 +57,6 @@ def update(contact_list,key_list):
     key_string = '\n' + '\n'.join(key_list) + '\n'*2
     update_key = input(f"\nWhat category would like to update?{key_string} ")
     update_value = input(f"\nwhat do you want to change {update_key} to? ")
-    
     contact_output[update_key] = update_value
     return contact_output
 
@@ -65,13 +64,45 @@ def update(contact_list,key_list):
     
 
 def delete(contact_list,key_list):
+    
     contact_delete = read(contact_list,key_list)
-    delete_yes_no = input(f"\nDo you want ot delete this contact, (y) or (n)?")
+    delete_yes_no = input(f"\nDo you want ot delete this contact, (y) or (n)? ")
+    
     if delete_yes_no == 'y':
         contact_list.remove(contact_delete)
         return contact_list
     else:
         print('\nNo deletions were made')
 
-print(delete(contact_list,key_list))
+# print(delete(contact_list,key_list))
 
+while True:
+    
+    user_input = input('''\nWelcome, accessing family location data. 
+    Type "c" to create, "r" to read, "u" to update, "d" to delete or "q" to exit: ''')
+
+    if user_input == 'q':
+        print('Goodbye')
+        break
+    elif user_input == 'c':
+        print(create(contact_list,key_list))
+    elif user_input == 'r':
+        print(read(contact_list,key_list))
+    elif user_input == 'u':
+        print(update(contact_list,key_list))
+    elif user_input == 'd':
+        print(delete(contact_list,key_list))
+    
+#----- Version 3 -----#
+
+csv_output = []
+csv_output.append(key_list)
+
+for contact in contact_list:
+    csv_output.append(list(contact.values()))
+
+csv_output = [','.join(line) for line in csv_output]
+csv_output = '\n'.join(csv_output)
+
+with open(path_to_folder, 'w') as file:
+    file.write(csv_output)
