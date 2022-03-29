@@ -85,8 +85,8 @@ Presentation Day: June 24th, 2022
 | 12    | [Contact List](1%20Python/labs/12%20Contact%20List.md)                       | Mar 28th      | Apr  1st    | Apr 11th      |
 
 
-<!-- * [Lab 12 Contact List](1%20Python/labs/12%20Contact%20List.md)
-* [Lab 13 ATM](1%20Python/labs/13%20ATM.md)
+
+<!-- * [Lab 13 ATM](1%20Python/labs/13%20ATM.md)
 * [Lab 14 Mob Tic Tac Toe](1%20Python/labs/14%20Mob%20Tic%20Tac%20Toe.md)
 * [Lab 15 Searching And Sorting](1%20Python/labs/15%20Searching%20And%20Sorting.md)
 * [Lab 16 Dad Joke API](1%20Python/labs/16%20Dad%20Joke%20API.md)
