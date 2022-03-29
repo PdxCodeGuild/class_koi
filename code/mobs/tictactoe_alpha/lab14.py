@@ -41,8 +41,27 @@ class Game:
             return True
             
             
-    # def calc_winner(self):
-    #     if self.board[0] == self.board [1] == self.board[2]:
+    def calc_winner(self):
+        for i in range(3):
+            if self.board[i][0] == self.board[i][1] == self.board[i][2] and self.board[i][0] != ' ':
+                return self.board[i][0]
+            elif self.board[0][i] == self.board[1][i] == self.board[2][i] and self.board[0][i] != ' ':
+                return self.board[0][i]
+            elif i == 1 and self.board[i-1][i-1] == self.board[i][i] == self.board[i+1][i+1] and self.board[i+1][i] != ' ':
+                return self.board[i][i]
+            elif i == 1 and self.board[i+1][i+1] == self.board[i][i] == self.board[i-1][i-1] and self.board[i+1][i] != ' ':
+                return self.board[i][i]
+
+        
+        # for row in self.board:
+        #     if row[0] == ' ':
+        #         return None
+        #     elif row[0] == row[1] == row[2]:
+        #         return row[0]
+        # for col in self.board[0]:
+
+
+
             
             
             
@@ -77,11 +96,9 @@ while True:
             y = int(input(f"{player.name}, enter the y position you want to go (0, 1, or 2): "))
             keep_going = game_1.move(x=x, y=y, player=player)
         print(game_1)
-
-
-
-
-
+        print(game_1.calc_winner())
+    break
+   
 
 
 
