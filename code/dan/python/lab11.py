@@ -1,7 +1,7 @@
 '''
 Version 1
 
-if result decimel round up 
+
 
 '''
 
@@ -65,4 +65,4 @@ print(f"The ARI score is {ari_num}")
  
 print(f"This corresponds with a {ari_scale[ari_num]['grade_level']} reading level")
 
-print(f"This is suitable for someone ages {ari_scale[ari_num]["ages"]}")
+print(f"This is suitable for someone ages {ari_scale[ari_num]['ages']}")
