@@ -19,7 +19,7 @@ def rot13(input):
         
         if(letter > 122):
             letter -= 122
-            letter += 97
+            letter += 96
         letter = chr(letter)
         rotted.append(letter)
 
@@ -44,7 +44,7 @@ def unrot13(input):
         # if value reaches below 'a' (97) go back to 'z' (122)
         if(letter < 97):
             letter += 122
-            letter -= 97
+            letter -= 96
         letter = chr(letter)
         unrotted.append(letter)
 
