@@ -85,8 +85,8 @@ Presentation Day: June 24th, 2022
 | 12    | [Contact List](1%20Python/labs/12%20Contact%20List.md)                       | Mar 28th      | Apr  1st    | Apr 11th      |
 
 
-<!-- * [Lab 12 Contact List](1%20Python/labs/12%20Contact%20List.md)
-* [Lab 13 ATM](1%20Python/labs/13%20ATM.md)
+
+<!-- * [Lab 13 ATM](1%20Python/labs/13%20ATM.md)
 * [Lab 14 Mob Tic Tac Toe](1%20Python/labs/14%20Mob%20Tic%20Tac%20Toe.md)
 * [Lab 15 Searching And Sorting](1%20Python/labs/15%20Searching%20And%20Sorting.md)
 * [Lab 16 Dad Joke API](1%20Python/labs/16%20Dad%20Joke%20API.md)
@@ -102,7 +102,7 @@ Presentation Day: June 24th, 2022
 [LCR](1%20Python/labs/LCR.md),
 [Mad Libs](1%20Python/labs/madlib.md),
 [Magic 8 Ball](1%20Python/labs/magic_8_ball.md),
-<!-- [Rain Data](1%20Python/labs/rain_data.md), -->
+[Rain Data](1%20Python/labs/rain_data.md),
 [Random Emoticon Generator](1%20Python/labs/random_emoticon_generator.md),
 [Random Password Generator](1%20Python/labs/random_password.md),
 [Road Trip](1%20Python/labs/road_trip.md),
