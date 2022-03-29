@@ -79,8 +79,14 @@ class Game:
             return False
 
     
-    def is_gameover():
-        ...
+    def is_gameover(self, name, token):
+        if(self.calc_winner(token)):
+            print(f"{name} won!")
+            return True
+        elif(self.is_full()):
+            print("Its a draw!")
+            return True
+        return False
 
 
 ## Debugging
