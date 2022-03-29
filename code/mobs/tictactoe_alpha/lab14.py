@@ -43,61 +43,51 @@ class Game:
             
     def calc_winner(self):
         for i in range(3):
-            if self.board[i][0] == self.board[i][1] == self.board[i][2] and self.board[i][0] != ' ':
+            if self.board[i][0] == self.board[i][1] == self.board[i][2] and self.board[i][0] != ' ': # check horizontals
                 return self.board[i][0]
-            elif self.board[0][i] == self.board[1][i] == self.board[2][i] and self.board[0][i] != ' ':
+            elif self.board[0][i] == self.board[1][i] == self.board[2][i] and self.board[0][i] != ' ': # check verticals
                 return self.board[0][i]
-            elif i == 1 and self.board[i-1][i-1] == self.board[i][i] == self.board[i+1][i+1] and self.board[i+1][i] != ' ':
+            elif i == 1 and self.board[i-1][i-1] == self.board[i][i] == self.board[i+1][i+1] and self.board[i][i] != ' ': # bottom left to top right
                 return self.board[i][i]
-            elif i == 1 and self.board[i+1][i+1] == self.board[i][i] == self.board[i-1][i-1] and self.board[i+1][i] != ' ':
+            elif i == 1 and self.board[i-1][i+1] == self.board[i][i] == self.board[i+1][i-1] and self.board[i][i] != ' ': # bottom right to top left
                 return self.board[i][i]
-
-        
-        # for row in self.board:
-        #     if row[0] == ' ':
-        #         return None
-        #     elif row[0] == row[1] == row[2]:
-        #         return row[0]
-        # for col in self.board[0]:
-
-
-
-            
-            
             
     def is_full(self):
-        ...
-            
+        for i in range(3):
+            if ' ' in self.board[i]:
+                return None
+        return True
             
     def is_game_over(self):
-        ...
-            
-            
-            
-            
-game_1 = Game()
+        if self.is_full():
+            return True
+        elif self.calc_winner() is not None:
+            print(self.calc_winner())
+            return True
+        pass
 
+game_1 = Game()
 
 player_1 = Player(name="Chris", token="X")
 player_2 = Player(name="Matt", token="O")
 
 player_list = (player_1, player_2)
 
-while True:
+game_result = False
+
+while not game_result:
     for player in player_list:
         print(f"{player.name}, it is your move. You are placing {player.token}'s.")
         
         keep_going = True
         while keep_going:
-            
-            
-            
             x = int(input(f"{player.name}, enter the x position you want to go (0, 1, or 2): "))
             y = int(input(f"{player.name}, enter the y position you want to go (0, 1, or 2): "))
             keep_going = game_1.move(x=x, y=y, player=player)
         print(game_1)
-        print(game_1.calc_winner())
-    break
+        game_result = game_1.is_game_over()
+        if game_result:
+            break
    
 
 
@@ -105,7 +95,7 @@ while True:
 
 
 
-#01234
+#0 1 2
 # | | 0
 # | | 1
 # | | 2
