@@ -32,15 +32,14 @@ def create(contact_list,key_list):
 
     for i, key in enumerate(key_list):
         add_contact[key] = input(f"\nWhat is your contact's {key_list[i]}? ")
-        contact_list.append(add_contact)
-    return add_contact
+    contact_list.append(add_contact)
+    return (f'\nContact created: {add_contact}\n\n{contact_list}')
 
 # print(create(contact_list,key_list))
 
 def read(contact_list,key_list):
     
     key_string = '\n' + '\n'.join(key_list) + '\n'*2
-    print('-'*72)
     key_input = input(f"\nWhat would you like to search by? Choose from:{key_string}")
     contact_input = input("\nWhat is your search term? ")
 
@@ -58,7 +57,7 @@ def update(contact_list,key_list):
     update_key = input(f"\nWhat category would like to update?{key_string} ")
     update_value = input(f"\nwhat do you want to change {update_key} to? ")
     contact_output[update_key] = update_value
-    return contact_output
+    return (f'\nContact updated to {contact_output}')
 
 # print(update(contact_list,key_list))
     
@@ -66,11 +65,11 @@ def update(contact_list,key_list):
 def delete(contact_list,key_list):
     
     contact_delete = read(contact_list,key_list)
-    delete_yes_no = input(f"\nDo you want ot delete this contact, (y) or (n)? ")
+    delete_yes_no = input(f"\nDo you want to delete this contact, (y) or (n)? ")
     
     if delete_yes_no == 'y':
         contact_list.remove(contact_delete)
-        return contact_list
+        return (f'\nContact deleted: {contact_delete}\n\n{contact_list}')
     else:
         print('\nNo deletions were made')
 
@@ -78,11 +77,11 @@ def delete(contact_list,key_list):
 
 while True:
     
-    user_input = input('''\nWelcome, accessing family location data. 
+    user_input = input('''\nWelcome, to the Family Locator!
     Type "c" to create, "r" to read, "u" to update, "d" to delete or "q" to exit: ''')
 
     if user_input == 'q':
-        print('Goodbye')
+        print('\nGoodbye\n')
         break
     elif user_input == 'c':
         print(create(contact_list,key_list))
