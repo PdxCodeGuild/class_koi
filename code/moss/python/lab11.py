@@ -1,7 +1,7 @@
 import re
 import math
 
-path_to_data_folder = './data/count_monte_cristo.txt'
+path_to_data_folder = './data/count_mt_cristo.txt'
 
 with open(path_to_data_folder, 'r', encoding='utf-8') as f:
     contents = f.read()
