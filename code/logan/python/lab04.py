@@ -1,5 +1,5 @@
-# #Version 1##
-# #Code##
+##Version 1##
+##Code##
 
 # special = False
 # d_ones = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight", 9: "nine"}
@@ -24,7 +24,7 @@
 #     print("zero")
 #     special = True
 # elif num_input == 10:
-#     print("ten")
+#     print("10")
 #     special = True
 # elif num_input == 11:
 #     print("eleven")
@@ -56,8 +56,6 @@
 # if special == False:
 #     print(stringwriter(num_input))
 
-# print("\n")
-
 ##Version 2##
 
 # Here are a bunch of variables
@@ -76,7 +74,6 @@ d_ones = {1: "one",
 }
 
 d_tens = {
-1: "ten",
 2: "twenty",
 3: "thirty",
 4: "forty",
@@ -111,16 +108,7 @@ d_special = {
 18: "eighteen", 
 19: "nineteen"}
 
-while True:
-    try: 
-        num_input = int(input("\nPlease input a number 0 - 999:  "))
-        if len(str(num_input)) <= 3:
-            break
-        else:
-            print("Invalid input.  Please input a number less than 1000.")
-    except:
-        print("Invalid input.  Please input a number less than 1000.")
-
+num_input = int(input("\nPlease input a number 0 - 999:  "))
 snum_input = str(num_input)
 ones = num_input % 10
 tens = num_input // 10
@@ -156,7 +144,7 @@ if num_input == 0:
     print("zero")
     special = True
 elif num_input == 10:
-    print("ten")
+    print("10")
     special = True
 elif num_input == 11:
     print("eleven")
