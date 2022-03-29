@@ -33,10 +33,8 @@ print(states)
 
 # Version 2
 '''
-# import custom module - run from class_koi
-import sys
-sys.path.append('./code/matt/python/modules')
-from input_validation import valid_str
+# import custom string validation module
+from modules.input_validation import valid_str
 
 def csv_to_dict():
     """
@@ -191,16 +189,8 @@ You may also enter L to list current states or Q to quit.
 
 # Version 3
 
-# import custom module - run from class_koi
-# import sys
-# sys.path.append('./code/matt/python/modules')
-# from input_validation import valid_str
-
-# from code.matt.python.modules.input_validation import valid_str
-
-
-
-from code.matt.python.modules.input_validation import valid_str
+# import custom string validation module
+from modules.input_validation import valid_str
 
 def csv_to_dict():
     """
