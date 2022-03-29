@@ -27,3 +27,14 @@ print(contact_list)
 
 #----- Version 2 -----#
 
+def create(contact_list,key_list):
+
+
+def read(contact_list,key_list):
+
+
+def update(contact_list,key_list):
+
+
+def delete(contact_list,key_list):
+
