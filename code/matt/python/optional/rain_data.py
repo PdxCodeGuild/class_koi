@@ -9,6 +9,9 @@ Matt Walsh
 
 # https://or.water.usgs.gov/non-usgs/bes/vernon.rain##########################################
 
+# import datetime module
+import datetime
+
 # import urlopen to allow loading from internet
 from urllib.request import urlopen
 
@@ -16,6 +19,8 @@ def load_data():
     """
     Loads data from URL and processes into dictionary
     """
+    # display loading message
+    print('Initializing')
     # assign url to variable for opening and concatenation
     base_url = 'https://or.water.usgs.gov/non-usgs/bes/'
     # load page holding all locations and data links
@@ -33,21 +38,23 @@ def load_data():
             # find and store url
             location['url'] = base_url + locations_data_line.split('"')[1]
             # strip raw name from url and store
-            location['raw_name'] = locations_data_line.split('"')[1][:-5]
+            location['raw name'] = locations_data_line.split('"')[1][:-5]
             # append dictionary to list
             location_master.append(location)
             # increment counter
             location_count += 1
     # iterate through each location in dictionary and populate dictionary
-    # for each_location in location_master:
-    #     load_each_location(each_location['url'])
-
+    for i, each_location in enumerate(location_master):
+        location_master[i] = load_each_location(each_location)
+    # return complete dictionary
     return location_master
 
 def load_each_location(data):
     """
     Loads each location and processes into dictionary
     """
+    # show loading message
+    print(f'Loading: {data["raw name"]}')
     # load location
     this_location = urlopen(data['url'])
     # create empty list to hold each line
@@ -60,24 +67,42 @@ def load_each_location(data):
         line = line[2:-3]
         # append to list
         this_location_list.append(line)
+    # hold split name as variable for un-normalized data
+    if ' Rain Gage - ' in this_location_list[0]:
+        split_at = 'Rain Gage - '
+    elif ' Rain Gage, ' in this_location_list[0]:
+        split_at = ' Rain Gage, '
+    else:
+        split_at = ' Rain Gage '
     # save name and address to dictionary
-    data['name'] = this_location_list[0].split(' - ')[0]
-    data['address'] = this_location_list[0].split(' - ')[1]
+    data['name'] = this_location_list[0].split(split_at)[0]
+    data['address'] = this_location_list[0].split(split_at)[1]
     # find start of data table
     row_above = this_location_list.index('-'*114)
     # create empty list to hold rain data
+    data['rain data'] = []
+    # iterate through rain data lines
+    for line in this_location_list[row_above + 1:]:
+        # split and strip whitespace
+        line = line.split()
+        # empty dictionary for each date
+        this_date = {}
+        # store date info
+        date = datetime.datetime.strptime(line.pop(0), '%d-%b-%Y')
+        this_date['year'] = date.year
+        this_date['month'] = date.month
+        this_date['day'] = date.day
+        if len(line) > 0:
+            print(f'line {line} -- len {len(line)}')
+            this_date['daily'] = line.pop(0)
+        if len(line) > 0:
+            print(f'line {line} -- len {len(line)}')
+            this_date['hourly'] = line
+        data['rain data'].append(this_date)
+    return data
 
-    
-# ------------------------------------------------------------------------------------------------------------------
-    print(this_location_list[:30])#######################
-    print(data)
-    print(f'row above {row_above}')
-    pass
-
-
-load_each_location({'url': 'https://or.water.usgs.gov/non-usgs/bes/cottrell_school.rain', 'raw_name': 'cottrell_school'})
-
-# location_master = load_data()
+location_master = load_data()
+print(location_master[0].keys())
 # location_count = str(locations_data_raw).count('.rain')
 # print(type(locations_data_raw))
 # print(location_master)
@@ -106,11 +131,14 @@ for locations_data_line in locations_data_raw:
 '''
 eachdict = {
     name: '',
+    raw name: '',
     address: '',
     url: '',
     rain_data: [
         {
-            date: '',
+            year: '',
+            month: '',
+            day: '',
             daily: '', # sum of hourly
             hourly: [] # indices of 0-23, each holding raw data
         }
