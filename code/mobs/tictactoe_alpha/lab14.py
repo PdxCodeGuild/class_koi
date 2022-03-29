@@ -59,17 +59,25 @@ class Game:
         return True
             
     def is_game_over(self):
-        if self.is_full():
+        if self.calc_winner() is not None:
+            if self.calc_winner() == "X":
+                print(f"{player_1.name} has won the game!")
+            elif self.calc_winner() == "O":
+                print(f"{player_2.name} has won the game!")
             return True
-        elif self.calc_winner() is not None:
-            print(self.calc_winner())
+        elif self.is_full():
+            print("The board is full, you are both losers....")
             return True
         pass
 
 game_1 = Game()
 
-player_1 = Player(name="Chris", token="X")
-player_2 = Player(name="Matt", token="O")
+print("Welcome to the Tic-Tac-Toe Game!")
+player1_name = input("Please enter the name of the first player: ").title().strip()
+player2_name = input("Please enter the name of the second player: ").title().strip()
+
+player_1 = Player(name=player1_name, token="X")
+player_2 = Player(name=player2_name, token="O")
 
 player_list = (player_1, player_2)
 
@@ -84,31 +92,10 @@ while not game_result:
             x = int(input(f"{player.name}, enter the x position you want to go (0, 1, or 2): "))
             y = int(input(f"{player.name}, enter the y position you want to go (0, 1, or 2): "))
             keep_going = game_1.move(x=x, y=y, player=player)
+        print()
         print(game_1)
         game_result = game_1.is_game_over()
         if game_result:
             break
    
 
-
-
-
-
-
-#0 1 2
-# | | 0
-# | | 1
-# | | 2
-
-#
-
-# REPL starts
-# call game class for each update/move
-# put update/move back into Game
-
-# create a game method called update_board() inside method called move()
-
-# board storage
-# board could always be blank
-
-# move() adjusts board
