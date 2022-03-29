@@ -274,7 +274,7 @@ def update(name):
     for i in range(len(states)):
         if states[i]['state'].lower() == name.lower():
             # update parameters for loop
-            prompt = 'What would you like to update? '
+            prompt = 'What would you like to update? Enter L to view options, and D when done. '
             error = 'That is not a valid option. Enter L to view options, and D when done.'
             choices = columns
             choices.extend(['l','d'])
