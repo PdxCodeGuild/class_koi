@@ -54,8 +54,23 @@ class Game:
 
         ...
 
-    def calc_winner():
-        ...
+    def calc_winner(self, token):
+        list = [['7','5','3'],
+                ['1','5','9'],
+                ['1','2','3'],
+                ['4','5','6'],
+                ['7','8','9'],
+                ['1','4','7'],
+                ['2','5','8'],
+                ['3','6','9']]
+
+        for i in list:
+            count = 0
+            for j in i:
+                if(self.board[j] == token):
+                    count += 1
+                if(count == 3):
+                    return True
 
     def is_full(self):
         if " " not in self.board:
