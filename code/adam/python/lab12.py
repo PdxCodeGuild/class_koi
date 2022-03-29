@@ -25,8 +25,8 @@ for line in lines[1:]:
 #---------------------------------------------------------------------
 # Version 2
 
-# functoin to Create a new contact: ask the user for each attribute, 
-# -add a new contact to your contact list with the attributes that the user entered 
+# function to Create a new contact: ask the user for each attribute, 
+# add a new contact to your contact list with the attributes that the user entered 
 contact_list = []
 character_dict = {}
 def create():
@@ -43,10 +43,11 @@ def create():
     contact_list.append(favorite_food)
     favorite_beverage = input('Enter the FAVORITE BEVERAGE of the contact: ')
     contact_list.append(favorite_beverage)
+    # print(contact_list)
     for i, key in enumerate(headers):
         character_dict[key] = contact_list[i]
     contacts_list.append(character_dict)
-    # print(contacts_list)
+    print(character_dict)
     return
 
 # function to Retrieve a contact: ask the user for the contact's name, 
@@ -57,7 +58,7 @@ def retrieve():
         if search_name in contact['name'].lower():
             print(contact)
             return
-    print('Contact not found')
+    print('\nContact not found\n')
 
 # fucntion to Update a contact: ask the user for the contact's name, 
 # then for which attribute of the user they'd like to update and the value of the attribute they'd like to set.
@@ -95,20 +96,36 @@ def remove():
     for contact in contacts_list:
         if remove_name in contact['name'].lower():
             valid_remove = input(f"Are you sure you want to delete the contact '{contact['name']}', [y]es or [n]o : ").lower()
-            print(valid_remove.lower())
             if valid_remove == 'y':
                 contacts_list.remove(contact)
                 print(contacts_list)
             else:
                 print(contacts_list)
                 return
-            
+
+# Version 3
+# When REPL loop finishes, write the updated contact info to the CSV file to be saved.
+# function to write updated contact info to contacts.csv file
+def write_to_file():
+    headers_sentence = ','.join(headers) # name,city,state,age,favorite food,favorite beverage
+    contacts_list_sentences= []
+    contacts_list_sentences.append(headers_sentence)
+
+    for contact in contacts_list:
+        contact_values = contact.values()
+        contact_sentence = ','.join(contact_values)
+        contacts_list_sentences.append(contact_sentence)
+    updated_contacts_csv = '\n'.join(contacts_list_sentences)
+
+    with open('data/contacts.csv', 'w') as f:
+        f.write(updated_contacts_csv)
+
 while True:
-    choice = input('Would you like to [c]reate, [r]etrieve, [u]pdate, [d]elete a contact or [q]uit? ').lower()
+    choice = input('Would you like to [c]reate, [r]etrieve, [u]pdate, or [d]elete a contact or [q]uit? ').lower()
     if choice not in ['c' ,'r', 'u', 'd', 'q']:
         print('Please enter [c] for create, [r] for remove, [u] for update, [d] for delete or [q] to quit: ')
     if choice == 'q':
-        print('Nothing more will be done to contacts list')
+        print('\nContacts list .csv file will be updated with any changes.')
         break
     if choice == 'c':
         create()
@@ -118,7 +135,5 @@ while True:
         update()
     if choice == 'd':
         remove()
-
-#----------------------------------------------------------------------------------------------
-# Version 3
-
+# call and run function to write updated contacts list of dictionaries as csv file
+write_to_file()
