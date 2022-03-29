@@ -45,14 +45,37 @@ class Game:
         {board["7"]}|{board["8"]}|{board["9"]}
         """)
     
-    def move(self, box, player):
+    def move(self, box, player,):
+        if self.board[box] != " ":
+            print("That space is already taken!")
+        else:
+        # places current player's token on the game board
+            self.board[box] = player
+
         ...
 
     def calc_winner():
         ...
 
-    def is_full():
-        ...
+    def is_full(self):
+        if " " not in self.board:
+            return True
+        else:
+            return False
+
     
     def is_gameover():
         ...
+
+
+## Debugging
+# game1 = Game()
+# # game1.__str__()
+# game1.move("5","X")
+# game1.__str__()
+# game1.move("5","X")
+
+
+
+## Scrap
+#    next_move = input("Where would you like to place your token?...")
