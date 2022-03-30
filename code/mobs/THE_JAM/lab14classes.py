@@ -48,11 +48,11 @@ class Game:
     def move(self, box, player,):
         if self.board[box] != " ":
             print("That space is already taken!")
+            return False
         else:
         # places current player's token on the game board
             self.board[box] = player
-
-        ...
+            return True
 
     def calc_winner(self, token):
         list = [['7','5','3'],
@@ -78,8 +78,8 @@ class Game:
         else:
             return False
 
-    
     def is_gameover(self, name, token):
+    # name, token
         if(self.calc_winner(token)):
             print(f"{name} won!")
             return True
@@ -87,16 +87,3 @@ class Game:
             print("Its a draw!")
             return True
         return False
-
-
-## Debugging
-# game1 = Game()
-# # game1.__str__()
-# game1.move("5","X")
-# game1.__str__()
-# game1.move("5","X")
-
-
-
-## Scrap
-#    next_move = input("Where would you like to place your token?...")
