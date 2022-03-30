@@ -70,6 +70,7 @@ while True:
         print('withdraw - withdraw money')
         print('interest - accumulate interest')
         print('exit     - exit the program')
+        print('transactions - print a list of transactions')
     elif command == 'exit':
         break
     else:
