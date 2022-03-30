@@ -10,7 +10,7 @@ Matt Walsh
 # https://or.water.usgs.gov/non-usgs/bes/vernon.rain##########################################
 
 # import datetime module
-import datetime
+from datetime import datetime, timedelta
 
 # import urlopen to allow loading from internet
 from urllib.request import urlopen
@@ -88,7 +88,7 @@ def load_each_location(data):
         # empty dictionary for each date
         this_date = {}
         # store date info
-        date = datetime.datetime.strptime(line.pop(0), '%d-%b-%Y')
+        date = datetime.strptime(line.pop(0), '%d-%b-%Y')
         this_date['year'] = date.year
         this_date['month'] = date.month
         this_date['day'] = date.day
@@ -100,6 +100,38 @@ def load_each_location(data):
             this_date['hourly'] = line
         data['rain data'].append(this_date)
     return data
+
+def check_cache():
+    """
+    Checks cache to see if it has been updated within the last hour
+    Returns True if an update is needed
+    """
+    # open and read file
+    with open('code/matt/python/optional/rain_data.txt','r') as data_file:
+        data_file = data_file.read()
+        # return True if file is empty
+        if data_file == '':
+            return True
+        # attempt to read timestamp at beginning of file
+        try:
+            # set current time and last updates to variables
+            now = datetime.utcnow().timestamp()
+            last_updated = float(data_file[:17])
+            # assign elapsed time to variable
+            time_since = now - last_updated
+            # display time since last update and return True if an hour or more has passed
+            if time_since > 3600:
+                print(f'{time_since/60} minutes since updated. Updating now.')
+                return True
+            # return False if less than an hour has passed since last update
+            else:
+                return False
+        # return True if unable to read timestamp
+        except:
+            print('An error has occurred. Updating cache.')
+            return True
+
+
 
 location_master = load_data()
 print(location_master[0].keys())
