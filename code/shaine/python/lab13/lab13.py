@@ -73,8 +73,12 @@ while True:
         atm.deposit(amount)
         print(f'Accumulated ${amount} in interest')
     elif command == 'print':
-        print_trans  = atm.print_transactions()
-        print(str(print_trans))
+        transactions = atm.print_transactions()
+        print('Previous Transactions:')
+        for transaction in transactions:
+            print(str(transaction))
+
+        
 
     elif command == 'help':
         print('Available commands:')
@@ -83,6 +87,8 @@ while True:
         print('withdraw - withdraw money')
         print('interest - accumulate interest')
         print('exit     - exit the program')
+        print('print    - print transactions')
+
     elif command == 'exit':
         break
     else:
