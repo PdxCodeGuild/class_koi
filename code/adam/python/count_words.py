@@ -12,7 +12,7 @@ string_without_punct = contents.translate(translator).lower()
 word_list = string_without_punct.split()
 
 stopwords = ['the','to','and','he','his','of','was','had','in','it','my','we','you','that','a','as','with','she','him','her','not','would'
-'at','but','for','they','on','all','at','be','out','have']
+'at','but','for','they','on','all','at','be','out','have','so','if','would','could','been']
 word_dict = {}
 for word in word_list:
     if word not in stopwords:
@@ -20,8 +20,8 @@ for word in word_list:
             word_dict[word] = 0
         word_dict[word] += 1
 
-print(word_dict)
-
+# print(word_dict)
+# create definition for sorting words and counting frequency of word
 words = list(word_dict.items())
 words.sort(key=lambda tup: tup[1], reverse=True)
 for i in range(min(10, len(words))):
