@@ -82,14 +82,11 @@ Presentation Day: June 24th, 2022
 | 09    | [Peaks And Valleys](1%20Python/labs/09%20Peaks%20And%20Valleys.md)           | Mar 22nd      | Mar 25th    | Apr  5th      |
 | 10    | [ROT13](1%20Python/labs/10%20ROT13.md)                                       | Mar 24th      | Mar 30th    | Apr  7th      |
 | 11    | [ARI](1%20Python/labs/11%20ARI.md)                                           | Mar 24th      | Mar 30th    | Apr  7th      |
-<<<<<<< HEAD
-=======
 | 12    | [Contact List](1%20Python/labs/12%20Contact%20List.md)                       | Mar 28th      | Apr  1st    | Apr 11th      |
->>>>>>> 7c914520114271d8ffd02702652142de4743ddfa
 
 
-<!-- * [Lab 12 Contact List](1%20Python/labs/12%20Contact%20List.md)
-* [Lab 13 ATM](1%20Python/labs/13%20ATM.md)
+
+<!-- * [Lab 13 ATM](1%20Python/labs/13%20ATM.md)
 * [Lab 14 Mob Tic Tac Toe](1%20Python/labs/14%20Mob%20Tic%20Tac%20Toe.md)
 * [Lab 15 Searching And Sorting](1%20Python/labs/15%20Searching%20And%20Sorting.md)
 * [Lab 16 Dad Joke API](1%20Python/labs/16%20Dad%20Joke%20API.md)
