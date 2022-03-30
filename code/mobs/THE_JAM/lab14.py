@@ -37,7 +37,7 @@ while(repl_flag == 'y'):
 
         """)
             valid_move = game.move(player_move, current_player.token)
-            game.__str__()
+            print(game)
 
         if(game.calc_winner(current_player.token)):
             print(f"{current_player.name} won!")

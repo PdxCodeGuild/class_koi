@@ -39,7 +39,7 @@ class Game:
         self.board = board
     
     def __str__(self, board = board_values):
-        print(f"""
+        return(f"""
         {board["1"]}|{board["2"]}|{board["3"]}
         {board["4"]}|{board["5"]}|{board["6"]}
         {board["7"]}|{board["8"]}|{board["9"]}
