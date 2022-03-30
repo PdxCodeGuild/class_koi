@@ -83,12 +83,12 @@ Presentation Day: June 24th, 2022
 | 10    | [ROT13](1%20Python/labs/10%20ROT13.md)                                       | Mar 24th      | Mar 30th    | Apr  7th      |
 | 11    | [ARI](1%20Python/labs/11%20ARI.md)                                           | Mar 24th      | Mar 30th    | Apr  7th      |
 | 12    | [Contact List](1%20Python/labs/12%20Contact%20List.md)                       | Mar 28th      | Apr  1st    | Apr 11th      |
+| 13    | [ATM](1%20Python/labs/13%20ATM.md)                                           | Mar 30th      | Apr  5th    | Apr 13th      |
+| 14    | [Mob Tic Tac Toe](1%20Python/labs/14%20Mob%20Tic%20Tac%20Toe.md)             | Mar 30th      | NA          | NA            |
 
 
 
-<!-- * [Lab 13 ATM](1%20Python/labs/13%20ATM.md)
-* [Lab 14 Mob Tic Tac Toe](1%20Python/labs/14%20Mob%20Tic%20Tac%20Toe.md)
-* [Lab 15 Searching And Sorting](1%20Python/labs/15%20Searching%20And%20Sorting.md)
+<!-- * [Lab 15 Searching And Sorting](1%20Python/labs/15%20Searching%20And%20Sorting.md)
 * [Lab 16 Dad Joke API](1%20Python/labs/16%20Dad%20Joke%20API.md)
 * [Lab 17 Quotes API](1%20Python/labs/17%20Quotes%20API.md)
 * [Lab 18 Mini-Capstone](1%20Python/labs/../../1%20Python/labs/18%20Mini-Capstone.md) -->
