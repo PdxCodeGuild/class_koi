@@ -73,7 +73,7 @@ class Game:
                     return True
 
     def is_full(self):
-        if " " not in self.board:
+        if " " not in self.board.values():
             return True
         else:
             return False

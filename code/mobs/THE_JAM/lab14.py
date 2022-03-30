@@ -42,7 +42,7 @@ while(repl_flag == 'y'):
         if(game.calc_winner(current_player.token)):
             print(f"{current_player.name} won!")
             break
-        elif(not(game.is_full())):
+        elif(game.is_full()):
             print("Its a draw!")
             break
         
