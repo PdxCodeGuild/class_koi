@@ -15,9 +15,11 @@ class Game:
 
     def __str__(self):
         '''returns a string representation of the game board'''
-        print(f'{self.board[0][0]}|{self.board[0][1]}|{self.board[0][2]}')
-        print(f'{self.board[1][0]}|{self.board[1][1]}|{self.board[1][2]}')
-        print(f'{self.board[2][0]}|{self.board[2][1]}|{self.board[2][2]}')
+        output = ''
+        output += f'{self.board[0][0]}|{self.board[0][1]}|{self.board[0][2]}\n'
+        output += f'{self.board[1][0]}|{self.board[1][1]}|{self.board[1][2]}\n'
+        output += f'{self.board[2][0]}|{self.board[2][1]}|{self.board[2][2]}'
+        return output
 
     def move(self,x,y,player):
         '''Place a player's token character string at a given coordinate'''
@@ -33,8 +35,20 @@ class Game:
         return True                  
 
     def calc_winner(self):
+
+        for i, row in enumerate(self.board):
+            if 'X' == row[0] == row[1] == row[2]:
+                return 'X'
+            if 'O' == row[0] == row[1] == row[2]:
+                return 'O'
+            if 'X' == self.board[0][i] == self.board[1][i] == self.board[2][i]:
+                return 'X'
+            if 'O' == self.board[0][i] == self.board[1][i] == self.board[2][i]:
+                return 'O'
+            
+
         '''returns the winner, or None if no one wins'''
-        pass
+        
 
     def is_full(self):
         '''returns true if game board is full'''
@@ -58,17 +72,24 @@ players = [player1_player, player2_player]
 i = 0
 
 while True: 
-    player = players[i%2]    
+    player = players[i%2]   
     while True:
+        
         print(f'It is {player.name}\'s turn.')
         x_move = int(input(f'{player.name}, enter the x position you want to move to: '))
         y_move = int(input(f'{player.name}, enter the y position you want to move to: '))
-                    
+         
         valid_move = game.move(x_move, y_move, player)
-        game.__str__()
+        print(game)
         if valid_move:                
             break
-    # check if winner
+    
+    i += 1 
+    
+    if game.calc_winner() in ['X','O']:
+        print(f'{player.name}WINS!')
+        break
+        
     # check if no winner (board full)
     
 
