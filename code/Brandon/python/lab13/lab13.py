@@ -1,13 +1,9 @@
 class ATM:
  
-
     def __init__(self, balance=0, interest_rate=0.1):
         self.balance = balance
-        self.interest_rate = interest_rate
+        self.interest_rate = interest_rate     
         
-        
-        
-
     def check_balance(self):
         """return the account balance"""
         return self.balance 
@@ -17,16 +13,18 @@ class ATM:
         self.balance += amount
         return self.balance
         
-
     def check_withdrawal(self, amount):
         """return True if account has enough funds to withdraw given amount"""
-        amount = amount * -1
-        self.balance = self.balance + amount 
-        return self.balance
-
+        self.amount = amount
+        if self.balance < self.amount:
+            atm.check_withdrawal = False
+        if self.balance >= self.amount:
+            return True 
+        
     def withdraw(self, amount):
         """withdraw given amount from account and return that amount"""
-        self.balance - amount
+        amount = amount * -1
+        self.balance = self.balance + amount 
         return self.balance
 
     def calc_interest(self):
@@ -35,13 +33,14 @@ class ATM:
         return amount
 
     def print_transactions(self, amount):
-        if amount >= 0:
+        if command == "deposit":
             tally.append(amount)
             print(f'+${tally}')
         if command == 'withdraw':
             amount*= -1
             tally2.append(amount)
             print(f'-${tally2}')
+            
 tally2 = []
 tally = []
 atm = ATM()  # create an instance of our class
