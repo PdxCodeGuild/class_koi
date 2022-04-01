@@ -79,7 +79,6 @@ while True:
                         break
                 if j < 20:
                     break
-                print(result_length)
 
 
 
