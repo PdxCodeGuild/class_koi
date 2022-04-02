@@ -1,0 +1,15 @@
+City,Temperature,Condition,Humidity
+Portland,30,Snow,50
+Seattle,52,Rainy,80
+Yachats,54,Cloudy,80
+Sacramento,70,Sunny,40
+Bend,75,Sunny,20
+Los Angeles,72,Sunny,30
+Kodiak,60,Clear,40
+Fairbanks,-20,Clear,10
+Tampa,97,Mostly Cloudy,100
+Mobile,84,Mostly Cloudy,60
+San Diego,75,Partly Cloudy,50
+Boulder,60,Clear,40
+Las Vegas,76,Clear,40
+Boston,62,Occasional Showers,60
