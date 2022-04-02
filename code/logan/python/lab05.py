@@ -1,10 +1,10 @@
 ##Version 1##
 ##Code##
 
-# This generates the advice based on the hand total.
+# This generates advice based on the hand total.
 def advice(x):
     int(x)
-    if x < 17:
+    if x <= 17:
         return("Hit!")
     elif (x > 17) and (x < 21):
         return("Stay")
@@ -13,7 +13,7 @@ def advice(x):
     elif x > 21:
         return("Already busted...")
 
-##
+# These are the card values, with no wild ace.
 
 card_values = {
     "A":1, 
@@ -28,16 +28,21 @@ card_values = {
     "10":10,
     "J":10,
     "Q":10,
-    "K":11,
+    "K":10,
     }
+
+# This grabs inputs.
 
 first = input("\nWhat is your first card?...")
 second = input("What is your second card?...")
 third = input("What is your third card?...")
 
-##
+# This tallies your hand value.
 
 total = card_values[first] + card_values[second] + card_values[third]
+
+# Output.
+
 print(f"\n{total}  {advice(total)}\n")
 
 
