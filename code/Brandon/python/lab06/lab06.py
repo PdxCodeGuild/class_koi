@@ -1,16 +1,7 @@
-import random
-
-#Version 1
-
-
-
-# play game 100,000 times
-
-
-
-# 
-
-
+import random    
+    # What I NEED TO DO
+    # Add up how many numbers match
+    # make program assign a score to matches.
 
 def pick6():
     """
@@ -18,65 +9,62 @@ def pick6():
     """
     # from stackoverflow --------------------
     winnig_ticket = random.sample(range(100), 6)
-    winnings = 0
     
-    for i in range(100000):
-        
-        # stack overflow
-        players_ticket = random.sample(range(100), 6)
-        #----------------------
-        
-        i+=1
-        if players_ticket[0] == winnig_ticket[0] and players_ticket[1] == winnig_ticket[1] and players_ticket[2] == winnig_ticket[2] and        players_ticket[3] == winnig_ticket[3] and players_ticket[4] == winnig_ticket[4] and players_ticket[5] == winnig_ticket[5]:
-            print(f"Grand Prize!!!")
-            print(winnig_ticket, players_ticket)
-            print(i)
-            winnig_ticket = i
-            winnings += 25000000
-            return
+    return winnig_ticket
 
-        elif players_ticket[0] == winnig_ticket[0] and players_ticket[1] == winnig_ticket[1] and players_ticket[2] == winnig_ticket[2] and players_ticket[3] == winnig_ticket[3] and players_ticket[4] == winnig_ticket[4] or players_ticket[5] == winnig_ticket[5]:
-            print('You found 5 numbers!')
-            winnings += 1000000
-            continue
 
-        elif players_ticket[0] == winnig_ticket[0] and players_ticket[1] == winnig_ticket[1] and players_ticket[2] == winnig_ticket[2] and players_ticket[3] == winnig_ticket[3] or players_ticket[4] == winnig_ticket[4] or players_ticket[5] == winnig_ticket[5]:
-            print('You found 4 numbers!')
-            winnings += 50000
-            continue
+def calculate_points(winning_ticket, players_ticket):
+    points = 0
 
-        elif players_ticket[0] == winnig_ticket[0] and players_ticket[1] == winnig_ticket[1] and players_ticket[2] == winnig_ticket[2] or players_ticket[3] == winnig_ticket[3] or players_ticket[4] == winnig_ticket[4] or players_ticket[5] == winnig_ticket[5]:
-            print('You found 3 numbers!')
-            winnings += 100
-            continue
+    if winning_ticket[0] == players_ticket[0]: 
+        points += 1
 
-        elif players_ticket[0] == winnig_ticket[0] and players_ticket[1] == winnig_ticket[1] or players_ticket[2] == winnig_ticket[2] or players_ticket[3] == winnig_ticket[3] or players_ticket[4] == winnig_ticket[4] or players_ticket[5] == winnig_ticket[5]:
-            print('You found 2 numbers!')
-            winnings += 7
-            continue
+    if winning_ticket[1] == players_ticket[1]: 
+        points += 1
 
-        elif players_ticket[0] == winnig_ticket[0]  or players_ticket[1] == winnig_ticket[1] or players_ticket[2] == winnig_ticket[2] or players_ticket[3] == winnig_ticket[3] or players_ticket[4] == winnig_ticket[4] or players_ticket[5] == winnig_ticket[5]:
-            print('You found 1 number!')
-            winnings += 2
-            continue
+    if winning_ticket[2] == players_ticket[2]: 
+        points += 1    
 
-    cost = 2*i
+    if winning_ticket[3] == players_ticket[3]: 
+        points += 1     
 
-    print(f'Winnings: ${winnings}. Total cost: ${cost} You left the casion with: ${(winnings) - (cost)}')
+    if winning_ticket[4] == players_ticket[4]: 
+        points += 1
 
-    winnig_ticket = i
-       
-    def num_matches(winning_ticket, ticket):
-        """
-        return the number of matches between the 2 tickets
-        """
-        winning_ticket = winnig_ticket - ticket + 1
-        if winnig_ticket == 100000:
-            print('No winning ticket found. Try again. ')
-        elif winning_ticket < 100000:
-            print("Congrats!!!!!!!")
-            print(winnig_ticket)
-        
-    num_matches(i, 1)
+    if winning_ticket[5] == players_ticket[5]: 
+        points += 1
+    
+    return points
+    
+winning_ticket = pick6()
 
-pick6()
+i = 0
+prize = 0
+
+for i in range(100000):
+    
+    players_ticket = random.sample(range(100), 6)
+    
+    points = calculate_points(winning_ticket, players_ticket)
+    if points == 1:
+        prize += 2
+    if points == 2:
+        prize += 7
+    if points == 3:
+        prize += 100
+    if points == 4:
+        prize += 50000
+    if points == 5:
+        prize += 1000000
+    if points == 6:
+        prize += 25000000
+        print("Grand Prize Winner!")
+        break            
+    i+=1
+
+cost = 2*i
+
+print(f'You won ${prize - cost} with {i} tickets. Congratulations!')
+
+#Version 2
+print(f'Your return on invesment was ${(prize - cost) / cost} per dollar spent. \n Earnings: ${prize} \n Cost: ${cost}')
