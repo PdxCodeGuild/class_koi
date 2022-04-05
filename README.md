@@ -88,17 +88,19 @@ Presentation Day: June 24th, 2022
 
 
 
-<!-- * [Lab 15 Searching And Sorting](1%20Python/labs/15%20Searching%20And%20Sorting.md)
-* [Lab 16 Dad Joke API](1%20Python/labs/16%20Dad%20Joke%20API.md)
+
+<!-- * [Lab 16 Dad Joke API](1%20Python/labs/16%20Dad%20Joke%20API.md)
 * [Lab 17 Quotes API](1%20Python/labs/17%20Quotes%20API.md)
 * [Lab 18 Mini-Capstone](1%20Python/labs/../../1%20Python/labs/18%20Mini-Capstone.md) -->
 
 #### Optional Python Labs
 
+[Connect Four](1%20Python/labs/connect_four.md),
 [Count Words](1%20Python/labs/count_words.md),
+[Currency Converter](1%20Python/labs/currency_converter.md),
 [Grading](1%20Python/labs/grading.md),
 [Guess The Number](1%20Python/labs/guess_the_number.md),
-<!-- [Image Manipulation](1%20Python/labs/image_manipulation.md), -->
+[Image Manipulation](1%20Python/labs/image_manipulation.md),
 [LCR](1%20Python/labs/LCR.md),
 [Mad Libs](1%20Python/labs/madlib.md),
 [Magic 8 Ball](1%20Python/labs/magic_8_ball.md),
@@ -107,9 +109,10 @@ Presentation Day: June 24th, 2022
 [Random Password Generator](1%20Python/labs/random_password.md),
 [Road Trip](1%20Python/labs/road_trip.md),
 [Rock, Paper, Scissors](1%20Python/labs/rock_paper_scissors.md),
+[Searching & Sorting](1%20Python/labs/15%20Searching%20And%20Sorting.md),
 [Simple Calculator](1%20Python/labs/simple_calculator.md),
 [Sock Sorter](1%20Python/labs/sock_sorter.md),
-<!-- [Stack And Linked List](1%20Python/labs/stack_and_linked_list.md), -->
+[Stack And Linked List](1%20Python/labs/stack_and_linked_list.md)
 
 
 
