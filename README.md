@@ -97,7 +97,7 @@ Presentation Day: June 24th, 2022
 
 [Connect Four](1%20Python/labs/connect_four.md),
 [Count Words](1%20Python/labs/count_words.md),
-<!-- [Currency Converter](1%20Python/labs/currency_converter.md), -->
+[Currency Converter](1%20Python/labs/currency_converter.md),
 [Grading](1%20Python/labs/grading.md),
 [Guess The Number](1%20Python/labs/guess_the_number.md),
 [Image Manipulation](1%20Python/labs/image_manipulation.md),
