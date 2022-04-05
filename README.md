@@ -85,13 +85,12 @@ Presentation Day: June 24th, 2022
 | 12    | [Contact List](1%20Python/labs/12%20Contact%20List.md)                       | Mar 28th      | Apr  1st    | Apr 11th      |
 | 13    | [ATM](1%20Python/labs/13%20ATM.md)                                           | Mar 30th      | Apr  5th    | Apr 13th      |
 | 14    | [Mob Tic Tac Toe](1%20Python/labs/14%20Mob%20Tic%20Tac%20Toe.md)             | Mar 30th      | NA          | NA            |
+<!-- | 15    | [Searching & Sorting](1%20Python/labs/15%20Searching%20And%20Sorting.md)     | NA            | NA          | NA            | -->
+| 16    | [Dad Joke API](1%20Python/labs/16%20Dad%20Joke%20API.md)                     | Apr  1st      | Apr  6th    | Apr 15th      |
+<!-- | 17    | [Quotes API](1%20Python/labs/17%20Quotes%20API.md)                           | NA            | NA          | NA            | -->
+| 18    | [Mini-Capstone](1%20Python/labs/18%20Mini-Capstone.md)                       | Apr  6th      | Apr  8th    | Apr 19th      |
 
 
-
-
-<!-- * [Lab 16 Dad Joke API](1%20Python/labs/16%20Dad%20Joke%20API.md)
-* [Lab 17 Quotes API](1%20Python/labs/17%20Quotes%20API.md)
-* [Lab 18 Mini-Capstone](1%20Python/labs/../../1%20Python/labs/18%20Mini-Capstone.md) -->
 
 #### Optional Python Labs
 
@@ -112,7 +111,8 @@ Presentation Day: June 24th, 2022
 [Searching & Sorting](1%20Python/labs/15%20Searching%20And%20Sorting.md),
 [Simple Calculator](1%20Python/labs/simple_calculator.md),
 [Sock Sorter](1%20Python/labs/sock_sorter.md),
-[Stack And Linked List](1%20Python/labs/stack_and_linked_list.md)
+[Stack And Linked List](1%20Python/labs/stack_and_linked_list.md),
+[Quotes API](1%20Python/labs/17%20Quotes%20API.md)
 
 
 
