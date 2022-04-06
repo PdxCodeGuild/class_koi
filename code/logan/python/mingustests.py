@@ -31,7 +31,6 @@ ab = Note("Ab", 5)
 g = Note("G", 5)
 gb = Note("Gb", 5)
 f = Note("F", 5)
-# e = Note("E", 5)
 eb = Note("Eb", 5)
 db = Note("Db", 5)
 
@@ -137,9 +136,10 @@ q5.place_notes(elow,16)
 q5.place_notes(elow,16)
 
 
-# midi_file_out.write_Bar("BlackmoreLick4.mid", q4, 120, 0)
+# midi_file_out.write_Bar("BlackmoreLick4.mid", q4, 120, 1)
 # midi_file_out.write_NoteContainer("test.mid", lick1)
 
+midi_file_out.write_Bar("BlackmoreTest.mid", q1, 120, 1)
 
 
 
