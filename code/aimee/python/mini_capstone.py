@@ -6,16 +6,16 @@ by Aimee Young
 '''
 from easygui import *
 
-# open recipes file
+# CHANGELOG - changed from fresh_pantry to pantry_list to write file 
 
 
 pantry_list = []
 
 def write():
     '''writes to file'''
-         
-    with open('D:/documents/pdxcodeguild/class_koi/code/aimee/python/pantry.txt', 'w') as f:
-        f.write(fresh_pantry)
+    # with open('/users/aimeeyoung/pdxcodeguild/class_koi/code/aimee/python/pantry.txt', 'w') as f:    
+    with open('D:/documents/pdxcodeguild/class_koi/code/aimee/python/pantry.txt', 'w') as f: # windows
+        f.write(pantry_list)
 
 
 def flatten(pantry_list):
@@ -30,7 +30,7 @@ def delete_ingredient():
     '''deletes an ingredient from pantry list'''
     msg = "What would you like to delete?"
     title = 'Delete an item'
-    choices = str(pantry_list) # how to display pantry list as choices to delete?
+    choices = pantry_list # how to display pantry list as choices to delete?
     choice = choicebox(msg, title, choices)
     return choice # displays
 
@@ -48,7 +48,8 @@ def check_recipe():
 
 
 # WELCOME BOX
-image = 'd:/documents/pdxcodeguild/class_koi/code/aimee/python/pantry-helper.png'
+# image = '/users/aimeeyoung/pdxcodeguild/class_koi/code/aimee/python/pantry-helper.png' # mac
+image = 'd:/documents/pdxcodeguild/class_koi/code/aimee/python/pantry-helper.png' # windows
 msgbox(f"Welcome to Pantry Helper!\n We're here to help when you have a pantry (or fridge!) full of food, but don't know what to cook.\n The first step is inputting ingredigients that you have on hand.\n Let's get started!", ok_button='Let\'s get cooking!', image=image)
 
 while True:
@@ -75,7 +76,7 @@ while True:
             flatten(pantry_list)
         
         # Convert pantry list to string
-        fresh_pantry = ', '.join([str(x) for x in pantry_list])
+        ', '.join([str(x) for x in pantry_list])
         
 
 
