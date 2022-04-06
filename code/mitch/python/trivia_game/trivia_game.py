@@ -6,10 +6,10 @@ from question_organizer import Question
 from trivia_functions import TriviaMaster
 
 
-# quiz_length = int(input("How many questions would you like the quiz to have? (1 - 50): "))
+quiz_length = int(input("How many questions would you like the quiz to have? (1 - 50): "))
 
 parameters = {
-    "amount": 1,
+    "amount": quiz_length,
     "type": "multiple"
 }
 
@@ -35,5 +35,5 @@ quiz = TriviaMaster(question_list)
 while quiz.are_there_more_questions():
     quiz.next_question()
 
-print("You've completed the quiz")
+print("You've completed the quiz!")
 print(f"Your final score was: {quiz.score}/{quiz.question_number}")
