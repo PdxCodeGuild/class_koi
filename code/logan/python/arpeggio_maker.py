@@ -7,15 +7,8 @@ from mingus.containers import Bar
 
 from mingus.midi import midi_file_out
 
-###################################################################################################
 
-# ## I can modify these values to grab chords from progressions by their degree and quality.
-
-# progression = ["I", "ii", "iii", "IV", "V", "vi", "dim"]
-# progression_arpeggios = progressions.to_chords(progression, "C")
-
-####################################################################################################
-## Python Clips 0.1 Alpha
+## OK, it's more of a chord-picker...
 
 def triad_rock_forward(triad):
     new_triad = []
@@ -24,19 +17,25 @@ def triad_rock_forward(triad):
     new_triad.append(triad[0])
     return new_triad
 
+def triad_rock_backward(triad):
+    new_triad = []
+    new_triad.append(triad[1])
+    new_triad.append(triad[0])
+    new_triad.append(triad[2])
+    return new_triad
 
 
 ##### Arpeggio Maker Sliced
 ## Name the clip
 bar1name = "arpeggiotest"
 bar1 = Bar()
-bar1_tonic = "C" # tonic note of the arpeggio
+bar1_tonic = "F" # tonic note of the arpeggio
 chord = chords.major_triad(bar1_tonic) #Major
 # chord = chords.minor_triad(bar1_tonic) #Minor
 # chord = chords.diminished_triad(bar1_tonic) #Diminished
 # chord = ...
-triad_rock_forward(chord)
-
+# chord = triad_rock_forward(chord)
+# chord = triad_rock_backward(chord)
 
 ## Standard Slicing # May not really need slicing sections
 start = 0
@@ -52,8 +51,10 @@ step = 1
 # chord.reverse()
 # chord.sort() # probably not worth implementing but funny :)
 
-passes = 4
-note_denom = 6
+passes = 6
+note_denom = 16
+loops = 1
+bps = 120
 for _ in range(passes):
 ## Change chord selector mechanism?
     for note in chord[start:end:step]:
@@ -62,4 +63,4 @@ for _ in range(passes):
 
 
 
-midi_file_out.write_Bar(f"{bar1name}.mid", bar1, 120, 1)
+midi_file_out.write_Bar(f"{bar1name}.mid", bar1, bps, loops)
