@@ -1,6 +1,8 @@
 import mingus.core.progressions as progressions
 import mingus.core.chords as chords
 import mingus.core.scales as scales
+import mingus.core.intervals as intervals
+import mingus.core.notes as notes
 
 from mingus.containers import Note
 from mingus.containers import NoteContainer
@@ -12,11 +14,19 @@ from mingus.midi import midi_file_out
 
 solo_progression = [(chords.minor_triad("D"), 2), (chords.major_triad("Bb"), 2), (chords.major_triad("C"), 2), (chords.major_triad("A"), 2)]
 
+### Composition
+c = Composition()
+## Composition Parameters
+bpm = 120
+loops = 0
 
-composition = Composition()
+
+### Tracks
 lead_track = Track()
-rhyth_track = Track()
+rhythm_track = Track()
 bass_track = Track()
+
+## Functions
 
 def simpbass(chord, denominator):
     bar = Bar()
@@ -27,7 +37,7 @@ def simpbass(chord, denominator):
         bar.place_notes(note, denominator)
     return bar
 
-def simprhyth(chord, denominator):
+def simprhythm(chord, denominator):
     bar = Bar()
     notes = NoteContainer()
     notes.add_notes(chord)
@@ -36,14 +46,21 @@ def simprhyth(chord, denominator):
     return bar
 
 
-
-# bass_bar = Bar()
+### Write the bass
 bass_denom = 8
 for tupe in solo_progression:
     bass_chord = tupe[0]
     for _ in range(tupe[1]):
         bass_bar = simpbass(bass_chord, bass_denom)
         bass_track.add_bar(bass_bar)
+
+### Write the rhythm
+rhythm_denom = 8
+for tupe in solo_progression:
+    rhythm_chord = tupe[0]
+    for _ in range(tupe[1]):
+        rhythm_bar = simprhythm(rhythm_chord, rhythm_denom)
+        rhythm_track.add_bar(rhythm_bar)
 
 
 # # Simple Bassline Maker
@@ -59,4 +76,8 @@ for tupe in solo_progression:
 #     notes.add_notes(chordgrab)
 #     bar3.place_notes(notes, 8)
 
-midi_file_out.write_Track("tracks/basstest.mid", bass_track, 120, 0)
+c.add_track(rhythm_track)
+c.add_track(bass_track)
+
+# midi_file_out.write_Track("tracks/basstest.mid", bass_track, 120, 0)
+midi_file_out.write_Composition("compositions/compositiontest.mid", c, bpm, loops)
