@@ -5,54 +5,34 @@ Matt Walsh
 '''
 
 
-#
+# import modules and set parameters
 from requests import get
-from PIL import Image, ImageOps
 import shutil
+from secrets import SECRET_KEY
+import PySimpleGUI as sg
+import numpy as np
+from PIL import Image, ImageOps
 Image.MAX_IMAGE_PIXELS = None
+import pathlib
+path = pathlib.Path(__file__).parent.resolve()
 
-def heightmap_api():
+def heightmap_api(center,dataset,map_size):
     """
     Gets heightmap from API and saves. Returns bool based on success/failure.
     """
-    ################################################################################
-    # hardcoded variables for fetching heightmap - will convert to user input
-        
-    # # OR
-    # north = 46.43818760852738
-    # south = 41.9485018317411
-    # east = -116.8570597157284
-    # west = -124.6259687261131
+    size_scale = round(map_size / 120,14)
 
-    # # PDX
-    # north = 45.660086463160255
-    # south = 45.295022112927974
-    # east = -122.29957331548121
-    # west = -122.98863270927748
+    north = center[0] + size_scale
+    south = center[0] - size_scale
+    east = center[1] + size_scale
+    west = center[1] - size_scale
 
-    # # small
-    # north = 45.55737739574253
-    # south = 45.50861426656856
-    # east = -122.62195713718967
-    # west = -122.6929981799035
-
-    center = [45.52224116692548, -122.66723816400605]
-    # center = [42.94115821029393, -122.11283955448688]
-
-    north = center[0] + .25
-    south = center[0] - .25
-    east = center[1] + .25
-    west = center[1] - .25
-
-
-    api_key = '564f38a0efbbc1397191fc77b41fbb55'
-    dataset = 'SRTMGL3'
+    api_key = SECRET_KEY
     url = f'https://portal.opentopography.org/API/globaldem?demtype={dataset}&south={south}&north={north}&west={west}&east={east}&outputFormat=GTiff&API_Key={api_key}'
-    ################################################################################
 
     response = get(url, stream=True)
     if response.status_code == 200:
-        with open('./code/matt/python/minicapstone/img_cache.tif','wb') as img_cache:
+        with open(f'{path}/img_cache.tif','wb') as img_cache:
             shutil.copyfileobj(response.raw, img_cache)
             return True
     else:
@@ -74,25 +54,51 @@ def open_img():
     """
     Opens image, converts to grayscale, and offers to resize if too large
     """
-    img = Image.open('./code/matt/python/minicapstone/img_cache.tif')
-    img = ImageOps.grayscale(img)
+    img = Image.open(f'{path}/img_cache.tif')
+    img = ImageOps.grayscale(img)##################### do bit transform before greyscale conversion
 
-    width, height = img.size
+    width,height = img.size
     pixels = img.load()
     return pixels,width,height
 
-def find_white(pixels,width,height):
+def img_resize(pixels,width,height):
+    """
+    Resizes images to standard size for processing time
+    """
+    resize_pixels = []
+    for y in range(height):
+        resize_pixels.append([])
+        for x in range(width):
+            resize_pixels[y].append(pixels[x,y])
+    img_array = np.array(resize_pixels, dtype=np.uint8)
+    img_resize = Image.fromarray(img_array)
+    img_resize = img_resize.resize((600,600))
+    width,height = img_resize.size
+    pixels = img_resize.load()
+    return pixels,width,height
+
+def find_white(pixels,width,height,show_cleanup):
     """
     Scans image for anomalous white pixels and feeds them to white_correct
     when found.
     """
-    for x in range(width):
-        for y in range(height):
+    if show_cleanup:
+        clean_pixels = []
+    for y in range(height):
+        if show_cleanup:
+            clean_pixels.append([])
+        for x in range(width):
             z = pixels[x,y]
             # find white/error pixels
             if z >= 255:
                 z = white_correct(x,y,pixels,width,height)
                 pixels[x,y] = z
+            if show_cleanup:
+                clean_pixels[y].append(z)
+    if show_cleanup:
+        img_array = np.array(clean_pixels, dtype=np.uint8)
+        img_clean = Image.fromarray(img_array)
+        img_clean.show()
     return pixels
 
 def white_correct(x,y,pixels,width,height):
@@ -200,39 +206,91 @@ def make_obj(vertices,polys,filename):
     """
     Writes .obj file with data taken from heightmap
     """
-    with open(f'./code/matt/python/minicapstone/{filename}.obj', 'w') as obj_file:
+    with open(f'{path}/{filename}.obj', 'w') as obj_file:
         for vertex in vertices:
             obj_file.write(f'v {vertex[0]} {vertex[1]} {vertex[2]}\n')
         for poly in polys:
             obj_file.write(f'f {poly[2] + 1} {poly[1] + 1} {poly[0] + 1}\n')
 
-################################################################################
-# hardcoded - will convert to user input
-depth = .1
-filename = 'mesh'
-################################################################################
-
-
 def main():
-    if heightmap_api():
+
+    while True:
+        end_app = False
+        event,values = options_window.read()
+        if event == sg.WIN_CLOSED or event == 'Cancel':
+            end_app = True
+            break
+        elif event == 'Generate':
+            center = []
+            for coord in values['coord'].split(','):
+                center.append(float(coord))
+            map_size = values['map_size']
+            dataset = values['dataset']
+            do_cleanup = values['do_cleanup']
+            show_cleanup = values['show_cleanup']
+            depth = values['depth'] / 4000
+            filename = values['filename']
+            break
+        if values['do_cleanup'] == True:
+            options_window['show_cleanup'].update(disabled=False)
+        if values['do_cleanup'] == False:
+            options_window['show_cleanup'].update(disabled=True)
+    options_window.close()
+
+    if end_app:
+        return
+
+    if heightmap_api(center,dataset,map_size):
         
         pixels,width,height = open_img()
-        pixels = find_white(pixels,width,height)
-        
-        # if too big, prompt for resizing. ask for scale, recommend scale######################################
-        
-
+        if do_cleanup:
+            pixels = find_white(pixels,width,height,show_cleanup)
+        pixels,width,height = img_resize(pixels,width,height)
         vertices = make_verts(pixels,width,height,depth)
         polys = make_polys(width,height)
         make_obj(vertices,polys,filename)
-
-
-
-        # img.show()
-        #
-
     else:
         print('An error has occurred.')
 
 if __name__ == '__main__':
+    # set up parameters for GUI
+    sg.set_options(element_padding=(0,1)) 
+    options_layout = [
+        [sg.T('COORDINATES', font=('Any',12,'bold'))],
+        [sg.T('Coordinates should be entered as "N,E" with no characters except numbers, commas, and "-" (if needed).')],
+        [sg.T('Coordinates are the center point of the area.')],
+        [sg.T('Enter coordinates: '),sg.In('45.52224116692548, -122.66723816400605',key='coord')],
+        [sg.T('\n')],
+        [sg.Column([
+            [sg.T('AREA SIZE', font=('Any',12,'bold'),size=40)],
+            [sg.T('Choose width/height of area in miles.')],
+            [sg.T('Larger areas take longer to process.')],
+            [sg.Slider(range=(1,1000),default_value=30,size=(40,15),orientation='h',key='map_size')],
+        ],vertical_alignment='t'),
+        sg.Column([
+            [sg.T('DATASET', font=('Any',12,'bold'),size=40)],
+            [sg.T('Select an elevation dataset to use.')],
+            [sg.T('SRTMGL3 is recommended for processing time.')],
+            [sg.T('Select Dataset: '),sg.Combo(['SRTMGL1','SRTMGL3'],size=(20),default_value='SRTMGL3',key='dataset')],
+        ],vertical_alignment='t')],
+        [sg.T('\n')],
+        [sg.Column([
+            [sg.T('ANOMALY CLEANUP',font=('Any',12,'bold'),size=40)],
+            [sg.T('Allows automatic cleanup of anomalous readings.')],
+            [sg.CB('Perform cleanup',True,enable_events=True,key='do_cleanup')],
+            [sg.CB('Display cleaned heightmap',False,disabled=False,key='show_cleanup')],
+        ],vertical_alignment='t'),
+        sg.Column([
+            [sg.T('SCALE HEIGHT',font=('Any',12,'bold'),size=40)],
+            [sg.T('Scale height of elevation changes (% of default).')],
+            [sg.Slider(range=(1,1000),default_value=400,size=(40,15),orientation='h',key='depth')],
+        ],vertical_alignment='t')],
+        [sg.T('\n')],
+        [sg.T('FILENAME', font=('Any',12,'bold'))],
+        [sg.T('Enter a filename for your mesh: '),sg.In('mesh',size=20,key='filename'),sg.T('.obj')],
+        [sg.T('\n')],
+        [sg.B('Generate',bind_return_key=True),sg.B('Cancel')],
+    ]
+    options_window = sg.Window('Mesh generation options',options_layout)
+
     main()
