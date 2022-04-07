@@ -10,32 +10,34 @@ from mingus.midi import midi_file_out
 
 ## OK, it's more of a chord-picker...
 
-def triad_rock_forward(triad):
+def rock_forward(triad):
     new_triad = []
     new_triad.append(triad[1])
     new_triad.append(triad[2])
     new_triad.append(triad[0])
     return new_triad
 
-def triad_rock_backward(triad):
+def rock_backward(triad):
     new_triad = []
     new_triad.append(triad[1])
     new_triad.append(triad[0])
     new_triad.append(triad[2])
     return new_triad
+
+# def pick3121
 
 
 ##### Arpeggio Maker Sliced
 ## Name the clip
-bar1name = "arpeggiotest"
+bar1name = "chordpicktest"
 bar1 = Bar()
 bar1_tonic = "F" # tonic note of the arpeggio
 chord = chords.major_triad(bar1_tonic) #Major
 # chord = chords.minor_triad(bar1_tonic) #Minor
 # chord = chords.diminished_triad(bar1_tonic) #Diminished
 # chord = ...
-# chord = triad_rock_forward(chord)
-# chord = triad_rock_backward(chord)
+# chord = rock_forward(chord)
+# chord = rock_backward(chord)
 
 ## Standard Slicing # May not really need slicing sections
 start = 0
@@ -52,7 +54,7 @@ step = 1
 # chord.sort() # probably not worth implementing but funny :)
 
 passes = 6
-note_denom = 16
+note_denom = 12
 loops = 1
 bps = 120
 for _ in range(passes):
@@ -63,4 +65,4 @@ for _ in range(passes):
 
 
 
-midi_file_out.write_Bar(f"{bar1name}.mid", bar1, bps, loops)
+midi_file_out.write_Bar(f"clips/{bar1name}.mid", bar1, bps, loops)

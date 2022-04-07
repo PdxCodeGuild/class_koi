@@ -30,9 +30,7 @@ chord = chords.major_triad(bar1_tonic) #Major
 # chord = chords.diminished_triad(bar1_tonic) #Diminished
 # chord = ...
 
-## You can use Python list methods and slicing to vary up arpeggios, like the reverse method below.
-
-## Standard Slicing
+## Standard Slicing # May not really need slicing sections
 start = 0
 end = 3
 step = 1
@@ -92,4 +90,4 @@ for _ in range(passes):
 
 # print(progression_arpeggios)
 
-print(chord)
+# print(chord)
