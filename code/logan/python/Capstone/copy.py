@@ -64,16 +64,16 @@ for tupe in solo_prog:
 rhythm_denom = 8
 for tupe in solo_prog:
     rhythm_chord = tupe[0]
-    for _ in range(tupe[1]):
+    for _ in range(1):
         rhythm_bar = simprhythm(rhythm_chord, rhythm_denom)
         rhythm_track.add_bar(rhythm_bar)
 ## write the lead - more interesting versions coming soon!  going to be a lot harder now that I know the scales submodule is not fully functional...
-lead_denom = 16
-for tupe in solo_prog:
-    lead_chord = tupe[0]
-    for _ in range(tupe[1]):
-        lead_bar = arplead(lead_chord, lead_denom)
-        lead_track.add_bar(lead_bar)
+# lead_denom = 8
+# for tupe in solo_prog:
+#     rhythm_chord = tupe[0]
+#     for _ in range(tupe[1]):
+#         rhythm_bar = simprhythm(rhythm_chord, rhythm_denom)
+#         rhythm_track.add_bar(rhythm_bar)
 
 
 ### write Blackmore (hard code)
@@ -209,8 +209,8 @@ blackmore_track.add_bar(q5)
 final_comp.add_track(bass_track)
 final_comp.add_track(rhythm_track)
 final_comp.add_track(blackmore_track)
-final_comp.add_track(lead_track)
+#final_comp.
 
 ## Output tracks
 # midi_file_out.write_Track("tracks/basstest.mid", bass_track, 120, 0)
-midi_file_out.write_Composition("compositions/projectpurple.mid", final_comp, bpm, loops)
+midi_file_out.write_Composition("compositions/copytest.mid", final_comp, bpm, loops)

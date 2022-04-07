@@ -19,6 +19,7 @@ from mingus.containers import Track
 from mingus.midi import midi_file_out
 
 def simpbass(chord, denominator):
+    "Writes really simple basslines"
     bar = Bar()
     note = chord[0]
     note = Note(note)
@@ -28,6 +29,7 @@ def simpbass(chord, denominator):
     return bar
 
 def simprhythm(chord, denominator):
+    "Writes really simple harmony like a rhythm guitar or piano"
     bar = Bar()
     notes = NoteContainer()
     notes.add_notes(chord)
@@ -35,6 +37,12 @@ def simprhythm(chord, denominator):
         bar.place_notes(notes, denominator)
     return bar
 
-def simplead(chord):
-
-    ...
+def arplead(chord, denominator):
+    "Coming soon, but soon enough?? ;)"
+    bar = Bar()
+    for note in chord:
+        note = Note()
+    for _ in range(10):
+        for note in chord:
+            bar.place_notes(note, denominator)
+    return bar
