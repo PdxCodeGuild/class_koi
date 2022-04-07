@@ -1,49 +1,111 @@
 # Mini-Capstone
 
-fred_api_key = '9ecdd2a2979134a81e26c655968c4f54'
-
-# import fredapi as fa
-# import pandas as pd
-# import matplotlib.pyplot as plt
-# fred = fa.Fred(api_key = fred_api_key)
-
-# gdp = fred.get_series('GDP')
-# gdp.name = 'gdp'
-# gdp.tail()
-
-# payems = fred.get_series('PAYEMS')
-# payems.name = 'payems'
-
-# df = pd.merge(gdp, payems, left_index=True, right_index=True)
-# print(df)
-# print(type(df))
-
-
-
-
 import pandas as pd
 import pandas_datareader as pdr
-import requests
+import pandas_datareader.data as web
 import datetime
 import matplotlib.pyplot as plt
+# from secrets import fred_api_key
 
-start_year = int(input('Enter the start year: '))
-start_month = int(input('Enter the start month (1-12): '))
+ #PAYEMS WPSFD4131 MEHOINUSA672N CPILFESL
+# get economic data from Federal Reserve Economic Data api
+def fred_get(start, end):
+    series1 = input('Enter the series name for economic data: ').upper()
+    df1 = pdr.DataReader(series1, 'fred', start, end)
+    return df1
 
-end_year = 2022
-end_month = 3
+# get historical stock prices from yahoo of adjusted close price
+def stock_get(start, end):
+    stock_ticker = input('Enter the stock ticker to compare: ').upper()
+    df_stk = web.DataReader(stock_ticker, 'yahoo', start, end)['Adj Close']
+    return df_stk
 
-series = 'PAYEMS' #PAYEMS WPSFD4131
+# plot 2 graphs FRED api data on top graph and stock prices on bottom with shared time axis
+def plot_graphs(df1, df_stk):
+    fig, axes = plt.subplots(2,1,sharex=True)
+    df1.plot(ax=axes[0])
+    df_stk.plot(ax=axes[1])
+    plt.show()
 
-start = datetime.date (start_year, start_month, 1)
-end = datetime.date (end_year, end_month, 1)
-series = 'PAYEMS' #PAYEMS WPSFD4131
-df = pdr.DataReader(series, 'fred', start, end)
+def get_time_start():
+    start_year = int(input('Enter the start year: '))
+    start_month = int(input('Enter the start month (1-12): '))
+    start = datetime.date (start_year, start_month, 1)
+    return start
+def get_time_end():
+    end_year = int(input('Enter the ending year: '))    
+    end_month = int(input('Enter the end month (1-12): '))
+    end = datetime.date (end_year, end_month, 1)
+    return end
 
-print(df)
-print(type(df))
-df.plot()
-plt.show()
+# df_stk = stock_get(start, end)
+# df1 = fred_get(series1, start, end)
+# plot_graphs(df1, df_stk)
+
+# indv_fred = input('Would you like to see the FRED data by itself [y]es or [n]o: ').upper()
+# if indv_fred == 'Y':
+#     df1 = fred_get(start, end)
+#     df1.plot()
+#     plt.show()
+# else:
+#     print('Thank you.')
+
+while True:
+    q1 = input(f'''What types of data would you like to compare:
+    Economic Data and Stock Price [1]
+    Economic Data and Economic Date [2]
+    Stock Price and Stock Price [3]
+    Just Stock Price [4]
+    Just Economic Data [5]
+    [0] to quit
+    : ''')
+    if q1 == '0':
+        break
+    if q1 == '1':
+        print('\nComparing Federal Economic Indicator Data with a Stock closing price:')
+        start = get_time_start()
+        end = get_time_end()
+        df1 = fred_get(start, end)
+        df_stk = stock_get(start, end)
+        plot_graphs(df1, df_stk)
+    if q1 == '2':
+        print('\nComparing an Economic Indicator with another Economic Indicator:')
+        start = get_time_start()
+        end = get_time_end()
+        df1 = fred_get(start, end)
+        df2 = fred_get(start, end)
+        plot_graphs(df1, df2)
+    if q1 == '3':
+        print('\nComparing an Stock closing price with another Stock closing price:')
+        start = get_time_start()
+        end = get_time_end()
+        df_stk = stock_get(start, end)
+        df_stk2 = stock_get(start, end)
+        plot_graphs(df_stk, df_stk2)
+    if q1 == '4':
+        print('\nGraph of Stock Closing price over specified time:')
+        start = get_time_start()
+        end = get_time_end()
+        df_stk = stock_get(start, end)
+        df_stk.plot()
+        plt.show()
+    if q1 == '5':
+        print('\nGraph of Economic indicator over specified time:')
+        start = get_time_start()
+        end = get_time_end()
+        df1 = fred_get(start, end)
+        df1.plot()
+        plt.show()
+
+        
 
 
 
+## Collects 2 series using datareader and plots both series on same graph
+# series1 = 'CPIAUCSL'
+# series2 = 'CPILFESL'
+# inflation = web.DataReader([series1, series2], 'fred', start, end)
+# inflation.head()
+# print(inflation)
+# inflation.plot()
+# plt.show()
