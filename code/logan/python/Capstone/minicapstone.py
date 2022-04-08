@@ -50,7 +50,7 @@ lead2_track = Track()
 lead2_track.name = "steady returning arpeggios"
 
 rhythm_track = Track()
-rhythm_track.name = "steady simple rhythm "
+rhythm_track.name = "steady simple harmony"
 
 bass_track = Track()
 bass_track.name = "steady simple bass"
@@ -247,3 +247,8 @@ final_comp.add_track(lead2_track)
 ## Output tracks
 # midi_file_out.write_Track("tracks/basstest.mid", bass_track, 120, 0)
 midi_file_out.write_Composition("compositions/projectpurple.mid", final_comp, bpm, loops)
+
+print("""
+Your MIDI awaits in /compositions.
+""")
+
