@@ -20,16 +20,18 @@ def heightmap_api(center,dataset,map_size):
     """
     Gets heightmap from API and saves. Returns bool based on success/failure.
     """
-    size_scale = round(map_size / 120,14)
-
+    # approximately convert miles from user input to lat/long offset value
+    size_scale = round(map_size / 120, 14)
+    # find edges of area using center point and offset value
     north = center[0] + size_scale
     south = center[0] - size_scale
     east = center[1] + size_scale
     west = center[1] - size_scale
-
+    # grab hidden API key
     api_key = SECRET_KEY
+    # build URL for request
     url = f'https://portal.opentopography.org/API/globaldem?demtype={dataset}&south={south}&north={north}&west={west}&east={east}&outputFormat=GTiff&API_Key={api_key}'
-
+    # request from API, save image if successful and return bool
     response = get(url, stream=True)
     if response.status_code == 200:
         with open(f'{path}/img_cache.tif','wb') as img_cache:
@@ -40,23 +42,34 @@ def heightmap_api(center,dataset,map_size):
 
 def make_heightmap():
     """
-    (MAYBE??) generate heightmap
+    Future - generate heightmap
     """
     pass
 
 def user_image():
     """
-    (MAYBE??) allow user to select a heightmap of their own
+    Future - allow user to select a heightmap of their own
     """
     pass
 
 def open_img():
     """
-    Opens image, converts to grayscale, and offers to resize if too large
+    Opens image and handles 16-bit pixel values.
     """
+    # open image and create variables
     img = Image.open(f'{path}/img_cache.tif')
-    img = ImageOps.grayscale(img)##################### do bit transform before greyscale conversion
-
+    width,height = img.size
+    pixels = img.load()
+    # reprocess to properly use 16-bit ints
+    new_pixels = []
+    for y in range(height):
+        new_pixels.append([])
+        for x in range(width):
+            new_pixels[y].append(pixels[x,y])
+    img_array = np.array(new_pixels, dtype=np.uint16)
+    img = Image.fromarray(img_array)
+    # save reprocessed image and regenerate/return variables
+    img.save(f'{path}/img_cache.tif')
     width,height = img.size
     pixels = img.load()
     return pixels,width,height
@@ -65,14 +78,17 @@ def img_resize(pixels,width,height):
     """
     Resizes images to standard size for processing time
     """
+    # process modified pixels back into an image
     resize_pixels = []
     for y in range(height):
         resize_pixels.append([])
         for x in range(width):
             resize_pixels[y].append(pixels[x,y])
-    img_array = np.array(resize_pixels, dtype=np.uint8)
+    img_array = np.array(resize_pixels, dtype=np.uint16)
+    # reload image and resize
     img_resize = Image.fromarray(img_array)
     img_resize = img_resize.resize((600,600))
+    # regenerate/return variables from image
     width,height = img_resize.size
     pixels = img_resize.load()
     return pixels,width,height
@@ -82,23 +98,29 @@ def find_white(pixels,width,height,show_cleanup):
     Scans image for anomalous white pixels and feeds them to white_correct
     when found.
     """
+    # create empty list if user asked to see cleaned image
     if show_cleanup:
         clean_pixels = []
+    # iterate through both axes
     for y in range(height):
         if show_cleanup:
             clean_pixels.append([])
         for x in range(width):
+            # save pixel value to z variable
             z = pixels[x,y]
-            # find white/error pixels
-            if z >= 255:
+            # find white/error pixels and send to correction function
+            if z >= 65000:
                 z = white_correct(x,y,pixels,width,height)
+                # change pixel value to results of cleanup
                 pixels[x,y] = z
             if show_cleanup:
                 clean_pixels[y].append(z)
+    # recreate image and display if user requested
     if show_cleanup:
-        img_array = np.array(clean_pixels, dtype=np.uint8)
+        img_array = np.array(clean_pixels, dtype=np.uint16)
         img_clean = Image.fromarray(img_array)
         img_clean.show()
+    # return cleaned pixels
     return pixels
 
 def white_correct(x,y,pixels,width,height):
@@ -115,7 +137,7 @@ def white_correct(x,y,pixels,width,height):
     # set bool for each direction
     n,s,e,w = False,False,False,False
     # search for non-white pixel to the north/south
-    while pixels[x,search[0]] == 255:
+    while pixels[x,search[0]] >= 65000:
         # break if needed to avoid range error
         if search[0] == 0:
             n = True
@@ -123,7 +145,7 @@ def white_correct(x,y,pixels,width,height):
         search[0] -= 1
         distance[0] += 1
         values[0] = pixels[x,search[0]]
-    while pixels[x,search[1]] == 255:
+    while pixels[x,search[1]] >= 65000:
         # break if needed to avoid range error
         if search[1] == height - 1:
             s = True
@@ -137,7 +159,7 @@ def white_correct(x,y,pixels,width,height):
     if s:
         values[1] = values[0]
     # search for non-white pixel to the east/west
-    while pixels[search[2],y] == 255:
+    while pixels[search[2],y] >= 65000:
         # break if needed to avoid range error
         if search[2] == 0:
             e = True
@@ -145,7 +167,7 @@ def white_correct(x,y,pixels,width,height):
         search[2] -= 1
         distance[2] += 1
         values[2] = pixels[search[2],y]
-    while pixels[search[3],y] == 255:
+    while pixels[search[3],y] >= 65000:
         # break if needed to avoid range error
         if search[3] == width - 1:
             w = True
@@ -177,10 +199,14 @@ def make_verts(pixels,width,height,depth):
     """
     Generates vertices from heightmap data
     """
+    # create empty list to hold vertices
     vertices = []
+    # iterate through all pixels
     for x in range(width):
         for y in range(height):
-            vertices.append((x,y,pixels[x,y] * depth))
+            # add tuple with x, y, and z coordinates to vertices list
+            vertices.append((x,y,round(pixels[x,y] * depth,2)))
+    # return completed list
     return vertices
 
 def make_polys(width,height):
@@ -189,7 +215,7 @@ def make_polys(width,height):
     """
     # empty list to hold poly information
     polys = []
-    #
+    # create polys referencing x/y vertices
     for x in range(width - 1):
         for y in range(height - 1):
             base = x * width + y
@@ -197,30 +223,41 @@ def make_polys(width,height):
             b = base + 1
             c = base + width + 1
             d = base + width
-
+            # add poly pairs to list
             polys.append((a,b,c))
             polys.append((a,c,d))
+    # return poly list
     return polys
 
 def make_obj(vertices,polys,filename):
     """
     Writes .obj file with data taken from heightmap
     """
+    # create file pased on user input
     with open(f'{path}/{filename}.obj', 'w') as obj_file:
+        # add vertices in format "v x-value y-value z-value"
         for vertex in vertices:
             obj_file.write(f'v {vertex[0]} {vertex[1]} {vertex[2]}\n')
+        # add polys in format "f corner-1 corner-2 corner-3"
         for poly in polys:
             obj_file.write(f'f {poly[2] + 1} {poly[1] + 1} {poly[0] + 1}\n')
 
 def main():
-
+    """
+    Main app function
+    """
     while True:
+        # set app-ending variable to False
         end_app = False
+        # initialize GUI and save events and values to variables
         event,values = options_window.read()
+        # break and set app-ending bariable to True if user closes GUI
         if event == sg.WIN_CLOSED or event == 'Cancel':
             end_app = True
             break
+        # save variables from input if user clicks "generate"
         elif event == 'Generate':
+            # take coordinate string input, split, and save to variable
             center = []
             for coord in values['coord'].split(','):
                 center.append(float(coord))
@@ -228,20 +265,22 @@ def main():
             dataset = values['dataset']
             do_cleanup = values['do_cleanup']
             show_cleanup = values['show_cleanup']
-            depth = values['depth'] / 4000
+            # adjust depth input to approximately simulate 100% = real terrain
+            depth = values['depth'] / 8000
             filename = values['filename']
             break
+        # disable/enable "display cleaned heightmap" option based on "perform cleanup option"
         if values['do_cleanup'] == True:
             options_window['show_cleanup'].update(disabled=False)
         if values['do_cleanup'] == False:
             options_window['show_cleanup'].update(disabled=True)
+    # close GUI
     options_window.close()
-
+    # close app if user closed GUI above
     if end_app:
         return
-
+    # if API request was successful, call functions
     if heightmap_api(center,dataset,map_size):
-        
         pixels,width,height = open_img()
         if do_cleanup:
             pixels = find_white(pixels,width,height,show_cleanup)
@@ -249,6 +288,7 @@ def main():
         vertices = make_verts(pixels,width,height,depth)
         polys = make_polys(width,height)
         make_obj(vertices,polys,filename)
+    # if API request failed, display error
     else:
         print('An error has occurred.')
 
@@ -292,5 +332,5 @@ if __name__ == '__main__':
         [sg.B('Generate',bind_return_key=True),sg.B('Cancel')],
     ]
     options_window = sg.Window('Mesh generation options',options_layout)
-
+    # call main function
     main()
