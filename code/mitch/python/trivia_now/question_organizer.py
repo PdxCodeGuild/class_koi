@@ -11,4 +11,3 @@ class Question:
         self.incorrect_3 = html.unescape(incorrect_answers[2])
 
 
-

@@ -1,11 +1,11 @@
+
 import random
 import dearpygui.dearpygui as dpg
 import time
 
 YELLOW = (247,191,80) #F7BF50 
 DARK_BROWN = (39,24,1)  #271801 
-BROWN = (120,93,38) #785D26 
-LIGHT_BROWN = (249,217,154) #F9D99A
+
 
 class TriviaMaster:
 
@@ -17,7 +17,6 @@ class TriviaMaster:
         self.question_text = self.current_question.text
         self.answers = [self.current_question.answer, self.current_question.incorrect_1, self.current_question.incorrect_2, self.current_question.incorrect_3]
         random.shuffle(self.answers)
-        print(question_list)
         
 
     def are_there_more_questions(self):
@@ -38,7 +37,7 @@ class TriviaMaster:
 
         
     def update_screen(self):
-        dpg.set_value(item="question", value=f"\nQ.{self.question_number}: {self.question_text}")
+        dpg.set_value(item="question", value=f"Q {self.question_number} of {len(self.question_list)}:  {self.question_text}")
         dpg.set_value(item="ans1", value=self.answers[0])
         dpg.set_value(item="ans2", value=self.answers[1])
         dpg.set_value(item="ans3", value=self.answers[2])
@@ -66,7 +65,7 @@ class TriviaMaster:
             
     def end_of_game(self):
 
-        dpg.set_value("final_score", f"\nYou've completed the quiz!!!\n\nYour final score was: {self.score}/{self.question_number}")
+        dpg.set_value("final_score", f"You've completed the round!!!\n\nYour final score was: {self.score}/{self.question_number}")
         
 
 
@@ -76,7 +75,7 @@ class TriviaMaster:
         dpg.create_viewport(title='Trivia Now', width=1234, height=1234) # Creates the viewport.
         dpg.setup_dearpygui() # Assigns the viewport.
 
-        width, height, _, data = dpg.load_image("code/mitch/python/trivia_game/trivia_logo.jpeg")
+        width, height, _, data = dpg.load_image("code/mitch/python/trivia_now/trivia_logo.jpeg")
         with dpg.texture_registry():
             texture_id = dpg.add_static_texture(width, height, data)
 
@@ -90,7 +89,7 @@ class TriviaMaster:
         with dpg.window(tag="Primary Window"):
             dpg.add_image(texture_id)
             dpg.add_spacing(count=6)
-            dpg.add_text(f"Q.{self.question_number}: {self.question_text}", tag="question", color=YELLOW, indent=50, wrap=1100)
+            dpg.add_text(f"Q {self.question_number} of {len(self.question_list)}:  {self.question_text}", tag="question", color=YELLOW, indent=50, wrap=1100)
             dpg.add_spacing(count=8)
             dpg.add_button(label=" A ", callback=lambda : self.check_answer(index=0), indent=50)
             dpg.add_text(self.answers[0], tag="ans1", color=YELLOW, indent=50, wrap=1100)
@@ -103,9 +102,8 @@ class TriviaMaster:
             dpg.add_spacing(count=8)
             dpg.add_button(label=" D ", callback=lambda : self.check_answer(index=3), indent=50)
             dpg.add_text(self.answers[3], tag="ans4", color=YELLOW, indent=50, wrap=1100)
-            dpg.add_spacing(count=8)
-            dpg.add_text("", tag="final_score", color=YELLOW, indent=350, wrap=1100)
-
+            dpg.add_spacing(count=12)
+            dpg.add_text("", tag="final_score", color=YELLOW, indent=350, wrap=800)
 
 
 
