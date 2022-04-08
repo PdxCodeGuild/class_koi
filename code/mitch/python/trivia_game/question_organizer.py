@@ -1,9 +1,7 @@
 
 import html
 
-
 class Question:
-
     def __init__(self, question_text:str, question_answer:str, incorrect_answers:list):
         """Breaks up the question data from the web API to be used by the trivia functions. Also converts HTML to characters."""
         self.text = html.unescape(question_text)
