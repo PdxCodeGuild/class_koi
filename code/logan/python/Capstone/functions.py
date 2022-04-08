@@ -80,14 +80,13 @@ def arpreturn(chord, denominator):
 def drums1():
     """
     Nothing special -- my first beat!  Set instrument to Late Nite Drum Kit in Ableton
-    UNDER CONSTRUCTION!  Need to find a way to pair notes to certain drums,
-    either for a specific Ableton set or somehow coded in the MIDI.
+    UNDER CONSTRUCTION!
     """
     bar = Bar()
     # bass_d = "C"
     # splat = "G"
-    bass_d = Note("C", 2) # This works!
-    splat = Note("F", 2)  # This doesn't get the right note for snare and I don't know why.
+    bass_d = Note("C", 2) 
+    splat = Note("F", 2)  
     # bass_d.octave_down()
     # bass_d.octave_down()
     # splat.octave_down()
@@ -98,4 +97,4 @@ def drums1():
 
 # test = drums1()
 
-# midi_file_out.write_Bar("compositions/beattest.mid", test, 120, 1)
+# midi_file_out.write_Bar("compositions/beattest.mid", test, 120, 7)
