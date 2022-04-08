@@ -5,27 +5,29 @@ import pandas_datareader as pdr
 import pandas_datareader.data as web
 import datetime
 import matplotlib.pyplot as plt
-# from secrets import fred_api_key
+import stock_tickers
+import fred_series_display
 
- #PAYEMS WPSFD4131 MEHOINUSA672N CPILFESL
 # get economic data from Federal Reserve Economic Data api
 def fred_get(start, end):
-    fred_series = input('Would you like a list of economic indicators [y]es or [n]: ').upper()
+    fred_series = input('Would you like a list of economic indicators with SERIES [y]es or [n]: ').upper()
     while True:
         if fred_series == 'Y':
+            fred_series_display.display_series()
             break
         elif fred_series == 'N':
             break
         fred_series = input('Please chose [y]es or [n]o: ').upper()
-    series1 = input('Enter the series name for economic data: ').upper()
+    series1 = input('Enter the SERIES name for economic Indicator: ').upper()
     df1 = pdr.DataReader(series1, 'fred', start, end)
     return df1
 
 # get historical stock prices from yahoo of adjusted close price
 def stock_get(start, end):
-    stock_ticker = input('Would you like a list of economic indicators [y]es or [n]: ').upper()
+    stock_ticker = input('Would you like a list of stock tickers [y]es or [n]: ').upper()
     while True:
         if stock_ticker == 'Y':
+            stock_tickers.display_stock_tickers()
             break
         elif stock_ticker == 'N':
             break
