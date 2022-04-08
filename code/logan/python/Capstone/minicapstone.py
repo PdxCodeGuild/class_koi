@@ -34,12 +34,12 @@ from functions import gallopbass
 ## The chord progression to be automated over tupled with the number of bars the chord lingers.
 solo_prog = [(chords.minor_triad("D"), 2), (chords.major_triad("Bb"), 2), (chords.major_triad("C"), 2), (chords.major_triad("A"), 2)]
 
-### coming soon!  Do multiple progressions at once in the same song...
+### coming soon!  Do multiple progressions at once in the same song...a whole song at once!  Just loop a the list of progressions...
 ### progs = []
 
 ### composition
 final_comp = Composition()
-## composition Parameters
+## adjustable composition Parameters
 bpm = 120
 loops = 0
  
@@ -86,9 +86,13 @@ for tupe in solo_prog: # Cycle through the progression(s) to populated with note
     for _ in range(tupe[1]):
         lead_bar = arp(lead_chord, lead_denom)
         lead_track.add_bar(lead_bar)
-## write drums -- need to work through the note-mapping into sample like Ableton's.
+## write beats -- need to work through the note-mapping into sample like Ableton's, goofs up when octave is off and correct values are presently unknown.
+## COMING SOON ##
+
 
 ### write Blackmore (hard code)
+## I could make these generalizable and not hard-coded if mingus.scales was finished...
+## ...I could add the functionality without modifying the package itself, but it will take time.
 ## note define
 elow = Note("E", 4)
 a = Note("A", 4)
@@ -218,7 +222,6 @@ q5.place_notes(elow,16)
 blackmore_track.add_bar(q5)
 
 ### write alternate lead
-
 lead2_denom = 16
 for tupe in solo_prog: # Cycle through the progression(s) to populated with notes...
     lead2_chord = tupe[0] # This repeats note population for correct # of bars.
@@ -226,6 +229,7 @@ for tupe in solo_prog: # Cycle through the progression(s) to populated with note
         lead2_bar = arpreturn(lead2_chord, lead2_denom)
         lead2_track.add_bar(lead2_bar)
 
+### write galloping bass
 bass2_denom = 8 # Choose what length of note you want to take as a parameter
 for tupe in solo_prog: # Cycle through the progression(s) to populated with notes...
     bass2_chord = tupe[0]
@@ -248,6 +252,8 @@ final_comp.add_track(lead2_track)
 # midi_file_out.write_Track("tracks/basstest.mid", bass_track, 120, 0)
 midi_file_out.write_Composition("compositions/projectpurple.mid", final_comp, bpm, loops)
 
+
+## Print *something* so non-Logan users aren't like "wtf just happened?"
 print("""
 Your MIDI awaits in /compositions.
 """)
