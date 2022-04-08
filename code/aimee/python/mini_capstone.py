@@ -97,7 +97,7 @@ while True:
                 lines.remove(x)
                 pantry_list.append(lines)                
                 fresh_pantry = ','.join([str(i) for i in lines])                
-                f.write(fresh_pantry + ',')            
+                f.write(fresh_pantry)            
             msgbox(f'{x} has been deleted!', ok_button='Woo!')
         elif x not in lines:
             msgbox('It doesn\'t look like that ingredient is in your pantry!', ok_button='Return to menu')
@@ -116,7 +116,7 @@ while True:
         msgbox('Goodbye!', ok_button='Exit', image=goodbye_image)
         break
 
-with open('D:/documents/pdxcodeguild/class_koi/code/aimee/python/pantry.txt', 'r') as f:
-            lines = f.read().split('\n')
-            fresh_pantry = ','.join([str(x) for x in lines])
+# with open('D:/documents/pdxcodeguild/class_koi/code/aimee/python/pantry.txt', 'r') as f:
+#             lines = f.read().split('\n')
+#             fresh_pantry = ','.join([str(x) for x in lines])
             
