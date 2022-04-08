@@ -77,4 +77,4 @@ Enjoy the demonstration!
 
 
 
-In memoriam Loren J Yeager
+In memoriam Loren Yeager
