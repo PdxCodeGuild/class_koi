@@ -9,6 +9,8 @@ from mingus.containers import NoteContainer
 from mingus.containers import Bar
 from mingus.midi import midi_file_out
 
+# Old version of functions page
+
 def simpbass(chord, denominator):
     bar = Bar()
     note = chord[0]

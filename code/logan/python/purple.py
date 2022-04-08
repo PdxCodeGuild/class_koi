@@ -93,6 +93,7 @@ q3.place_notes(d, 16)
 q3.place_notes(e, 16)
 q3.place_notes(e, 16)
 
+# Blackmore Lick 4
 q4 = Bar()
 q4.place_notes(ahigh,16)
 q4.place_notes(ab,16)
@@ -114,6 +115,8 @@ q4.place_notes(f,16)
 q4.place_notes(elow,16)
 q4.place_notes(elow,16)
 #########################
+
+# Blackmore Lick 5
 q5 = Bar()
 q5.place_notes(f,16)
 q5.place_notes(e,16)
@@ -139,7 +142,7 @@ q5.place_notes(elow,16)
 # midi_file_out.write_Bar("BlackmoreLick4.mid", q4, 120, 1)
 # midi_file_out.write_NoteContainer("test.mid", lick1)
 
-midi_file_out.write_Bar("BlackmoreTest.mid", q1, 120, 1)
+midi_file_out.write_Bar("clips/BlackmoreTest.mid", q1, 120, 1)
 
 
 

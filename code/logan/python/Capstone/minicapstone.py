@@ -2,6 +2,7 @@
 #################################
 
 ### for acquiring and using music theoretical data
+from typing import final
 import mingus.core.progressions as progressions
 import mingus.core.chords as chords
 import mingus.core.scales
@@ -25,7 +26,9 @@ from mingus.midi import midi_file_out
 ## these compose things for me algorithmically
 from functions import simpbass
 from functions import simprhythm
-from functions import arplead
+from functions import arp
+from functions import arpreturn
+from functions import gallopbass
 
 ### feed
 ## The chord progression to be automated over tupled with the number of bars the chord lingers.
@@ -39,45 +42,54 @@ final_comp = Composition()
 ## composition Parameters
 bpm = 120
 loops = 0
-
-
-### tracks
+ 
+### open MIDI tracks and name them
 lead_track = Track()
-lead_track.name = "regular steady lead"
+lead_track.name = "steady arpeggios"
+lead2_track = Track()
+lead2_track.name = "steady returning arpeggios"
+
 rhythm_track = Track()
-rhythm_track.name = "regular steady rhythm "
+rhythm_track.name = "steady simple rhythm "
+
 bass_track = Track()
-bass_track.name = "regular steady bass"
+bass_track.name = "steady simple bass"
+bass2_track = Track()
+bass2_track.name = "galloping bass"
+
 blackmore_track = Track()
 blackmore_track.name = "Blackmore"
 
 
-### track writing -- these will be condenses to functions in future versions
+
+### track writing -- these will be condensed to functions in future versions!!
+
 ## write the bass
-bass_denom = 8
-for tupe in solo_prog:
+bass_denom = 8 # Choose what length of note you want to take as a parameter
+for tupe in solo_prog: # Cycle through the progression(s) to populated with notes...
     bass_chord = tupe[0]
-    for _ in range(tupe[1]):
+    for _ in range(tupe[1]): # This repeats note population for correct # of bars.
+        # bass_bar = gallopbass(bass_chord)
         bass_bar = simpbass(bass_chord, bass_denom)
         bass_track.add_bar(bass_bar)
 ## write the rhythm
-rhythm_denom = 8
-for tupe in solo_prog:
+rhythm_denom = 8 # Choose what length of note you want to take as a parameter
+for tupe in solo_prog: # Cycle through the progression(s) to populated with notes...
     rhythm_chord = tupe[0]
-    for _ in range(tupe[1]):
+    for _ in range(tupe[1]): # This repeats note population for correct # of bars.
         rhythm_bar = simprhythm(rhythm_chord, rhythm_denom)
         rhythm_track.add_bar(rhythm_bar)
 ## write the lead - more interesting versions coming soon!  going to be a lot harder now that I know the scales submodule is not fully functional...
 lead_denom = 16
-for tupe in solo_prog:
-    lead_chord = tupe[0]
+for tupe in solo_prog: # Cycle through the progression(s) to populated with notes...
+    lead_chord = tupe[0] # This repeats note population for correct # of bars.
     for _ in range(tupe[1]):
-        lead_bar = arplead(lead_chord, lead_denom)
+        lead_bar = arp(lead_chord, lead_denom)
         lead_track.add_bar(lead_bar)
-
+## write drums -- need to work through the note-mapping into sample like Ableton's.
 
 ### write Blackmore (hard code)
-## Notes
+## note define
 elow = Note("E", 4)
 a = Note("A", 4)
 bb = Note("Bb", 4)
@@ -92,7 +104,7 @@ f = Note("F", 5)
 eb = Note("Eb", 5)
 db = Note("Db", 5)
 ahigh = Note("A", 5)
-## Bar 1
+## bar 1
 q1 = Bar()
 q1.place_notes(a,16)
 q1.place_notes(bb,16)
@@ -113,7 +125,8 @@ q1.place_notes(c,16)
 
 blackmore_track.add_bar(q1)
 blackmore_track.add_bar(q1)
-## Bar 2
+
+## bar 2
 q2 = Bar()
 q2.place_notes(bb, 16)
 q2.place_notes(c, 16)
@@ -134,7 +147,8 @@ q2.place_notes(d, 16)
 
 blackmore_track.add_bar(q2)
 blackmore_track.add_bar(q2)
-## Bar 3
+
+## bar 3
 q3 = Bar()
 q3.place_notes(c, 16)
 q3.place_notes(d, 16)
@@ -155,7 +169,8 @@ q3.place_notes(e, 16)
 
 blackmore_track.add_bar(q3)
 blackmore_track.add_bar(q3)
-## Bar 4
+
+## bar 4
 q4 = Bar()
 q4.place_notes(ahigh,16)
 q4.place_notes(ab,16)
@@ -178,7 +193,7 @@ q4.place_notes(elow,16)
 q4.place_notes(elow,16)
 
 blackmore_track.add_bar(q4)
-## Bar 5
+## bar 5
 q5 = Bar()
 q5.place_notes(f,16)
 q5.place_notes(e,16)
@@ -202,7 +217,23 @@ q5.place_notes(elow,16)
 
 blackmore_track.add_bar(q5)
 
-##############################
+### write alternate lead
+
+lead2_denom = 16
+for tupe in solo_prog: # Cycle through the progression(s) to populated with notes...
+    lead2_chord = tupe[0] # This repeats note population for correct # of bars.
+    for _ in range(tupe[1]):
+        lead2_bar = arpreturn(lead2_chord, lead2_denom)
+        lead2_track.add_bar(lead2_bar)
+
+bass2_denom = 8 # Choose what length of note you want to take as a parameter
+for tupe in solo_prog: # Cycle through the progression(s) to populated with notes...
+    bass2_chord = tupe[0]
+    for _ in range(tupe[1]): # This repeats note population for correct # of bars.
+        # bass_bar = gallopbass(bass_chord)
+        bass2_bar = gallopbass(bass2_chord)
+        bass2_track.add_bar(bass2_bar)
+
 
 ### Output
 ## Gather the tracks for output
@@ -210,6 +241,8 @@ final_comp.add_track(bass_track)
 final_comp.add_track(rhythm_track)
 final_comp.add_track(blackmore_track)
 final_comp.add_track(lead_track)
+final_comp.add_track(bass2_track)
+final_comp.add_track(lead2_track)
 
 ## Output tracks
 # midi_file_out.write_Track("tracks/basstest.mid", bass_track, 120, 0)
