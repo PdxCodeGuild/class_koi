@@ -10,13 +10,27 @@ import matplotlib.pyplot as plt
  #PAYEMS WPSFD4131 MEHOINUSA672N CPILFESL
 # get economic data from Federal Reserve Economic Data api
 def fred_get(start, end):
+    fred_series = input('Would you like a list of economic indicators [y]es or [n]: ').upper()
+    while True:
+        if fred_series == 'Y':
+            break
+        elif fred_series == 'N':
+            break
+        fred_series = input('Please chose [y]es or [n]o: ').upper()
     series1 = input('Enter the series name for economic data: ').upper()
     df1 = pdr.DataReader(series1, 'fred', start, end)
     return df1
 
 # get historical stock prices from yahoo of adjusted close price
 def stock_get(start, end):
-    stock_ticker = input('Enter the stock ticker to compare: ').upper()
+    stock_ticker = input('Would you like a list of economic indicators [y]es or [n]: ').upper()
+    while True:
+        if stock_ticker == 'Y':
+            break
+        elif stock_ticker == 'N':
+            break
+        stock_ticker = input('Please chose [y]es or [n]o: ').upper()
+    stock_ticker = input('Enter the stock ticker: ').upper()
     df_stk = web.DataReader(stock_ticker, 'yahoo', start, end)['Adj Close']
     return df_stk
 
@@ -41,37 +55,35 @@ def get_time_start():
         else:
             break
     start_month = int(input('Enter the start month (1-12): '))
+    while True:
+        if start_month >= 1 and start_month <= 12:
+            break
+        else:
+            start_month = int(input('Please enter a month between (1-12): '))
     start = datetime.date (start_year, start_month, 1)
     return start
 # get end year and month of data from user
 def get_time_end():
-    end_year = int(input('Enter the ending year: '))  
-    end_month = int(input('Enter the end month (1-12): '))
-    end = datetime.date (end_year, end_month, 1)
+    end_year = int(input('Enter the ending year: '))
     while True:
-        if end.year == start.year and end.month < start.month:
+        if end_year < start.year:
+            end_year = int(input(f'Please enter an ending year the same or after the start year "{start.year}": '))
+        else:
+            break
+    end_month = int(input('Enter the end month (1-12): '))
+    while True:
+        if end_year == start.year and end_month <= start.month:
             print('End date must be after Start date')
-            end_year = int(input(f'Please enter an end year after the start date "{start}": '))
-            end_month = int(input(f'Please enter a month after the start date "{start}": '))
-        if end.year < start.year:
+            end_year = int(input(f'Please enter an end year after the start year "{start.year}": '))
+            end_month = int(input(f'Please enter a month after the start month "{start}": '))
+        if end_year < start.year:
             print('End date must be after Start date')
             end_year = int(input(f'Please enter an end year after the start date "{start}": '))
             end_month = int(input(f'Please enter a month after the start date "{start}": '))
         else:
             break
+    end = datetime.date (end_year, end_month, 1)
     return end
-
-# df_stk = stock_get(start, end)
-# df1 = fred_get(series1, start, end)
-# plot_graphs(df1, df_stk)
-
-# indv_fred = input('Would you like to see the FRED data by itself [y]es or [n]o: ').upper()
-# if indv_fred == 'Y':
-#     df1 = fred_get(start, end)
-#     df1.plot()
-#     plt.show()
-# else:
-#     print('Thank you.')
 
 while True:
     q1 = input(f'''What types of data would you like to compare:
