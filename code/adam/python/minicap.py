@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import stock_tickers
 import fred_series_display
 
-# get economic data from Federal Reserve Economic Data api
+# function to get economic data from Federal Reserve Economic Data api
 def fred_get(start, end):
     fred_series = input('Would you like a list of economic indicators with SERIES [y]es or [n]: ').upper()
     while True:
@@ -22,9 +22,9 @@ def fred_get(start, end):
     df1 = pdr.DataReader(series1, 'fred', start, end)
     return df1
 
-# get historical stock prices from yahoo of adjusted close price
+# function to get historical stock prices from yahoo of adjusted close price
 def stock_get(start, end):
-    stock_ticker = input('Would you like a list of stock tickers [y]es or [n]: ').upper()
+    stock_ticker = input('Would you like a list of companies and their stock tickers [y]es or [n]: ').upper()
     while True:
         if stock_ticker == 'Y':
             stock_tickers.display_stock_tickers()
@@ -36,19 +36,19 @@ def stock_get(start, end):
     df_stk = web.DataReader(stock_ticker, 'yahoo', start, end)['Adj Close']
     return df_stk
 
-# plot 2 graphs of data sets with shared time axis
+# function to plot 2 graphs of data sets with shared time axis
 def plot_graphs(df1, df_stk):
     fig, axes = plt.subplots(2,1,sharex=True)
     df1.plot(ax=axes[0])
     df_stk.plot(ax=axes[1])
     plt.show()
 
-# plot single set of data across specified time
+# function to plot single set of data across specified time
 def plot_graph1(df):
     df.plot()
     plt.show()
 
-# get start year and month of data from user
+# function to get start year and month of data from user
 def get_time_start():
     start_year = int(input('Enter the start year: '))
     while True:
@@ -64,7 +64,8 @@ def get_time_start():
             start_month = int(input('Please enter a month between (1-12): '))
     start = datetime.date (start_year, start_month, 1)
     return start
-# get end year and month of data from user
+
+# function to get end year and month of data from user
 def get_time_end():
     end_year = int(input('Enter the ending year: '))
     while True:

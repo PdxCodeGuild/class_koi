@@ -102,12 +102,22 @@ economic_indicator_series = [
     ['Exports: Services', 'BOPGSXP'],
     ['Imports: Services', 'BOPSIMP'],
     ['Balance: Services', 'BOPSTB'],
-    ['Balance: Goods & Services', 'BOPGSTB']]
+    ['Balance: Goods & Services', 'BOPGSTB'],
+    ['All Employees, Total Nonfarm', 'PAYEMS']]
 
 def display_series():
     t = Texttable()
     t.add_rows(economic_indicator_series)
     print(t.draw())
 
-
 # print(tabulate((economic_indicator_series), headers=['Economic Indicator', 'Series'], tablefmt='orgtbl'))
+'''
+import datetime
+import pandas_datareader.data as web
+
+start = datetime.date (2020, 1, 1)
+end = datetime.date (2022, 3, 1)
+stock_ticker = input('Enter the stock ticker: ').upper()
+df_stk = web.DataReader(stock_ticker, 'yahoo', start, end)#['Adj Close']
+print(df_stk)
+'''
