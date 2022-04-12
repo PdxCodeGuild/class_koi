@@ -27,32 +27,31 @@ p {
     font-size:x-large;
     color: whitesmoke;
     text-align: left;
-    background-color: rgba(0, 0, 0, 1);
+    background-color: rgba(0, 0, 0, .8);
     font-family: 'Times New Roman', Times, serif;
     padding-left: 50rem;
     padding-right: 50rem;
-    border: 5px solid whitesmoke;
-    border-radius: 5px;
+    /* border: 5px solid whitesmoke;
+    border-radius: 5px; */
 
 }
 
-ul {
-
-    /* padding-left: 50rem;
-    padding-right: 50rem; */
-    text-align: center;
+ul {list-style-type: circle;
+    /* text-align: center; */
     list-style-position: inside;
-    background-color: rgba(0, 0, 0, 0.75);
+    /* background-color: rgba(0, 0, 0, 0.8); */
+    /* border: 5px solid whitesmoke;
+    border-radius: 5px; */
 }
 
 li {
-    font-size: larger;
+    font-size: x-large;
     color: whitesmoke;
     /* text-align: justify; */
     background-color: rgba(0, 0, 0, 0.75);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    
-
+    font-family: 'Times New Roman', Times, serif;
+    padding-left: 50rem;
+    padding-right: 50rem;
 }
 
 a {
