@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap");
+
+
+
+body {
+	background-color: #3F9994;
+    align-self: center;
+}
+
+hr {
+    height: 4px;
+    background-color: #99542F;
+    border: none
+}
+
+h1 {
+	color: #661A15;
+	font-family: 'Source Serif Pro', serif;
+	font-size: 40px;
+	text-align: center;
+}
+
+h3 {
+    color: #99542F;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 30px;
+    padding-top: 40px;
+    clear: both;
+    text-transform: uppercase;
+}
+
+p {
+    color: #661A15;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 17px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 10px;
+}
+
+ul {
+    color: #661A15;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 17px;
+    padding-top: 10px;
+
+}
+
+img {
+    height: 400px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+    border-radius: 15%;
+    
+}
+
+
+.image1 {
+    float: right;
+    height: 300px;
+	margin-right: 120px;
+}
+
+.image3 {
+    float: left;
+    height: 300px;
+	margin-left: 120px;
+}
+
+.image2 {
+    height: 300px;
+}
+
+.link {
+    text-align: left;
+}
+
+a {
+    color: #536665
+}
+
+a:visited {
+    color: #BDEAE8
+}
