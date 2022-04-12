@@ -1,0 +1,22 @@
+{
+	"name": "Samuel U Squanch",
+	"bio": "Sam is a political prisoner, held hostage for vocalizing beliefs labeled as subversive. Before imprisonment, Sam was a prolific outdoorsman who also loved singing and skiing. Additionally, Sam is notable for launching the world's first cryptid currency: BFC.",
+	"link": "https://en.wikipedia.org/wiki/Bigfoot",
+	"photo": "mrsquanch.jpg", 
+	"places_lived": [
+		"Del Norte County, CA",
+		"Ape Canyon, WA",
+        "Siskiyou County, CA",
+        "Provo Canyon, UT",
+        "Allegheny National Forest, PA",
+        "Johnstown, PA",
+        "Summerville, OR",
+        "Silverton, BC",
+        "Josephine County, OR"
+	],
+	"quote": "From each according to his ability, to each according to his needs.",
+    "extraphoto1": "squanchsing.jpg",
+    "extraphoto2": "squanchski.jpg",
+    "extraphoto3": "squanchbusiness.jpg",
+    "extraphoto4": "squanchpose.jpg"
+}
