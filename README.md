@@ -50,10 +50,12 @@ Presentation Day: June 24th, 2022
 
 [URL Shortener](4%20Django/labs/Optional%20URL%20Shortener.md) -->
 
-<!-- ## HTML/CSS Labs Assigned:
+## HTML/CSS Labs Assigned:
+| Lab   | Name                                                                         | Date Assigned | Due By      | Hard Due Date |
+| ----- | ---------------------------------------------------------------------------- | ------------- | ------------| ------------- |
+| 01    | [Bio](3%20HTML%20+%20CSS/labs/01%20Bio.md)                                   | Apr 12th      | Apr 15th    | Apr 26th      |
 
-* [Lab 01 Bio](3%20HTML%20+%20CSS/labs/01%20Bio.md)
-* [Lab 02 Blog](3%20HTML%20+%20CSS/labs/02%20Blog.md)
+<!-- * [Lab 02 Blog](3%20HTML%20+%20CSS/labs/02%20Blog.md)
 * [Lab 03 Company](3%20HTML%20+%20CSS/labs/03%20Company.md)
 * [Lab 05 Personal Portfolio](3%20HTML%20+%20CSS/labs/05%20Personal%20Portfolio.md) -->
 
