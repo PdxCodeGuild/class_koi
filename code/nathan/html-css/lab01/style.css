@@ -60,7 +60,6 @@ button:hover{
     transform: scale(1.1);
     transition: 0.2s ease-in;
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(0px);
 }
 
 .about{
@@ -70,11 +69,7 @@ button:hover{
 .about-container{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: center;
-    justify-content: center;
     margin: 0 auto;
-    height: 90%;
-    width: 100%;
     max-width: 1300px;
     padding: 0 50px;
 }
@@ -83,14 +78,8 @@ button:hover{
     margin: 10px;
     height: 500px;
     width: 500px;
-    border-radius: 4px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-}
-
-.content_main{
-    width: 100%;
 }
 
 .about-content h1{
