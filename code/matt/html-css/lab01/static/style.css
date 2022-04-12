@@ -84,7 +84,7 @@ img {
 }
 
 .imgstrip img {
-    border-radius: 200px;
+    border-radius: 100%;
 }
 
 .quote {
