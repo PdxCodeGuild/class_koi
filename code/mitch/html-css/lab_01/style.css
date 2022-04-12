@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Abel&family=Source+Serif+Pro&display=swap");
 
 
 body {
@@ -31,14 +31,15 @@ h3 {
 
 p {
     color: #661A15;
-    font-family: 'Source Serif Pro', serif;
-    font-size: 17px;
+    font-family: 'Abel', sans-serif;
+    font-size: 19px;
     padding-left: 50px;
     padding-right: 50px;
     padding-top: 10px;
 }
 
 ul {
+    list-style: none;
     color: #661A15;
     font-family: 'Source Serif Pro', serif;
     font-size: 17px;
@@ -73,6 +74,7 @@ img {
 }
 
 .link {
+    padding-top: 50px;
     text-align: left;
 }
 
