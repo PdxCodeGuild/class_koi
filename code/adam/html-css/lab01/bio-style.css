@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Rubik+Moonrocks&display=swap');
+
+h1 {
+	color: #b8ff8f;
+	font-family: 'Rubik Moonrocks', cursive;
+	font-size: 115px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+body {
+	background-image: url('boognish_symbol_brown.jpg');
+}
+
+p {
+	font-size: larger;
+	color: #7eff61;
+	background-color: rgba(0, 0, 0, 0.5);
+	font-family: 'Inter', sans-serif;
+	padding-left: 10rem;
+	padding-right: 10rem;
+}
+
+a {
+    color: #f4ff61;
+}
+a:hover {color: red;}
+
+a:visited {
+    color: #19ca09;
+}
+
+img {
+    width: 500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+	border-radius: 25px;
+}
+
+p {
+    text-align: center;
+	font-family: 'Inter', sans-serif;
+	padding-left: 20rem;
+	padding-right: 20rem
+}
+
+p {
+    text-align: center;
+	font-family: cursive;
+	padding-left: 20rem;
+	padding-right: 20rem
+}
+
+ul {
+    color: #1a2315;
+	font-size: larger;
+	list-style: circle;
+}

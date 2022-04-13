@@ -17,6 +17,9 @@ h1 {
 
 body {
 	background-image: url('jeremy-thomas-4dpAqfTbvKA-unsplash-2.jpg');
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 p {
