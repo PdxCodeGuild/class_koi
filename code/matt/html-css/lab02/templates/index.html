@@ -1,0 +1,47 @@
+<!-- 
+PDX Code Guild - Class Koi
+HTML Lab 02 - Blog
+Matt Walsh
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{pagename}}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@1.1.0/modern-normalize.min.css">
+    <link rel="stylesheet" type= "text/css" href="{{url_for('static',filename='style.css')}}">
+</head>
+<body>
+    <header>
+        {{pagename}}
+    </header>
+    <nav>
+        {%for author in authors%}
+        <button>{{author}}</button>
+        {%endfor%}
+    </nav>
+    <main>
+        <aside>
+            <button>Hello</button>
+            <button>Goodbye</button>
+            <button>Hold on</button>
+            <button>I wasn't ready</button>
+            <button>Okay</button>
+            <button>Now I am</button>
+        </aside>
+        <section>
+            {%for post in posts%}
+            <article>
+                <h1>{{post['title'].title()}}</h1>
+                <h3>by {{post['author']}}</h3>
+                {{post['body']}}
+            </article>
+            {%endfor%}
+        </section>
+    </main>
+</body>
+</html>
