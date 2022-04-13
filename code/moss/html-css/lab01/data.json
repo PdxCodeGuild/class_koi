@@ -1,0 +1,17 @@
+{
+	"name": "John Malkovich",
+	
+    "bio": "John Malkovich is an American actor and producer best known for his performance in movies, such as 'Places in the Heart' and 'In the Line of Fire' for which he received 'Academy Award' nominations. He has enjoyed a long and productive career spanning four decades in Hollywood. Starting out as an actor, he eventually made it big as a producer too. A love for performance arts was something he was born with, though neither of his parents was from show business. He displayed a keen interest in acting from childhood and was an active participant in high school plays. As a teenager, he was part of a folk rock musical group and was also part of a summer theatre project. He began his acting career as a stage actor. He became a charter member of 'Steppenwolf Theatre Company' and appeared in several of their productions. He made his Broadway debut as 'Biff' in 'Death of a Salesman.' Following his successful stage career, he branched out into films. During his initial years in Hollywood, he managed to land only minor roles. He finally landed a major role in 'Places in the Heart' where he played 'Mr. Will' for which he was nominated for the 'Academy Award' for 'Best Supporting Actor'",
+	
+    "link": "https://en.wikipedia.org/wiki/John_Malkovich",
+	
+    "photo": "https://media.vanityfair.com/photos/586be46ee03efa527a184a8c/2:3/w_639,h_959,c_limit/John-Malkovich-Fashion-Designer.jpg", 
+	
+    "places_lived": [
+		"Illinois, USA",
+		"Provence, France",
+        "Massachusetts, USA"
+    ],
+
+	"quote": "Hunger comes and goes, but dignity, never returns."
+}
