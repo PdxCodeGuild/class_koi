@@ -5,8 +5,9 @@
 	
     "link": "https://en.wikipedia.org/wiki/John_Malkovich",
 	
-    "photo": "https://media.vanityfair.com/photos/586be46ee03efa527a184a8c/2:3/w_639,h_959,c_limit/John-Malkovich-Fashion-Designer.jpg", 
-	
+    "image1": "https://media.vanityfair.com/photos/586be46ee03efa527a184a8c/2:3/w_639,h_959,c_limit/John-Malkovich-Fashion-Designer.jpg", 
+
+  
     "places_lived": [
 		"Illinois, USA",
 		"Provence, France",
