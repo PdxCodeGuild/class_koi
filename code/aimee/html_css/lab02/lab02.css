@@ -1,0 +1,38 @@
+
+* {
+    background-color: #d6e8e8;
+}
+
+nav {
+    min-height: 12vh; 
+    
+    
+}
+a {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #545454;
+    justify-content: center;
+}
+a:hover {
+    color: #242424;
+}
+.container {
+   display: flex; 
+   flex-direction: row;
+   justify-content: center;
+}
+section {
+    display: flex;
+    flex-direction: column;
+
+}
+.banner {
+   width: 100%;
+   margin-bottom: 10px;
+}
+
+
+/* font-family: 'Playfair Display', serif; */
