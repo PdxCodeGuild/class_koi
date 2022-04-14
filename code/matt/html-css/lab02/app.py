@@ -12,10 +12,27 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    pagename = contents['pagename']
-    posts = contents['posts']
-    
-    return render_template('index.html', pagename=pagename, posts=posts, authors=authors)
+    main_page = True
+    return render_template('index.html', pagename=pagename, posts=posts, authors=authors, main_page=main_page)
+
+@app.route('/by/<string:author>')
+def posts_by(author):
+    author_posts = []
+    for post in posts:
+        if post['author'].lower() == author.lower():
+            author_posts.append(post)
+    return render_template('index.html',pagename=pagename, posts=author_posts, authors=authors)
+
+@app.route('/posts/<string:slug>')
+def single_post(slug):
+    this_post = []
+    for post in posts:
+        if post['slug'] == slug:
+            post_page = True
+            this_post.append(post)
+    return render_template('index.html',pagename=pagename, posts=this_post, authors=authors, post_page=post_page)
+
+
 
 contents = open('./code/matt/html-css/lab02/data.json')
 contents = json.load(contents)
@@ -26,11 +43,10 @@ for posts in contents['posts']:
 authors = list(set(authors))
 authors.sort()
 
-for author in authors:
-    @app.route(f'/{author}')
-    def author():
-        pagename = contents['pagename']
-        posts = contents['posts']
-        return render_template(f'{author}.html', pagename=pagename, posts=posts, authors=authors)
+pagename = contents['pagename']
+posts = contents['posts']
+
+post_page = False
+main_page = False
 
 app.run(debug=True)

@@ -1,82 +1,124 @@
-@import url('https://fonts.googleapis.com/css2?family=Beau+Rivage&family=EB+Garamond&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=EB+Garamond&display=swap');
 
 body {
-    color: black;
-    background-color: hotpink;
+    background: url("bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    overflow-y:hidden;
+    height:100vh;
+    font-family: 'EB Garamond', serif;
 }
 
 header {
-    background-color: #7FCAFF;
-    color: #406580;
-    font-family: 'Beau Rivage', cursive;
-    font-size: 4rem;
-    height: 15vh;
-    padding: 10px;
+    color: rgba(90, 122, 232, 1);
+    font-family: 'Bad Script', cursive;
+    font-size: 5rem;
+    padding: 10px 50px;
+    min-height: 12vh;
+}
+
+header a {
+    color: rgba(90, 122, 232, 1);
+    text-decoration: none;
+}
+
+header a:hover {
+    color: rgba(90, 196, 232, 1);
 }
 
 nav {
-    height: 15vh;
-    background-color: #CCEAFF;
+    color: rgba(90, 122, 232, 1);
+    min-height: 3vh;
     display: flex;
-    justify-content: space-evenly;
+    padding: 0px 50px;
+    font-size: 1.3rem;
+    background-color: rgba(90, 196, 232, .1);
 }
 
-nav button {
-    margin: 3vh;
-    height: 15vh;
-    width: 15vh;
-    transform: rotate(45deg);
-    background-color: yellow;
+nav span {
+    font-style: italic;
+    padding: 5px 10px;
 }
 
-nav button:hover {
-    background-color: blueviolet;
+nav a {
+    color: rgba(90, 122, 232, 1);
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+nav a:hover {
+    color: white;
+    background-color: rgba(90, 196, 232, .8);
 }
 
 main {
-    height: 70vh;
-    display: flex;
-    font-family: 'EB Garamond', serif;
-    font-size: 1.2rem;
-}
-
-aside {
-    width: 20vw;
-    background-color: purple;
+    max-height: 85vh;
     display: flex;
     flex-direction: column;
-    height: 100%;
-}
-
-aside button {
-    background-color: blue;
-}
-
-aside button:hover {
-    background-color: yellowgreen;
+    font-size: 1.3rem;
 }
 
 article {
-    background-color: green;
+    background-image: linear-gradient(rgba(90, 196, 232, .8), rgba(90, 196, 232, .2));
     padding: 20px;
-    margin: 50px;
+    margin: 25px 50px;
+    color: white;
+}
+
+article a {
+    font-family: 'Bad Script', cursive;
+    font-size: 1.1rem;
+    margin: 0px 0px 20px 0px;
+    color: rgba(106, 99, 255, 1);
+    text-decoration: none;
+}
+
+article a:hover {
+    color: white;
 }
 
 section {
     display: flex;
-    width: 80vw;
     flex-direction: column;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
-h1 {
-    font-family: 'Beau Rivage', cursive;
-    font-size: 2rem;
+h1, h1 a {
+    font-family: 'Bad Script', cursive;
+    font-size: 3rem;
+    font-weight: normal;
     margin: 0px;
+    color: white;
+    text-decoration: none;
 }
 
-h3 {
-    font-family: 'Beau Rivage', cursive;
-    font-size: 1.5rem;
+h1 a:hover {
+    color: rgba(106, 99, 255, 1);
+}
+
+h3, h3 a {
+    font-family: 'Bad Script', cursive;
+    font-size: 1.1rem;
     margin: 0px 0px 20px 0px;
+    color: rgba(106, 99, 255, 1);
+    text-decoration: none;
+}
+
+h3 a:hover {
+    color: white;
+}
+
+#welcome {
+    color: white;
+    justify-content: center;
+    padding: 30px 50px;
+    background-color: rgba(106, 99, 255, .5);
+    text-align: center;
+    overflow: hidden;
+    font-size: 1.1rem;
+}
+
+#welcome p {
+    margin:0px;
 }
