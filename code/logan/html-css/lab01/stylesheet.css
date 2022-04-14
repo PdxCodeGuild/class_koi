@@ -3,18 +3,35 @@ h1 {
         background-color: rgba(0, 0, 0, 0.75);
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         font-size: 50px;
+        margin-left: 1000px;
+        margin-right: 1000px;
+        /* padding-left: 250px;
+        padding-right: 250px; */
         text-align: center;
 
     }
 
-h2 {
+blockquote {
+    color: whitesmoke;
+    background-color: rgba(0, 0, 0, 0.75);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 30px;
+    text-align: center;
+    margin-left: 950px;
+    margin-right: 950px;
+
+
+}
+
+
+/* h2 {
         color: whitesmoke;
         background-color: rgba(0, 0, 0, 0.75);
         font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         font-size: 30px;
         text-align: center;
 
-}
+} */
 
 /* Image or color */
 body {
@@ -27,40 +44,49 @@ p {
     font-size:x-large;
     color: whitesmoke;
     text-align: left;
-    background-color: rgba(0, 0, 0, .8);
+    background-color: rgba(0, 0, 0, 1);
     font-family: 'Times New Roman', Times, serif;
-    padding-left: 50rem;
-    padding-right: 50rem;
-    /* border: 5px solid whitesmoke;
-    border-radius: 5px; */
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-left: 500px;
+    margin-right: 500px;
+    border: 5px solid whitesmoke;
+    border-radius: 5px;
 
 }
 
 ul {list-style-type: circle;
-    /* text-align: center; */
-    list-style-position: inside;
+    /* text-align: left; */
+    list-style-position:inside;
+    background-color: rgba(0, 0, 0, 1);
     /* background-color: rgba(0, 0, 0, 0.8); */
     /* border: 5px solid whitesmoke;
     border-radius: 5px; */
+    /* margin-left: 500px;
+    margin-right: 500px; */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
 }
 
 li {
     font-size: x-large;
     color: whitesmoke;
-    /* text-align: justify; */
-    background-color: rgba(0, 0, 0, 0.75);
+    /* text-align: left; */
     font-family: 'Times New Roman', Times, serif;
-    padding-left: 50rem;
-    padding-right: 50rem;
+    /* padding-left: 50rem;
+    padding-right: 50rem; */
+    margin-left: 1000px;
+    margin-right: 1000px;
+    
 }
 
 a {
-    color: goldenrod
+    color: #15D44B
 }
 
 a:visited {
-    color: red
-
+    color:#D40000
  }
 
 
@@ -71,6 +97,6 @@ img {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-    border: 5px solid whitesmoke;
+    border: 5px solid #D4AB15;
     border-radius: 5px;
 }
