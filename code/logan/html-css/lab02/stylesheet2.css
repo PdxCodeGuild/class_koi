@@ -1,0 +1,92 @@
+/* thanks to pete for the general approach */
+h1 {
+    color: #3D5442;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 700;
+
+}
+
+hr {
+    background-color: #65A172;
+    height: 1vh;
+
+
+
+}
+
+nav {
+    background-color: white;
+    display: flex;
+    min-height: 8vh;
+    /* padding: 1rem 0; */
+    padding-left: 20vw;
+    padding-right: 20vw;
+    justify-content: space-evenly;
+    align-items: center;
+	width: 100vw;
+
+}
+
+nav a {
+	/* color is the color of the text */
+	color: black;
+	/* background-color is the color of the background */
+	background-color: white;
+	/* 50% is the maximum for border radius
+	a perfectly square div would be a circle at border-radius: 50% */
+	border-radius: 50%;
+	/* padding can take one to four values, if you just give it one,
+	it will apply that amount of padding to all 4 sides */
+	padding: 0.5rem;
+	/* padding puts space INSIDE the element
+	margin puts space OUTSIDE the element */
+}
+
+main {
+	/* flexing main so that the aside and section are horizontally placed
+	instead of the vertical default */
+	min-height: 85vh;
+	display: flex;
+}
+
+aside {
+	width: 20vw;
+	height: 100%;
+	display: flex;
+	/* flex-wrap: wrap will make the flex children wrap to the next line
+	automatically if they run out of room */
+	flex-wrap: wrap;
+	background-color: grey;
+    border: #3D5442;
+    border-width: 10px;
+}
+
+aside a {
+	/* giving 2 values to margin or padding:
+	the first value is the space on top and bottom
+	the second vlaue is the space on the right and left */
+	margin: 1.5rem 2.2rem;
+	background-color: #A1896D;
+	border-radius: 50%;
+	padding: 0.5rem;
+	color: white;
+}
+
+/* thanks to pete for the general approach
+button {
+    color: #8441A6;
+    min-height: 7vh;
+    font-size: larger;
+    font-weight: 700;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #C1D9CD;
+    border-radius: 20%;
+    /* padding: 1px, 1px; */
+	/* padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px; */
+    /* border: ; */
+	 /* margin: ; */
+/* } */
