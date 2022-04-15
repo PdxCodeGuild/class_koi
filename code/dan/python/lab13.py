@@ -1,9 +1,11 @@
 class ATM:
-    def __init__(self, balance=0, interest_rate=0.1):
+    def __init__(self, balance=0, interest_rate=0.1,transaction=[]):
         self.balance = 0
         self.interest_rate = 0.1
+        self.transaction=[]
+       
         
-
+        
     def check_balance(self):
        return self.balance 
 
@@ -29,6 +31,16 @@ class ATM:
         return interest_accured 
         
         """calculate and return interest gained on account"""
+        
+    def print_transactions(self,amount, transaction,):
+        
+        transaction.append ("User deposited {amount}")
+        transaction.append("User withdrew {amount}")
+
+        
+        return self.transaction 
+        
+       
 
 
 
