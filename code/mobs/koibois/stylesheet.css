@@ -10,6 +10,14 @@ h1 {
     text-align: center;
 }
 
+h2 { 
+
+    font-family: 'Holtwood One SC', serif;
+    font-size: 2rem;
+    text-align: center;
+
+}
+
 body {
     background-image: url("cowboytexture.jpg");
     background-size:cover;
@@ -22,8 +30,7 @@ body {
 }
 
 img {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0px 0px 10px 5px rgba(0,0,0,1);
 
 }
 
@@ -37,6 +44,20 @@ main {
 }
 
 hr {
-
-
+     
+    background-color: black;
+    border: 0px;
+    height: 2px;
+    /* width: 200px; */
 }
+
+.accomplice {
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.accomplice img {
+    margin: 25px;
+}
+
