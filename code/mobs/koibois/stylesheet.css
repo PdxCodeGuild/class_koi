@@ -33,15 +33,12 @@ h3 {
 body {
     background-image: url("cowboytexture.jpg");
     background-size:cover;
+    background-attachment: fixed;
     display: flex;
     align-content: center;
     flex-direction: column;
     /* justify-content: center; */
     
-
-}
-
-header {
 
 }
 
@@ -83,9 +80,19 @@ ul {
     font-size: 3rem;
 }
 
+li a {
+    color: black;
+    text-decoration: none;
+}
+
+li a:hover {
+    color: red;
+    font-weight: bolder;
+}
+
 .mainimg {
     width: 500px;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
 }
 
 footer {
