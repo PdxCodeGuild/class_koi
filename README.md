@@ -9,6 +9,7 @@ M-F 9:30 am – 4:30 pm
 ### Holidays / Days Off
 
 - April 4th (Day Off)
+- April 11th (Snow Day)
 - May 30th (Memorial Day)
 
 ### Staff
@@ -49,11 +50,14 @@ Presentation Day: June 24th, 2022
 
 [URL Shortener](4%20Django/labs/Optional%20URL%20Shortener.md) -->
 
-<!-- ## HTML/CSS Labs Assigned:
+## HTML/CSS Labs Assigned:
+| Lab   | Name                                                                         | Date Assigned | Due By      | Hard Due Date |
+| ----- | ---------------------------------------------------------------------------- | ------------- | ------------| ------------- |
+| 01    | [Bio](3%20HTML%20+%20CSS/labs/01%20Bio.md)                                   | Apr 12th      | Apr 15th    | Apr 26th      |
+| 02    | [Blog](3%20HTML%20+%20CSS/labs/02%20Blog.md)                                 | Apr 13th      | Apr 15th    | Apr 27th      |
+| 04    | [Mob Class Mascot](3%20HTML%20+%20CSS/labs/04%20Mob%20Class%20Mascot.md)     | NA            | NA          | NA            |
 
-* [Lab 01 Bio](3%20HTML%20+%20CSS/labs/01%20Bio.md)
-* [Lab 02 Blog](3%20HTML%20+%20CSS/labs/02%20Blog.md)
-* [Lab 03 Company](3%20HTML%20+%20CSS/labs/03%20Company.md)
+<!-- * [Lab 03 Company](3%20HTML%20+%20CSS/labs/03%20Company.md)
 * [Lab 05 Personal Portfolio](3%20HTML%20+%20CSS/labs/05%20Personal%20Portfolio.md) -->
 
 <!-- 
@@ -62,11 +66,11 @@ Presentation Day: June 24th, 2022
 [Flask Redo](3%20HTML%20+%20CSS/labs/Optional%20Flask%20Redo.md), [Burrito Order Form](3%20HTML%20+%20CSS/labs/Optional%20Burrito%20Order%20Form.md) -->
 
 
-<!-- ## Flask Labs Assigned:
+## Optional Flask Labs:
 
 * [Lab 01 Programming 101 Redux](2%20Flask/labs/01%20Programming%20101%20Labs%20Redux.md)
 * [Lab 02 Programming 102 Redux](2%20Flask/labs/02%20Programming%20102%20Labs%20Redux.md)
-* [Lab 03 Contacts List Redux](2%20Flask/labs/03%20Contacts%20List%20Redux.md) -->
+* [Lab 03 Contacts List Redux](2%20Flask/labs/03%20Contacts%20List%20Redux.md)
 
 ## Python Labs Assigned:
 | Lab   | Name                                                                         | Date Assigned | Due By      | Hard Due Date |
