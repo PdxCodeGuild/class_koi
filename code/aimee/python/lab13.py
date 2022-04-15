@@ -29,8 +29,8 @@ class ATM:
 
     def calc_interest(self):
         """calculate and return interest gained on account"""
-        atm.balance = atm.balance * atm.interest_rate
-        return atm.balance
+        atm.interest = atm.balance * atm.interest_rate
+        return atm.interest
     
     def print_transactions(self): # version 2
         print('\n'.join(transactions))
@@ -59,7 +59,7 @@ while True:
             print('Insufficient funds')
     elif command == 'interest':
         amount = atm.calc_interest()  # call the calc_interest() method
-        atm.deposit(amount)
+        # atm.deposit(amount)
         print(f'Accumulated ${amount} in interest')
     elif command == 'transactions': # version 2 
         atm.print_transactions()
