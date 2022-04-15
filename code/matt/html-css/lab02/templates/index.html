@@ -27,11 +27,18 @@ Matt Walsh
     </nav>
     <main>
         {%if main_page%}
-        <section id="welcome">
+        <section id="banner">
             <p>
                 Welcome to Letters from Lorem, your home for meaningless gibberish ramblings falsely attributed to your classmates.
                 <br/>
                 Please enjoy your stay, and check back regularly for more expertly written posts.
+            </p>
+        </section>
+        {%endif%}
+        {%if author_page%}
+        <section id="banner">
+            <p>
+                {{author_bio}}
             </p>
         </section>
         {%endif%}
@@ -59,7 +66,7 @@ Matt Walsh
                         </p>
                     {%endif%}
                     {%if post_page%}
-                    <img src="{{url_for('static',filename='/images/{{post['image']}}')}}">
+                    <img src="{{url_for('static',filename=post['image'])}}">
                         <p>
                             {%autoescape false%}
                             {{post['full']}}

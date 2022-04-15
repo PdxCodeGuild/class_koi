@@ -109,7 +109,7 @@ h3 a:hover {
     color: white;
 }
 
-#welcome {
+#banner {
     color: white;
     justify-content: center;
     padding: 30px 50px;
@@ -119,6 +119,10 @@ h3 a:hover {
     font-size: 1.1rem;
 }
 
-#welcome p {
+#banner p {
     margin:0px;
+}
+
+article img {
+    width: 100%;
 }

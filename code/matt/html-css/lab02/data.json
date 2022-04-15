@@ -281,5 +281,17 @@
             "full": "Deserunt in tempor ea id Lorem excepteur Lorem sint pariatur reprehenderit esse. Nisi sit Lorem id proident occaecat. Voluptate exercitation magna et reprehenderit anim qui nisi esse cupidatat. Anim commodo officia excepteur ut voluptate qui labore reprehenderit. Nulla irure aliquip non esse aute occaecat eu adipisicing aliqua dolor.<br/><br/>Tempor amet ut veniam nostrud id excepteur mollit culpa incididunt. Cupidatat irure aute enim sit occaecat dolore eu irure et reprehenderit. Cillum et irure incididunt ut laboris enim esse labore ad occaecat enim nulla aliqua aliquip.<br/><br/>Et ad culpa exercitation amet in. Labore ad do eu anim ea qui amet eu adipisicing nulla. Nisi in pariatur consequat officia ipsum ad esse elit minim ut irure exercitation proident veniam.",
             "image": "35.jpg"
         }
-    ]
+    ],
+    "bios": {
+            "Adam": "Adam is a father, a fan of classic sitcoms, and a prolific Letters from Lorem contributor.",
+            "Aimee": "Aimee is an important Letters from Lorem contributor with a background in web design and love for her dogs.",
+            "Brandon": "Brandon resides in beautiful Vermont and regularly contributes to Letters from Lorem",
+            "Chris": "Chris contributes to Letters from Lorem just a short walk from the beautiful beaches of Hawaii where he enjoys one of his passions: surfing.",
+            "Dan": "Dan is an enthusiast of all things crypto, and a frequent contributor to Letters from Lorem.",
+            "Logan": "Logan is the king of philosophy, music, beautiful hair, and contributing to Letters from Lorem.",
+            "Mitch": "Mitch spends his free time rock climbing and contributing to Letters from Lorem.",
+            "Moss": "Moss is an important contributor to Letters from Lorem and an avid mountaineer.",
+            "Nathan": "Nathan enjoys spending time with his dog and contributing to Letters from Lorem.",
+            "Shaine": "Shaine is a successful business owner and powerful contributor to Letters from Lorem."
+    }
 }
