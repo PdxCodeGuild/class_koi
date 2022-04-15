@@ -1,5 +1,12 @@
 # Lab 17: Quotes API
 
+### Git Setup:
+```sh
+> git checkout main
+> git pull
+> git checkout -b your-name/python/lab17
+```
+
 For this lab we'll be using the [Favqs Quotes API](https://favqs.com/api) to first get a random quote, and then allow the user to find quotes by keyword. To accomplish this we'll be using the `requests` library.
 
 
@@ -35,3 +42,11 @@ headers = {'Authorization': 'Token token="855df50978dc9afd6bf86579913c9f8b"'}
   - get random quote `https://quote-garden.herokuapp.com/quotes/random`
   - get quotes by keyword `https://quote-garden.herokuapp.com/quotes/search/<keyword/`
 
+
+### Git Add, Commit & Push:
+```sh
+> git add files-to-be-added
+> git commit -m "your commit message goes here"
+> git push -u origin your-name/python/lab17
+```
+Then go to the repository to create a PR.
