@@ -1,16 +1,65 @@
+* {
+    max-width: 1500px;
+    
+}
+body {
+    background-color: #dbdbdb;
+}
 @font-face {
-    font-family: khiara;
-    src: "Khiara Script.ttf"
+    font-family: "khiara script";
+    src: url("Khiara Script.ttf");
 }
-
-nav{
+.container {
+    display:flex;
+    flex-direction: column;
+}
+header {
+    display:flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+.title {
+    
+}
+nav {
+    width: 100%;
     display: flex;
-    justify-content: space-evenly;
-
-
+    align-items: flex-end;
+    justify-content: space-around;
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 30px;
+    padding-bottom: 20px;
+    font-weight:600;
+    background-color: #D7BFFF;
+    height: 60px;
+    margin-bottom: 10px;
+    
 }
 
-a{
+a {
     text-decoration: none;
+    color: #3D3D3D;
+}
+a:hover {
+    color: #000000;
+}
+.hero {
 
+}
+#hero {
+    width: 100%;
+}
+h1 {
+    font-family: "khiara script";
+    font-size: 150px;
+    margin: 0px;
+    color: #FF6060;
+    text-shadow: #B00C0C 2px 2px;
+    text-align: center;
+}
+h2 {
+    font-family: 'Noto Sans', sans-serif;
+    text-align: center;
+    margin-top: -40px;
 }
