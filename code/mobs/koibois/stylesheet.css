@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Holtwood+One+SC&family=Rye&family=Smokum&display=swap');
+
+/* font-family: 'Holtwood One SC', serif;
+font-family: 'Rye', cursive;
+font-family: 'Smokum', cursive; */
 
 h1 {
     font-family: 'Holtwood One SC', serif;
@@ -6,6 +10,33 @@ h1 {
     text-align: center;
 }
 
-/* hr {
+body {
+    background-image: url("cowboytexture.jpg");
+    background-size:cover;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    /* justify-content: center; */
+    
 
-} */
+}
+
+img {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+main {
+    width: 100vw;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+
+}
+
+hr {
+
+
+}
