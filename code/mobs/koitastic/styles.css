@@ -1,5 +1,6 @@
 * {
-    max-width: 1500px;
+    max-width: 62rem;
+    margin: auto;
     
 }
 body {
@@ -22,14 +23,13 @@ header {
     
 }
 nav {
-    width: 100%;
+    width: 62rem;
     display: flex;
     align-items: flex-end;
     justify-content: space-around;
     font-family: 'Lora', serif;
     font-style: italic;
-    font-size: 30px;
-    padding-bottom: 20px;
+    font-size: 1.8rem;
     font-weight:600;
     background-color: #D7BFFF;
     height: 60px;
@@ -53,7 +53,8 @@ a:hover {
 h1 {
     font-family: "khiara script";
     font-size: 150px;
-    margin: 0px;
+    margin-top: 2rem;
+    /* margin: 0px; */
     color: #FF6060;
     text-shadow: #B00C0C 2px 2px;
     text-align: center;
@@ -61,5 +62,21 @@ h1 {
 h2 {
     font-family: 'Noto Sans', sans-serif;
     text-align: center;
-    margin-top: -40px;
+    margin-top: -1.25rem;
+    margin-bottom: 1rem;
+}
+
+h4{
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+}
+
+ul{
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.koi-chaos{
+    width: 40rem;
+    display: flex;
+    align-self: center;
 }
