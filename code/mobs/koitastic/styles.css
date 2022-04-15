@@ -1,0 +1,16 @@
+@font-face {
+    font-family: khiara;
+    src: "Khiara Script.ttf"
+}
+
+nav{
+    display: flex;
+    justify-content: space-evenly;
+
+
+}
+
+a{
+    text-decoration: none;
+
+}
