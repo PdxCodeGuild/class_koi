@@ -152,17 +152,20 @@ h4 {
     display:flex;
     justify-content: center;
     align-items: center;
-    padding-left: 10rem;
-    padding-right: 15rem;
-    flex: 50%;
 }
 .column4 {
-    flex: 50%;
     padding: 1rem;
-    /* flex-direction: column; */
 }
+
 h5 {
     font-size: 30px;
     display: flex;
+    justify-content: center;
+}
+.column5 {
+    display: flex;
+    /* flex: 50%; */
+    padding: 1rem;
+    /* flex-direction: column; */
     justify-content: center;
 }
