@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mary Katherine Blackwood</title>
+    <meta name='author' content='Peter Jones'>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" />
+    <link href="https://fonts.googleapis.com/css?family=Baskervville&display=swap" rel="stylesheet">  
+  </head>
+  <body>
+    <h1>{{ name }}</h1>
+
+    <blockquote>
+      {{ quote }}
+    </blockquote>
+
+    <img id="big_pic" src="{{ url_for('static', filename=image1) }}" alt="We Have Always Lived in the Castle by Shirley Jackson" width="60%"/>
+    <hr/>
+		<!-- this is like a python for loop -->
+		{% for paragraph in body %}
+    <p>
+      {{ paragraph }}
+    </p>
+    <br/>
+		<!-- you have to use the endfor keyword to end it, otherwise you'll get an error -->
+    {% endfor %}
+    <hr/>
+    <h3>
+      Places Lived:
+        <img src="{{ url_for('static', filename=image2) }}" alt='First Edition Cover' style="float:left;width:33%"/>
+    </h3>
+    <ul>
+		{% for place in places_lived %}
+      <li>{{ place }}</li>
+		{% endfor %}
+    </ul>
+  </body>
+</html>
