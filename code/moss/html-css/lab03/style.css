@@ -26,18 +26,15 @@ header img {
     margin: auto;
     max-width: 25%;
     max-height: 25%;
-    
+    background-color: rgb(240, 240, 240);    
 }
-
-/* p {
-    background-color: rgb(240, 240, 240);
-} */
 
 body {
     /* border: 3px solid grey; */
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     background-color: rgb(240, 240, 240);
+
     /* background-image: */  
 }
 
@@ -56,6 +53,7 @@ body {
     
     
 }
+
 
 @media (min-width: 700px) {
     header, main, footer{ 
