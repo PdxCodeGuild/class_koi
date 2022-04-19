@@ -1,0 +1,32 @@
+/* tag selection: tag (li/p/h1, any html element) these rules will apply
+to all elements with the same tag */
+li {
+	color: orange;
+}
+
+/* class selection: .class-name will apply these rules to all elements with
+class="class-name" */
+.green {
+	color: green;
+}
+
+.purple {
+	color: purple;
+}
+
+/* id selection: #id-name will apply these rules to all elements with
+id="id-name" */
+#humongous {
+	font-size: 75px;
+}
+
+/* this will apply color: pink to all lis inside of an ul */
+ul li {
+	color: pink;
+}
+
+/* this will apply text-decoration: line-through to all
+p tags with class="green" */
+p.green {
+	text-decoration: line-through;
+}
