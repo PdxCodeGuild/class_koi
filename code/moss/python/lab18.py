@@ -18,6 +18,20 @@ from ridge_map import RidgeMap # NOT WORKING #
 # NCAR GEOCAT, Michaela Sizemore, https://github.com/michaelavs/cartopy_tutorial
 
 
+#----- Set-up -----#
+
+# 1. Create CSV file with the lat & lon of mountains. (data folder, mt_data.csv )
+
+# 2. Show user list of mountains, ask which mountains they want to plot on regional map.
+
+# 3. Using user's selection, JSON request the elevations by the mountains' lat & lon. Convert meters to feet.
+
+# 4. Plot the mountain elevations on graph. Y axis: elevation. X axis: user's mountain selection.
+
+# 5. Give option to show a 3D render of a mountain. 
+
+# 6. While loop steps 1-5 to give user the option to repeat with different set of mountains selection.
+
 #----- REGIONAL MAP -----#
 
 plt.figure(figsize=(9,9))
