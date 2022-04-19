@@ -68,3 +68,11 @@ a.anchor {
   top: -63px;
   visibility: hidden;
 }
+
+footer a {
+  color: white;
+}
+
+footer a:hover {
+  color: #303f9f;
+}
