@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style> 
+        .track {
+            background-image: url("racetrack.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            height: 500px;
+        }
+
+        .racer {
+          width: 20px;
+          height: 20px;
+          background: red;
+          position: relative;
+          animation: racerboi 15s infinite;
+          animation-direction: normal;
+          left: 297px;
+          top: 60px;
+          transform: rotate(135deg);
+          animation-timing-function: linear;
+        }
+        
+        /* @keyframes racerboi {
+          0%   {background: red; left: 0px; top: 0px;}
+          25%  {background: yellow; left: 200px; top: 0px;}
+          50%  {background: blue; left: 200px; top: 200px;}
+          75%  {background: green; left: 0px; top: 200px;}
+          80% {background: purple; left: 100px; top: 100px;}
+          100% {background: red; left: 0px; top: 0px;}
+        } */
+        
+        @keyframes racerboi {
+            0%  {left: 500px; top: 420px; transform: rotate(0deg);}
+
+            5%      {left: 120px; top: 420px; transform: rotate(0deg);}
+            10%     {left: 90px; top: 393px; transform: rotate(45deg);}
+            15%     {left: 60px; top: 365px; transform: rotate(90deg);}
+            20%     {left: 90px; top: 338px; transform: rotate(135deg);}
+            25%     {left: 120px; top: 310px; transform: rotate(180deg);}
+
+            30%     {left: 440px; top: 310px; transform: rotate(180deg);}
+            35%     {left: 470px; top: 283px; transform: rotate(135deg);}
+            40%     {left: 500px; top: 255px; transform: rotate(90deg);}
+            45%     {left: 470px; top: 228px; transform: rotate(45deg);}
+            50%     {left: 440px; top: 200px; transform: rotate(0deg);}
+
+            55%     {left: 120px; top: 200px; transform: rotate(0deg);}
+            60%     {left: 90px; top: 173px; transform: rotate(45deg);}
+            65%     {left: 60px; top: 145px; transform: rotate(90deg);}
+            70%     {left: 90px; top: 118px; transform: rotate(135deg);}
+            75%     {left: 120px; top: 90px; transform: rotate(180deg);}
+
+            80%     {left: 230px; top: 90px; transform: rotate(180deg);}
+            85%     {left: 297px; top: 60px; transform: rotate(135deg);}
+            90%     {left: 365px; top: 30px; transform: rotate(180deg);}
+            95%     {left: 433px; top: 60px; transform: rotate(225deg);}
+            100%    {left: 500px; top: 90px; transform: rotate(180deg);}
+
+
+            /* 100%    {left: 500px; top: 420px; transform: rotate(0deg);}*/
+        } 
+        </style>
+
+</head>
+<body>
+    <div class="track">
+        <div class="racer" style="text-align: center;">!</div>
+    </div>
+</body>
+</html>

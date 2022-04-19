@@ -3,28 +3,26 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Parallax Template - Materialize</title>
-
-  <!-- CSS  -->
+  <title>Hippos R Us - The world's best hippo store!</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
-  <div class="navbar-fixed">
+  <header class="navbar-fixed">
     <nav class="purple lighten-2 nav-extended" role="navigation">
         <div class="nav-wrapper container">
         <a id="logo-container" href="#" class="brand-logo">
           <img src="logo.png" class="logo">
         </a>
         <ul class="right hide-on-med-and-down">
-            <li><a href="#">Top</a></li>
-            <li><a href="#why">Why?</a></li>
-            <li><a href="#get">Get one!</a></li>
-            <li><a href="#visit">Visit Us</a></li>
-            <li><a href="#signup">Sign Up</a></li>
+            <li><a class="white-text nav-top-items" href="#">Top</a></li>
+            <li><a class="white-text nav-top-items" href="#why">Why?</a></li>
+            <li><a class="white-text nav-top-items" href="#get">Get one!</a></li>
+            <li><a class="white-text nav-top-items" href="#visit">Visit Us</a></li>
+            <li><a class="white-text nav-top-items" href="#signup">Sign Up</a></li>
         </ul>
-
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger white-text"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="sidenav">
             <li><a href="#">Top</a></li>
             <li><a href="#why">Why hippos?</a></li>
@@ -32,53 +30,44 @@
             <li><a href="#visit">Visit Us</a></li>
             <li><a href="#signup">Sign Up</a></li>
         </ul>
-        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         </div>
     </nav>
-  </div>  
-
+  </header>  
   <div id="index-banner" class="parallax-container">
-
     <div class="parallax"><img src="top.png" alt="Unsplashed background img 1"></div>
   </div>
-
-
   <div class="container">
     <div class="section">
-
-      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 center">
+          <h4 class="brown-text text-darken-4">Let's start with the facts:</h4>
+        </div>
+      </div>
       <div class="row">
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">Speeds up development</h5>
-
-            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+            <h2 class="center red-text text-darken-4"><i class="material-icons">star</i></h2>
+            <h5 class="center brown-text text-darken-4">Hippos are fantastic</h5>
+            <p class="light brown-text text-darken-4">We don't need to tell you - you already know. According to recent surveys, 94% of global population is in love with hippos.<a href="#disclaimer" class="brown-text text-darken-4 disc-link">*</a> We don't know what's wrong with 6% of you. We'll do our best to sway you if you keep scrolling.</p>
           </div>
         </div>
-
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">User Experience Focused</h5>
-
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+            <h2 class="center red-text text-darken-4"><i class="material-icons">check</i></h2>
+            <h5 class="center brown-text text-darken-4">Everyone wants a hippo</h5>
+            <p class="light brown-text text-darken-4">Hippo demand has never been higher!<a href="#disclaimer" class="brown-text text-darken-4 disc-link">*</a> Trends come and go, but some interests are evergreen. You are in good company in your desire to have your very own hippo. </p>
           </div>
         </div>
-
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">Easy to work with</h5>
-
-            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+            <h2 class="center red-text text-darken-4"><i class="material-icons">travel_explore</i></h2>
+            <h5 class="center brown-text text-darken-4">Hippos are hard to find</h5>
+            <p class="light brown-text text-darken-4">Historically hippo acquisition has always been very difficult, and has only grown worse with current supply chain issues - until now! We've worked night and day to ensure seamless hippo delivery straight to your home!</p>
           </div>
         </div>
       </div>
-
     </div>
   </div>
-
   <a class="anchor" id="why"></a>
   <div class="parallax-container valign-wrapper">
     <div class="parallax"><img src="why.png" alt="Unsplashed background img 2"></div>
@@ -86,110 +75,247 @@
 
   <div class="container">
     <div class="section">
-
       <div class="row">
         <div class="col s12 center">
-          <h3><i class="mdi-content-send brown-text"></i></h3>
-          <h4>Why hippos?</h4>
-          <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+          <h4 class="brown-text text-darken-4">Why hippos?</h4>
+          <h5 class="center light brown-text text-darken-4">We can't believe we have to explain this!</h5>
         </div>
       </div>
 
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center red-text text-darken-4"><span class="mdi mdi-emoticon-kiss-outline"></span></h2>
+            <h5 class="center brown-text text-darken-4">Hippos are super cute</h5>
+
+            <p class="light brown-text text-darken-4">To many, hippos are even cuter than a rabbit, a puppy, or a kitten.</p>
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center red-text text-darken-4"><span class="mdi mdi-arm-flex"></span></h2>
+            <h5 class="center brown-text text-darken-4">Hippos are mega strong</h5>
+
+            <p class="light brown-text text-darken-4">Hippos are 5.7x stronger than the average workhorse, and 4.8x stronger than the average ox.<a href="#disclaimer" class="brown-text text-darken-4 disc-link">*</a></p>
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center red-text text-darken-4"><span class="mdi mdi-sword-cross"></span></h2>
+            <h5 class="center brown-text text-darken-4">Hippos are fierce defenders</h5>
+
+            <p class="light brown-text text-darken-4">Hippos mightily protect their own, with 48x the defensive ability of a typical guard dog.<a href="#disclaimer" class="brown-text text-darken-4 disc-link">*</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center red-text text-darken-4"><i class="material-icons">favorite</i></h2>
+            <h5 class="center brown-text text-darken-4">Hippos are sweet lovers</h5>
+
+            <p class="light brown-text text-darken-4">Hippos nurture their loved ones, providing gentle comfort and stability.</p>
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center red-text text-darken-4"><i class="material-icons">emoji_events</i></h2>
+            <h5 class="center brown-text text-darken-4">Hippos are a status symbol</h5>
+
+            <p class="light brown-text text-darken-4">Your neighbors will hold you in the highest regard.<a href="#disclaimer" class="brown-text text-darken-4 disc-link">*</a></p>
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center red-text text-darken-4"><span class="mdi mdi-emoticon-cool-outline"></span></h2>
+            <h5 class="center brown-text text-darken-4">Hippos are just plain cool</h5>
+
+            <p class="light brown-text text-darken-4">You know this, we know this - hippos are unrivaled in cool-factor.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
   <a class="anchor" id="get"></a>
   <div class="parallax-container valign-wrapper">
     <div class="parallax"><img src="get.png" alt="Unsplashed background img 3"></div>
   </div>
-
   <div class="container">
     <div class="section">
-
       <div class="row">
         <div class="col s12 center">
-          <h3><i class="mdi-content-send brown-text"></i></h3>
-          <h4>Get a hippo</h4>
-          <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+          <h4 class="brown-text text-darken-4">Get a hippo</h4>
+          <h5 class="center light brown-text text-darken-4">Hippos R Us offers a variety of hippo acquisition models, giving you the confidence that your hippo will be of the highest quality.</h5>
         </div>
       </div>
-
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="card">
+            <div class="card-image">
+              <img src="get1.png">
+              <span class="card-title">Rent</span>
+              <a class="btn-floating halfway-fab waves-effect waves-light indigo darken-2"><i class="material-icons">shopping_cart</i></a>
+            </div>
+            <div class="card-content">
+              <p>Need a hippo short term? We rent hippos for a variety of durations starting with weekend rentals and extending to packages that will provide you with a luxurious hippo for several months.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="card">
+            <div class="card-image">
+              <img src="get2.png">
+              <span class="card-title">Lease</span>
+              <a class="btn-floating halfway-fab waves-effect waves-light indigo darken-2"><i class="material-icons">shopping_cart</i></a>
+            </div>
+            <div class="card-content">
+              <p>Need a hippo a little longer, but want to stay up to date with the latest hippo models? Leasing might be for you. As a bonus, extended maintenance packages are included at no additional cost!</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="card">
+            <div class="card-image">
+              <img src="get3.png">
+              <span class="card-title">Buy</span>
+              <a class="btn-floating halfway-fab waves-effect waves-light indigo darken-2"><i class="material-icons">shopping_cart</i></a>
+            </div>
+            <div class="card-content">
+              <p>Ready to settle down and invest in a long-term hippo? With purchasing options, you can have a hippo for years to come. Optional maintenance packages will ensure that your hippo is always in tip-top shape!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 center">
+          <h5 class="center light brown-text text-darken-4">We offer a 3 year limited hippo warranty, with optional hippo maintenance packages to keep your hippo in perfect condition.</h5>
+        </div>
+      </div>
     </div>
   </div>
-
   <a class="anchor" id="visit"></a>
   <div class="parallax-container valign-wrapper">
     <div class="parallax"><img src="visit.png" alt="Unsplashed background img 4"></div>
   </div>
-
   <div class="container">
     <div class="section">
 
       <div class="row">
         <div class="col s12 center">
           <h3><i class="mdi-content-send brown-text"></i></h3>
-          <h4>Visit a Hippos R Us Showroom</h4>
+          <h4 class=" brown-text text-darken-4">Visit a Hippos R Us Showroom</h4>
+          <h5 class="center light brown-text text-darken-4">We have a vast network of physical showrooms where you can experience that new-hippo smell and take one on a test walk. View the map below to find our closest showroom!</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 center">    
           <iframe src="https://www.google.com/maps/d/embed?mid=1JsJv3t1N5Z3bZimagwYlBWufv4QDcek0&ehbc=2E312F" width="100%" height="500px"></iframe>
-          <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 center">   
+          <h4 class="brown-text text-darken-4">What our customers are saying!</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="review1.png">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator brown-text text-darken-4">Janet Coolidge<i class="material-icons right">more_vert</i></span>
+              <p><i class="small material-icons yellow-text text-darken-2">star star star star star</i></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title brown-text text-darken-4">Janet Coolidge<i class="material-icons right">close</i></span>
+              <p>I had been searching for the perfect hippo for years when I found Hippos R Us. They used to be so hard to find, but the sales associate at my local Hippos R Us Showroom found me exactly the hippo I wanted - and it even came with some optional features I had given up hope on! I love Hippos R Us!!</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="review2.png">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator brown-text text-darken-4">Rebecca Purple<i class="material-icons right">more_vert</i></span>
+              <p><i class="small material-icons yellow-text text-darken-2">star star star star star</i></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title brown-text text-darken-4">Rebecca Purple<i class="material-icons right">close</i></span>
+              <p>I asked my mommy for a hippo for my 7th birthday, and he's perfect! I named him pickle, but I don't feed him pickles anymore. They make him sneeze and it's yucky. The hippo man at the store was very nice and my mommy said it was "a masterclass in customer service expertise". Thanks Hippos R Us!</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="review3.png">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator brown-text text-darken-4">Jimmy Dickinson<i class="material-icons right">more_vert</i></span>
+              <p><i class="small material-icons yellow-text text-darken-2">star star star star star</i></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title brown-text text-darken-4">Jimmy Dickinson<i class="material-icons right">close</i></span>
+              <p>After I added a hippo mod to Minecraft I told my parents to get me one and yelled a lot until they took me to Hippos R Us. I wanted all the hippos but they said I could have one. She ate my dog, but I love her anyway!</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="review4.png">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator brown-text text-darken-4">Samantha Smith<i class="material-icons right">more_vert</i></span>
+              <p><i class="small material-icons yellow-text text-darken-2">star star star star star</i></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title brown-text text-darken-4">Samantha Smith<i class="material-icons right">close</i></span>
+              <p>3 years ago I was in the market for my second hippo, and after a lot of frustration with Hippazon I was ready to give up. My friend sent me an ad for Hippos R Us she saw on Instagram, and I have to admit I was skeptical. I shouldn't have been though! Little Roger is even more perfect than I imagined - Thanks HRU!!</p>
+            </div>
+          </div>
         </div>
       </div>
 
     </div>
   </div>
-
   <a class="anchor" id="signup"></a>
   <div class="parallax-container valign-wrapper">
     <div class="parallax"><img src="signup.png" alt="Unsplashed background img 5"></div>
   </div>
-
   <div class="container">
     <div class="section">
 
       <div class="row">
         <div class="col s12 center">
           <h3><i class="mdi-content-send brown-text"></i></h3>
-          <h4>Sign up for updates!</h4>
-          <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+          <h4 class="brown-text text-darken-4">Sign up for updates!</h4>
+          <h5 class="center light brown-text text-darken-4">Not ready to take the leap yet? Sign up for the Hippos R Us mailing list to receive news, updates, and even deals delivered right to your inbox!</h5>
         </div>
       </div>
-
+      <div class="row">
+        <div class="input-field col s12 m8">
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+        <div class="right-align col s12 m4">
+          <a class="waves-effect waves-light btn-large btn-custom indigo darken-2"><i class="material-icons left">email</i>Sign up!</a>
+        </div>
+      </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <footer class="page-footer purple lighten-2">
     <div class="container">
       <div class="row">
-        <div class="col l6 s12 center">
+        <div class="col l6 s12 m6 center">
           <h5 class="indigo-text text-darken-2">About Us</h5>
           <p class="white-text">We are a full-service hippopotamus acquisition team, ready and able to outfit you with the hippo of your dreams.</p>
           <p class="white-text">We hope to speak with you soon!</p>
         </div>
-        <div class="col l3 s12 center">
+        <div class="col l3 s12 m3 center">
           <h5 class="indigo-text text-darken-2">Contact Us</h5>
           <ul>
             <li>Hippos R Us</li>
@@ -199,7 +325,7 @@
             <li><a class="" href="info@hipposrus.biz">info@hipposrus.biz</a></li>
           </ul>
         </div>
-        <div class="col l3 s12 center">
+        <div class="col l3 s12 m3 center">
           <h5 class="indigo-text text-darken-2">Connect</h5>
           <ul>
             <div class="row center">  
@@ -240,14 +366,11 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-      &copy; 2022 Hippos R Us
+      <p>&copy; 2022 Hippos R Us <span id="disclaimer">*Hippo facts not verified by any available scientific resource or corroborated by consensus reality.</span></p>
       </div>
     </div>
   </footer>
 
-
-
-  <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
@@ -255,52 +378,3 @@
 
   </body>
 </html>
-
-
-<!-- 
-    hippos r us
-
-        Let's start with the facts:
-            hippos are great
-            everyone wants a hippo
-            everyone things they can't get a hippo
-        But what if you could actually have your very own hippo? Think about the possibilities.
-
-    Why hippos?
-        Hippos are cute
-            To many, hippos are even cuter than a rabbit, a puppy, or a kitten.
-        Hippos are strong
-            Need help tilling fields? Hippos are 5.7x stronger than the average workhorse, and 4.8x stronger than the average ox
-        Hippos are defenders
-            Hippos fiercely protect their own, with 48x the defensive ability of a typical guard dog
-        Hippos are lovers
-            Hippos nurture their loved ones, providing gentle comfort and stability
-        Hippos are a status symbol
-            Your neighbors will hold you in high regard
-
-    Get a hippo
-        Hippos R Us offers a variety of hippo acquisition models, giving you the confidence that your hippo will be of the highest quality
-        
-        Rent
-            Need a hippo short term? We rent hippos for a variety of durations starting with weekend rentals and extending to packages that will provide you with a luxurious hippo for several months
-        Lease
-            Need a hippo a little longer, but want to stay up to date with the latest hippo models? Leasing might be for you. As a bonus, maintenance packages are included at no additional cost!
-        Buy
-            Ready to settle down and invest in a long-term hippo? With purchasing options, you can have a hippo for years to come. 
-        
-        
-        
-        We offer a 3 year limited hippo warranty, with optional hippo maintenance packages to keep your hippo in top condition
-
-    Visit a hippo showroom
-        We have a vast network of physical showrooms where you can experience that new-hippo smell and take one on a test walk. View the map below to find our closest showroom!
-
-    Sign up for updates!
-        Not ready to take the leap yet? Sign up for the Hippos R Us mailing list to receive news, updates, and even deals delivered right to your inbox!
-
-
-
-
-1440x850 images
-
- -->

@@ -6,6 +6,8 @@
  * Made By MaterializeCSS.com
  */
 
+@import url(https://cdn.jsdelivr.net/npm/@mdi/font@6.6.96/css/materialdesignicons.min.css);
+
 nav ul a,
 nav .brand-logo {
   color: #444;
@@ -71,8 +73,55 @@ a.anchor {
 
 footer a {
   color: white;
+  transition: 500ms;
 }
 
 footer a:hover {
-  color: #303f9f;
+  color: #c8e6c9;
+  transition: 500ms;
+}
+
+.sidenav-overlay {
+  z-index: 100;
+}
+
+nav li .nav-top-items {
+  font-size: 13px;
+  transition: 500ms;
+}
+
+nav li .nav-top-items:hover {
+  color: #303F9F !important;
+  transition: 500ms;
+}
+
+footer i {
+  transition: 500ms;
+}
+
+footer i:hover {
+  color: #c8e6c9;
+  transition: 500ms;
+}
+
+.card .card-title {
+  font-weight: 400;
+}
+
+.btn-custom {
+  width: 100%;
+}
+
+#disclaimer {
+  font-size: xx-small;
+  font-style: italic;
+}
+
+a.disc-link {
+  transition: 500ms;
+}
+
+a.disc-link:hover {
+  transition: 500ms;
+  color:#b71c1c !important;
 }
