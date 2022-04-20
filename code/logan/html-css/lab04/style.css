@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
+
+
+h1 {color:#F2B705;font-family: 'RocknRoll One', sans-serif;}
+h2 {color: #F2B705}
+body {background-color: #E1D8C9;}
+header {background-color: #260101;}
+div {font-family: 'RocknRoll One', sans-serif; color:whitesmoke}
+button {font-family: 'RocknRoll One', sans-serif; background-color: whitesmoke;}
+
+
+header{.pa4}
+
+
+
+@media (--breakpoint-not-small){}
+
+@media (--breakpoint-medium) {}
+
+@media (--breakpoint-large) {}
