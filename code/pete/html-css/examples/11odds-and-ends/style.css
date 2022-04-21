@@ -81,3 +81,8 @@ button {
 	animation-duration: 5s;
 	animation-iteration-count: infinite;
 }
+
+#ghost {
+	width: 300px;
+	height: 400px;
+}
