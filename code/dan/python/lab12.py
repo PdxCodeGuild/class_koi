@@ -1,6 +1,6 @@
 # Version 1 Lab 12
 import random 
-with open('something.csv','r') as csv_file:
+with open('./something.csv','r') as csv_file:
         lines = csv_file.read().split("\n")
         
                       
@@ -39,9 +39,9 @@ def create_record(new_list):
     email_input = input("What is your email address: ")
     user_dict = dict.fromkeys(keys_list,)
     user_dict['userid'] = (f"dr{random.randint(1000,9999)}")
-    user_dict[' username']= username_input
-    user_dict[' favorite food'] = food_input
-    user_dict[' e-mail'] = email_input
+    user_dict['username']= username_input
+    user_dict['favorite food'] = food_input
+    user_dict['email'] = email_input
     info_list.append(user_dict)
     return info_list
 
@@ -92,12 +92,12 @@ print(delete_record(info_list))
 """
 Version 3, Write back to CSV
 """
-with open('something.csv','w') as csv_file:
-   output =",".join(keys_list)
-csv_file.write (output)
-for i in info_list:
-    final =  ",".join(list(i.values()))
-    csv_file.write(final) 
+with open('./something.csv','w') as csv_file:
+    output =",".join(keys_list)
+    csv_file.write (output)
+    for i in info_list:
+        final =  ",".join(list(i.values()))
+        csv_file.write(f "\n {final}") 
     
     
 
