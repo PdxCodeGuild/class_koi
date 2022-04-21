@@ -3,10 +3,10 @@
 
 h1 {color:#F2B705;font-family: 'RocknRoll One', sans-serif;}
 h2 {color: #F2B705}
-h3 {background-color: 0;}
+h3 {background-color: rgba(0, 0, 0, 0.75)}
 body {background-color: #E1D8C9;}
 header {background-color: #260101;}
-footer {background-color: #260101;}
+footer {background-color: #260101; font-family: 'RocknRoll One', sans-serif; background-color: whitesmoke;}
 div {font-family: 'RocknRoll One', sans-serif; color:whitesmoke}
 article {font-family: 'RocknRoll One', sans-serif; color:whitesmoke}
 button {font-family: 'RocknRoll One', sans-serif; background-color: whitesmoke;}
@@ -26,7 +26,7 @@ button {font-family: 'RocknRoll One', sans-serif; background-color: whitesmoke;}
 }
 
 @media (min-width: 768px) {
-    .f4{font-size: medium;}
+    .f4{font-size: large;}
 	/* MEDIUM SCREEN WIDTH */
 	/* tablets, devices less than 992px wide */
 
@@ -41,11 +41,14 @@ button {font-family: 'RocknRoll One', sans-serif; background-color: whitesmoke;}
 
 
 @media (min-width: 1200px) {
-    .f4{font-size: large;}
+    .f4{font-size: x-large;}
+
+    .w5{width: 30rem;}
     /* .f1{font-size: xx-large;} */
 }
-/* .f4{font-size: large;} */
 
-/* @media (--breakpoint-medium) {}
+@media (min-width: 1800px) {
+    .f4{font-size: x-large;}
 
-@media (--breakpoint-large) {} */
+    .w5{width: 45rem;}
+}
