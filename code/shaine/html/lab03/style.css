@@ -2,23 +2,44 @@
     background-size: cover;
     min-height: 100vh;
     position: relative;
-    color: white;
+    color: rgb(233, 233, 233);
     text-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
 }
 
 h1  {
+    font-family: 'Great Vibes', cursive;
     font-size: 4rem;
 }
 
-.color-overlay {
+h2{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+}
+.logo {
     position: absolute;
     width: 100%;
-    height: 85%;
-    background-color: rgba(0, 0, 0, .2);
+    height: 86%;
 }
+
+a {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+    color: white;
+    text-decoration: none;
+    font-size: 1.15rem;
+}
+
+a:hover {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+    color: rgb(97, 97, 97);
+    text-decoration: none;
+  }
 
 .sub {
     position: absolute;
     width: 100%;
     height: 100%;
 }
+
+
