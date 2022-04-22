@@ -67,9 +67,11 @@ earnings = 0
 
 for i in range (100_000):
     empty_ticket= []
+    empty_win = []
+    winner = pick6(empty_win)
     
     ticket = pick6(empty_ticket)
-    matches = num_matches(ticket, winning_ticket) 
+    matches = num_matches(ticket, winner) 
     balance -= 2
     expense += 2
     balance += winnings_dict[matches]
