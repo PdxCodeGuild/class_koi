@@ -1,0 +1,42 @@
+/* thanks to pete for the general approach */
+h1 {
+    color: black;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 700;
+
+
+
+
+}
+
+nav {
+    background-color: #3D7338;
+    display: flex;
+    min-height: 7vh;
+    /* padding: 1rem 0; */
+    padding-left: 30rem;
+    padding-right: 30rem;
+    justify-content: space-evenly;
+    align-items: center;
+	width: 100vw;
+
+}
+
+/* thanks to pete for the general approach */
+button {
+    color: #8441A6;
+    min-height: 7vh;
+    font-size: larger;
+    font-weight: 700;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #C1D9CD;
+    border-radius: 20%;
+    /* padding: 1px, 1px; */
+	/* padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px; */
+    /* border: ; */
+	 /* margin: ; */
+}
