@@ -1,0 +1,46 @@
+head {
+
+}
+
+h1 {
+    justify-content: center;
+}
+
+body {
+    background-image: url("merricat_background.jpeg");
+    text-align: center;
+    color: white;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+p {
+    margin: 15px;
+    padding: 25px;
+}
+
+blockquote {
+    font-style: italic;
+    font-family: 'Baskervville', serif;
+    font-size: 125%;
+    /* font-style: italic; */
+}
+
+img {
+    justify-content: center;
+}
+
+#link {
+    color: green;
+    }
+
+#big_pic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto ;
+    border-radius: 44%;
+}
+
+ul {
+    list-style-image: url("merri_cat.jpeg.png")
+}
