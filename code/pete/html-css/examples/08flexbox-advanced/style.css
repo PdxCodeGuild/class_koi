@@ -1,0 +1,79 @@
+nav {
+	background-color: #F5C476;
+	/* min-height is nice to use in place of height if there
+	is a chance the content will be greater than 12vh */
+	min-height: 12vh; /* 12vh: 12% the height of the viewport */
+	width: 100vw; /* 100vw: 100% the width of the viewport */
+
+	/* flex stuff */
+	display: flex; /* this "turns on" flexbox */
+	/* justify-content: how to space out along the main axis, horizontal, in this case */
+	justify-content: space-evenly;
+	/* align-items: how to align the children along the secondary (vertical) axis */
+	align-items: center;
+}
+
+nav a {
+	/* color is the color of the text */
+	color: #E9F545;
+	/* background-color is the color of the background */
+	background-color: #51A7F5;
+	/* 50% is the maximum for border radius
+	a perfectly square div would be a circle at border-radius: 50% */
+	border-radius: 50%;
+	/* padding can take one to four values, if you just give it one,
+	it will apply that amount of padding to all 4 sides */
+	padding: 0.5rem;
+	/* padding puts space INSIDE the element
+	margin puts space OUTSIDE the element */
+}
+
+main {
+	/* flexing main so that the aside and section are horizontally placed
+	instead of the vertical default */
+	height: 88vh;
+	display: flex;
+}
+
+section {
+	height: 100%;
+	width: 80vw;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	/* this element has a fixed height, by setting
+	overflow-y: scoll, it is now a scrollable container
+	if the content exceeds its height */
+	overflow-y: scroll;
+	background-color: #C6DFF5;
+}
+
+aside {
+	width: 20vw;
+	height: 100%;
+	display: flex;
+	/* flex-wrap: wrap will make the flex children wrap to the next line
+	automatically if they run out of room */
+	flex-wrap: wrap;
+	background-color: #B569F5;
+}
+
+aside a {
+	/* giving 2 values to margin or padding:
+	the first value is the space on top and bottom
+	the second vlaue is the space on the right and left */
+	margin: 1.5rem 2.2rem;
+	background-color: #51A7F5;
+	border-radius: 50%;
+	padding: 0.5rem;
+	color: #E9F545;
+}
+
+article {
+	margin: 2rem;
+	width: 33%;
+	/* rem values are relative to the font size of the root element
+	you can read more here: https://www.sitepoint.com/understanding-and-using-rem-units-in-css/ */
+	height: 7rem;
+	background-color: #5E5EF5;
+}

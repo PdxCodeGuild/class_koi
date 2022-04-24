@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CSS Selectors</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com"> 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+	<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+	<style>
+		/* universal selector: rules apply to every element */
+		* {
+			font-family: 'Special Elite', cursive;
+			color: goldenrod;
+		}
+		/* tag selection: rules apply to every body element */
+		body {
+			background-color: beige;
+		}
+		/* rules apply to every h1 element */
+		h1 {
+			color: cadetblue;
+		}
+		/* class selection: rules apply to every element with class="coral" */
+		.coral {
+			color: coral;
+		}
+		/* id selection: rules apply to every element with id="main-article" */
+		#main-article {
+			padding: 2rem;
+		}
+		/* attribute selection: rules apply to every input with type="password" */
+		input[type="password"] {
+			border: 2px solid coral;
+		}
+		/* multiple selection: rules apply to every h2 and h3 */
+		h2, h3 {
+			text-align: center;
+		}
+		/* descendant selection: rules apply to any li that is a descendant of #main-article */
+		#main-article li {
+			text-decoration: underline;
+		}
+		/* child selection: rules apply to p tags that are direct children of #main-article */
+		#main-article > p {
+			text-decoration: line-through;
+		}
+
+		.square {
+			width: 150px;
+			height: 150px;
+			border: 2px solid black;
+			margin: 3rem;
+			background-color: lawngreen;
+		}
+
+		/* applies rules to divs with class="coral" */
+		div.coral {
+			background-color: coral;
+		}
+	</style>
+</head>
+<body>
+	<h1>CSS Selectors</h1>
+	<p class="coral">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur iusto mollitia cupiditate error quos tempora nostrum. Quisquam, voluptate. Recusandae debitis fugiat at libero saepe consectetur. Sint hic blanditiis facilis necessitatibus.</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At consectetur, mollitia consequatur sit est, quidem, saepe voluptas repellat reiciendis aliquam dolore ipsum? Obcaecati odit non aliquid autem possimus aperiam quasi?</p>
+	<p class="coral">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem voluptates labore nesciunt at, pariatur ex iste unde voluptatibus alias maxime dolor repudiandae vero atque facere quod accusamus tempora asperiores obcaecati!</p>
+	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda dignissimos officiis tenetur provident et autem nihil, nisi commodi earum temporibus harum maxime dolorum amet nostrum id reiciendis saepe dolore dolores?</p>
+	<article id="main-article">
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet asperiores blanditiis voluptate, cum magnam facilis nostrum qui, nihil aperiam quaerat, incidunt ducimus fuga necessitatibus ipsam? Totam corporis possimus minus ad?</p>
+		<ul>
+			<li>stuff</li>
+			<li>more stuff</li>
+			<li>yet more stuff</li>
+		</ul>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat nobis numquam atque distinctio in pariatur et facere eaque alias, ipsa perspiciatis eum odit earum nostrum, deserunt, hic qui quas placeat?</p>
+	</article>
+	<input type="text" placeholder="type something" />
+	<input type="password" />
+	<h2>this is near the bottom</h2>
+	<h3>this is at the bottom</h3>
+	<div class="square">
+		<div>div</div>
+		<span>span</span>
+		<span>span</span>
+		<div>div</div>
+		<div>div</div>
+		<span>span</span>
+		<span>span</span>
+		<span>span</span>
+		<span>span</span>
+		<span>span</span>
+		<span>span</span>
+	</div>
+	<div class="square coral"></div>
+	<div class="square"></div>
+	<div class="square"></div>
+	<div class="square"></div>
+	<div class="square"></div>
+</body>
+</html>
