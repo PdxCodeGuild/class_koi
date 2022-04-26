@@ -55,7 +55,11 @@ if new_answer in numdict:
 else:
         print ("Out of dictionary bounds")
         
-        
+
+
+
+
+# Version 2        
         
         #number text list
 a_list = ['zero', 'one', 'two','three', 'four', "five",'six','seven','eight','nine',]
@@ -67,10 +71,12 @@ value = int(answer)
 for char in answer:
     char = int(char)
     print(a_list[char])
-    
+           
+        
 value = int(answer)
 ones = value % 10
 tens = (value % 100) // 10 #not right
 hundreds = value // 100
 print (f"{hundreds} hundreds {tens} tens {ones} ones")
+        
         
