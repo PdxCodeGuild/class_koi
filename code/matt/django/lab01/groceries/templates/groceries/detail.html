@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery List: {{ item }}</title>
+</head>
+<body>
+    <h1>
+        {{ item }}
+    </h1>
+    <a href="/groceries">Home</a>
+    <table>
+        <thead>
+            <th>ID</th>
+            <th>item</th>
+            <th>quantity</th>
+            <th>note</th>
+        </thead>
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.item }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.note }}</td>
+        </tr>
+    </table>
+    {% if not item.completed %}
+    <form action="/groceries/complete/{{ item.id }}">
+        {% csrf_token %}
+        <button type="submit">Mark complete</button>
+    </form>
+    {% else %}
+    <p>
+        Completed: {{ item.completed_date }}
+    </p>
+    {% endif %}
+    <form action="/groceries/delete/{{ item.id }}">
+        {% csrf_token %}
+        <button type="submit">Delete item</button>
+    </form>
+</body>
+</html>
