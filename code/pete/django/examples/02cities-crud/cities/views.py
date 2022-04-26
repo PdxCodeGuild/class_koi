@@ -36,3 +36,23 @@ def index(request: HttpRequest): # : HttpRequest is NOT required, it just gives 
 
 # if you get a TemplateDoesNotExist error, make sure your app is registered
 # in INSTALLED_APPS in the settings.py of the project folder
+
+# once again, id: int is not necessary, it just documents the expected type
+# of the int parameter, and gives type-hinting in vs code or other IDEs
+def detail(request, id: int):
+    print(id)
+    city = City.objects.get(id=id)
+    context = {
+        'city': city
+    }
+    return render(request, 'cities/detail.html', context)
+
+def visit(request, id):
+    # getting the object
+    city = City.objects.get(id=id)
+    # changing one of its fields
+    city.visited = True
+    # saving to the database
+    city.save()
+    # if you want to delete it: city.delete()
+    return redirect(f'/cities/{id}')
