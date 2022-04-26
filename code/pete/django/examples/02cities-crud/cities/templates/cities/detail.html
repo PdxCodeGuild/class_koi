@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cities DataBase || {{ city }}</title>
+	<style>
+		th, td {
+			padding: 0.5rem;
+		}
+	</style>
+</head>
+<body>
+	<h1>{{ city }}</h1>
+	<a href="/cities">Home</a>
+	<table>
+		<thead>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Popluation</th>
+			<th>Climate</th>
+			<th>Visited</th>
+		</thead>
+		<tr>
+			<td>{{ city.id }}</td>
+			<td>{{ city.name }}</td>
+			<td>{{ city.population }}</td>
+			<td>{{ city.get_climate_display }}</td>
+			<td>{{ city.visited }}</td>
+		</tr>
+	</table>
+	{% if not city.visited %}
+	<form action="/cities/visit/{{ city.id }}" method="POST">
+		{% csrf_token %}
+		<input type="submit" value="Visit City!">
+	</form>
+	{% else %}
+	<p>Visited: &#9745;</p>
+	{% endif %}
+</body>
+</html>
