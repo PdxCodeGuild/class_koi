@@ -1,13 +1,78 @@
 <!-- {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}"> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the Grocery Store </title>
+</head>
 
-{% if latest_groceries %}
+<header>
+    <h1>Welcome to the grocery store</h1>
+    <br>
+</header>
+
+<body>
+    <!-- {% if latest_groceries %} -->
+    <h2>Grocery List</h2>
+    <br>
     <ul>
-    {% for grocery in latest_groceries %}
-        <li>{{ grocery }}</li>
-    {% endfor %}
+        {% for grocery in latest_groceries %}
+            <li>{{ grocery }}</li>
+        {% endfor %}
     </ul>
-{% else %}
-    <p>No groceries on your list.</p>
-{% endif %}
+    <!-- {% else %}
+    <p>No groceries on your list.</p> -->
+    <!-- {% endif %} -->
+
+
+    <h2>Completed Items</h2>
+    <ul>
+        {% for grocery in completed_list %}
+            <li>{{ grocery }}</li>
+        {% endfor %}
+    </ul>
+    
+    <h2>Completed Items</h2>
+    <ul>
+        {% for grocery in incompleted_list %}
+            <li>{{ grocery }}</li>
+        {% endfor %}
+    </ul>
+
+    <br>
+    <br>
+
+	<form action="/cities/" method="POST" style="padding: 2rem;">
+		{% csrf_token %}
+
+		<!-- an input element's name attribute is very important
+		it is how you can extract the data from the form
+		on the backend -->
+
+		<!-- a label's for attribute will match it to an input's id attribute -->
+		<label for="name input"> Name </label>
+		<input id="name input" type="text" name="name" />
+		<br>
+
+		<label for="created-date input"> Created Date </label>
+		<input id="created-date input" type="date" name="created date"/>
+		<br>
+
+        <label for="completed-date input"> Completed Date </label>
+		<input id="completed-date input" type="date" name="completed date"/>
+		<br>
+        
+		<label for="completed input"> Completed </label>
+		<input id="completed input" type="checkbox" name="completed"/>
+		<br>
+
+		<input type="submit" value="Add New Grocery" />
+	</form>
+
+</body>
+
+</html>
