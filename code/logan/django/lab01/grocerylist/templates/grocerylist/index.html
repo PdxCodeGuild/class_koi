@@ -1,0 +1,13 @@
+<!-- {% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}"> -->
+
+{% if latest_groceries %}
+    <ul>
+    {% for grocery in latest_groceries %}
+        <li>{{ grocery }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No groceries on your list.</p>
+{% endif %}
