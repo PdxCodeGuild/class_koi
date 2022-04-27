@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery List</title>
+    <style>
+        th, td {padding: 0.5rem}
+    </style>
+</head>
+<body>
+    <h1>{{ message }}</h1>
+    <ul>
+        {% for item in grocery_list %}
+        <li>
+            <a href="#">{{ item }}</a>
+    
+        </li>
+        {% endfor %}
+    </ul>
+    <form action="" method="POST" style="padding: 1rem">
+        {% csrf_token %}
+        <label for="description-input">Grocery Item</label>
+        <input type="description-input" type="text" name="description">
+        <br>
+        <br>
+        <button type="submit">Add New Item</button>
+    </form>
+    <!-- <table>
+        <thead>
+            <th>Item</th>
+            <th>Date Created</th>
+            <th>Completed</th>
+            <th>Date Completed</th>
+        </thead>
+        <tr>
+            <td>
+                <ul>
+                {% for item in grocery_list %}
+                <li>
+                    <a>{{ item }}</a>
+                </li>
+                {% endfor %}
+
+                </ul>
+            </td>
+        </tr>
+    </table> -->
+    
+</body>
+</html>
