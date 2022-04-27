@@ -27,8 +27,8 @@ def index(request):
     incompleted_list = Grocery.objects.filter(completed=False) 
     context = {
         'latest_groceries': latest_groceries,
-        'completed list' : completed_list,
-        'incomplete_list' : incompleted_list,
+        'completed_list' : completed_list,
+        'incompleted_list' : incompleted_list,
     }
     
     return render(request, "grocerylist/index.html", context)

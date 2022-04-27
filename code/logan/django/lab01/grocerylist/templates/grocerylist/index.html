@@ -1,6 +1,7 @@
 <!-- {% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}"> -->
+<link rel="stylesheet" type="text/css" href="{% static 'grocerylist/style.css' %}"> -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to the Grocery Store </title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'grocerylist/style.css' %}">
+ 
 </head>
 
 <header>
@@ -36,7 +41,7 @@
         {% endfor %}
     </ul>
     
-    <h2>Completed Items</h2>
+    <h2>Incompleted Items</h2>
     <ul>
         {% for grocery in incompleted_list %}
             <li>{{ grocery }}</li>
