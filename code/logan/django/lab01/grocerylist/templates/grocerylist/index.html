@@ -1,6 +1,6 @@
-<!-- {% load static %}
+{% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'grocerylist/style.css' %}"> -->
+<link rel="stylesheet" type="text/css" href="{% static 'grocerylist/style.css' %}">
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,20 +10,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to the Grocery Store </title>
 
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'grocerylist/style.css' %}">
+    <!-- {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'grocerylist/style.css' %}"> -->
  
 </head>
 
 <header>
     <h1>Welcome to the grocery store</h1>
-    <br>
 </header>
 
 <body>
     <!-- {% if latest_groceries %} -->
     <h2>Grocery List</h2>
-    <br>
     <ul>
         {% for grocery in latest_groceries %}
             <li>{{ grocery }}</li>
