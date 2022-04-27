@@ -14,7 +14,9 @@
 	<!-- <p>{{ cities }}</p> -->
 	<ul>
 	{% for city in cities %}
-		<li>{{ city }}</li>
+		<li>
+			<a href="/cities/{{ city.id }}">{{ city }}</a>
+		</li>
 	{% endfor %}
 	<!-- indentation doesn't matter in html
 	so you have to explicitly end the loop
