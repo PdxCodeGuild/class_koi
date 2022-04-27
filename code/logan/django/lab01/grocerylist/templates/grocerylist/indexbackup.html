@@ -24,11 +24,7 @@
     <h2>Grocery List</h2>
     <ul>
         {% for grocery in latest_groceries %}
-            <li>
-
-                {{ grocery }}
-
-            </li>
+            <li>{{ grocery }}</li>
         {% endfor %}
     </ul>
     <!-- {% else %}
@@ -39,23 +35,14 @@
     <h2>Completed Items</h2>
     <ul>
         {% for grocery in completed_list %}
-            <li>
-
-                {{ grocery }}
-            
-            </li>
+            <li>{{ grocery }}</li>
         {% endfor %}
     </ul>
     
     <h2>Incompleted Items</h2>
     <ul>
         {% for grocery in incompleted_list %}
-
-            <li>
-
-                <a href="/grocerylist/complete/{{grocery.id}}">  {{ grocery }}  </a>
-
-            </li>
+            <li>{{ grocery }}</li>
         {% endfor %}
     </ul>
 

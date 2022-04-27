@@ -33,8 +33,21 @@ def index(request):
     
     return render(request, "grocerylist/index.html", context)
 
-def complete(request):
-    return HttpResponse("you're completing, baby")
+def complete(request, id: int):
+    """
+    Just imagine how cool a comment would be here...
+    """
+    grocery = Grocery.objects.get(id=id)
+    grocery.completed = True
+    grocery.save()
+
+    return redirect('/grocerylist/')
+
+
+    # return HttpResponse("you're completing, baby")
+    ...
+
 
 def delete(request):
     return HttpResponse("you're deleting, baby")
+    ...

@@ -5,8 +5,7 @@ app_name = 'grocerylist'
 urlpatterns = [
     path('', views.index, name='index'),
     path("delete/", views.delete, name="delete"),
-    path("complete/", views.complete, name="complete")
-
+    path("complete/<int:id>", views.complete, name="complete")
 ]
 
 
