@@ -1,3 +1,7 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls_app/style.css' %}">
+
 <form action="{% url 'polls_app:vote' question.id %}" method="post">
     {% csrf_token %}
 <fieldset>
