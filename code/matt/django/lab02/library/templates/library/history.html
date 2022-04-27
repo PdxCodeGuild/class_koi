@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library: Check In/Out History</title>
+</head>
+<body>
+    <h1>
+        Check In/Out History
+    </h1>
+    <table>
+        <thead>
+            <th>Title</th>
+            <th>User</th>
+            <th>Date & Time</th>
+            <th>In/Out</th>
+        </thead>
+        {% for item in history %}
+        <tr>
+            <td>{{ item.book }}</td>
+            <td>{{ item.user }}</td>
+            <td>{{ item.timestamp }}</td>
+            <td>{% if item.checkout %} OUT {% else %} IN {% endif %}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

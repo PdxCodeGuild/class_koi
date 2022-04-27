@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library: {{ book }}</title>
+</head>
+<body>
+    <h1>{{ book }}</h1>
+    <h2>{{ author }}</h2>
+    <h3>
+        Check In/Out History:
+    </h3>
+    <table>
+        <thead>
+            <th>User</th>
+            <th>Date & Time</th>
+            <th>In/Out</th>
+        </thead>
+        {% for item in check_history %}
+        <tr>
+            <td>{{ item.user }}</td>
+            <td>{{ item.timestamp }}</td>
+            <td>{% if item.checkout %} OUT {% else %} IN {% endif %}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h3>
+        Genres:
+    </h3>
+    <ul>
+        {% for genre in genres %}
+        <li>{{ genre }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
