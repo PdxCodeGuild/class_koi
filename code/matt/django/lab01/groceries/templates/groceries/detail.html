@@ -33,6 +33,10 @@
     {% else %}
     <p>
         Completed: {{ item.completed_date }}
+        <form action="/groceries/uncomplete/{{ item.id }}">
+            {% csrf_token %}
+            <button type="submit">Mark incomplete</button>
+        </form>
     </p>
     {% endif %}
     <form action="/groceries/delete/{{ item.id }}">

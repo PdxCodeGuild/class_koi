@@ -45,3 +45,10 @@ def delete(request, id):
     item = Grocery.objects.get(id=id)
     item.delete()
     return redirect(f'/groceries')
+
+def uncomplete(request, id):
+    item = Grocery.objects.get(id=id)
+    item.completed = False
+    item.completed_date = None
+    item.save()
+    return redirect(f'/groceries/{id}')
