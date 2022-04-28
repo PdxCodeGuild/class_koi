@@ -54,6 +54,8 @@ def complete(request, id: int):
     ...
 
 
-def delete(request):
-    return HttpResponse("you're deleting, baby")
+def delete(request, id: int):
+    grocery = Grocery.objects.get(id=id)
+    grocery.delete()
+    return redirect('/grocerylist/')
     ...
