@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Arima+Madurai&family=Open+Sans:wght@300;400&family=Roboto:wght@300&family=Sanchez&family=Sriracha&display=swap');
+
+body {
+    background-size:cover;
+    background-blend-mode:color;
+    background-image: url(https://images.unsplash.com/photo-1587974928442-77dc3e0dba72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1824&q=80);
+    background-color: rgba(64, 7, 59, .85);
+}
+h1{
+    color: #1e7979;
+    font-size: 65px;
+    text-transform: capitalize;
+    text-align: center;
+    background-color: rgba(64, 7, 59, .85);
+    border: 11px solid rgba(0, 0, 0, 0.85);
+    height: 400px;
+    font-family: 'Sanchez', serif;
+    background-image: url(https://images.unsplash.com/photo-1587974928442-77dc3e0dba72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1824&q=80);  
+}
+h2{
+    color: #ff5e00;
+    text-align: left;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 65px;
+    font-family: 'Arima Madurai', cursive;
+}
+div h2 {
+    display: flex;
+    justify-content:flex-start;
+    margin-left: 70px;
+}
+img.marrakech {
+    width: 50vw;
+    display:flex;
+    border-style: solid;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100vh;
+}
+img.flag {
+    width: 400px;
+    height: 200px;
+    margin-top: 30px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px solid rgb(20, 20, 22);
+}
+main{
+    height: auto;
+    display: flex;
+}
+aside {
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #38FFFF;
+    flex-direction: column;
+    padding: 10px, 25px;
+    border: 8px solid rgba(0, 0, 0, 0.85);
+    margin-right: 5px;
+    background-image: linear-gradient(to left, rgb(201, 96, 96) , rgb(103, 137, 230));
+    /* w3schools^ */
+    min-width:250px;
+}
+aside a{
+    padding: 10px;
+    font-size: larger;
+    font-family: 'Sriracha', cursive;
+    justify-content: center;
+    color:#221f1d;
+    font-size: 25px;
+    padding-right: 25px;
+}
+aside a:hover{
+    background-color: #04AA6D;
+    color: rgb(209, 207, 231);
+}
+nav {
+    background-color: #1ADBDB;
+    text-align: center;
+    padding: 20px;
+    font-size: 20px;
+    border-color: #312f2d;
+    border-width: 10px;
+    border-style: solid;
+    
+}
+nav a{
+    padding: 10px;
+    color: #8F3500;
+}
+nav a:hover{
+    background-color: #04AA6D;
+    color: rgb(209, 207, 231);
+}
+p {
+    background-color: rgba(110, 133, 207, 0.98) ;
+    display: flex;
+    text-align: left;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    font-size: 20px;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #181815;
+    font-family: 'Open Sans', sans-serif;
+}
+footer {
+    background-color: #D9D652;
+    color:rgb(15, 19, 14);
+    padding: 5px;
+    font-size: large;
+}
+div.picture{
+    display: flex;
+    flex-wrap: wrap;
+}
+div.picture img{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: .5px solid black;
+}
