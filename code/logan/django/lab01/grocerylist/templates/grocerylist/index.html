@@ -41,7 +41,7 @@
         {% for grocery in completed_list %}
             <li>
 
-                {{ grocery }}
+                <a href="/grocerylist/complete/{{grocery.id}}">  {{ grocery }}  </a>
             
             </li>
         {% endfor %}
@@ -62,7 +62,7 @@
     <br>
     <br>
 
-	<form action="/cities/" method="POST" style="padding: 2rem;">
+	<form action="/grocerylist/" method="POST" style="padding: 2rem;">
 		{% csrf_token %}
 
 		<!-- an input element's name attribute is very important
@@ -74,7 +74,7 @@
 		<input id="name input" type="text" name="name" />
 		<br>
 
-		<label for="created-date input"> Created Date </label>
+		<!-- <label for="created-date input"> Created Date </label>
 		<input id="created-date input" type="date" name="created date"/>
 		<br>
 
@@ -83,7 +83,7 @@
 		<br>
         
 		<label for="completed input"> Completed </label>
-		<input id="completed input" type="checkbox" name="completed"/>
+		<input id="completed input" type="checkbox" name="completed"/> -->
 		<br>
 
 		<input type="submit" value="Add New Grocery" />
