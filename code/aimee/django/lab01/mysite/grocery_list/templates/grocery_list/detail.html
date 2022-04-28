@@ -9,10 +9,9 @@
 <!-- PAGE FOR EACH INDIVIDUAL ITEM -->
 
 <body>
-   <h1>Grocery list:</h1>
-   <h3>{{ grocery_item }}</h3>
+   <h1>Grocery list: {{ grocery_item }}</h1>
     {% if grocery_item.check_completed == False %}
-    <form action="/grocery_list/complete/ {{ grocery_item.id }}">
+    <form action="/grocery_list/complete/{{ grocery_item.id }}/">
         {% csrf_token %}
         <button type="submit">Check off list</button>
     </form>
@@ -20,11 +19,11 @@
     <h4>Marked completed at {{ grocery_item.done_date }}</h4>
 
     {% endif %}
-    <form action="/grocery_list/ {{ grocery_item.id }}">
+    <form action="/grocery_list/delete/{{ grocery_item.id }}/">
         {% csrf_token %}
         <button type="submit">Delete item</button>
     </form>
- 
+    <br>
    <a href="/grocery_list">Go back</a>
 </body>
 </html>

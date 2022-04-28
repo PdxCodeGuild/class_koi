@@ -9,5 +9,4 @@ urlpatterns = [
     path('detail/<int:id>', views.detail),
     path('complete/<int:id>', views.complete),
     path('delete/<int:id>', views.delete),
-    # path('', include('grocery_list.urls')),
 ]
