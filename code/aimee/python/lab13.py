@@ -30,6 +30,7 @@ class ATM:
     def calc_interest(self):
         """calculate and return interest gained on account"""
         atm.interest = atm.balance * atm.interest_rate
+        atm.balance = atm.balance + atm.interest
         return atm.interest
     
     def print_transactions(self): # version 2
