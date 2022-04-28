@@ -12,7 +12,7 @@
    <h1>Grocery list: {{ grocery_item }}</h1>
     {% if grocery_item.check_completed == False %}
     <form action="/grocery_list/complete/{{ grocery_item.id }}/">
-        {% csrf_token %}
+        
         <button type="submit">Check off list</button>
     </form>
     {% else %} 
@@ -20,7 +20,7 @@
 
     {% endif %}
     <form action="/grocery_list/delete/{{ grocery_item.id }}/">
-        {% csrf_token %}
+        
         <button type="submit">Delete item</button>
     </form>
     <br>

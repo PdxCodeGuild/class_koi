@@ -39,10 +39,10 @@ def complete(request, id):
 	item.check_completed = True
 	item.done_date
 	item.save()
-	# return render(request, 'grocery_list/complete.html')
-	return redirect(f'/detail/{id}')
+	# return render(request, 'grocery_list/detail.html')
+	return redirect(f'/grocery_list/')
 
 def delete(request, id):
 	item = GroceryItem.objects.get(id=id)
 	item.delete()
-	return redirect(f'grocery_list/')
+	return redirect(f'/grocery_list/')
