@@ -1,0 +1,70 @@
+{% extends 'game_of_thrones/base.html' %}
+
+{% block title %}
+<title>House {{ house.name }}</title>
+{% endblock %}
+
+{% block content %}
+<h1 class="text-2xl text-center">House {{ house.name }}</h1>
+
+<div class="mt-8 flex flex-col px-20">
+	<div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+		<div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+			<div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+				<table class="min-w-full divide-y divide-gray-300">
+					<thead class="bg-gray-50">
+						<tr>
+							<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Name</th>
+							<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">House</th>
+						</tr>
+					</thead>
+					<tbody class="divide-y divide-gray-200 bg-white">
+						
+						{% for character in house.characters.all %}
+						<tr>
+							<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ character.name }}</td>
+							<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ character.house.name }}</td>
+							</td>
+						</tr>
+						{% endfor %}
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<form
+	action="{% url 'thrones:house' house.name|lower %}"
+	method="POST"
+	class="space-y-8 divide-y divide-gray-200 py-16 px-32"
+>
+	{% csrf_token %}
+  <div class="space-y-8 divide-y divide-gray-200">
+
+    <div class="pt-8">
+			<h3 class="text-lg leading-6 font-medium text-gray-900"> Add Character to House {{ house.name }} </h3>
+      <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+
+        <div class="sm:col-span-3">
+          <label for="name" class="block text-sm font-medium text-gray-700"> Name </label>
+          <div class="mt-1">
+            <input type="text" name="character_name" id="name" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="pt-5">
+    <div class="flex justify-end">
+      <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</button>
+    </div>
+  </div>
+</form>
+
+
+{% endblock %}
