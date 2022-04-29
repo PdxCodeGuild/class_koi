@@ -10,6 +10,7 @@ def index(request: HttpRequest):
     context = {
         'authors': authors,
         'characters': books,
+        'message': 'Library Central',
     }
     return render(request, 'library_app/index.html', context)
 
