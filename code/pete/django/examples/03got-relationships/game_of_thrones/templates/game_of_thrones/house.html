@@ -1,63 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>House {{ house.name }}</title>
-	<script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="text-indigo-900 bg-slate-50 p-5">
+{% extends 'game_of_thrones/base.html' %}
 
-	<!-- This example requires Tailwind CSS v2.0+ -->
-<nav class="bg-gray-800">
-  <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-    <div class="relative flex items-center justify-between h-16">
-			<div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-				
-				<div class="hidden sm:block sm:ml-6">
-					<a href="{% url 'thrones:home' %}" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Home</a>
-        </div>
-      </div>
-			<div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-				<h1 class="text-white text-center text-2xl">Game of Thrones</h1>
+{% block title %}
+<title>House {{ house.name }}</title>
+{% endblock %}
 
+{% block content %}
+<h1 class="text-2xl text-center">House {{ house.name }}</h1>
+
+<div class="mt-8 flex flex-col px-20">
+	<div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+		<div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+			<div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+				<table class="min-w-full divide-y divide-gray-300">
+					<thead class="bg-gray-50">
+						<tr>
+							<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Name</th>
+							<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">House</th>
+						</tr>
+					</thead>
+					<tbody class="divide-y divide-gray-200 bg-white">
+						
+						{% for character in house.characters.all %}
+						<tr>
+							<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ character.name }}</td>
+							<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ character.house.name }}</td>
+							</td>
+						</tr>
+						{% endfor %}
+
+					</tbody>
+				</table>
 			</div>
-   
-    </div>
-  </div>
-</nav>
-	
+		</div>
+	</div>
+</div>
 
-	<h1 class="text-2xl text-center">House {{ house.name }}</h1>
+<form
+	action="{% url 'thrones:house' house.name|lower %}"
+	method="POST"
+	class="space-y-8 divide-y divide-gray-200 py-16 px-32"
+>
+	{% csrf_token %}
+  <div class="space-y-8 divide-y divide-gray-200">
 
-	<div class="mt-8 flex flex-col px-20">
-    <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-        <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-          <table class="min-w-full divide-y divide-gray-300">
-            <thead class="bg-gray-50">
-              <tr>
-                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Name</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">House</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-200 bg-white">
-							
-							{% for character in house.characters.all %}
-              <tr>
-                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ character.name }}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ character.house.name }}</td>
-                </td>
-              </tr>
-							{% endfor %}
+    <div class="pt-8">
+			<h3 class="text-lg leading-6 font-medium text-gray-900"> Add Character to House {{ house.name }} </h3>
+      <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
 
-            </tbody>
-          </table>
+        <div class="sm:col-span-3">
+          <label for="name" class="block text-sm font-medium text-gray-700"> Name </label>
+          <div class="mt-1">
+            <input type="text" name="character_name" id="name" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+          </div>
         </div>
+
       </div>
     </div>
+
   </div>
 
-</body>
-</html>
+  <div class="pt-5">
+    <div class="flex justify-end">
+      <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</button>
+    </div>
+  </div>
+</form>
+
+
+{% endblock %}
