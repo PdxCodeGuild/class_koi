@@ -11,6 +11,6 @@ def index(request: HttpRequest):
         'authors': authors,
         'characters': books,
     }
-    return HttpResponse("hell, world, you are at the library") #request, '/library')
+    return render(request, 'library_app/index.html', context)
 
 
