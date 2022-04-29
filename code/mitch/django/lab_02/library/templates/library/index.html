@@ -1,0 +1,32 @@
+{% extends "library/core.html" %}
+
+{% block title %}: Home{% endblock %}
+
+{% block content %}
+    <h3 class="f3 navy">Books</h3>
+	<table class= pl3>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Published</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <td class="pr3"><a class= "lh-copy black link" href="/book/{{ book.id }}">{{ book }}</a></td>
+            <td class="pr3 tc"><a class= "lh-copy black link" href="/author/{{ book.author.id }}">{{ book.author }}</a></td>
+            <td class="pr3 tc">{{ book.publish_date }}</td>
+
+        </tr>
+        {% endfor %}
+	</table>
+	
+	<h3 class="f3 navy">Authors</h3>
+	<ul class="list pl0 pl3">
+		{% for author in authors %}
+        <li>
+            <a class= "lh-copy black link" href="/author/{{ author.id }}">{{ author.name }}</a>
+        </li>
+		{% endfor %}
+	</ul>
+
+{% endblock %}

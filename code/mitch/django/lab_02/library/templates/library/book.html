@@ -1,0 +1,10 @@
+{% extends "library/core.html" %}
+
+{% block title %}: Home{% endblock %}
+
+{% block content %}
+    <h3 class="f3 navy">Title:  {{ book.title }}:</h3>
+    <h4 class="f4"><a class= "link black" href="/author/{{ book.author.id }}">Author:  {{ book.author }}</a></h4>
+    <h4 class="f4">Published:  {{ book.publish_date }}</h4>
+
+{% endblock %}
