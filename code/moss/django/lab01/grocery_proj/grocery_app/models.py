@@ -3,7 +3,7 @@ from django.db import models
 class GroceryItem(models.Model):
 
     description = models.CharField(max_length = 200)
-    create_date = models.DateTimeField()
+    created_date = models.DateTimeField()
     completed_date = models.DateTimeField(null = True, blank = True)
     completed = models.BooleanField()
 
