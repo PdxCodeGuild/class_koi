@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library: Books</title>
-</head>
-<body>
+{% extends "base_generic.html" %}
+
+{% block title %}: Books{% endblock %}
+
+{% block content %}
     <h2><a href="{% url 'library:books' %}">Books:</a></h2>
     <ul>
         {% for book in books %}
         <li><a href="{% url 'library:book_detail' book.id %}">{{ book }}</a></li>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}

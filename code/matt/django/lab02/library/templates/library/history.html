@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library: Check In/Out History</title>
-</head>
-<body>
+{% extends "base_generic.html" %}
+
+{% block title %}: Check In/Out History{% endblock %}
+
+{% block content %}
     <h1>
         Check In/Out History
     </h1>
@@ -26,5 +22,4 @@
         </tr>
         {% endfor %}
     </table>
-</body>
-</html>
+{% endblock %}

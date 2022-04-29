@@ -9,8 +9,7 @@ class Author(models.Model):
 class Book(models.Model):
     title = models.CharField(max_length=100)
     pub_date = models.DateField()
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)
-    # genre = models.ManyToManyField(Genre)
+    author = models.ForeignKey(Author, on_delete=models.PROTECT)
 
     def __str__(self):
         return self.title
@@ -18,7 +17,7 @@ class Book(models.Model):
 class Checkout(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     user = models.CharField(max_length=50)
-    checkout = models.BooleanField()
+    checkout = models.BooleanField(default=False, blank=True)
     timestamp = models.DateTimeField(auto_now_add=True, blank=True)
 
     def __str__(self):

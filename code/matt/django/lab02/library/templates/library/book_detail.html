@@ -1,14 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library: {{ book }}</title>
-</head>
-<body>
+{% extends "base_generic.html" %}
+
+{% block title %}: {{ book }}{% endblock %}
+
+{% block content %}
     <h1>{{ book }}</h1>
     <h2>{{ author }}</h2>
+
+    <h3>Current Checkout Status:</h3>
+    {% if status.checkout %}
+    <p>Checked Out</p>
+    <h3>Check back in:</h3>
+    {% else %}
+    <p>Available</p>
+    <h3>Check out:</h3>
+    {% endif %}
+    <form action="{% url 'library:book_detail' book.id %}" method="POST">
+        {% csrf_token %}
+        <label for="user_name">User name:</label>
+        <input type="text" name="user_name">
+        {% if status.checkout %}
+        <input type="hidden" value="False" name="status_update">
+        <button type="submit">Check In</button>
+        {% else %}
+        <input type="hidden" value="True" name="status_update">
+        <button type="submit">Check Out</button>
+        {% endif %}
+    </form>
     <h3>
         Check In/Out History:
     </h3>
@@ -18,7 +35,7 @@
             <th>Date & Time</th>
             <th>In/Out</th>
         </thead>
-        {% for item in check_history %}
+        {% for item in check_history reversed %}
         <tr>
             <td>{{ item.user }}</td>
             <td>{{ item.timestamp }}</td>
@@ -34,5 +51,4 @@
         <li>{{ genre }}</li>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}
