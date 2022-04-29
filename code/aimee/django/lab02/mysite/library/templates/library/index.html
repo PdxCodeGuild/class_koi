@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aimee's Library</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        body {
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+ <!-- HOME PAGE -->
+<body>
+    <h2>Welcome to Aimee's Library!</h2>
+    
+    <table style="width:60%">
+        <tr>
+            <th>Book</th>
+            <th>Author</th>
+            <th>Checked Out</th>
+        </tr>
+        <tr>
+        {% for book in books %}
+            <td><a href="/library/details/{{ book.id }}">{{ book.title }}</a></td>
+            <td>{{ book.author }}</td>
+            <td>{% if status.checkout %}Yes{% endif %}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% if status.checkout %}
+    <p>{{ book.title }}</p>
+    {% endif %} 
+    
+</body>
+</html>

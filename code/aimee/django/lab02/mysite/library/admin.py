@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from .models import Book, Author, CheckedOut
+from .models import Book, Author, CheckOut
 
 admin.site.register(Book)
 admin.site.register(Author)
-admin.site.register(CheckedOut)
+admin.site.register(CheckOut)
