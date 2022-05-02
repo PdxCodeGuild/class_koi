@@ -1,0 +1,164 @@
+/* vibrant blue color:      #1a6eb4              */
+/* dull/dark blue color:    #46718C              */
+/* deeper orange:           #F28729              */
+/* muted greenish blue:     #8C8977              */
+/* standard background:     rgb(243, 239, 234)   */
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital@0;1&display=swap");
+
+
+main {
+    background-color: rgb(243, 239, 234);
+	display: flex;
+    flex-direction: row-reverse;
+}
+
+
+nav {
+    background-color: rgb(243, 239, 234);
+    justify-content: space-around;
+    min-height: 6rem;
+    width: 100%;
+    display: flex;
+    align-items: center;*
+}
+
+a {
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic;
+    font-size: 2.3rem;
+    color:#F28729;
+    text-decoration: none;
+
+}
+
+#top_logo {
+    width:25rem;
+    height: 9rem;
+    object-fit:cover;
+    object-position: 20% 40%;
+    margin-bottom: 1rem;
+
+}
+
+section {
+    margin-right: 20%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5rem;
+    color: #46718C;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+
+}
+
+.read_nav:hover{
+    color: #b41a1a
+}
+
+img {
+    width: 100%;
+    border-radius: 3%;
+
+}
+
+p   {
+    margin-bottom: 0px;
+}
+
+article {
+    width: 68%;
+}
+
+.read_more > h6 {
+    margin-top: 7px;
+}
+
+.read_more:hover{
+    color: #b41a1a
+}
+
+.title {
+    color: #8C8977;
+    font-size: 2.8rem;
+    font-style: normal;
+}
+
+aside  {
+    position:fixed;
+    width: 20%;
+    margin-right: 3rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+}
+
+
+.sidebar_title {
+    width: 100%;
+    height: auto;
+    padding-bottom: 3px;
+    padding-top: 2px;
+    margin-top: 4rem;
+    margin-bottom: 0px;
+    text-align: center;
+    color: #F29A2E;
+    background-color: #8C8977;
+    font-size: 1.4rem;
+}  
+
+
+
+.sidebar {
+    margin-top: 1.2rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    color: #46718C;
+
+}
+
+.sidebar:hover{
+    color: #b41a1a;
+}
+
+
+footer > section{
+    width: 100%;
+    /* display:flex; */
+    flex-direction: ;
+    padding-bottom: 2rem;
+    
+}
+
+.footer_title{
+    padding-bottom: 0px;
+}
+
+.footer_link:hover {
+    color: #b41a1a;
+}
+
+.footer_link {
+    font-size: 1.2rem;
+    padding-bottom: 1rem;
+}
+
+#sponsor-images-container > img {
+    width:10rem;
+    margin:1rem;
+}
+
+#sponsor-images-container {
+    display: flex;
+}
+
+footer {
+    padding-left: 2rem;
+    display: flex;
+    background-color: #dfd9d4;
+    padding-right: 15vw;
+}
+

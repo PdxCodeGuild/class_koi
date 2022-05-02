@@ -1,0 +1,81 @@
+<!-- 
+PDX Code Guild - Class Koi
+HTML Lab 02 - Blog
+Matt Walsh
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{pagename}}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@1.1.0/modern-normalize.min.css">
+    <link rel="stylesheet" type= "text/css" href="{{url_for('static',filename='style.css')}}">
+</head>
+<body>
+    <header>
+        <a href="/">{{pagename}}</a>
+    </header>
+    <nav>
+        <span>Our writers:</span>
+        {%for author in authors%}
+            <a href="/by/{{author.lower()}}">{{author}}</a>
+        {%endfor%}
+    </nav>
+    <main>
+        {%if main_page%}
+        <section id="banner">
+            <p>
+                Welcome to Letters from Lorem, your home for meaningless gibberish ramblings falsely attributed to your classmates.
+                <br/>
+                Please enjoy your stay, and check back regularly for more expertly written posts.
+            </p>
+        </section>
+        {%endif%}
+        {%if author_page%}
+        <section id="banner">
+            <p>
+                {{author_bio}}
+            </p>
+        </section>
+        {%endif%}
+        <section id="content">
+            {%for post in posts%}
+                <article>
+                    <h1>
+                        <a href="/posts/{{post['slug']}}">
+                            {{post['title'].title()}}
+                        </a>
+                    </h1>
+                    <h3>
+                        <a href="/by/{{post['author'].lower()}}">
+                            by {{post['author']}}
+                        </a>
+                    </h3>
+                    <p>
+                        {{post['body']}}
+                    </p>
+                    {%if not post_page%}
+                        <p>
+                            <a href="/posts/{{post['slug']}}">
+                                Read full letter...
+                            </a>                    
+                        </p>
+                    {%endif%}
+                    {%if post_page%}
+                    <img src="{{url_for('static',filename=post['image'])}}">
+                        <p>
+                            {%autoescape false%}
+                            {{post['full']}}
+                            {%endautoescape%}
+                        </p>
+                    {%endif%}
+                </article>
+            {%endfor%}
+        </section>
+    </main>
+</body>
+</html>
