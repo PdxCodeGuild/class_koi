@@ -1,7 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponse
 
-from .models import Author, Book
+from .models import Author, Book, Checkout
 
 def index(request):
     books = Book.objects.all()
@@ -19,6 +19,23 @@ def author(request, id:int):
 
 def book(request, id:int):
     book = get_object_or_404(Book, id=id)
-    context = {"book": book}
+    checkout_log = Checkout.objects.filter(book=book)
+    current_checkout = checkout_log.last()
+    if request.method == "POST":
+        borrowed_bool = request.POST.get('borrowed_bool')
+        username = request.POST.get('username')
+        
+        Checkout.objects.create(
+            book = book,
+            username = username,
+            checkout = borrowed_bool
+        )
+        return redirect('library:book')
+    
+    context = {
+        "book": book,
+        "checkout_log": checkout_log,
+        "current_checkout": current_checkout,
+    }
     return render(request, 'library/book.html', context)
     

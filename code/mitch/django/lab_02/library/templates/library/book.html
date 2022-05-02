@@ -7,4 +7,35 @@
     <h4 class="f4"><a class= "link black" href="/author/{{ book.author.id }}">Author:  {{ book.author }}</a></h4>
     <h4 class="f4">Published:  {{ book.publish_date }}</h4>
 
-{% endblock %}
+    
+    {% if current_checkout %}
+    <p>Book is currently checked out. Check back later to borrow. If you are the user who has the book: use the form below to return it.</p>
+    {% else %}
+    <p>Book is avalible! Use the form below to check the book out.</p>
+    {% endif %}
+
+    <form action="{% url 'library:book' book.id %}" method="POST">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" name="username">
+        {% if current_checkout %}
+        <input type="hidden" value="False" name="borrowed_bool">
+        <button type="submit">Return Book</button>
+        {% else %}
+        <input type="hidden" value="True" name="borrowed_bool">
+        <button type="submit">Borrow Book</button>
+        {% endif %}
+
+
+    </form>
+
+
+
+
+
+
+
+
+
+
+    {% endblock %}
