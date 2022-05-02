@@ -6,20 +6,34 @@
 /* 1. Use your browser's responsive design mode to view your webpage
 in smartphone-portrait mode.  Fill in the css below until it looks right. */
 
+:root {
+	--bg-white: #F1EDE4;
+	--bg-blue: #6A8C8E;
+	--bg-slate: #2B3A3B;
+	--text-black: #26231D;
+	/* --text-yellow: #BAAD8A; */
+	--text-orange: #EAD6CB;
+	--text-white: #F2EFE9;
+}
 
 
 body {
-	background-color: #dcfee8;
-	color: #001909;
+	background-color: var(--bg-white);
+	color: var(--text-black);
 	font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-header {
-	background-color: #e0cdf4;
+nav, footer {
+	background-color: var(--bg-slate);
 }
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Roboto Mono', monospace;
+}
+
+header {
+	background-color: var(--bg-blue);
+	color: var(--text-white)
 }
 
 header > h1 {
@@ -35,7 +49,6 @@ header > p > span {
 }
 
 nav {
-	background-color: #504301;
 	display: flex;
 	justify-content: space-between;
 	padding: 0.5rem;
@@ -43,7 +56,7 @@ nav {
 
 a {
 	text-decoration: none;
-	color: #fef5c8;
+	color: var(--text-white);
 }
 
 p.left {
@@ -74,8 +87,7 @@ article > p, article > h3 {
 }
 
 footer {
-	background-color: #504301;
-	color: #fef5c8;
+	color: var(--text-white);
 	text-align: center;
 	padding: 1.5rem;
 }
