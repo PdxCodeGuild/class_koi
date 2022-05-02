@@ -46,9 +46,9 @@ Make a [JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/
 ```json
 {
 	"name": "Bender Bending Rodríguez",
-	"bio": "Bender is a cool and funny hedonistic robot who likes to steal things", // aka written introduction
+	"bio": "Bender is a cool and funny hedonistic robot who likes to steal things",
 	"link": "https://futurama.fandom.com/wiki/Bender_Bending_Rodr%C3%ADguez",
-	"photo": "https://static.wikia.nocookie.net/enfuturama/images/4/49/Bender_Bending_Rodr%C3%ADguez_-_Official_Character_Promo_1.jpg/", // this can be a url or a relative path to an image from the html file
+	"photo": "https://static.wikia.nocookie.net/enfuturama/images/4/49/Bender_Bending_Rodr%C3%ADguez_-_Official_Character_Promo_1.jpg/",
 	"places_lived": [
 		"Tijuana, Mexico",
 		"New New York"
@@ -61,6 +61,6 @@ Make a [JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/
 ```sh
 > git add files-to-be-added
 > git commit -m "your commit message goes here"
-> git push -u origin your-name/python/lab01
+> git push -u origin your-name/html/lab01
 ```
 Then go to the repository to create a PR.
