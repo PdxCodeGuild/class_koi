@@ -1,0 +1,191 @@
+/* thanks to pete for the general approach */
+h1 {
+    color: #3D5442;
+    text-align: center;
+    font-family: cursive;
+    font-weight: 700;
+    font-size: 5rem;
+}
+
+/* h2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: whitesmoke;
+
+} */
+
+hr {
+    background-color: #3D5442;
+    height: 2.5px;
+}
+
+nav {
+    background-color: #A1896D;
+    display: flex;
+    min-height: 8vh;
+    /* padding: 1rem 0; */
+    padding-left: 22vw;
+    padding-right: 22vw;
+    justify-content: space-evenly;
+    align-items: center;
+	width: 100vw;
+    /* margin-top: 1rem;
+    margin-bottom: 1rem; */
+    border: 2px solid black
+}
+
+nav a {
+	/* color is the color of the text */
+	color: #3D5442;
+    font-size: 2rem;
+    font-family: cursive;
+	/* background-color is the color of the background */
+	background-color: whitesmoke;
+	/* 50% is the maximum for border radius
+	a perfectly square div would be a circle at border-radius: 50% */
+	/* border-radius: 50%; */
+    /* border-left: 1px solid #3D5442;
+    border-right: 1px solid #3D5442; */
+	/* padding can take one to four values, if you just give it one,
+	it will apply that amount of padding to all 4 sides */
+	padding: 2rem;
+	/* padding puts space INSIDE the element
+	margin puts space OUTSIDE the element */
+    border-radius: 15%;
+    border: 2px solid #3D5442;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+body {
+background-color: whitesmoke;
+
+}
+
+main {
+	/* flexing main so that the aside and section are horizontally placed
+	instead of the vertical default */
+	min-height: 85vh;
+	display: flex;
+    padding-top: 2rem;
+    margin-left: 2rem
+}
+
+aside {
+	color: whitesmoke;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    text-align: center;
+    min-width: 18vw;
+	height: 100%;
+	display: flex;
+	/* flex-wrap: wrap will make the flex children wrap to the next line
+	automatically if they run out of room */
+	flex-wrap: wrap;
+	background-color: #544635;
+    border: 2px solid black;
+    justify-content:space-evenly;
+    padding: 1rem
+    
+}
+
+aside a {
+    font-family: cursive;
+    font-size: 2rem;
+	/* giving 2 values to margin or padding:
+	the first value is the space on top and bottom
+	the second vlaue is the space on the right and left */
+    margin: 2.5rem 2.5rem;
+	background-color: whitesmoke;
+    border-radius: 15%;
+    border: 2px solid #3D5442;
+    /* width: 30rem; */
+	padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+	color: #3D5442;
+    /* flex-basis: 15%; */
+    text-align: center;
+    
+}
+
+aside img {
+    min-width: 16vh;
+    min-height: 32vh;
+    /* padding: 1rem; */
+    border: 2px solid black;
+    
+}
+
+aside article {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2rem;
+	/* giving 2 values to margin or padding:
+	the first value is the space on top and bottom
+	the second vlaue is the space on the right and left */
+    /* margin: 2.5rem 2.5rem; */
+	background-color: whitesmoke;
+    border-radius: 10%;
+    border: 2px solid #3D5442;
+    /* width: 30rem; */
+	padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+	color: #3D5442;
+    /* flex-basis: 15%; */
+    text-align: center;
+    overflow-y: hidden ;
+    margin-top: 2rem;
+    height: 11vh;
+
+}
+
+section {
+    /* overflow-y: scroll; */
+    height: 100%;
+	min-width: 60vw;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+    background-color: whitesmoke;
+    /* overflow-y:scroll; */
+    /* column-count: 1; */
+}
+
+article {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+    color: whitesmoke;
+    font-size: 2rem;
+    /* margin: 2rem; */
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+	width: 80vw;
+    padding: 2rem;
+	/* rem values are relative to the font size of the root element
+	you can read more here: https://www.sitepoint.com/understanding-and-using-rem-units-in-css/ */
+	height: 30vh;
+    border: 2px solid black;
+	background-color: #4B4654;
+    overflow-y:scroll;
+    /* flex-basis: 50%; */
+}
+
+/* thanks to pete for the general approach
+button {
+    color: #8441A6;
+    min-height: 7vh;
+    font-size: larger;
+    font-weight: 700;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #C1D9CD;
+    border-radius: 20%;
+    /* padding: 1px, 1px; */
+	/* padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px; */
+    /* border: ; */
+	 /* margin: ; */
+/* } */
