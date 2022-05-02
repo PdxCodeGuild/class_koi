@@ -1,0 +1,9 @@
+{
+    "name": "William Lumbergh",
+    "bio": "William Lumbergh is a Texas native, and a Vice President of the software company Initech. He drives a blue Porsche 911 SC with vanity license plate that reads MYPRSHE. Lumbergh graduated with a BS in Physics from MIT.",
+    "link": "https://en.wikipedia.org/wiki/Bill_Lumbergh",
+    "photo": "https://upload.wikimedia.org/wikipedia/en/2/2e/Bill_Lumbergh_Office_Space.jpeg",
+    "locations": "Texas",
+    "quote": "mmmm yeah.",
+    "attacks": {"Enormous Salary": 25, "Bureaucratic Processing": 12, "High Blood Pressure": 8, "Caked Coffee Cup": 3}
+}
