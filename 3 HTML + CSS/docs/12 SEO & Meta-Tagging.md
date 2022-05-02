@@ -82,4 +82,6 @@ Here is a template as well with some of the basics:
 </html>
 ```
 
+To test your meta tagging, you can slack yourself the link to your page (remember to use the full `https://`), or check out [opengraph.xyz](https://opengraph.xyz), a great resource for testing meta tags.  
+
 That covers the `<head>`, as for the `<body>`, the best thing you can do for SEO is to use semantic elements properly.  Here is a great article going in depth on why you should use semantic elements and how best to implement them: [https://www.semrush.com/blog/semantic-html5-guide/](https://www.semrush.com/blog/semantic-html5-guide/)

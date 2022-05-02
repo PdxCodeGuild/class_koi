@@ -1,0 +1,41 @@
+<h1>Cities</h1>
+
+<ul>
+	{% for city in cities %}
+	<li>{{ city.name }}, {{ city.country }} Population: {{ city.population }} Food: {{ city.food }} Mayor: {{ city.mayor }} Climate: {{ city.climate }}</li>
+	{% endfor %}
+</ul>
+
+<h3>Add a new city:</h3>
+<form action="/add-city/" method="POST">
+	<!-- for the form submission to work, I have to put this
+	csrf token inside of it -->
+	{% csrf_token %}
+	<!-- the name="" attribute of the input tag will be the key for the input's
+	value in the QueryDict on the backend -->
+	<p>
+		Name
+		<input type="text" name="name">
+	</p>
+	<p>
+		Country
+		<input type="text" name="country">
+	</p>
+	<p>
+		Population
+		<input type="number" name="population">
+	</p>
+	<p>
+		Food
+		<input type="text" name="food">
+	</p>
+	<p>
+		Mayor
+		<input type="text" name="mayor">
+	</p>
+	<p>
+		Climate
+		<input type="text" name="climate">
+	</p>
+	<input type="submit" value="Add">
+</form>

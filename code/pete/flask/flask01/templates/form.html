@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Flask App || Form</title>
+</head>
+<body>
+	<nav>
+		<a href="/">Home</a>
+	</nav>
+	<h1>Form</h1>
+	<form action="/form" method="POST">
+		<label for="message-input">Message</label>
+		<!-- the name attribute is important
+		whatever it is set to will be the key
+		for getting that value out of the
+		dictionary on the back end	-->
+		<input
+			name="message"
+			id="message-input"
+			type="text"
+			placeholder="type somethin'"
+		>
+		<button type="submit">Submit Message</button>
+	</form>
+	{% if message %}
+	<p>The user entered: {{ message }}</p>
+	{% endif %}
+</body>
+</html>
