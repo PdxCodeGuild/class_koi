@@ -1,0 +1,19 @@
+{% extends 'game_of_thrones/base.html' %}
+
+
+{% block title %}
+<title>Game of Thrones</title>
+{% endblock %}
+
+{% block content %}
+
+
+<h3 class="text-xl ml-5">Houses</h3>
+{% for house in houses %}
+<h4 class="text-lg ml-10">
+	<a href="{% url 'thrones:house' house.name|lower %}">{{ house.name }}</a>
+</h4>
+{% endfor %}
+
+
+{% endblock %}
