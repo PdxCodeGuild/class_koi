@@ -8,6 +8,8 @@ M-F 9:30 am – 4:30 pm
 
 ### Holidays / Days Off
 
+- April 4th (Day Off)
+- April 11th (Snow Day)
 - May 30th (Memorial Day)
 
 ### Staff
@@ -16,13 +18,14 @@ M-F 9:30 am – 4:30 pm
   
     - pete@pdxcodeguild.com
  
-- Lisa Brown, TA
+- Kelsey Canoy, TA
  
 - Dustin Olsen, TA
 
 ## Capstone Dates:
 
 Capstone proposal due: TBD 
+
 Presentation Day: June 24th, 2022  
 
 <!-- ## JavaScript Labs Assigned:
@@ -36,23 +39,28 @@ Presentation Day: June 24th, 2022
 [Bouncing Ball](5%20JavaScript/labs/Bouncing%20Ball.md), [Clock](5%20JavaScript/labs/Clock.md), [Hacker Typer](5%20JavaScript/labs/Hacker%20Typer.md), [Random Redirector](5%20JavaScript/labs/Random%20Redirector.md) -->
  
 
-<!-- ## Django Labs Assigned:
+## Django Labs Assigned:
+| Lab   | Name                                                                         | Date Assigned | Due By      | Hard Due Date |
+| ----- | ---------------------------------------------------------------------------- | ------------- | ------------| ------------- |
+| 00    | [Polls](4%20Django/labs/00%20Polls.md)                                       | Apr 25th      | Apr 29th    | May  9th      |
+| 01    | [Grocery List](4%20Django/labs/01%20Grocery%20List.md)                       | Apr 27th      | May  4th    | May 11th      |
+| 02    | [Library](4%20Django/labs/02%20Library.md)                                   | Apr 29th      | May  4th    | May 13th      |
 
- * [Lab 00 Polls](4%20Django/labs/00%20Polls.md)
- * [Lab 01 Grocery List](4%20Django/labs/01%20Grocery%20List.md)
- * [Lab 02 Library](4%20Django/labs/02%20Library.md)
- * [Lab 03 Chirp](4%20Django/labs/03%20Chirp.md) -->
+<!-- * [Lab 03 Chirp](4%20Django/labs/03%20Chirp.md) -->
 
-<!-- #### Optional Django Labs  
+#### Optional Django Labs  
 
-[URL Shortener](4%20Django/labs/Optional%20URL%20Shortener.md) -->
+[URL Shortener](4%20Django/labs/Optional%20URL%20Shortener.md)
 
-<!-- ## HTML/CSS Labs Assigned:
+## HTML/CSS Labs Assigned:
+| Lab   | Name                                                                         | Date Assigned | Due By      | Hard Due Date |
+| ----- | ---------------------------------------------------------------------------- | ------------- | ------------| ------------- |
+| 01    | [Bio](3%20HTML%20+%20CSS/labs/01%20Bio.md)                                   | Apr 12th      | Apr 15th    | Apr 26th      |
+| 02    | [Blog](3%20HTML%20+%20CSS/labs/02%20Blog.md)                                 | Apr 13th      | Apr 15th    | Apr 27th      |
+| 03    | [Company](3%20HTML%20+%20CSS/labs/03%20Company.md)                           | Apr 18th      | Apr 22nd    | May  2nd      |
+| 04    | [Mob Class Mascot](3%20HTML%20+%20CSS/labs/04%20Mob%20Class%20Mascot.md)     | NA            | NA          | NA            |
+| 05    | [Personal Portfolio](3%20HTML%20+%20CSS/labs/05%20Personal%20Portfolio.md)   | Apr 20th      | Apr 20th    | Apr 22nd      |
 
-* [Lab 01 Bio](3%20HTML%20+%20CSS/labs/01%20Bio.md)
-* [Lab 02 Blog](3%20HTML%20+%20CSS/labs/02%20Blog.md)
-* [Lab 03 Company](3%20HTML%20+%20CSS/labs/03%20Company.md)
-* [Lab 05 Personal Portfolio](3%20HTML%20+%20CSS/labs/05%20Personal%20Portfolio.md) -->
 
 <!-- 
 #### Optional HTML/CSS/Flask Labs
@@ -60,53 +68,59 @@ Presentation Day: June 24th, 2022
 [Flask Redo](3%20HTML%20+%20CSS/labs/Optional%20Flask%20Redo.md), [Burrito Order Form](3%20HTML%20+%20CSS/labs/Optional%20Burrito%20Order%20Form.md) -->
 
 
-<!-- ## Flask Labs Assigned:
+## Optional Flask Labs:
 
 * [Lab 01 Programming 101 Redux](2%20Flask/labs/01%20Programming%20101%20Labs%20Redux.md)
 * [Lab 02 Programming 102 Redux](2%20Flask/labs/02%20Programming%20102%20Labs%20Redux.md)
-* [Lab 03 Contacts List Redux](2%20Flask/labs/03%20Contacts%20List%20Redux.md) -->
+* [Lab 03 Contacts List Redux](2%20Flask/labs/03%20Contacts%20List%20Redux.md)
 
 ## Python Labs Assigned:
-| Lab   | Name                                                          | Date Assigned | Due By      | Hard Due Date |
-| ----- | ------------------------------------------------------------- | ------------- | ------------| ------------- |
-| 01    | [Unit Converter](1%20Python/labs/01%20Unit%20Converter.md)    | Mar 15th      | Mar 21st    | Mar 29th      |
-| 02    | [Average Numbers](1%20Python/labs/02%20Average%20Numbers.md)  | Mar 15th      | Mar 21st    | Mar 29th      |
-| 03    | [Make Change](1%20Python/labs/03%20Make%20Change.md)          | Mar 16th      | Mar 21st    | Mar 29th      |
+| Lab   | Name                                                                         | Date Assigned | Due By      | Hard Due Date |
+| ----- | ---------------------------------------------------------------------------- | ------------- | ------------| ------------- |
+| 01    | [Unit Converter](1%20Python/labs/01%20Unit%20Converter.md)                   | Mar 15th      | Mar 18th    | Mar 29th      |
+| 02    | [Average Numbers](1%20Python/labs/02%20Average%20Numbers.md)                 | Mar 15th      | Mar 18th    | Mar 29th      |
+| 03    | [Make Change](1%20Python/labs/03%20Make%20Change.md)                         | Mar 16th      | Mar 18th    | Mar 30th      |
+| 04    | [Number To Phrase](1%20Python/labs/04%20Number%20To%20Phrase.md)             | Mar 16th      | Mar 18th    | Mar 30th      |
+| 05    | [Blackjack Advice](1%20Python/labs/05%20Blackjack%20Advice.md)               | Mar 16th      | Mar 18th    | Mar 30th      |
+| 06    | [Pick 6](1%20Python/labs/06%20Pick%206.md)                                   | Mar 21st      | Mar 25th    | Apr  4th      |
+| 07    | [Mob Jackalope](1%20Python/labs/07%20Mob%20Jackalope.md)                     | Mar 21st      | NA          | NA            |
+| 08    | [Credit Card Validation](1%20Python/labs/08%20Credit%20Card%20Validation.md) | Mar 22nd      | Mar 25th    | Apr  5th      |
+| 09    | [Peaks And Valleys](1%20Python/labs/09%20Peaks%20And%20Valleys.md)           | Mar 22nd      | Mar 25th    | Apr  5th      |
+| 10    | [ROT13](1%20Python/labs/10%20ROT13.md)                                       | Mar 24th      | Mar 30th    | Apr  7th      |
+| 11    | [ARI](1%20Python/labs/11%20ARI.md)                                           | Mar 24th      | Mar 30th    | Apr  7th      |
+| 12    | [Contact List](1%20Python/labs/12%20Contact%20List.md)                       | Mar 28th      | Apr  1st    | Apr 11th      |
+| 13    | [ATM](1%20Python/labs/13%20ATM.md)                                           | Mar 30th      | Apr  5th    | Apr 13th      |
+| 14    | [Mob Tic Tac Toe](1%20Python/labs/14%20Mob%20Tic%20Tac%20Toe.md)             | Mar 30th      | NA          | NA            |
+| 16    | [Dad Joke API](1%20Python/labs/16%20Dad%20Joke%20API.md)                     | Apr  1st      | Apr  6th    | Apr 15th      |
+| 18    | [Mini-Capstone](1%20Python/labs/18%20Mini-Capstone.md)                       | Apr  6th      | Apr  8th    | Apr 19th      |
+
+<!-- Labs Made Optional: -->
+<!-- | 15    | [Searching & Sorting](1%20Python/labs/15%20Searching%20And%20Sorting.md)     | NA            | NA          | NA            | -->
+<!-- | 17    | [Quotes API](1%20Python/labs/17%20Quotes%20API.md)                           | NA            | NA          | NA            | -->
 
 
-<!-- * [Lab 04 Number To Phrase](1%20Python/labs/04%20Number%20To%20Phrase.md)
-* [Lab 05 Blackjack Advice](1%20Python/labs/05%20Blackjack%20Advice.md)
-* [Lab 06 Pick 6](1%20Python/labs/06%20Pick%206.md)
-* [Lab 07 Mob Jackalope](1%20Python/labs/07%20Mob%20Jackalope.md)
-* [Lab 08 Credit Card Validation](1%20Python/labs/08%20Credit%20Card%20Validation.md)
-* [Lab 09 Peaks And Valleys](1%20Python/labs/09%20Peaks%20And%20Valleys.md)
-* [Lab 10 ROT13](1%20Python/labs/10%20ROT13.md)
-* [Lab 11 ARI](1%20Python/labs/11%20ARI.md)
-* [Lab 12 Contact List](1%20Python/labs/12%20Contact%20List.md)
-* [Lab 13 ATM](1%20Python/labs/13%20ATM.md)
-* [Lab 14 Mob Tic Tac Toe](1%20Python/labs/14%20Mob%20Tic%20Tac%20Toe.md)
-* [Lab 15 Searching And Sorting](1%20Python/labs/15%20Searching%20And%20Sorting.md)
-* [Lab 16 Dad Joke API](1%20Python/labs/16%20Dad%20Joke%20API.md)
-* [Lab 17 Quotes API](1%20Python/labs/17%20Quotes%20API.md)
-* [Lab 18 Mini-Capstone](1%20Python/labs/../../1%20Python/labs/18%20Mini-Capstone.md) -->
 
 #### Optional Python Labs
 
-<!-- [Count Words](1%20Python/labs/count_words.md), -->
+[Connect Four](1%20Python/labs/connect_four.md),
+[Count Words](1%20Python/labs/count_words.md),
+[Currency Converter](1%20Python/labs/currency_converter.md),
 [Grading](1%20Python/labs/grading.md),
 [Guess The Number](1%20Python/labs/guess_the_number.md),
-<!-- [Image Manipulation](1%20Python/labs/image_manipulation.md), -->
+[Image Manipulation](1%20Python/labs/image_manipulation.md),
 [LCR](1%20Python/labs/LCR.md),
 [Mad Libs](1%20Python/labs/madlib.md),
 [Magic 8 Ball](1%20Python/labs/magic_8_ball.md),
-<!-- [Rain Data](1%20Python/labs/rain_data.md), -->
+[Rain Data](1%20Python/labs/rain_data.md),
 [Random Emoticon Generator](1%20Python/labs/random_emoticon_generator.md),
 [Random Password Generator](1%20Python/labs/random_password.md),
 [Road Trip](1%20Python/labs/road_trip.md),
 [Rock, Paper, Scissors](1%20Python/labs/rock_paper_scissors.md),
+[Searching & Sorting](1%20Python/labs/15%20Searching%20And%20Sorting.md),
 [Simple Calculator](1%20Python/labs/simple_calculator.md),
 [Sock Sorter](1%20Python/labs/sock_sorter.md),
-<!-- [Stack And Linked List](1%20Python/labs/stack_and_linked_list.md), -->
+[Stack And Linked List](1%20Python/labs/stack_and_linked_list.md),
+[Quotes API](1%20Python/labs/17%20Quotes%20API.md)
 
 
 

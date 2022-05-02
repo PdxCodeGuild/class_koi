@@ -1,0 +1,88 @@
+body {
+	height: 200vh;
+}
+
+button {
+	padding: 1.5rem;
+	font-size: x-large;
+	border-radius: 20px;
+	margin: 1.5rem;
+}
+
+#btn-1:hover {
+	background-color: aquamarine;
+	color: rebeccapurple;
+	/* font-size: xx-large; */
+	/* make sure it doesn't poorly effect the UI (user interface)
+	like making the font size larger here did */
+}
+
+#btn-2:hover {
+	background-color: aquamarine;
+	color: rebeccapurple;
+	/* this transition property is giving instructions
+	for how to react to a hover */
+	transition: 2s;
+}
+
+#btn-2 {
+	/* this transition property is giving instructions
+	for going back to the default state (i.e.: not hovering on it) */
+	transition: 1s;
+}
+
+#btn-3:hover {
+	background-color: aquamarine;
+	color: rebeccapurple;
+	/* be wary of having long transition effects for hover, etc.
+	events.  The user may be waiting for the effect to end
+	before clicking a button, folowing a link, etc. */
+	transition: 0.25s;
+}
+
+#btn-3 {
+	/* this transition property is giving instructions
+	for going back to the default state (i.e.: not hovering on it) */
+	transition: 0.4s;
+}
+
+@keyframes movearound {
+	0% {
+		margin-top: 0;
+		margin-left: 0;
+		background-color: #8C00FC;
+	}
+	25% {
+		margin-top: 0;
+		margin-left: 500px;
+		background-color: #3500FF;
+	}
+	50% {
+		margin-top: 500px;
+		margin-left: 500px;
+		background-color: #01FE01;
+	}
+	75% {
+		margin-top: 500px;
+		margin-left: 0;
+		background-color: #FFFE37;
+	}
+	100% {
+		background-color: #8C00FC;
+	}
+}
+
+#animated {
+	height: 200px;
+	width: 200px;
+	border: 2px solid black;
+	animation-name: movearound;
+	animation-timing-function: linear;
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
+}
+
+#ghost {
+	width: 300px;
+	height: 400px;
+}
