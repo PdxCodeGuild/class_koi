@@ -14,7 +14,7 @@
     <p>Available</p>
     <h3>Check out:</h3>
     {% endif %}
-    <form action="{% url 'library:book_detail' book.id %}" method="POST">
+    <form action="{% url 'library:book_detail' book.slug %}" method="POST">
         {% csrf_token %}
         <label for="user_name">User name:</label>
         <input type="text" name="user_name">
@@ -48,7 +48,7 @@
     </h3>
     <ul>
         {% for genre in genres %}
-        <li>{{ genre }}</li>
+        <li><a href="{% url 'library:genre' genre.slug %}">{{ genre }}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}

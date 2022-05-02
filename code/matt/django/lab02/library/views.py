@@ -20,8 +20,8 @@ def authors(request):
     }
     return render(request, 'library/authors.html', context)
 
-def author_detail(request, id):
-    author = Author.objects.get(id=id)
+def author_detail(request, slug):
+    author = Author.objects.get(slug=slug)
     books = Book.objects.filter(author=author)
     context = {
         'author': author,
@@ -36,8 +36,8 @@ def books(request):
     }
     return render(request, 'library/books.html', context)
 
-def book_detail(request, id):
-    book = Book.objects.get(id=id)
+def book_detail(request, slug):
+    book = Book.objects.get(slug=slug)
     author = book.author
     check_history = Checkout.objects.filter(book=book)
     status = check_history.last()
@@ -50,7 +50,7 @@ def book_detail(request, id):
             user=user_name,
             checkout=status_update,
         )
-        return redirect('library:book_detail', id=id)
+        return redirect('library:book_detail', slug=slug)
     context = {
         'book': book,
         'author': author,
@@ -66,4 +66,13 @@ def history(request):
         'history': check_history,
     }
     return render(request, 'library/history.html', context)
+
+def genre(request, slug):
+    genre = Genre.objects.get(slug=slug)
+    books = Book.objects.filter(genre=genre)
+    context = {
+        'genre': genre,
+        'books': books,
+    }
+    return render(request, 'library/genre.html', context)
 

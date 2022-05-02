@@ -6,7 +6,7 @@
     <h1>{{ author }}</h1>
     <ul>
         {% for book in books %}
-        <li><a href="{% url 'library:book_detail' book.id %}">{{ book }}</a></li>
+        <li><a href="{% url 'library:book_detail' book.slug %}">{{ book }}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}
