@@ -9,8 +9,15 @@
 <body>
     {% block content %}
     {% endblock %}
-    {% block home_link %}
-    <a href="{% url 'library:index' %}">Go back home</a>
+    {% block links %}
+    {% if request.user.is_authenticated %}
+    <p>Welcome {{ request.user }}! <a href="{% url 'accounts:logout' %}">Logout</a></p>
+    {% else %}
+    <p>You are not logged in. Would you like to <a href="{% url 'accounts:login' %}">login</a> or <a href="{% url 'accounts:register' %}">register</a>?</p>
+    {% endif %}
+    <p><a href="{% url 'library:index' %}">Go back home</a></p>
+    <p><a href="{% url 'library:history' %}">View full check in/out history.</a></p>
+    <h5>For this lab, I am practicing the zen art of CSS minimalism.</h5>
     {% endblock %}
 </body>
 </html>

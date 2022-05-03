@@ -41,10 +41,14 @@ def book_detail(request, slug):
     author = book.author
     check_history = Checkout.objects.filter(book=book)
     status = check_history.last()
+    if str(status.user) == str(request.user):
+        same_user = True
+    else:
+        same_user = False
     genres = Genre.objects.filter(books=book)
     if request.method == 'POST':
         status_update = request.POST.get('status_update')
-        user_name = request.POST.get('user_name')
+        user_name = request.user
         Checkout.objects.create(
             book=book,
             user=user_name,
@@ -57,6 +61,7 @@ def book_detail(request, slug):
         'check_history': check_history,
         'genres': genres,
         'status': status,
+        'same_user': same_user,
     }
     return render(request, 'library/book_detail.html', context)
 

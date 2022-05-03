@@ -4,28 +4,33 @@
 
 {% block content %}
     <h1>{{ book }}</h1>
-    <h2>{{ author }}</h2>
+    <h2>Author: {{ author }}</h2>
+    <h3>Published: {{ book.pub_date }}</h3>
 
     <h3>Current Checkout Status:</h3>
-    {% if status.checkout %}
-    <p>Checked Out</p>
+    {% if status.checkout and same_user %}
+    <p>Checked Out - by you</p>
     <h3>Check back in:</h3>
+    {% elif status.checkout %}
+    <p>Checked Out - by someone else</p>
     {% else %}
     <p>Available</p>
+    {% if request.user.is_authenticated %}
     <h3>Check out:</h3>
     {% endif %}
+    {% endif %}
+    {% if request.user.is_authenticated %}
     <form action="{% url 'library:book_detail' book.slug %}" method="POST">
         {% csrf_token %}
-        <label for="user_name">User name:</label>
-        <input type="text" name="user_name">
-        {% if status.checkout %}
+        {% if status.checkout and same_user %}
         <input type="hidden" value="False" name="status_update">
         <button type="submit">Check In</button>
-        {% else %}
+        {% elif not status.checkout %}
         <input type="hidden" value="True" name="status_update">
         <button type="submit">Check Out</button>
         {% endif %}
     </form>
+    {% endif %}
     <h3>
         Check In/Out History:
     </h3>
