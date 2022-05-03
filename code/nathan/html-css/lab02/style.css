@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Kumbh Sans', sans-serif;
+    scroll-behavior: smooth;
+}
+
+.bg-image{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("henning-witzel-ukvgqriuOgo-unsplash.jpg");
+    background-size: cover;
+}
+
+a{
+    color: #fff;
+    text-decoration: none;
+}
+
+header{
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem;
+    position: sticky;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 0 50px;
+}
+
+h1{
+    display: flex;
+    align-items: center;
+    font-size: 3rem;
+}
+
+h1 a{
+    text-decoration: none;
+}
+
+nav ul{
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+nav li{
+    height: 10vh;
+}
+
+nav li a{
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    text-decoration: none;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+nav li a:hover{
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.15);
+    transition: all 0.3s ease;
+}
+
+main{
+    height: 90vh;
+    display: flex;
+}
+
+aside{
+    display: flex;
+    height: 90vh;
+    width: 80px;
+}
+
+aside ul{
+    display: flex;
+    flex-direction: column;
+}
+
+aside li{
+    list-style: none;
+    width: 100px;
+}
+
+aside li a{
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 160px;
+    height: 80px;
+    transition: all 0.3s ease;
+}
+
+aside li a:hover{
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    transform: scale(1.15);
+    transition: all 0.3s ease;
+}
+
+section{
+    height: 100%;
+    width: 100%;
+    margin-left: 10vh;
+    overflow-y: scroll;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+section::-webkit-scrollbar{
+    width: 0.5rem;
+}
+
+section::-webkit-scrollbar-track{
+    background: #1e1e1e;
+}
+
+section::-webkit-scrollbar-thumb{
+    background: #fff;
+}
+
+article{
+    color: #fff;
+    margin: 40px;
+    height: 750px;
+    width: 1600px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(6px);
+    justify-content:space-between;
+    padding: 5rem;
+    line-height: 40px;
+    transition: all 0.3s ease;
+}
+
+article h2{
+    font-size: 2.75rem;
+}
+article p{
+    font-size: 1.5rem;
+
+}
+article h3{
+    font-size: 2rem;
+    text-align: end;
+}
+
+/* article:hover{
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(7px);
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+} */

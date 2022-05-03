@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"/>
+    <title>Being John Malkovich</title>
+    
+</head>
+<body>
+    <h1>{{ name }}</h1>
+
+    <h2>INTRODUCTION</h2>
+    <!-- using autoscape false to use anchor tag (<a>) inside json array. See jmkovic.json file.-->
+    {% autoescape false %}
+    <p>{{ bio }}</p> 
+    {% endautoescape %}
+
+    <img src={{ img }} alt="John Malkovich profile close-up"/>
+
+    <h2>PLACES LIVED</h2>
+
+    <ul>
+        {% for place in places_lived %}
+        <li>{{ place }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>QUOTE</h2>
+    <q>{{ quote }}</q>
+</body>
+</html>
