@@ -30,7 +30,7 @@ def book(request, id:int):
             username = username,
             checkout = borrowed_bool
         )
-        return redirect('library:book')
+        return redirect('library:book', id=id)
     
     context = {
         "book": book,

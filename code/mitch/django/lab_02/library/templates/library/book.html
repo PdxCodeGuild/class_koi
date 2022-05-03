@@ -6,33 +6,54 @@
     <h3 class="f3 navy">Title:  {{ book.title }}:</h3>
     <h4 class="f4"><a class= "link black" href="/author/{{ book.author.id }}">Author:  {{ book.author }}</a></h4>
     <h4 class="f4">Published:  {{ book.publish_date }}</h4>
-
+    <h4 class="f4">
+        Genre(s):
+        {% for genre in book.genres.all %}
+        "{{ genre }}"
+        {% endfor %}
+    </h4>
     
-    {% if current_checkout %}
-    <p>Book is currently checked out. Check back later to borrow. If you are the user who has the book: use the form below to return it.</p>
+    <hr>
+
+    {% if current_checkout.checkout %}
+    <p>Sorry, this book is currently checked out; check back later to borrow.</p>
+    <p>If you are the user who has the book, use this form return it.</p>
     {% else %}
-    <p>Book is avalible! Use the form below to check the book out.</p>
+    <p>This book is avalible! Use this form to check the book out.</p>
     {% endif %}
 
     <form action="{% url 'library:book' book.id %}" method="POST">
         {% csrf_token %}
         <label for="username">Username:</label>
-        <input type="text" name="username">
-        {% if current_checkout %}
+        <input type="text" name="username" title="Username">
+        {% if current_checkout.checkout %}
         <input type="hidden" value="False" name="borrowed_bool">
-        <button type="submit">Return Book</button>
+        <button type="submit" title="Return Book Button">Return Book</button>
         {% else %}
         <input type="hidden" value="True" name="borrowed_bool">
-        <button type="submit">Borrow Book</button>
+        <button type="submit" title="Borrow Book Button">Borrow Book</button>
         {% endif %}
 
 
     </form>
 
+    <br>
 
-
-
-
+    <hr>
+    {% if checkout_log %}
+    <h4>Checkout Log</h4>
+    {% endif %}
+    {% for log_entry in checkout_log %}
+    <ul>
+        <li>{% if log_entry.checkout %}
+            <span>Checked Out - </span> 
+            {% else %}
+            <span>Checked In - </span>
+            {% endif %}
+            {{ log_entry.timestamp }}
+        </li>
+    </ul>
+    {% endfor %}
 
 
 

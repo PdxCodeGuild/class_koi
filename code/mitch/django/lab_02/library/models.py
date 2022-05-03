@@ -11,12 +11,18 @@ class Author(models.Model):
     def __str__(self):
         return self.name
     
+class Genre(models.Model):
+    genre = models.CharField(max_length=60)
+    
+    def __str__(self):
+        return self.genre
+    
 
 class Book(models.Model):
     title = models.CharField(max_length=80)
     publish_date = models.IntegerField()
     author = models.ForeignKey(Author, on_delete=models.PROTECT, related_name='books')
-    
+    genres = models.ManyToManyField(Genre, related_name='books')
 
     def __str__(self):
         return self.title

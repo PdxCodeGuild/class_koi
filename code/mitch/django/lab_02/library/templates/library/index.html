@@ -9,12 +9,14 @@
             <th>Title</th>
             <th>Author</th>
             <th>Published</th>
+            <th>Genre(s)</th>
         </tr>
         {% for book in books %}
         <tr>
             <td class="pr3"><a class= "lh-copy black link" href="/book/{{ book.id }}">{{ book }}</a></td>
             <td class="pr3 tc"><a class= "lh-copy black link" href="/author/{{ book.author.id }}">{{ book.author }}</a></td>
             <td class="pr3 tc">{{ book.publish_date }}</td>
+            <td class="pr3 tc">{% for genre in book.genres.all  %} "{{ genre }}" {% endfor %}</td>
 
         </tr>
         {% endfor %}
