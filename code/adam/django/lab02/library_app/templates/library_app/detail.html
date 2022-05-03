@@ -68,9 +68,9 @@
             </thead>
             {% for book in books %}
             <tr>
-                <td>{{ book.checkout.checked_out_by }}</td>
-                <td>{{ book.checkout.set.all.first.checked_out_date }}</td>
-                <td>{{ book.checkout.set.all.first.checked_in_date }}</td>
+                <td>{{ book.checked_out_by }}</td>
+                <td>{{ book.checked_out_date }}</td>
+                <td>{{ book.checked_in_date }}</td>
             </tr>
             {% endfor %}
         </table>
