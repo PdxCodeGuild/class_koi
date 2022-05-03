@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
+
+
+h1 {color:#F2B705;font-family: 'RocknRoll One', sans-serif;}
+h2 {color: #F2B705}
+h3 {background-color: rgba(0, 0, 0, 0.75)}
+body {background-color: #E1D8C9;}
+header {background-color: #260101;}
+footer {background-color: #260101; font-family: 'RocknRoll One', sans-serif; background-color: whitesmoke;}
+div {font-family: 'RocknRoll One', sans-serif; color:whitesmoke}
+article {font-family: 'RocknRoll One', sans-serif; color:whitesmoke}
+button {font-family: 'RocknRoll One', sans-serif; background-color: whitesmoke;}
+
+
+/* header{.pa4} */
+
+
+
+@media (min-width: 300px){
+    .f4{font-size:x-small}
+}
+
+@media (min-width: 576px){
+    .f4{font-size: medium;}
+
+}
+
+@media (min-width: 768px) {
+    .f4{font-size: large;}
+	/* MEDIUM SCREEN WIDTH */
+	/* tablets, devices less than 992px wide */
+
+	/* 3.  Switch to tablet mode on your browser.  Add any necessary css
+	for tablet-width here. */
+}
+
+@media (min-width: 992px) {
+    .f4{font-size: large;}
+    /* .f1{font-size: xx-large;} */
+}
+
+
+@media (min-width: 1200px) {
+    .f4{font-size: x-large;}
+
+    .w5{width: 30rem;}
+    /* .f1{font-size: xx-large;} */
+}
+
+@media (min-width: 1800px) {
+    .f4{font-size: x-large;}
+
+    .w5{width: 45rem;}
+}
