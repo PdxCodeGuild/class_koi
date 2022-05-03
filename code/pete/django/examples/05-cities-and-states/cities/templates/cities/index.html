@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cities DataBase</title>
+</head>
+<body>
+	<!-- the context dictionary establishes the cities variable from the views
+		cities = ['Portland', 'KC', 'Fargo', 'Detroit', 'Seoul']
+	  message = 'Welcome to the Cities Database' -->
+	<h1>{{ message }}</h1>
+	<!-- <p>{{ cities }}</p> -->
+	<ul>
+	{% for city in cities %}
+		<li>
+			<a href="/cities/{{ city.id }}">{{ city }}</a>
+		</li>
+	{% endfor %}
+	<!-- indentation doesn't matter in html
+	so you have to explicitly end the loop
+	with the endfor keyword -->
+	</ul>
+	<form action="/cities/" method="POST" style="padding: 2rem;">
+		{% csrf_token %}
+
+		<!-- an input element's name attribute is very important
+		it is how you can extract the data from the form
+		on the backend -->
+
+		<!-- a label's for attribute will match it to an input's id attribute -->
+		<label for="name-input">Name</label>
+		<input id="name-input" type="text" name="name" />
+		<br />
+
+		<label for="population-input">Population</label>
+		<input id="population-input" type="number" name="population" />
+		<br />
+
+		<label for="climate-select">Climate</label>
+		<select id="climate-select" name="climate">
+			<option value="TR">Tropical</option>
+			<option value="DR">Dry</option>
+			<option value="TE">Temperate</option>
+			<option value="CT">Continental</option>
+			<option value="CO">Polar</option>
+		</select>
+		<br />
+
+		<input type="submit" value="Add New City" />
+		<!-- <input type="submit"> and <button type="submit">
+			can both be used for form submission -->
+		<!-- <button type="submit">Add New City</button> -->
+	</form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+    "characters": [
+        {
+            "name": "Arya Stark",
+            "house": "Stark",
+            "list_of_names": [
+                "The Mountain",
+                "The Hound",
+                "The Queen"
+            ],
+            "sword": "Needle"
+        },
+        {
+            "name": "Jon Snow",
+            "house": "Stark",
+            "sword": "Longclaw"
+        },
+        {
+            "name": "Tyrion Lannister",
+            "house": "Lannister",
+            "witticisms": []
+        }
+    ]
+}

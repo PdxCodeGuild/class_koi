@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
+
+
+body{
+    background-image: url('images/bob_background.webp')
+}
+.soft_bg {
+    background-color: rgba(184, 209, 255, 0.5);
+}
+.centered
+{
+    text-align: center;
+}
+.large
+{
+    font-size: large;
+}
+.medium
+{
+    font-size: medium;
+}
+.small
+{
+    font-size: small;
+}
+h1{
+    font-family: 'Roboto';
+    background-color: rgba(184, 209, 255, 0.3);
+}
+table, th, tr, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    background-color: rgba(184, 209, 255, 0.3);
+}
+table {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+p {
+    font-size: medium;
+    color:black;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    background-color: rgba(184, 209, 255, 0.5);
+}
+ol {
+    list-style-type:georgian;
+    list-style-position: inside;
+    background-color: rgba(184, 209, 255, 0.5);
+}
+a {
+    color:midnightblue;
+}
+a:visited {
+    color:indianred;
+}
+a:hover {
+    font-style:oblique;
+}
+#quote {
+    font-family:cursive;
+}
