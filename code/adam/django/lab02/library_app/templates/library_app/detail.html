@@ -28,6 +28,7 @@
             <th>Checked Out</th>
             <th>Date Checked Out</th>
             <th>Checked Out By</th>
+            <th>Genre</th>
         </thead>
         <tr>
             <td>{{ book.title }}</td>
@@ -37,10 +38,17 @@
                 <td>No</td>
                 <td style="padding-left: 1rem">---</td>
                 <td style="padding-left: 1rem">---</td>
+                <td>{{ book.comma_separated_genres }}</td>
             {% else %}
                 <td>Yes</td>
                 <td>{{ book.checkouts.all.last.checked_out_date }}</td>
                 <td>{{ book.checkouts.all.last.checked_out_by }}</td>
+                <td>
+                    {% for genre in book.genres.all %}
+                    {{ genre }}{% if genre != book.genres.all.last %},
+                    {% endif %}
+                    {% endfor %}      
+                </td>
             {% endif %}
         </tr>
     </table>
