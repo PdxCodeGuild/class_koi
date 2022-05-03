@@ -4,9 +4,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Library</title>
 </head>
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      th, td {
+        padding: 5px;
+        text-align: left;
+      }
+      th{
+          font-size: x-large;
+      }
+</style>
 <body>
-    <h1>{{ message }}</h1>
+    <h1 style="text-align: center;">{{ message }}</h1>
+    <h4>
+    <table style="margin-left:auto; margin-right:auto">
+        <tr>
+            <th><b>Book</b></th>
+            <th>Status</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <td>
+                <a href="/library_app/{{ book.id }}">{{ book.title }}</a>
+            </td>
+            
+            
+            <td>
+                {% if book.checked_out is True %}
+                <span>Checked out</span>
+                {% else %}
+                <span>Available</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    </h4>
+
+
+
 </body>
 </html>
