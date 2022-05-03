@@ -7,9 +7,7 @@ from .models import GroceryItem
 
 def index(request):
     if request.method == 'POST':
-        print(request.POST)
         data = dict(request.POST)
-        print(data)
         description = request.POST.get('description')
 
         item = GroceryItem.objects.create(
