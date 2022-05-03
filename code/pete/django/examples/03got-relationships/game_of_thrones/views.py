@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import House, Character
@@ -19,7 +20,7 @@ def house(request, name:str):
         print('the name is ', character_name)
         Character.objects.create(
             name=character_name,
-            house=house
+            house=house,
         )
         return redirect('thrones:house', name=house.name.lower())
         # the following line would have the same effect
@@ -27,3 +28,10 @@ def house(request, name:str):
     # house = House.objects.get(name=name.capitalize())
     context = {'house': house}
     return render(request, 'game_of_thrones/house.html', context)
+
+def character(request, slugified_name):
+    character = Character.objects.get(slug=slugified_name)
+    context = {
+        'character': character
+    }
+    return render(request, 'game_of_thrones/character.html', context)

@@ -22,7 +22,9 @@
 						
 						{% for character in house.characters.all %}
 						<tr>
-							<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ character.name }}</td>
+							<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+								<a href="{% url 'thrones:character' character.slug %}" class="underline text-indigo-700 hover:text-indigo-800">{{ character.name }}</a>
+							</td>
 							<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ character.house.name }}</td>
 							</td>
 						</tr>
