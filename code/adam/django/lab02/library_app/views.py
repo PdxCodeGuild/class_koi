@@ -25,7 +25,7 @@ def detail(request, id: int):
 
 def checkout(request, id):
     book = Book.objects.get(id=id)
-    checkout = Checkout.objects.get(id=id)
+    # checkout = Checkout.objects.get(id=id)
     Checkout.objects.create(
         book = book,
         checked_out_by = request.POST.get('name'),
@@ -37,14 +37,10 @@ def checkout(request, id):
 
 def checkin(request, id):
     book = Book.objects.get(id=id)
-    Checkout.objects.create(
-        book = book,
-        checked_in_date = timezone.now()
-    )
+    checkouts = book.checkouts.all()
+    last_checkout = checkouts.last()
+    last_checkout.checked_in_date = timezone.now()
+    last_checkout.save()
     book.checked_out = False
     book.save()
-    return redirect(f'/library_app/{book.id}')
-
-def history(request, id):
-    book = Book.objects.get(id=id)
     return redirect(f'/library_app/{book.id}')

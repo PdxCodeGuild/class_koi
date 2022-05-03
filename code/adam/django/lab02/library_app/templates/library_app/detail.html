@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ book }}</title>
+    <title>{{ book.title }}</title>
 </head>
 <style>
     table, th, td {
@@ -18,7 +18,8 @@
 </style>
 <body>
     <a href="/library_app"><button style="margin-top: 1rem;">Home</button></a>
-    <h1>{{ book }}</h1>
+    <h1>{{ book.title }}</h1>
+    <h2>by {{ book.author }}</h2>
     <table style="width:100%">
         <thead>
             <th>Title</th>
@@ -32,15 +33,15 @@
             <td>{{ book.title }}</td>
             <td>{{ book.author}}</td>
             <td>{{ book.publish_date }}</td>
-            <td>
-                {% if book.checked_out is False %}
-                No
-                {% else %}
-                Yes
-                {% endif %}
-            </td>
-            <td>{{ book.checkout_set.all.last.checked_out_date }}</td>
-            <td>{{ book.checkout_set.all.last.checked_out_by }}</td>
+            {% if book.checked_out is False %}
+                <td>No</td>
+                <td style="padding-left: 1rem">---</td>
+                <td style="padding-left: 1rem">---</td>
+            {% else %}
+                <td>Yes</td>
+                <td>{{ book.checkouts.all.last.checked_out_date }}</td>
+                <td>{{ book.checkouts.all.last.checked_out_by }}</td>
+            {% endif %}
         </tr>
     </table>
     
@@ -66,11 +67,11 @@
                 <th>Date Checked Out</th>
                 <th>Date Checked In</th>
             </thead>
-            {% for book in books %}
+            {% for checkout in book.checkouts.all %}
             <tr>
-                <td>{{ book.checked_out_by }}</td>
-                <td>{{ book.checked_out_date }}</td>
-                <td>{{ book.checked_in_date }}</td>
+                <td>{{ checkout.checked_out_by }}</td>
+                <td>{{ checkout.checked_out_date }}</td>
+                <td>{{ checkout.checked_in_date }}</td>
             </tr>
             {% endfor %}
         </table>
