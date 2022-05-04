@@ -41,7 +41,9 @@ def book_detail(request, slug):
     author = book.author
     check_history = Checkout.objects.filter(book=book)
     status = check_history.last()
-    if str(status.user) == str(request.user):
+    if not status:
+        same_user = False
+    elif str(status.user) == str(request.user):
         same_user = True
     else:
         same_user = False

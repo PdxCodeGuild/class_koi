@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Author(models.Model):
     name = models.CharField(max_length=100)
@@ -20,7 +21,7 @@ class Book(models.Model):
 
 class Checkout(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
-    user = models.CharField(max_length=50)
+    user = models.ForeignKey(User, on_delete=models.PROTECT, related_name='checkout_transaction')
     checkout = models.BooleanField(default=False, blank=True)
     timestamp = models.DateTimeField(auto_now_add=True, blank=True)
 
