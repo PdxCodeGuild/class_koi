@@ -4,7 +4,7 @@ from django.contrib import admin
 from . import views
 
 app_name = 'chirp_posts'
-# urlpatterns = [
-#     path('', views.index),
+urlpatterns = [
+    path('post/', views.post_request, name="post"),
     
-# ]
+]

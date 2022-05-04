@@ -10,9 +10,10 @@
 
 </head>
  
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-purple-200">
-        <a class="navbar-brand" href="#">chirp</a>
+<body>    
+      {% load crispy_forms_tags %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Chirp</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="False" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,13 +25,13 @@
               <a class="nav-link" href="logout/">Logout</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Welcome, {{user.username}}</a>
+              <a class="nav-link" href="chirp/">Welcome, {{user.username}}</a>
             </li>
       
             {% else %}
       
             <li class="nav-item">
-              <a class="nav-link" href="login/">Login</a>
+              <a class="nav-link" href="/chirp/login">Login</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="register/">Register</a>
@@ -40,10 +41,14 @@
           </ul>
         </div>
       </nav>
-    <span><h1>Chirp</h1>
-    <h3>The alternative to that other bird app</h3></span>
-    <a href="post/">Post a new chirp!</a>
-
+    <div class="container py-5">
+    <h1>Post a Chirp</h1>
+    <!-- FORM -->
+    <form method="POST">
+        {% csrf_token %}
+        {{ post_form|crispy }} <br>
+        <button class="btn btn-primary" type="submit">Post</button>
+    </form>
 
 
 
