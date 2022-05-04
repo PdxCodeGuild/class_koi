@@ -2,6 +2,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpRequest
 from django.utils import timezone
+from django.contrib.auth import authenticate, login, logout
 
 from .models import Author, Book, Checkout
 
@@ -44,3 +45,16 @@ def checkin(request, id):
     book.checked_out = False
     book.save()
     return redirect(f'/library_app/{book.id}')
+
+def mylogin(request):
+    username= request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        # redirect to a success page
+    else:
+        #return an 'invalid login' error message
+        return
+
+
