@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 class Author(models.Model):
     name = models.CharField(max_length=40)
@@ -13,6 +14,7 @@ class Book(models.Model):
     author = models.ForeignKey(Author, on_delete=models.PROTECT)
     checked_out = models.BooleanField('checked-out', default=False)
     genres = models.ManyToManyField('Genre', related_name='books')
+    # user = models.ForeignKey(User, on_delete=models.PROTECT, relate)
 
     def comma_separated_genres(self):
         return ', '.join([str(genre) for genre in self.genres.all()])
