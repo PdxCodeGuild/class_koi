@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+	{% block title %}
+	{% endblock %}
+</head>
+<body class="bg-black-20">
+    
+    <header class="tc pv4 pv5-ns">
+        <img src="{% static 'chirp/images/logo.jpeg' %}" class="br-100 pa2 ba b--black-10 h4 w4" alt="Chirp Logo">
+        <h2 class="f6 black-80 fw6 ttu tracked">Login</h2>
+        <h2 class="f6 black-80 fw6 ttu tracked">Sign Up</h2>
+      </header>
+      
+    
+
+
+      
+
+    {% block content %}
+    {% endblock %}
+
+
+
+
+</body>
+</html>
