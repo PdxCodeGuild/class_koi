@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Anybody:ital,wght@1,500&family=Fredoka+One&family=Tangerine:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+h1{
+    color: #FFD5FB;
+    font-family: 'Rubik Moonrocks', cursive;
+    font-size: 60px;
+    text-transform: uppercase;
+    text-align: center;
+    background-color: rgba(64, 7, 59, .85);
+}
+
+h2{
+    font-size: 50px;
+    color: rgb(214, 253, 253);
+    font-family: 'Roboto', sans-serif;
+    text-transform: full-width;
+    text-align: center;
+    background-color: rgba(64, 7, 59, .85);
+    padding: 70px;
+    padding-right: 300px;
+    padding-left: 300px;
+}
+
+h3{
+    font-size: 45px;
+    color: #FFD5FB;
+    font-family: 'Comfortaa', cursive;
+    text-transform: full-width;
+    text-align: center;
+    background-color: rgba(96, 46, 123, .85);
+    padding: 20px;
+   
+    
+}
+
+body{
+    background-image: url('https://archive.ph/Nuj0D/0789f23fbd7eb3c3e8584e53d6c3bcfa199747a0.jpg');
+    background-size:cover;
+    background-blend-mode: color;
+    background-color: rgba(0, 0, 0, .5)
+}
+
+p{
+    font-size: 30px;
+    color: rgb(214, 253, 253);;
+    font-family: 'Comfortaa', cursive;
+    text-transform: full-width;
+    text-align: center;
+    background-color: rgba(64, 7, 59, .85);
+    padding: 70px;
+    padding-right: 15%;
+    padding-left: 15%;
+}
+ul{
+    font-size: 25px;
+    color: #ADEB31;
+    font-family: 'Comfortaa', cursive;
+    background-color: rgba(64, 7, 59, 0.80);
+    align-items: center;
+    padding-left: 40%;
+}
+li{
+    font-size: 25px;
+    color: rgb(214, 253, 253);
+    font-family: 'Comfortaa', cursive;
+    background-color: rgba(64, 7, 59, 0.80);
+    align-items: center;
+
+}
+
+
+
+a{
+    color:#ADEB31;
+}
+a:visited{
+    color:rgb(154, 15, 247);
+    background-color: black;
+}
+
+img{
+    width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(0, 0, 0, 1.2);
+    border-style: outset;
+    border-radius: 200px;
+    border-color:rgba(96, 46, 123, 0.9);
+}
