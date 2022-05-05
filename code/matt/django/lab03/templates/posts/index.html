@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title_addon %}: index {% endblock %}
+
+{% block content %}
+
+{% for post in posts reversed %}
+<p>{{ post.username }}</p>
+<p>{{ post.timestamp }}</p>
+{% if post.text_content %}
+<p>{{ post.text_content }}</p>
+{% endif %}
+{% if post.image_content %}
+<img src="{{ post.image_content.url}}" alt="{{ post.text_content }}">
+{% endif %}
+{% endfor %}
+
+{% endblock %}

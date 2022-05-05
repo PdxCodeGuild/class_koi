@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Meower{% endblock %}{% block title_addon %}{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <nav>
+            {% block nav %}
+            <a href="{% url 'posts:index' %}">Meower Home</a>
+            {% if request.user.is_authenticated %}
+            <form action="{% url 'users:logout_user' %}" style="display:inline-block">
+                <input type="submit" value="Logout">
+            </form>
+            <!-- <a href="{% url 'users:logout_user' %}">Logout</a> -->
+            {% else %}
+            <button onclick="openLogin()" id="open_login_button">Login</button>
+            <button onclick="closeLogin()" style="display:none" id="close_login_button">Cancel</button>
+            <button onclick="openRegister()" id="open_register_button">Register</button>
+            <button onclick="closeRegister()" style="display:none" id="close_register_button">Cancel</button>
+
+            <div id="login_form" style="display:none">
+                <form action="{% url 'users:login_user' %}" method="POST" class="">
+                    {% csrf_token %}
+                    <div class="">
+                        <input type="text" id="username" name="username" class="" placeholder="Enter your username">
+                    </div>
+                
+                    <div class="">
+                        <input type="password" id="password" name="password" class="" placeholder="Enter your password">
+                    </div>
+                
+                    <div class="">
+                        <input type="submit" value="Login" class="">
+                    </div>
+                </form>
+            </div>
+            <div id="register_form" style="display:none">
+                <form action="{% url 'users:register_user' %}" method="POST" class="">
+                    {% csrf_token %}
+                    
+                    <div class="">
+                        <!-- <label for="username" class="">Username:</label> -->
+                        <input type="text" id="username" name="username" class="" placeholder="Enter your username">
+                    </div>
+                
+                    <div class="">
+                        <input type="password" id="password1" name="password1" class="" placeholder="Enter your password">
+                    </div>
+                
+                    <div class="">
+                        <input type="password" id="password2" name="password2" class="" placeholder="Re-enter your password">
+                    </div>
+                
+                    <div class="">
+                        <input type="submit" value="Register" class="">
+                    </div>
+                </form>
+            </div>
+
+            {% endif %}
+            {% endblock %}
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        {% block footer %}
+        &copy; 2022 Meower, Inc
+        {% endblock %}
+    </footer>
+    <script>
+        function openLogin() {
+          document.getElementById("login_form").style.display = "block";
+          document.getElementById("open_login_button").style.display = "none";
+          document.getElementById("close_login_button").style.display = "inline-block";
+          closeRegister()
+        }
+        
+        function closeLogin() {
+          document.getElementById("login_form").style.display = "none";
+          document.getElementById("open_login_button").style.display = "inline-block";
+          document.getElementById("close_login_button").style.display = "none";
+        }
+
+        function openRegister() {
+          document.getElementById("register_form").style.display = "block";
+          document.getElementById("open_register_button").style.display = "none";
+          document.getElementById("close_register_button").style.display = "inline-block";
+          closeLogin()
+        }
+        
+        function closeRegister() {
+          document.getElementById("register_form").style.display = "none";
+          document.getElementById("open_register_button").style.display = "inline-block";
+          document.getElementById("close_register_button").style.display = "none";
+        }
+    </script>
+</body>
+</html>

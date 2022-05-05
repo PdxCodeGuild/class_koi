@@ -58,8 +58,8 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -126,6 +126,12 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# LOGIN_REDIRECT_URL = 'library:index'
-# LOGIN_URL='accounts/login/'
-# LOGOUT_REDIRECT_URL = 'library:index'
+# Base url to serve media files
+MEDIA_URL = '/uploads/'
+
+# Path where media is stored
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads/')
+
+# LOGIN_REDIRECT_URL = 'posts:index'
+# LOGIN_URL='users:login_user'
+# LOGOUT_REDIRECT_URL = 'posts:index'
