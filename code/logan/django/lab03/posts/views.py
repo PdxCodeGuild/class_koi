@@ -14,3 +14,10 @@ def index(request):
     form = LoginForm()
     context = {'message': message, 'form':form}
     return render(request, "posts/index.html", context)
+
+def world(request):
+    """
+    View the WORLD's chirps
+    """
+    context = {}
+    return render(request, "posts/world.html", context)

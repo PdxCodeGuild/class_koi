@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
-from .forms import SignupForm
+from posts.forms import LoginForm
 from django.contrib.auth.forms import UserCreationForm 
 from django.http import HttpResponse, HttpRequest
 
@@ -76,4 +76,20 @@ def signup(request):
     return render(request, 'users/signup.html', context)
 
 def login(request):
-    return HttpResponse("It's the login view, baby.")
+    user = None
+    form = LoginForm(request.POST)
+    if form.is_valid():
+        print("form is valid!")
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
+        user = authenticate(request, username=username, password=password)
+    else:
+        print(form.errors)
+    if user is not None:
+        login(request, user)
+        return redirect("/posts/world")
+    else:
+        print("Not valid!")
+        return redirect("/")
+    # context = {}
+    # return HttpResponse("It's the login view, baby.")

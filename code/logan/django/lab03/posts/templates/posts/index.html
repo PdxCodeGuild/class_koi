@@ -17,12 +17,12 @@
     <h1>Welcome to Chirp</h1>
     <br>
     <br>
-    <h2>Login</h2>
+    <!-- <h2>Login</h2> -->
 
     <form action="{% url 'users:login' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}    
-        <input type="submit" value="Sign me up!">
+        <input type="submit" value="Log in">
     </form>
 
     {{message}}
