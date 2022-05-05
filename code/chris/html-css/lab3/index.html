@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ToyShare :: Home</title>
+
+    <!-- bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- style css a lot of this CSS is doing nothing. -->
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- fontawesome css -->
+    <script src="https://kit.fontawesome.com/0bdb00e447.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+<section>
+    <nav class="navbar navbar-expand-md navbar-light fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><img src="./images/ToyShareLogo.png"></a>
+          
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Browse Toys</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  For Families
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Post a toy!</a></li>
+                  <li><a class="dropdown-item" href="#">Settings</a></li>
+                  <li><a class="dropdown-item" href="#">Contact ToyShare!</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search for toys!" aria-label="Search">
+                <button class="btn btn-outline-dark" type="submit">Go!</button>
+              </form>  
+        </div>
+        </div>
+      </nav>
+</section>
+
+<section id="banner">
+    <div class="container-fluid">
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <h1 class="text-center">Welcome to ToyShare.com!</h1>
+                <p class="text-center">Uniting families with toys for free. A sustainable, cost-effective, and friendly communal toy sharing resource.</p>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <p class="text-center"><i class="fa-solid fa-gamepad"></i></p>
+        </div>
+        <div class="row justify-content-md-center" id="example-post">
+            <h1 class="text-center">Example Post:</h3> 
+            <div class="col-md-4" style="max-width: 400px;">
+                <img src="./images/IMG_6774.jpeg" alt="toy" class="img-thumbnail mx-auto d-block">
+            </div>
+    
+            <div class="col-md-4">
+                <h1 class="text-left">Toy:</h3> 
+                    <p>Little Tikes EasyScore Basketball Set</p>
+                <h3 class="text-left">Description:</h3> 
+                    <p>Basketball Hoop Adjusts to Six Heights from 2 to 4 Feet.
+                    Includes an oversized rim and junior size basketball. 
+                    Develops social, motor skills and coordination. 
+                    Base can be weighted with sand (not included) for stability.</p>
+                <h3 class="text-left">Age:</h3>
+                    <p> 1 ½ to 5 years</p>
+                    <button type="button" class="btn btn-primary btn-sm">Contact Family</button>
+                    <button type="button" class="btn btn-dark btn-sm">Report Post</button>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <p></p>
+            <p class="text-center"><i class="fa-solid fa-puzzle-piece"></i></p>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <h3 class="text-center">Friendly Experience</h3>
+                <p class="text-center">We only allow users to post images of the toy itself, 
+                    and our content moderation team is extremely supportive and responsive. 
+                    Click the button below to learn more about our community content moderation team!</p>
+                <div class="d-grid gap2 col-6 mx-auto">
+                    <button type="button" class="btn btn-dark">ToyShare ModPortal</button>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <p></p>
+            <p class="text-center"><i class="fa-solid fa-robot"></i></p>
+        </div>
+        <div class="row justify-content-md-center"></div>
+            <div class="col-md-auto">
+                <h3 class="text-center">How We Make Money</h3>
+                <p class="text-center">We partner with US-based toy manufacturers to place one ad per every 3 posts.</p>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</section>
+    <!-- bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
+</body>
+
+
+</html>

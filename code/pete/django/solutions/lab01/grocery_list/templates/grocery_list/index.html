@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Grocery List</title>
+	<script src="https://cdn.tailwindcss.com/"></script>
+</head>
+<body>
+	<h1 class="text-slate-800 text-center text-2xl py-5">Grocery List</h1>
+	<h2 class="text-slate-800 text-center text-xl py-5">Incomplete</h2>
+	<ul class="list-disc ml-20">
+		{% for item in groceries_incomplete %}
+		<li class="pt-1">
+			<span class="inline-block w-20">{{ item.description }}</span>
+			
+			<a href="{% url 'groceries:delete' item.id %}">
+				<button
+					class="
+						px-1
+						border-zinc-700 border-2 rounded-md
+						hover:bg-zinc-800 hover:text-white
+						ml-1
+					"
+				>
+					Delete
+				</button>				
+			</a>
+
+			<a href="{% url 'groceries:toggle_complete' item.id %}">
+				<button
+					class="
+						px-1
+						border-zinc-700 border-2 rounded-md
+						hover:bg-zinc-800 hover:text-white
+					"
+				>
+					Complete
+				</button>
+			</a>
+
+		</li>
+		{% endfor %}
+	</ul>
+	<h2 class="text-slate-800 text-center text-xl py-5">Complete</h2>
+	<ul class="list-disc ml-20">
+		{% for item in groceries_complete %}
+		<li class="pt-1">
+			<span class="inline-block w-20">{{ item.description }}</span>
+
+			<a href="{% url 'groceries:delete' item.id %}">
+				<button
+					class="
+						px-1
+						border-zinc-700 border-2 rounded-md
+						hover:bg-zinc-800 hover:text-white
+						ml-1
+					"
+				>
+					Delete
+				</button>				
+			</a>
+
+			<a href="{% url 'groceries:toggle_complete' item.id %}">
+				<button
+					class="
+						px-1
+						border-zinc-700 border-2 rounded-md
+						hover:bg-zinc-800 hover:text-white
+					"
+				>
+					Un-Complete
+				</button>
+			</a>
+
+		</li>
+		{% endfor %}
+	</ul>
+	<form action="{% url 'groceries:home' %}" method="POST" class="m-32">
+		{% csrf_token %}
+		<label for="description" class="pr-5">Item Description:</label>
+		<input type="text" id="description" name="description"
+			class="border-black border-2 rounded-md"
+		>
+		<input type="submit" value="Add Item To List"
+			class="
+				border-zinc-700 border-2 rounded-md
+				hover:bg-zinc-800 hover:text-white
+				cursor-pointer px-3 ml-3
+			"
+		>
+	</form>
+</body>
+</html>
