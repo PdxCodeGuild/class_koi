@@ -1,0 +1,76 @@
+h1 {
+        color: whitesmoke;
+        background-color: rgba(0, 0, 0, 0.75);
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 50px;
+        text-align: center;
+
+    }
+
+h2 {
+        color: whitesmoke;
+        background-color: rgba(0, 0, 0, 0.75);
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 30px;
+        text-align: center;
+
+}
+
+/* Image or color */
+body {
+        background-image: url("skulls.webp");
+        /* width: 800px */
+        /* background-color: darkgray; */
+}
+
+p {
+    font-size:x-large;
+    color: whitesmoke;
+    text-align: left;
+    background-color: rgba(0, 0, 0, .8);
+    font-family: 'Times New Roman', Times, serif;
+    padding-left: 50rem;
+    padding-right: 50rem;
+    /* border: 5px solid whitesmoke;
+    border-radius: 5px; */
+
+}
+
+ul {list-style-type: circle;
+    /* text-align: center; */
+    list-style-position: inside;
+    /* background-color: rgba(0, 0, 0, 0.8); */
+    /* border: 5px solid whitesmoke;
+    border-radius: 5px; */
+}
+
+li {
+    font-size: x-large;
+    color: whitesmoke;
+    /* text-align: justify; */
+    background-color: rgba(0, 0, 0, 0.75);
+    font-family: 'Times New Roman', Times, serif;
+    padding-left: 50rem;
+    padding-right: 50rem;
+}
+
+a {
+    color: goldenrod
+}
+
+a:visited {
+    color: red
+
+ }
+
+
+ /* Thanks 2 W3Schools and Pete for css samples */
+img {
+    background-color: rgba(0, 0, 0, 1);
+	width: 400px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+    border: 5px solid whitesmoke;
+    border-radius: 5px;
+}

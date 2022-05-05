@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	{% block title %}
+	{% endblock %}
+	<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="text-indigo-900 bg-slate-50">
+
+	<!-- This example requires Tailwind CSS v2.0+ -->
+<nav class="bg-gray-800 mt-5 flex justify-between px-10 py-5">
+	<a href="{% url 'thrones:home' %}" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page"> Home </a>
+	<h1 class="text-white text-center text-2xl">Game of Thrones</h1>
+</nav>
+
+<main class="p-5 py-10">
+{% block content %}
+{% endblock %}
+</main>
+
+<footer class="bg-gray-800 py-10">
+	<p class="text-center text-base text-gray-300">&copy; 2022 Class Koi Coding Services, Inc. All rights reserved.</p>
+</footer>
+
+
+</body>

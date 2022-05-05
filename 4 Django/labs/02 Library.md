@@ -1,6 +1,13 @@
 
 # Lab 02: Library
 
+### Git Setup:
+```sh
+> git checkout main
+> git pull
+> git checkout -b your-name/django/lab02
+```
+
 Let's create an application for representing a library. You should have two models (below) and a page for users to check out and check in books. You can enter the book and author information using the admin panel.
 
 - `Book`: a model representing a book, with a title, publish date, and an author (foreign key)
@@ -25,3 +32,11 @@ Add a `Genre` model.  Give the `Genre` model a [many-to-many relationship](https
 ## Optional Version 4
 
 Add a [user authentication system](https://docs.djangoproject.com/en/3.2/topics/auth/) to the project.  Instead of a user text field in the check out model, make the field a `ForeignKey` to the `User` model.
+
+### Git Add, Commit & Push:
+```sh
+> git add files-to-be-added
+> git commit -m "your commit message goes here"
+> git push -u origin your-name/django/lab02
+```
+Then go to the repository to create a PR.
