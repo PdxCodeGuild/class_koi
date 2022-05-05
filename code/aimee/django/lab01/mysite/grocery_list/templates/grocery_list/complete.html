@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery List: {{ grocery_item }}</title>
+</head>
+<!-- PAGE FOR CHECKED OFF CONFIRMATION -->
+
+<body>
+    
+    <h3>{{ grocery_item }} has been checked off.</h3>
+    <h4>Marked completed at {{ grocery_item.done_date }}</h4>
+
+    <a href="/grocery_list">Go back to your list</a>
+</body>
+</html>

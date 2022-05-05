@@ -1,0 +1,69 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'grocery_app/style.css' %}">
+    <title>Provisions List</title>
+</head>
+<body>
+
+    <header>
+        <h1>Chef Ramsay's Provisions</h1>
+
+    </header>
+
+    <main>
+
+        <form action="{% url 'grocery_app:new'%}" method="post">
+            {% csrf_token %}
+            <label for="description-input">Item:</label>   
+            <input type="text" name="description" id="description-input" required>
+            <input type="submit" value="Add Item">
+        </form>
+
+        <div class='inc-container'>
+            <h2>Incomplete</h2>
+            <hr>
+            <ul>
+                {% for item in incomplete_items %}
+                    <li>{{ item.description }}</li>
+                    <form action="{% url 'grocery_app:complete' item.pk %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="Complete">
+                    </form>
+                    <form action="{% url 'grocery_app:delete' item.pk %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="Delete">
+                    </form>
+                        
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <div class='comp-container'>
+            <h2>Complete</h2>
+            <hr>
+            <ul>
+                {% for item in completed_items %}
+                    <li><s> {{ item.description }}<s></li>
+                        <form action="{% url 'grocery_app:complete' item.pk %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" value="Mark incomplete">
+                        </form>
+                        <form action="{% url 'grocery_app:delete' item.pk %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" value="Delete">
+                        </form>
+                {% endfor %}
+            </ul>
+        <div>
+
+    </main>
+    
+       
+</body>
+</html>

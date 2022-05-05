@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery List || Add New Item</title>
+</head>
+<body>
+    <a href="/grocery_list_app">Home</a>
+    <h1>Add a new grocery item:</h1>
+    <form action="/grocery_list_app/add/" method="POST">
+        {% csrf_token %}
+        <!-- a label's for attribute will match it to an input's id attribute -->
+        <label for="item-input">Item</label>
+        <input id="item-input" type="text" name="item">
+        <br>
+
+        <button type="submit">Add Item</button>
+        <!-- buttons can also be used for submission: -->
+        <!-- <button type="submit">Add New City</button> -->
+        
+    </form>
+</body>
+</html>
