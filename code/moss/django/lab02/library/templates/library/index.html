@@ -12,10 +12,18 @@
     <!-- FORM, SELECT BOOK, CHECK-IN/OUT -->
 
     
+    <ul><p>INVENTORY</p>
+        {% for item in inventory%}
+            <li>{{ item.title }}</li>
+        {% endfor %}
+    </ul>
 
-    {% for item in inventory%}
-        {{ item.title }}
-    {% endfor %}
+    <ul><p>AUTHORS</p>
+        {% for item in author%}
+            <li>{{ item.name }}</li>
+        {% endfor %}
+    </ul>
+
 
     <h1>DOES THIS EVEN WORK?</h1>
     
