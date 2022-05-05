@@ -1,5 +1,12 @@
 # Lab 01: Grocery List
 
+### Git Setup:
+```sh
+> git checkout main
+> git pull
+> git checkout -b your-name/django/lab01
+```
+
 ### Let's create a simple grocery list app. 
 
 This can be done with a single app called `grocery_list` and model called `GroceryItem` which contains a text description, a created date, a completed date, and a boolean representing whether it was completed.
@@ -84,3 +91,11 @@ Here is a suggested series of steps to take to complete the lab
 	1. Show 2 lists (incomplete and complete).
 	2. Show 1 list with complete items marked (i.e.: crossed-out).
 9. Add functionality for the user to complete/delete items.
+
+### Git Add, Commit & Push:
+```sh
+> git add files-to-be-added
+> git commit -m "your commit message goes here"
+> git push -u origin your-name/django/lab01
+```
+Then go to the repository to create a PR.
