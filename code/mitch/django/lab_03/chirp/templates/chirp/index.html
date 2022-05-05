@@ -4,7 +4,41 @@
 <title>Chirp</title>
 {% endblock %}
 
+
+{% block header %}
+    {% if request.user.is_authenticated %}
+        <span class="flex content-center justify-around f6 black-80 fw6 ttu pa1 tracked">Logged in as {{ request.user.username }}</span>
+        <a href="/users/logout" class="flex content-center justify-around link grow f6 black-80 fw6 ttu pa1 tracked">Logout</a>
+    {% else %}
+        <a href="/users/signup" class="flex content-center justify-around link grow f6 black-80 fw6 ttu pa1 tracked">Sign Up</a>
+        <a href="/users/login" class="flex content-center justify-around link grow f6 black-80 fw6 ttu pa1 tracked w-auto">Login</a>
+    {% endif %}
+{% endblock %}
+
+
+
 {% block content %}
+<form class="pa4 black-80 flex justify-center">
+    {% csrf_token %}
+    <div>
+      <input type="submit" value="Chirp something:" class="b pa2 input-reset ba bg-transparent hover-bg-black hover-white br2">
+      <textarea id="post_text" name="post_text" rows="4" cols="50" class="db border-box bg-transparent hover-bg-black hover-white w-100 measure ba b--black-20 pa2 br2 mb2" aria-describedby="post_text-desc"></textarea>
+      <small id="post_text-desc" class="f6 black-70">(128 characters maxium length.)</small>
+    </div>
+</form>
+
+
+<ul class="list pl0">
+    {% for posts in posts %}
+        <li class="">
+            <span class="dib w-20">{{ item.text }}</span>
+
+        </li>
+    {% endfor %}
+</ul>
+
+
+
 
 
 
