@@ -12,20 +12,15 @@
     <!-- FORM, SELECT BOOK, CHECK-IN/OUT -->
 
     
-    <ul><p>INVENTORY</p>
-        {% for item in inventory%}
-            <li>{{ item.title }}</li>
+    <ul><h2>INVENTORY</h2>
+        {% for item in books%}
+            <li><h4>{{ item.title }}</h4> <i>{{ item.author }}</i>, <i>{{ item.pub_date }}</i></li>
+            <input type="submit" value="Check-in">
+            <input type="submit" value="Check-out">
         {% endfor %}
     </ul>
 
-    <ul><p>AUTHORS</p>
-        {% for item in author%}
-            <li>{{ item.name }}</li>
-        {% endfor %}
-    </ul>
-
-
-    <h1>DOES THIS EVEN WORK?</h1>
+    <h1>WHAT AM I DOING?</h1>
     
 </body>
 </html>

@@ -3,9 +3,15 @@ from .models import Author, Book
 
 
 def index(request):
-    inventory = Book.objects.all()
-    author = Author.objects.all()
-    return render(request,'library/index.html',{'inventory':inventory, 'author':author})
+    authors = Author.objects.all()
+    books = Book.objects.all()
+    context = {
+        'authors': authors,
+        'books': books,
+    }
+
+    return render(request,'library/index.html', context)
 
 
+def check_in(request,pk):
     
