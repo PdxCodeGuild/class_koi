@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery List || {{ grocery.item_text }}</title>
+</head>
+<body>
+    <h1>{{ grocery.item_text }}</h1>
+    <a href="/grocery_list_app">Home</a>
+    <table>
+        <thead>
+            <th>ID</th>
+            <th>Item</th>
+            <th>Date Added</th>
+            <th>Completed</th>
+            <th>Completed Date</th>
+        </thead>
+        <tr>
+            <td>{{ grocery.id }}</td>
+            <td>{{ grocery.item_text }}</td>
+            <td>{{ grocery.created_date }}</td>
+            <td>{{ grocery.completed }}</td>
+            <td>{{ grocery.completed_date }}</td>
+            <td>
+            {% if not grocery.completed %}
+            Not Completed
+            {% else %}
+            Completed &#9745;
+            {% endif %}
+            </td>
+            <td>
+                <form action="/grocery_list_app/{{ grocery.id }}" method="POST">
+                {% csrf_token %}
+                <button type="submit" name="name" value="{{ grocery.item_text }}">Delete item</button>
+                </form>
+            </td>
+        </tr>
+    
+    </table>
+      
+
+    
+
+</body>
+</html>
