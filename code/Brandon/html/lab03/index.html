@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>East India Trading Company</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="">
+            <img id="main_image" src="images/ship.jpg">
+          </a>
+
+          <!--Taken from https://github.com/jgthms/bulma/issues/856 -->
+          <a role="button" class="navbar-burger is-fixed-top" aria-label="menu" aria-expanded="false" data-target="navMenu" onclick="document.querySelector('.navbar-menu').classList.toggle('is-active')">
+
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+    
+        </div>
+      
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="#top">
+              Home
+            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-item" href="#selling">
+                Selling
+              </a>
+              <a class="navbar-item" href="#order">
+                Order
+              </a>
+              <a class="navbar-item" href="#jobs">
+                Jobs
+              </a>
+              <a class="navbar-item" href="#about">
+                About
+              </a>
+            </div>
+
+          </div>
+      </nav>    
+    <br>
+    <br>
+    <section id="main_title" class="hero is-small is-info">
+      <div class="hero-body">
+        <h1 class="title">
+          Dutch East India Trading Company
+        </h1>
+        <p class="subtitle">
+          Exotic Goods from the <strong>orient</strong>!
+        </p>
+      </div>    
+    </section>
+    <section class="section">
+      <img id="frig" src="images/tradeship.jpg">
+
+    </section>
+    <section id="selling" class="section">
+      <h1 class="title">What we offer:</h1>
+      <ul>
+        <b>
+        <li>Spices</li>
+        <li>Silk</li>
+        <li>Teak</li>
+        <li>Coffe</li>
+        <li>Tea</li>
+        </b>
+      </ul>
+      <br>
+      <img id="spices" src="images/spices.png">
+    </section>
+
+    <br id="order">
+    <br>
+    <div class="field" id="orderform">
+      <h1 class ="title">Submit Your Order</h1>
+      <label class="label">Name</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="Type Name">
+      </div>
+      <label class="label">Order</label>
+      <textarea class="textarea" placeholder="Enter order inquery"></textarea>
+      <br>
+      <input class="button" type="submit" value="Submit Order" onclick="alert('order submitted')">
+    </div>
+
+    <section id="jobs" class="section">
+      <h1 class="title">Available Jobs</h1>
+      <ul>
+        <b>
+        <li>Quarter Masters</li>
+        <li>Boatswains</li>
+        <li>Master Gunners</li>
+        <li>Sailors</li>
+        <li>Riggers</li>
+        <li>Cooks</li>
+        </b>
+      </ul>
+    </section>
+
+    <section id="about" class="section">
+      <h1 class="title">About</h1>
+      <p>Funded by the Queen of England and her cronies to create a monopoly on spice trade in the orient. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, maxime. Dolor, in? Nobis perferendis at laboriosam asperiores nesciunt temporibus sapiente obcaecati aspernatur, nam adipisci libero corporis possimus vitae iure quam.</p>
+      <br>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo sint tenetur iste nobis inventore maxime pariatur aut dolorem deserunt aliquam! Quaerat nisi eaque nostrum excepturi voluptatum. Laborum minima nisi ipsam!</p>
+    <br>
+ 
+    </section>
+    <br>
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Dutch East India Trading Co.</strong> by <a href="https://github.com/PdxCodeGuild/class_koi">Brandon Sarazin</a>&copy;2022
+        </p>
+        
+      </div>
+    </footer>
+
+  </body>
+</html>

@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Roboto+Slab:wght@500&display=swap');
+
+body {
+    color: rgba(54, 32, 20, 1);
+    text-align: center;
+    background-image: url("bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Roboto Slab', serif;
+    font-size: 10px;
+    margin: 0px;
+}
+
+h1 {
+    color: rgba(54, 32, 20, 1);
+    font-family: 'Amatic SC', cursive;
+    font-size: 5rem;
+    padding: 20px 0px 20px 0px;
+    margin: 40px auto 0px auto;
+    width: 600px;
+}
+
+h2 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 2rem;
+}
+
+h3 {
+    font-family: 'Amatic SC', cursive;
+    font-style: italic;
+    font-size: 1.5rem;
+}
+
+p {
+    font-size: 1rem;
+    padding: 10px;
+}
+
+a {
+    color: rgba(54, 32, 20, 1);
+}
+
+a:visited {
+    color: rgba(54, 32, 20, 1);
+}
+
+ul {
+    text-align: center;
+    font-size: 1rem;
+    padding: 0px;
+}
+
+li {
+    display: block;
+}
+
+img {
+    padding: 2%;
+}
+
+.mainbody {
+    width: 600px;
+    margin: 0px auto 0px auto;
+    background-color: rgba(71, 130, 55, 0.8);
+    border: 0px;
+    padding: 0px 0px 10px 0px;
+}
+
+.smimg {
+    width: 20%;
+}
+
+.mainimg {
+    padding: 0px;
+    border: 0px;
+}
+
+.imgstrip {
+    background-color: rgba(25, 54, 17, 0.8);
+    padding: 0px;
+    margin-top: -16px;
+}
+
+.imgstrip img {
+    border-radius: 100%;
+}
+
+.quote {
+    background-color: rgba(68, 68, 130, 0.8);
+    padding: 10px;
+    color:rgba(54, 32, 20, 1);
+    margin-bottom: -10px;
+}
+
+.linkstrip {
+    background-color: rgba(130, 72, 42, 0.8);
+    margin-top: -16px;
+}
+
+.linkstrip:hover {
+    background-color: rgba(68, 68, 130, 0.8);
+}
+
+.linkstrip:hover a {
+    color: rgba(130, 72, 42, 0.8);
+}
