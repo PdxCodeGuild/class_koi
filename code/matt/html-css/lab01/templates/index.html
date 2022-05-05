@@ -1,0 +1,44 @@
+<!-- 
+PDX Code Guild - Class Koi
+HTML Lab 01 - Bio
+Matt Walsh
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Sam!</title>
+    <link rel= "stylesheet" type= "text/css" href="{{url_for('static',filename='style.css')}}">
+</head>
+<body>
+    <div class="mainbody">
+        <h1>{{name}}</h1>
+        <img src="{{url_for('static', filename=photo)}}" class="mainimg"/>
+        <p>{{bio}}</p>
+        
+        <ul>
+            <p>Mr Squanch has lived in many places, spending most of his time in the Pacific Northwest. The following is an incomplete list of his known homes:</p>
+            {% for place in places_lived %}
+            <li>{{place}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="linkstrip">
+        <p><a href={{link}}>Follow this link to find out more about Samuel U Squanch.</a></p>
+    </div>
+    <div class="imgstrip">
+        <img src="{{url_for('static', filename=extraphoto1)}}" alt="Sam singing" class="smimg"/>
+        <img src="{{url_for('static', filename=extraphoto2)}}" alt="Sam skiing" class="smimg"/>
+        <img src="{{url_for('static', filename=extraphoto3)}}" alt="Sam conducting business" class="smimg"/>
+        <img src="{{url_for('static', filename=extraphoto4)}}" alt="Sam posing with a carved likeness of himself" class="smimg"/>
+    </div>
+    <div class="quote">
+        <h2>{{quote}}</h2>
+        <h3>-{{name}}</h3>
+    </div>
+</body>
+</html>
