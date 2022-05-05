@@ -45,8 +45,8 @@ Presentation Day: June 24th, 2022
 | 00    | [Polls](4%20Django/labs/00%20Polls.md)                                       | Apr 25th      | Apr 29th    | May  9th      |
 | 01    | [Grocery List](4%20Django/labs/01%20Grocery%20List.md)                       | Apr 27th      | May  4th    | May 11th      |
 | 02    | [Library](4%20Django/labs/02%20Library.md)                                   | Apr 29th      | May  4th    | May 13th      |
+| 02    | [Chirp](4%20Django/labs/03%20Chirp.md)                                       | May  4th      | May 11th    | May 18th      |
 
-<!-- * [Lab 03 Chirp](4%20Django/labs/03%20Chirp.md) -->
 
 #### Optional Django Labs  
 
