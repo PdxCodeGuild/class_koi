@@ -1,0 +1,162 @@
+* {
+    margin:auto;
+    max-width: 90rem;
+}
+html {
+    background-image: url('background.png');
+}
+header {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    flex-direction: column-reverse;
+    align-content: space-evenly;
+}
+nav {
+    margin-top: 2rem;
+}
+.nav {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-style:italic;
+    font-weight: 500;
+    font-size:1.3rem;
+    align-content: center;
+    
+}
+a.nav {
+    justify-content: space-evenly;
+    padding-left:1rem;
+    padding-right:1rem;   
+}
+a {
+    text-decoration: none;
+    color: #40454A;
+}
+a:hover {
+    color:#EAE5F2;
+    background-color: #fd9e76;
+}
+.title {
+    font-family:'Playfair Display', serif;
+    font-size: 7rem;
+    color:#EAE5F2;
+    text-shadow:#40454A .3rem .3rem;
+    margin-bottom: 2rem;
+}
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.hero {
+    width:60%;
+    margin-bottom:4rem;
+    padding-top:2rem;
+}
+.herotext {
+    display: flex;
+    font-size:5rem;
+}
+hr {
+    width:70%;
+    height: .2rem;
+    background-color:#EAE5F2;
+    border: 0;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-content:center;
+}
+h2 {
+    font-family:'Playfair Display', serif;
+    color:#EAE5F2;
+    text-shadow:#40454A .1rem .1rem;
+    font-size: 2rem;
+}
+p { 
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight:400;
+    text-align: justify;
+    margin-right: 5rem;
+    margin-left: 5rem;
+    margin-top:1rem;
+    margin-bottom:1rem;
+    max-width:40rem;
+    align-self: center;   
+    color: #40454A;
+}
+.row {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-evenly;
+    max-width:50rem;
+    margin-bottom: 2rem;
+}
+.headshots {
+    width: 40%;
+    margin: .5rem;
+    box-shadow: #EF99D5 2px 2px;
+}
+h4 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    color:#40454A;
+    padding-right:2rem;
+    padding-left: 3rem;
+}
+.return > a {
+    color:#40454A;
+    padding:2rem;
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size: 2rem;
+    background-color: none;
+}
+footer {
+    display:flex;
+    /* flex-direction:row; */
+    background-color:#40454A;
+    margin-top:2rem;
+    padding-right: 10rem;
+    padding-left: 10rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+h3 {
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:2rem;
+    color: #EAE5F2;
+}
+.logo {
+    width: 15%;
+    padding: .25rem;
+}
+.copyright {
+    display:flex;
+    flex-direction: row;
+    background-color: #40454A;
+    width: 100%;
+    padding-bottom: 3rem;
+}
+
+@media only screen and (max-width: 428px) {
+	/* SMALL SCREEN WIDTH */
+
+    .title { 
+        font-size: 4rem;
+    }
+    .nav {
+        font-size:1rem;
+    }
+    .herotext {
+        font-size: 3rem;
+    }
+    .logo {
+        width: 50%;
+    }
+    
+}
