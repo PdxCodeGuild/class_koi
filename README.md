@@ -39,16 +39,18 @@ Presentation Day: June 24th, 2022
 [Bouncing Ball](5%20JavaScript/labs/Bouncing%20Ball.md), [Clock](5%20JavaScript/labs/Clock.md), [Hacker Typer](5%20JavaScript/labs/Hacker%20Typer.md), [Random Redirector](5%20JavaScript/labs/Random%20Redirector.md) -->
  
 
-<!-- ## Django Labs Assigned:
+## Django Labs Assigned:
+| Lab   | Name                                                                         | Date Assigned | Due By      | Hard Due Date |
+| ----- | ---------------------------------------------------------------------------- | ------------- | ------------| ------------- |
+| 00    | [Polls](4%20Django/labs/00%20Polls.md)                                       | Apr 25th      | Apr 29th    | May  9th      |
+| 01    | [Grocery List](4%20Django/labs/01%20Grocery%20List.md)                       | Apr 27th      | May  4th    | May 11th      |
+| 02    | [Library](4%20Django/labs/02%20Library.md)                                   | Apr 29th      | May  4th    | May 13th      |
+| 02    | [Chirp](4%20Django/labs/03%20Chirp.md)                                       | May  4th      | May 11th    | May 18th      |
 
- * [Lab 00 Polls](4%20Django/labs/00%20Polls.md)
- * [Lab 01 Grocery List](4%20Django/labs/01%20Grocery%20List.md)
- * [Lab 02 Library](4%20Django/labs/02%20Library.md)
- * [Lab 03 Chirp](4%20Django/labs/03%20Chirp.md) -->
 
-<!-- #### Optional Django Labs  
+#### Optional Django Labs  
 
-[URL Shortener](4%20Django/labs/Optional%20URL%20Shortener.md) -->
+[URL Shortener](4%20Django/labs/Optional%20URL%20Shortener.md)
 
 ## HTML/CSS Labs Assigned:
 | Lab   | Name                                                                         | Date Assigned | Due By      | Hard Due Date |
@@ -57,9 +59,8 @@ Presentation Day: June 24th, 2022
 | 02    | [Blog](3%20HTML%20+%20CSS/labs/02%20Blog.md)                                 | Apr 13th      | Apr 15th    | Apr 27th      |
 | 03    | [Company](3%20HTML%20+%20CSS/labs/03%20Company.md)                           | Apr 18th      | Apr 22nd    | May  2nd      |
 | 04    | [Mob Class Mascot](3%20HTML%20+%20CSS/labs/04%20Mob%20Class%20Mascot.md)     | NA            | NA          | NA            |
+| 05    | [Personal Portfolio](3%20HTML%20+%20CSS/labs/05%20Personal%20Portfolio.md)   | Apr 20th      | Apr 20th    | Apr 22nd      |
 
-
-<!-- * [Lab 05 Personal Portfolio](3%20HTML%20+%20CSS/labs/05%20Personal%20Portfolio.md) -->
 
 <!-- 
 #### Optional HTML/CSS/Flask Labs
