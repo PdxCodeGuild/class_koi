@@ -1,6 +1,6 @@
 {% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'posts/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'users/style.css' %}">
 
 
 <!DOCTYPE html>
@@ -9,36 +9,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Sign-Up</title>
 </head>
 <body>
+
     
+    <h1><a href = "/"> Home </a></h1>
+    
+    <br>
 
-    <h1>Welcome to Chirp</h1>
+    <h1>Sign Up</h1>
+
     <br>
     <br>
-    <h2>Login</h2>
-
-    <form action="{% url 'users:login' %}" method="POST" enctype="multipart/form-data">
+    <form action="{% url 'users:signup' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}    
         <input type="submit" value="Sign me up!">
     </form>
 
-    {{message}}
     <br>
     <br>
-    <h2><a href='users/signup'> Sign Up </a></h2>  
-
-
-
-
-
-
-
-
-
-
+    <h2>{{message}}</h2>
 
 
 
