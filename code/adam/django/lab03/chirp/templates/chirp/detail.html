@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.author }}</title>
+    <script src="https://cdn.tailwindcss.com/"></script>
+</head>
+<body>
+    <nav class="bg-sky-600 text-green-300 py-5 px-10">
+        <a href="{% url 'posts:home' %}"><button class="px-1 border-2 rounded-md border-green-300">Home</button></a>
+        <h1 class="text-2xl">{{ post.author }}'s Posts</h1>
+    </nav>
+       
+    </div>
+    <h3 class="text-2xl mt-5 ml-10">Recent Posts</h3>
+    <a href="#" class="ml-2 font-semibold text-cyan-600">{{ post.author }}</a>
+    <ul class="ml-25 mb-20">
+        <li class="pt-1 ml-6 mr-72 mt-3 border-4 rounded-md">
+            <p class="ml-2">{{ post.post_text }}</p>
+            <p class="ml-2 italic text-xs pb-1">{{ post.date_posted }}</p>
+        </li>
+
+    </ul> 
+    
+
+</body>
+</html>

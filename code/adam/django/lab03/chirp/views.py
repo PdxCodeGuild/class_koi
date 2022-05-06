@@ -26,4 +26,11 @@ def index(request):
     }
     return render(request, 'chirp/index.html', context)
 
+def detail(request, id: int):
+    post = ChirpPost.objects.get(id=id)
+    # print(posts.author)
+    context = {
+        'post' : post
+    }
+    return render(request, 'chirp/detail.html', context)
 
