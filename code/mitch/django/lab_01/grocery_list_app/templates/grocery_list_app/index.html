@@ -1,0 +1,51 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@1.1.0/modern-normalize.min.css">
+        <link rel="stylesheet" href="{% static 'grocery_list_app/style.css' %}">
+        <title>Grocery List</title>
+    </head>
+    <body>  
+        <div class="main_list">
+            <h2>Grocery List</h2>
+            {% if not grocery_list %}
+            <p class="message">*No items in list.</p>
+            {% endif %}
+            <ul id="lists">
+                {% for item in incomplete_list %}
+                <li>
+                    <a href="/complete/{{ item.id }}" title="Mark Complete"><input type="image" class="button" name="complete" src="{% static 'grocery_list_app/completed.png' %}" alt="completed button"></input></a>
+                    <a href="/delete/{{ item.id }}" title="Delete"><input type="image" class="button" name="delete" src="{% static 'grocery_list_app/delete.png' %}" alt="delete button"></input></a>
+                    <span class="item">{{ item }}</span>
+                </li>
+                {% endfor %}
+                {% for item in completed_list %}
+                <li>
+                    <a href="/delete/{{ item.id }}" title="Delete"><input type="image" class="button" name="delete" src="{% static 'grocery_list_app/delete.png' %}" alt="delete button"></input></a>
+                    <span class="item" id="completed">{{ item }}</span>
+                    <a href="/undo/{{ item.id }}" id="undo" title="Undo 'Complete'"><input type="image" class="button" name="undo" src="{% static 'grocery_list_app/undo.png' %}" alt="undo complete button"></input></a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <h3>Enter item below to add it to the grocery list.</h3>
+        <form action="" method="POST">
+            {% csrf_token %}
+        
+            <input type="text" name="description" autofocus/>
+            <input type="submit" value="Add New Item" />
+        </form>
+    </body>
+</html>
+
+
+<!-- current issues -->
+<!-- permission error [Errno 13]
+second half of list is not showing on page
+undo button functionality is not certian -->

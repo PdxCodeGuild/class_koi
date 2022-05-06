@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>{{ message }}</h1>
+  
+  
+  	<ul>
+      {% for item in grocery_list%}
+        <li>
+        {{item}}
+        <form action="{% url 'myapp:complete' %}" method="POST" style="padding: 2rem;">
+          {% csrf_token %}
+        <input type="checkbox" id="completed" name="completed" value=True>
+        <input type="hidden" value="{{item.id}}" name="id">
+        <input type="submit" value="Completed?">  
+        </form>
+        </li>
+      {% endfor %}
+      </ul>
+      
+      <h2>Completed </h2>
+      <ul>
+        {% for item in groceries_complete%}
+          <li>
+            {{item}}
+          </li>
+          {% endfor %}
+        </ul>
+    
+  
+  
+      <ul id="form">
+      <form action="/add_item/" method="POST" style="padding: 2rem;">
+        {% csrf_token %}
+
+      <label for="name-input">Name</label>
+		  <input id="name-input" type="text" name="name" />
+
+      <label for="description-input">Description</label>
+      <input id="description-input" type="text" name="description" />
+
+      <label for="time-input">Created</label>
+      <input id="completed-input" type="datetime-local" name="created_date" />
+
+      <input type="submit" value="Add New Grocery Item" />
+      </form>
+		<br />
+  </ul>
+
+  <ul>
+  <form action="/delete/" method="POST" style="padding: 2rem;">
+    {% csrf_token %}
+
+  <label for="name-input">What would you like to delete?</label>
+  <input id="name-input" type="text" name="name" />
+
+  <input type="submit" value="delete item" />
+  </form>
+</ul>
+
+
+
+
+  </body>
+</html>
