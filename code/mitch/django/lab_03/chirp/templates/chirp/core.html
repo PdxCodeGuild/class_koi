@@ -13,7 +13,7 @@
 </head>
 
 
-<header class="tc pt4 pt5-ns">
+<header class="tc pt4 pt5-ns avenir">
     <a href="/"><img src="{% static 'chirp/images/logo.jpeg' %}" class="flex justify center br-100 ba b--black-10 h4 w4" alt="Chirp Logo"></a>
     {% block header %}
         <!-- header here -->
@@ -28,4 +28,14 @@
     {% endblock %}
 
 </body>
+
+<footer class="pv4 ph3 ph5-m ph6-l mid-gray">
+    <small class="f6 db tc">© 2022 <b class="ttu">Chirp Inc</b>., All Rights Reserved</small>
+    <div class="tc mt3">
+      <a href="/language/" title="Language" class="f6 dib ph2 link mid-gray dim">Language</a>
+      <a href="/terms/"    title="Terms" class="f6 dib ph2 link mid-gray dim">Terms of Use</a>
+      <a href="/privacy/"  title="Privacy" class="f6 dib ph2 link mid-gray dim">Privacy</a>
+    </div>
+  </footer>
+  
 </html>

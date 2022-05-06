@@ -21,3 +21,6 @@ urlpatterns = [
     path('', include('chirp.urls')),
     path('users/', include('users.urls')),
 ]
+
+
+handler404 = 'chirp.views.page_not_found'

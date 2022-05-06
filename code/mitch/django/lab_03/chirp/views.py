@@ -14,7 +14,18 @@ def index(request):
             user=request.user
         )
         return redirect('chirp:index')
-    context = {}
+    
+    all_chirps = ChirpPost.objects.order_by("-date_time")
+    context = {
+        'all_chirps' : all_chirps,
+    }
     return render(request, 'chirp/index.html', context)
+    
+def page_not_found (request, exception):
+    return render(request, 'chirp/404.html', status=404)
+    
+    
+    
+    
     
     
