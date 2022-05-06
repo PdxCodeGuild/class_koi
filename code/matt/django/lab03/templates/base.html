@@ -4,18 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Meower{% endblock %}{% block title_addon %}{% endblock %}</title>
+    <title>{% block title %}Booper{% endblock %}{% block title_addon %}{% endblock %}</title>
 </head>
 <body>
     <header>
         <nav>
             {% block nav %}
-            <a href="{% url 'posts:index' %}">Meower Home</a>
+            <a href="{% url 'posts:index' %}">Booper Home</a>
             {% if request.user.is_authenticated %}
+            <button onclick="openNewPost()" id="open_new_post_button">New Boop</button>
+            <button onclick="closeNewPost()" style="display:none" id="close_new_post_button">Cancel</button>
             <form action="{% url 'users:logout_user' %}" style="display:inline-block">
                 <input type="submit" value="Logout">
             </form>
-            <!-- <a href="{% url 'users:logout_user' %}">Logout</a> -->
+            <div id="new_post_form" style="display:none">
+                <form action="{% url 'posts:new' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% for field in new_post_form %}
+                    <div class="">
+                    {{ field }}
+                    </div>
+                    {% endfor %}
+                    <input type="submit" value="submit">
+                </form>
+            </div>
             {% else %}
             <button onclick="openLogin()" id="open_login_button">Login</button>
             <button onclick="closeLogin()" style="display:none" id="close_login_button">Cancel</button>
@@ -43,7 +55,6 @@
                     {% csrf_token %}
                     
                     <div class="">
-                        <!-- <label for="username" class="">Username:</label> -->
                         <input type="text" id="username" name="username" class="" placeholder="Enter your username">
                     </div>
                 
@@ -70,7 +81,7 @@
     </main>
     <footer>
         {% block footer %}
-        &copy; 2022 Meower, Inc
+        &copy; 2022 Booper, Inc
         {% endblock %}
     </footer>
     <script>
@@ -98,6 +109,18 @@
           document.getElementById("register_form").style.display = "none";
           document.getElementById("open_register_button").style.display = "inline-block";
           document.getElementById("close_register_button").style.display = "none";
+        }
+        
+        function openNewPost() {
+            document.getElementById("new_post_form").style.display = "block";
+            document.getElementById("open_new_post_button").style.display = "none";
+            document.getElementById("close_new_post_button").style.display = "inline-block";
+        }
+          
+        function closeNewPost() {
+            document.getElementById("new_post_form").style.display = "none";
+            document.getElementById("open_new_post_button").style.display = "inline-block";
+            document.getElementById("close_new_post_button").style.display = "none";
         }
     </script>
 </body>

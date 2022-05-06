@@ -1,12 +1,11 @@
-from pickletools import optimize
 from django.db import models
 from django.contrib.auth.models import User
 
 from PIL import Image
 
 class Post(models.Model):
-    username = models.ForeignKey(User, on_delete=models.PROTECT, related_name='author')
-    timestamp = models.DateTimeField(auto_now_add=True, blank=True)
+    author = models.ForeignKey(User, on_delete=models.PROTECT, related_name='author')
+    timestamp = models.DateTimeField(blank=True)
     text_content = models.CharField(max_length=256, blank=True, default='')
     image_content = models.ImageField(upload_to='image_content/', blank=True)
 
@@ -15,33 +14,18 @@ class Post(models.Model):
         if self.image_content:
             img = Image.open(self.image_content.path)
             height, width = img.size
-            if height > 1000 or width > 1000:
+            max_dim = 1200
+            if height > max_dim or width > max_dim:
                 if height > width:
-                    ratio = height / 1000
-                    height = 1000
+                    ratio = height / max_dim
+                    height = max_dim
                     width = int(width / ratio)
                 else:
-                    ratio = width / 1000
-                    width = 1000
+                    ratio = width / max_dim
+                    width = max_dim
                     height = int(height / ratio)
             img = img.resize((height, width))
             img.save(self.image_content.path, "JPEG", quality=99)
 
     def __str__(self):
-        return f'{self.username}_{str(self.id)}'
-
-
-'''
-x-user
-x-datetime
-x-text (constrained to ??? chars)
-x-image (optional)
-
-heart/like ???
-tagging ???
-post only to profile bool ???
-replies ???
-pinned post ???
-
-DM ???
-'''
+        return f'{self.author}_{str(self.id)}'

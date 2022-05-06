@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 
-{% block title_addon %}: index {% endblock %}
+{% block title_addon %}: post {% endblock %}
 
 {% block content %}
 
-{% for post in posts reversed %}
 <p><a href="{% url 'posts:user_feed' post.author %}">{{ post.author }}</a></p>
 <p><a href="{% url 'posts:post_detail' post.author post.id %}">{{ post.timestamp }}</a></p>
 {% if post.text_content %}
@@ -13,6 +12,4 @@
 {% if post.image_content %}
 <img src="{{ post.image_content.url }}" alt="{{ post.text_content }}">
 {% endif %}
-{% endfor %}
-
 {% endblock %}
