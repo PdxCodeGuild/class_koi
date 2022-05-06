@@ -54,12 +54,15 @@
 
     <div class="card text-center" style="background-color: #5628c0; color:whitesmoke;">
         <div class="card-body fs-2">
+            <!-- would like to get the below working at some point; currently loops however many times there are chirps -->
+            <!-- {% for post in posts %}
             {% if user.username == post.username %} 
-            <!-- theoretically will work if I can get post.username to function without looping -->
             your profile
             {% else %} 
             {{ post.username }}'s profile
             {% endif %}
+            {% endfor %} -->
+            profile
         </div>
     </div>
 
