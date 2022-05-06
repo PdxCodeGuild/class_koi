@@ -7,8 +7,7 @@ class Item(models.Model):
     content = models.CharField(max_length=100)
     date_created = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False)
-    date_completed = models.DateTimeField(blank=True, null=True)
-
+    date_completed = models.DateTimeField( null=True, blank=True)
     class Meta:
         ordering = ['complete','-date_created',]
 
@@ -16,9 +15,9 @@ class Item(models.Model):
         return self.content
 
 
-    # below to set complete time
+    # # below to set complete time
+    # def set_complete(self):
+    #     self.complete = True
+    #     self.date_completed = timezone.now()
+    #     self.save()
 
-    def set_complete(self):
-        self.complete = True
-        self.date_completed = timezone.now()
-        self.save()
