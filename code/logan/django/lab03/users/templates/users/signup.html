@@ -25,7 +25,7 @@
     <form action="{% url 'users:signup' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}    
-        <input type="submit" value="Sign me up!">
+        <input type="submit" value="Log in">
     </form>
 
     <br>
