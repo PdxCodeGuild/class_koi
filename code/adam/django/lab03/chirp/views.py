@@ -16,6 +16,7 @@ def index(request):
                 author=author,
                 post_text=post_text,
                 date_posted=date_posted,
+                user=request.user
         )
 
         return redirect('posts:home')
