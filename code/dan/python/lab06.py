@@ -41,7 +41,7 @@ def num_matches(ticket, winning_ticket):
     for x in range (len(ticket)):
             if ticket[x] == winning_ticket[x]:
                 matches += 1
-            return matches
+    return matches
 
 print (num_matches(ticket, winning_ticket))
     
