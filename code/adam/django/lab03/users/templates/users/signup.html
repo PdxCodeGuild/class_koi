@@ -16,16 +16,12 @@
     </nav>
     
     <div class="pt-1 ml-6 mr-72 mt-3 border-4 rounded-md border-sky-800">
-        <h2 class="text-indigo-600 text-2xl mt-5 ml-10">Sign Up</h2>
+        <h2 class="text-indigo-600 text-2xl mt-5 ml-10">SIGN UP</h2>
         <form action="{% url 'users:signup' %}" method="POST" class="m-6" enctype="multipart/form-data">
                 {% csrf_token %}    
                 <div class="flex justify-between w-1/2">
                     <label for="username" class="pr-5">Username:</label>
                     <input type="text" id="username" name="username" class="border-black border-2 rounded-md mr-4">
-                </div>
-                <div class="my-3 flex justify-between w-1/2">
-                    <label for="author" class="pr-5">Displayed Name:</label>
-                    <input type="text" id="author" name="author" class="border-black border-2 rounded-md mr-4">
                 </div>
                 <div class="my-3 flex justify-between w-1/2">
                     <label for="password1" class="pr-5">Enter Password:</label>

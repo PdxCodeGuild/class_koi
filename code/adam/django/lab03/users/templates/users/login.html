@@ -4,28 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chirp {{ message }}</title>
+    <title>Log In</title>
     <script src="https://cdn.tailwindcss.com/"></script>
 </head>
-<body>
-    <nav class="bg-sky-600 text-green-300 flex justify-center py-5 px-10">
-        <h1 class="text-2xl">Chirp  --  {{ message }}</h1>
+<body class="bg-green-200">
+    <nav class="bg-sky-600 text-green-300 flex justify-between py-5 px-10">
+        <h1 class="text-2xl">Chirp  --  Log In</h1>
+        <a href="{% url 'posts:home' %}" class="
+                    px-1 border-green-300 border-2 rounded-md
+                    hover:bg-white-800 hover:text-zinc ml-1">Home</a>
     </nav>
     
-    <div class="pt-1 ml-6 mr-72 mt-3 border-4 rounded-md border-sky-800">
-        <h2 class="text-indigo-600 text-2xl mt-5 ml-10">Post Something:</h2>
+    <div class="pt-1 ml-6 mr-72 mt-3 border-4 rounded-lg border-sky-800">
+        <h2 class="text-indigo-600 text-2xl mt-5 ml-10">LOG IN</h2>
         <form action="{% url 'users:login' %}" method="POST" class="m-6">
                 {% csrf_token %}    
                 <div class="flex justify-between w-1/2">
-                    <label for="username" class="pr-5">Log In:</label>
+                    <label for="username" class="pr-5">Username:</label>
                     <input type="text" id="username" name="username" class="border-black border-2 rounded-md mr-4">
                 </div>
                 <div class="my-3 flex justify-between w-1/2">
-                    <label for="message" class="pr-5">Message (max 128 characters):</label>
-                    <input type="text" id="message" name="message" class="border-black border-2 rounded-md mr-4">
+                    <label for="password" class="pr-5">Password:</label>
+                    <input type="password" id="password" name="password" class="border-black border-2 rounded-md mr-4">
                 </div>
-                <button type="submit" class="px-1 border-2 rounded-md border-cyan-700">Post</button>
-        </form>
+                <button type="submit" value="Log In" class="px-1 border-2 rounded-md border-cyan-700">Log In</button>
+                <p class="text-red-800 pt-3">{{ message }}</p>
+            </form>
     </div>
 </body>
 </html>

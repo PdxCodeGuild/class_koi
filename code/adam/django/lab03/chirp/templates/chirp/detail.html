@@ -8,14 +8,14 @@
     <script src="https://cdn.tailwindcss.com/"></script>
 </head>
 <body>
-    <nav class="bg-sky-600 text-green-300 py-5 px-10">
-        <a href="{% url 'posts:home' %}"><button class="px-1 border-2 rounded-md border-green-300">Home</button></a>
-        <h1 class="text-2xl">{{ post.author }}'s Posts</h1>
+    <nav class="bg-sky-600 text-green-300 flex justify-between py-5 px-10">
+        <h1 class="text-2xl">{{ user.username }}'s Posts</h1>
+        <a href="{% url 'posts:home' %}"><button class="px-1 mr-8 border-2 rounded-md border-green-300">Home</button></a>
     </nav>
        
     </div>
     <h3 class="text-2xl mt-5 ml-10">Recent Posts</h3>
-    <a href="#" class="ml-2 font-semibold text-cyan-600">{{ post.author }}</a>
+    <a href="#" class="ml-2 font-semibold text-cyan-600">{{ user.username }}</a>
     <ul class="ml-25 mb-20">
         <li class="pt-1 ml-6 mr-72 mt-3 border-4 rounded-md">
             <p class="ml-2">{{ post.post_text }}</p>

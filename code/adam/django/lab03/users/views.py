@@ -5,12 +5,12 @@ from django.contrib.auth.models import User
 def login_user(request):
     context = {}
     if request.method == 'POST':
-        username = request.Post.get('username')
-        password = request.Post.get('password')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('chirp:home')
+            return redirect('posts:home')
         else:
             context = {'message': 'Incorrect username or password. Please try again.'}
     return render(request, 'users/login.html', context)
@@ -23,10 +23,8 @@ def signup(request):
     context = {}
     if request.method == 'POST':
         username = request.POST.get('username')
-        author = request.POST.get('author')
         password1 = request.POST.get('password1')
-        password2 = request.POST.get('password2')
-
+        password2 = request.POST.get('password2')       
         message=''
         if password1 != password2:
             message += 'Passwords do not match. '
@@ -35,7 +33,7 @@ def signup(request):
         if message:
             message += 'Please try again.'
         else:
-            user = User.objects.create_user(username=username, author=author, password=password1)
+            user = User.objects.create_user(username=username, password=password1)
             login(request, user)
             return redirect('posts:home')
         context = {'message' : message}
