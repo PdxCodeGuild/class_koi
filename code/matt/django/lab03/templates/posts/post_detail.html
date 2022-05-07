@@ -12,4 +12,28 @@
 {% if post.image_content %}
 <img src="{{ post.image_content.url }}" alt="{{ post.text_content }}">
 {% endif %}
+{% if post.author == request.user %}
+<div>
+    <button onclick="toggleThings(['edit_form'],['close_edit_button'],['open_edit_button'])" id="open_edit_button">Edit Boop</button>
+    <button onclick="toggleThings([],['open_edit_button'],['edit_form','close_edit_button'])" style="display:none" id="close_edit_button">Cancel Edit</button>
+    <form action="{% url 'posts:delete_post' post.author post.id %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Delete Boop">
+    </form>
+    <div id="edit_form" style="display:none">
+        <form action="{% url 'posts:edit_post' post.author post.id %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="">
+                <input type="textarea" name="text_content" value="{{ post.text_content }}">
+            </div>
+            <div class="">
+                <input type="file" name="image_content" value="{{ post.image_content }}">
+            </div>
+            <div class="">
+                <input type="submit" value="update">
+            </div>
+        </form>
+    </div>
+</div>
+{% endif %}
 {% endblock %}

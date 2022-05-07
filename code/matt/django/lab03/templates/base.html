@@ -12,13 +12,13 @@
             {% block nav %}
             <a href="{% url 'posts:index' %}">Booper Home</a>
             {% if request.user.is_authenticated %}
-            <button onclick="openNewPost()" id="open_new_post_button">New Boop</button>
-            <button onclick="closeNewPost()" style="display:none" id="close_new_post_button">Cancel</button>
+            <button onclick="toggleThings(['new_post_form'],['close_new_post_button'],['open_new_post_button'])" id="open_new_post_button">New Boop</button>
+            <button onclick="toggleThings([],['open_new_post_button'],['new_post_form','close_new_post_button'])" style="display:none" id="close_new_post_button">Cancel</button>
             <form action="{% url 'users:logout_user' %}" style="display:inline-block">
                 <input type="submit" value="Logout">
             </form>
             <div id="new_post_form" style="display:none">
-                <form action="{% url 'posts:new' %}" method="post" enctype="multipart/form-data">
+                <form action="{% url 'posts:new' %}" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% for field in new_post_form %}
                     <div class="">
@@ -29,10 +29,10 @@
                 </form>
             </div>
             {% else %}
-            <button onclick="openLogin()" id="open_login_button">Login</button>
-            <button onclick="closeLogin()" style="display:none" id="close_login_button">Cancel</button>
-            <button onclick="openRegister()" id="open_register_button">Register</button>
-            <button onclick="closeRegister()" style="display:none" id="close_register_button">Cancel</button>
+            <button onclick="toggleThings(['login_form'],['close_login_button'],['open_login_button'])" id="open_login_button">Login</button>
+            <button onclick="toggleThings([],['open_login_button'],['login_form','close_login_button'])" style="display:none" id="close_login_button">Cancel</button>
+            <button onclick="toggleThings(['register_form'],['close_register_button'],['open_register_button'])" id="open_register_button">Register</button>
+            <button onclick="toggleThings([],['open_register_button'],['register_form','close_register_button'])" style="display:none" id="close_register_button">Cancel</button>
 
             <div id="login_form" style="display:none">
                 <form action="{% url 'users:login_user' %}" method="POST" class="">
@@ -85,42 +85,19 @@
         {% endblock %}
     </footer>
     <script>
-        function openLogin() {
-          document.getElementById("login_form").style.display = "block";
-          document.getElementById("open_login_button").style.display = "none";
-          document.getElementById("close_login_button").style.display = "inline-block";
-          closeRegister()
+        function openThingBlock(open) {
+            document.getElementById(open).style.display = "block";
         }
-        
-        function closeLogin() {
-          document.getElementById("login_form").style.display = "none";
-          document.getElementById("open_login_button").style.display = "inline-block";
-          document.getElementById("close_login_button").style.display = "none";
+        function openThingInline(open) {
+            document.getElementById(open).style.display = "inline-block";
         }
-
-        function openRegister() {
-          document.getElementById("register_form").style.display = "block";
-          document.getElementById("open_register_button").style.display = "none";
-          document.getElementById("close_register_button").style.display = "inline-block";
-          closeLogin()
+        function closeThing(close) {
+            document.getElementById(close).style.display = "none";
         }
-        
-        function closeRegister() {
-          document.getElementById("register_form").style.display = "none";
-          document.getElementById("open_register_button").style.display = "inline-block";
-          document.getElementById("close_register_button").style.display = "none";
-        }
-        
-        function openNewPost() {
-            document.getElementById("new_post_form").style.display = "block";
-            document.getElementById("open_new_post_button").style.display = "none";
-            document.getElementById("close_new_post_button").style.display = "inline-block";
-        }
-          
-        function closeNewPost() {
-            document.getElementById("new_post_form").style.display = "none";
-            document.getElementById("open_new_post_button").style.display = "inline-block";
-            document.getElementById("close_new_post_button").style.display = "none";
+        function toggleThings(openBlock, openInline, close) {
+            openBlock.forEach(openThingBlock);
+            openInline.forEach(openThingInline);
+            close.forEach(closeThing);
         }
     </script>
 </body>

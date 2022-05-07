@@ -1,5 +1,5 @@
 from django.shortcuts import get_list_or_404, get_object_or_404, redirect, render
-from django.http import HttpResponse
+from django.http import Http404, HttpResponse
 from django.contrib.auth.models import User
 from django.utils import timezone
 
@@ -54,7 +54,21 @@ def post_detail(request, id, author):
     return render(request, 'posts/post_detail.html', context)
 
 def edit_post(request, id, author):
-    ...
+    post = get_object_or_404(Post, id=id)
+    if post.author != request.user:
+        raise Http404
+    else:
+        if request.method == 'POST':
+            post.text_content = request.POST.get('text_content')
+            if request.FILES.get('image_content'):
+                post.image_content = request.FILES.get('image_content')
+            post.save()
+            return redirect('posts:post_detail', author=request.user, id=post.id)
 
 def delete_post(request, id, author):
-    ...
+    post = get_object_or_404(Post, id=id)
+    if post.author != request.user:
+        raise Http404
+    else:
+        post.delete()
+        return redirect('posts:user_feed', author=request.user)
