@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery List</title>
+</head>
+<body>
+    <h1>Welcome to Grocery List!</h1>
+    <a href="">Home</a>
+    <table>
+        <thead>
+            <th>ID</th>
+            <th>Item</th>
+            <th>Date Added</th>
+            <th>Completed</th>
+            <th>Completed Date</th>
+        </thead>
+        {% for grocery in groceries %}
+        <tr>
+            <td name="item_id">{{ grocery.id }}</td>
+            <td name="item_text"><a href="/grocery_list_app/{{ grocery.id }}">{{ grocery.item_text }}</a></td>
+            <td>{{ grocery.created_date }}</td>
+            <td name="item_completed">{{ grocery.completed }}</td>
+            <td name="item_completed_date">{{ grocery.completed_date }}</td>
+            <td>
+            {% if not grocery.completed %}
+                <form action="/grocery_list_app/" method="POST">
+                {% csrf_token %}
+                <button type="submit" name="name" value="{{ grocery.item_text }}">Complete!</button>
+                </form>
+            {% else %}
+            Completed &#9745;
+            {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+        <strong><a href="/grocery_list_app/add">Add an item.</a></strong>
+</body>
+</html>
