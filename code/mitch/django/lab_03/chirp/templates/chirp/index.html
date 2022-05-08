@@ -13,7 +13,7 @@
         {% else %}
         <span class="flex content-center justify-around f6 black-80 fw6 ttu pa1 tracked">Log in to make chirps</span>
         <a href="/users/signup" class="flex content-center justify-around link grow f6 black-80 fw6 ttu pa1 tracked">Sign Up</a>
-        <a href="/users/login" class="flex content-center justify-around link grow f6 black-80 fw6 ttu pa1 tracked w-auto">Login</a>
+        <a href="/users/login" class="flex content-center justify-around link grow f6 black-80 fw6 ttu pa1 tracked w-auto">Log In</a>
     {% endif %}
 {% endblock %}
 
@@ -30,13 +30,13 @@
 </form>
 
 
-<article class="ph3 ph5-ns center" style="width:50rem ;">
-    <h1 class="pt2 tc black-80 avenir">Recent Posts</h1>
-    <ul class="list pl0">
+<article class="tc" style="width:auto ;">
+    <h1 class="pt2 black-80 avenir">Recent Posts</h1>
+    <ul class="list pl0 dib">
         {% for post in all_chirps %}
             <li class="pb3 pb4-ns ph3 ph4-ns bb b--black-10">
                 <h4 class="br2 tc db f6 mb1 bg-dark-blue gold">{{ post.user }} @ {{ post.date_time }}</h4>
-                <span class="br2 center pa3 f6 db f5-ns lh-copy measure mv0 bg-black-10 ws-normal">{{ post.text }}</span>
+                <span class="br2 tl pa3 f6 db f5-ns lh-copy measure mv0 bg-black-10 ws-normal">{{ post.text }}</span>
             </li>
         {% endfor %}
     </ul>
