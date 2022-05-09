@@ -14,4 +14,5 @@ def index(request):
 
 
 def check_in(request,pk):
+    pass
     
