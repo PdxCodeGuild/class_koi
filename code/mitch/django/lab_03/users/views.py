@@ -17,9 +17,11 @@ def login_user(request):
 
     return render(request, 'users/login.html', context)
 
+
 def logout_user(request):
     logout(request)
     return redirect('/')
+
 
 def signup(request):
     context = {}
@@ -41,3 +43,9 @@ def signup(request):
             return redirect('chirp:index')
         context = {'message': message}
     return render(request, 'users/signup.html', context)
+
+
+def userpage(request, username):
+    user = User.objects.get(username=username)
+    context = {'user': user}
+    return render(request, 'users/userpage.html', context)
