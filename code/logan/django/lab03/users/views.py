@@ -52,7 +52,7 @@ def user_login(request):
     #     print(form.errors)
     if user != None:
         login(request, user)
-        return redirect("/posts/world")
+        return redirect("/posts/worldextend")
     else:
         print("Not valid!")
         return redirect("/")

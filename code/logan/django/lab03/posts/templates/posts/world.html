@@ -14,6 +14,8 @@
 
     <h1>Chirp World</h1> 
     <a href="profile"><h1>Profile</h1></a>
+    <a href="profileextend"><h1>Profile Extend</h1></a>
+
     
     <br>
     <br>
@@ -31,7 +33,7 @@
     <br>
     <br>
 
-<form action="{% url 'posts:world' %}" method="POST" enctype="multipart/form-data">
+<form action="{% url 'posts:worldextend' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}    
     <input type="submit" value="Chirp">

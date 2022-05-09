@@ -2,11 +2,12 @@
 
 {% block content %}
 
-<h2 class = "dark-blue"><b>{{user}}'s' Profile</b></h2>
+<h2 class = "dark-blue"><b>World</b></h2>
 <br>
 <br>
 
-{% for chirp in my_chirps %}    
+{% for chirp in all_chirps  %}
+
 <b>{{chirp.user}}</b> {{chirp.date}}
 <br>
 <h2>{{chirp.content}}</h2>
@@ -16,7 +17,7 @@
 <br>
 <br>
 
-<form action="{% url 'posts:profileextend' %}" method="POST" enctype="multipart/form-data">
+<form action="{% url 'posts:worldextend' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}    
     <input type="submit" value="Chirp">
