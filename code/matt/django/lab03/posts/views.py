@@ -23,8 +23,9 @@ def user_feed(request, author):
     context = {
         'posts': posts,
         'new_post_form': new_post_form,
+        'author': author,
     }
-    return render(request, 'posts/index.html', context)
+    return render(request, 'posts/user_feed.html', context)
 
 def add_post(request):
     if request.method == 'POST':
@@ -60,8 +61,6 @@ def edit_post(request, id, author):
     else:
         if request.method == 'POST':
             post.text_content = request.POST.get('text_content')
-            if request.FILES.get('image_content'):
-                post.image_content = request.FILES.get('image_content')
             post.save()
             return redirect('posts:post_detail', author=request.user, id=post.id)
 
