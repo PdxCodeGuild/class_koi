@@ -1,9 +1,13 @@
 from django.shortcuts import render, redirect
+# you can use variables declared in your project settings.py by importing this settings object
+from django.conf import settings
 
 from .models import NutritionFacts
 from .forms import NutritionFactsForm
 
 def index(request):
+    print(settings.API_KEY)
+    print(settings.SECRET_MESSAGE)
     if request.method == 'POST':
         form = NutritionFactsForm(request.POST, request.FILES)
         if form.is_valid(): # returns true if the form has all required fields, etc.
@@ -43,5 +47,6 @@ def index(request):
     context = {
         'nutrition_facts': NutritionFacts.objects.all(),
         'form': form,
+        'secret_message': settings.SECRET_MESSAGE
     }
     return render(request, 'nutrition_database/index.html', context)
