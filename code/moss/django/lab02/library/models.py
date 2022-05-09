@@ -15,14 +15,11 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
+class Member(models.Model):
+    user = models.CharField(max_length=50)
+    book = models.ForeignKey(Book,on_delete=models.PROTECT,)
+    checkout = models.BooleanField()
+    timestamp = models.DateTimeField(null=True, blank=True)
 
-
-
-
-    
-
-# class Member(models.Model):
-#     book =
-#     user =
-#     checkout =
-#     timestamp = 
+    def __str__(self):
+        return self.user
