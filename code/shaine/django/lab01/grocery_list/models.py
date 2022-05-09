@@ -15,9 +15,9 @@ class Item(models.Model):
         return self.content
 
 
-    # # below to set complete time
-    # def set_complete(self):
-    #     self.complete = True
-    #     self.date_completed = timezone.now()
-    #     self.save()
+    # below to set complete time
+    def set_complete(self):
+        self.complete = True
+        self.date_completed = timezone.now()
+        self.save()
 

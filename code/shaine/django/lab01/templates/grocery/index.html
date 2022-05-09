@@ -23,7 +23,7 @@
                {% endif %}
             </div>
             <div class="col-md-5">
-                <a class="btn btn-info btn-sm" href="#">✔︎</a>
+                <a class="btn btn-info btn-sm" href="{% url 'grocery-complete' item.id %}">✔︎</a>
                 <a class="btn btn-secondary btn-sm" href="{% url 'grocery-update' item.id %}">Edit</a>
                 <a class="btn btn-danger btn-sm" href="{% url 'grocery-delete' item.id %}">Delete</a>
 

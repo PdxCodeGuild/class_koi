@@ -62,4 +62,11 @@ def delete(request, pk):
     return render(request, 'grocery/delete.html')
 
 
+def complete(request, pk):
+    entry = Item.objects.get(id=pk)
+    if request.method == 'POST':
+        entry.set_complete()
+        return redirect('/')
+    return render(request, 'grocery/complete.html')
+
 # Item.set_complete()

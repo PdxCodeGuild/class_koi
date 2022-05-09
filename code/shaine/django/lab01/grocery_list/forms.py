@@ -15,13 +15,22 @@ class DateInput(forms.DateInput):
     input_type = 'date'
 
 class UpdateForm(forms.ModelForm):
-    content = forms.CharField(label='')
+    content = forms.CharField(label='Update Entry')
     class Meta:
         model = Item
         # fields = '__all__'
-        fields = ['content', 'complete','date_completed']
+        fields = ['content']
         widgets = {
             'date_completed': DateInput(),
         }
 
 
+class CompleteForm(forms.ModelForm):
+    content = forms.CharField(label='')
+    class Meta:
+        model = Item
+        # fields = '__all__'
+        fields = ['complete']
+        widgets = {
+            'date_completed': DateInput(),
+        }
