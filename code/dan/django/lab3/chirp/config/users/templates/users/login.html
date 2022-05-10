@@ -1,0 +1,11 @@
+{% extends 'posts/base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<p>this is the page content for the login page</p>
+<form method='POST' action=""> {% csrf_token %}
+    {{form.as_p }}
+    <button type='submit'>Login</button>
+</form>
+<p> Need to register? Please <a hrref'/register'>Register</a></p>
+{% endblock %}
+{% endblock %}
