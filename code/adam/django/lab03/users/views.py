@@ -26,7 +26,7 @@ def signup(request):
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')       
         message=''
-        if password1 != password2:
+        if password1 != password2 or password1 == "":
             message += 'Passwords do not match. '
         if User.objects.filter(username=username).exists():
             message += 'Username already taken. '
