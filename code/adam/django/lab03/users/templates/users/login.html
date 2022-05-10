@@ -9,7 +9,7 @@
 </head>
 <body class="bg-sky-50">
     <nav class="bg-sky-600 text-green-300 flex justify-between py-5 px-10">
-        <h1 class="text-2xl">Chirp  --  Log In</h1>
+        <h1 class="text-2xl">Chirp  ||  Log In</h1>
         <div>
             <a href="{% url 'users:signup' %}" class="
                         px-6 py-1 border-green-300 border-2 rounded-md
@@ -37,9 +37,8 @@
                 <p class="text-red-800 pt-3">{{ message }}</p>
             </form>
     </div>
-    <footer class="w-full h-10 bg-gray-900 static bottom-0">
-        {% load static %}
-        <p class="text-white text-center"> &copy Chirp - Class Koi</p>
-      </footer>
+    <footer class="w-full h-10 bg-gray-900 fixed bottom-0 items-center">
+        <p class="text-white text-center pt-1"> &copy Chirp - Class Koi</p>
+    </footer>
 </body>
 </html>

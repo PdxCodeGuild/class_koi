@@ -10,9 +10,16 @@
 <body>
     <nav class="bg-sky-600 text-green-300 flex justify-between py-5 px-10">
         {% if request.user.is_authenticated %}
-            <h1 class="text-2xl">Welcome, <a href="/chirp/{{ user.id }}">
+            <h1 class="text-2xl">Chirp || <a href="/chirp/{{ user.id }}">
                 {{ user.username }}</a></h1>
-            <a href="{% url 'posts:home' %}"><button class="px-1 mr-8 border-2 rounded-md border-green-300">Home</button></a>
+            <div>
+                <a href="{% url 'posts:home' %}" class="
+                            px-3 py-1 border-green-300 border-2 rounded-md
+                            hover:bg-white-800 hover:text-zinc ml-1">Home</a>
+                <a href="{% url 'users:logout' %}" class="
+                        px-3 py-1 border-green-300 border-2 rounded-md
+                        hover:bg-white-800 hover:text-zinc ml-1">Log Out</a>
+            </div>
         {% else %}
             <div>
                 <a href="{% url 'users:signup' %}" class="
@@ -42,9 +49,8 @@
         {% endfor %}
 
     </ul>
-    <footer class="w-full h-10 bg-gray-900 static bottom-0">
-        {% load static %}
-        <p class="text-white text-center"> &copy Chirp - Class Koi</p>
+    <footer class="w-full h-10 bg-gray-900 fixed bottom-0 items-center">
+        <p class="text-white text-center pt-1"> &copy Chirp - Class Koi</p>
     </footer>
     
 

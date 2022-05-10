@@ -8,7 +8,28 @@
     <script src="https://cdn.tailwindcss.com/"></script>
 </head>
 <body class="bg-sky-50">
-    <nav class="bg-sky-600 text-green-300 flex justify-between py-5 px-10">
+  
+  <header class="fixed bg-sky-600 text-green-300 w-full py-5 px-10 flex justify-between items-center">
+    <h1 class="text-2xl">Chirp  ||  <a href="#">Home</a></h1>
+    <div>
+      <div>
+        {% if request.user.is_authenticated %}
+        <Span>Welcome, {{ user.username }}</Span>
+        <a href="{% url 'users:logout' %}" class="
+                        px-2 py-1 border-green-300 border-2 rounded-md
+                        hover:bg-white-800 hover:text-zinc ml-1">Log Out</a>
+        {% else %}
+        <a href="{% url 'users:signup' %}" class="
+                    px-6 py-1 border-green-300 border-2 rounded-md
+                    hover:bg-white-800 hover:text-zinc ml-1">Sign Up</a>
+        <a href="{% url 'users:login' %}" class="
+                    px-6 py-1 border-green-300 border-2 rounded-md
+                    hover:bg-white-800 hover:text-zinc ml-1">Log In</a>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+      <nav class="bg-sky-600 text-green-300 flex justify-between py-5 px-10">
         <h1 class="text-2xl">Chirp  ||  <a href="#">Home</a></h1>
         <div>
             {% if request.user.is_authenticated %}
@@ -26,6 +47,7 @@
         {% endif %}
         </div>
     </nav>
+
 
     {% if request.user.is_authenticated %}  
     <div class="pt-1 ml-6 mr-72 mt-3 border-4 rounded-md border-sky-800">
@@ -65,10 +87,6 @@
                     </div>
                   </div>
 
-                <!-- <div class="my-3 flex justify-between w-1/2">
-                    <label for="message" class="pr-5">Message (max 128 characters):</label>
-                    <input type="text" id="message" name="message" class="wrap py-10 border-black border-2 rounded-md mr-4" required autofocus>
-                </div> -->
                 <div class="flex justify-between">
                     <button type="submit" class="px-1 border-2 rounded-md border-cyan-700">Post</button>
                     <span>Signed in as: {{ user.username }}</span>
@@ -89,11 +107,8 @@
         {% endfor %}
 
     </ul>
-    <footer class="w-full h-10 bg-gray-900 static bottom-0">
-      {% load static %}
-      <p class="text-white text-center"> &copy Chirp - Class Koi</p>
-    </footer>
-    
-
+    <footer class="w-full h-10 bg-gray-900 fixed bottom-0 items-center">
+      <p class="text-white text-center pt-1"> &copy Chirp - Class Koi</p>
+  </footer> 
 </body>
 </html>
