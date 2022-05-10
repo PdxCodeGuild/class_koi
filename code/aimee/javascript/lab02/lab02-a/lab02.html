@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Lab 02 - Part A</title>
+    <script>
+// version 1 ------------------------
+// const array = [5, 0, 8, 3, 4, 1, 6];
+// let sum = 0;
+
+// for (let i = 0; i < array.length; i++) {
+//     sum += array[i];
+// }
+// alert(`The average is ${sum / array.length}`)
+
+// version 2 ------------------------
+
+const array = [];
+let sum = 0;
+
+// need loop here
+let num = prompt('Enter up to 10 numbers, or "done": ')
+array.push(num)
+console.log(array)
+
+if (isNaN(num)) {  // if the input is NOT a number, end loop
+    for (let i=0; i<array.length; i++) {
+        sum += array[i];
+    alert(`The average is ${sum / array.length}`)
+    }
+}
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
