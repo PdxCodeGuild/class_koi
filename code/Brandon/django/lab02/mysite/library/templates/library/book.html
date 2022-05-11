@@ -1,0 +1,28 @@
+<a href = "{% url 'library:index'  %}">Home</a>
+
+<h1>{{ author }}</h1>
+{% for author in book %}
+{{ author.author_id }}
+{% endfor %}
+
+{% for name in book %}
+{{ name.author }}
+<!-- {{ name }} -->
+{% endfor %}
+
+
+<form action="{% url 'library:index'  %}" method="POST">
+	{% csrf_token %}
+    
+    <h3>Author</h3>
+    <input type="text" name="author" id="author" >
+
+    <h3>Add a Book: </h3>
+    <input type="text" name="name" id="name">
+
+    <h3> Publish_date </h3>
+    <input type="number" min="1800" max="2022" step="1" value="2022" name="publish_date" id="publish_date">
+    <button type="submit">Save</button>
+
+
+</form>
