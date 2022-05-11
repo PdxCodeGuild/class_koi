@@ -13,7 +13,7 @@ function conversion_to_m(value, unit_from, unit_to){
     // """Converts input float to a float of another unit. Accepts inputs/outputs: 'ft', 'mi', 'm', 'km', 'yd', or 'in'."""
     let meters_output = value * conversion_ratios[unit_from]
     let unit_output = meters_output / conversion_ratios[unit_to]
-    return Math.round(unit_output)
+    return unit_output.toPrecision(4)
 }
 
 let value = prompt("What is the distance? ")

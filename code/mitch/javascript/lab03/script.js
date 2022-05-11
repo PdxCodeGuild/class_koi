@@ -14,46 +14,49 @@ let num_of_winning_tickets = 0
 let balance = 0
 let expences = 0
 
-let number_list = [num for num in range(1, 100)]
+
+// Return a list of 6 random numbers called number_list
+function pick6(){
+    let number_list = []
+    for (let i = 0; i < 6; i++){
+        number_list.push(Math.floor(Math.random() * 101))
+    }
+    return number_list
+}
 
 
-function pick6():
-    //"""return a list of 6 random numbers"""
-    return random.sample(number_list, 6)
-
-
-function num_matches(winning_ticket, ticket):
-    //"""return the number of matches between the 2 tickets"""
-    match_count = 0
-    for inx, num in enumerate(winning_ticket):
-        if ticket[inx] == num:
+//"""re turn the number of matches between the 2 tickets"""
+function num_matches(winning_ticket, ticket){
+    let match_count = 0
+    for (let i = 0; i < 6; i++){
+        if (winning_ticket[i] == ticket[i]) {
             match_count += 1
+        }
+    }
     return match_count
+}
 
-    
 let winning_numbers = pick6()
 
 
-for _ in range(100000):
+for (let i = 0; i < 100000; i++){
     let ticket_numbers = pick6()
-    let balance -= 2
-    let expences -= 2
+    balance -= 2
+    expences -= 2
 
-    let matches = (num_matches(winning_ticket=winning_numbers, ticket=ticket_numbers))
-    
-    if matches:
+    let matches = num_matches(winning_numbers, ticket_numbers)
+
+    if (matches){
         num_of_winning_tickets += 1
-    
-    balance += payouts_for_matches[str(matches)]
+    }
+    balance += payouts_for_matches[matches]
+}
 
 
-
-return_on_investment = round(((balance - expences)/expences * 100), 2)
+let return_on_investment = ( balance - expences ) / expences * 100
 
 alert(`****** This gambling simulator just played the 'Pick Six' lottery 100,000 times. ******
-      \n
       \nThere were ${num_of_winning_tickets} winning tickets.
-      \nStarting at $0.00, the final balance after 100,000 games is:  ${balance:.2f}
-      \n
-      \nYour ROI (Return On Investment) is: ${return_on_investment}%`
+      \nStarting at $0.00, the final balance after 100,000 games is:  $${balance.toFixed(2)}
+      \nYour ROI (Return On Investment) is: ${return_on_investment.toFixed(2)}%`
 )
