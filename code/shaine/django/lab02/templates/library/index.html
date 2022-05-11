@@ -1,0 +1,41 @@
+{% extends 'partials/base.html' %}
+<!-- {% load crispy_forms_tags %} -->
+{% block content %}
+<div class="border p-3 shadow">
+    <h4>Book List</h4>
+    <hr>
+
+    {% for book in books %}
+    <div class="border p-3 mb-3">
+        <small>Published: {{ book.pub_date }}</small>
+        <div class="row">
+            <div class="col md-8">
+                {% if book.checked_out == True %}
+               <strike>{{ book.title }}</strike> 
+               <div>
+                <small class="fw-lighter" >Checked Out: {{ book.timestamp }}</small>
+                <div>
+                    <small class="fw-lighter" >By user: {{ book.user }}</small>
+                   
+                </div>
+            </div>
+               {% else %}
+               <p>{{ book.title }}</p> 
+               {% endif %}
+            </div>
+            <div class="col-md-5">
+                {% if book.checked_out == False %}
+                <a class="btn btn-info btn-sm" href="{% url 'library-check_out' book.id %}">Check Out</a>
+                {% else %}
+                <a class="btn btn-secondary btn-sm" href="{% url 'library-check_in' book.id %}">Check In</a>
+                {% endif %}
+                {% comment %} <a class="btn btn-danger btn-sm" href="#">Delete</a> {% endcomment %}
+
+            </div>
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %} 
