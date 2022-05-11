@@ -3,10 +3,10 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm 
 
 def register(request):
-    form = UserCreationForm(request.Post or None)
+    form = UserCreationForm(request.POST or None)
     if form.is_valid():
         user_obj = form.save()
-        return redirect('/login')
+        return redirect('/posts/index.html')
     context= {'form': form}
     return render (request, 'users/registration.html',context)
 
@@ -25,8 +25,8 @@ def login_view(request):
         return render(request, "users/login.html",context)
 
 def logout(request):
-    logout(request)
-    return redirect ('/')
+    
+    return redirect ('posts/index.html')
         
         
         
