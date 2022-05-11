@@ -9,7 +9,7 @@
     </div>
     <form method="POST">
         {% csrf_token %}
-        <a class="btn btn-secondary" href="(% url grocery-index %)">Cancel</a>
+        <a class="btn btn-secondary" href="{% url grocery-index %}">Cancel</a>
         <input class="btn btn-danger" type="submit" value="Confirm">
     </form>
 </div>
