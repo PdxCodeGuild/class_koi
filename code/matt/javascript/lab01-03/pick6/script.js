@@ -71,13 +71,16 @@ function winningTicketsString (winningTickets) {
     return winningTicketsString
 }
 
-// wrap lines in <p> tags
+// wrap lines in <p> tags and display
 function wrapInP (linesVar) {
-    wrappedInP = ''
+    let newDiv = document.createElement('div')
     linesVar.forEach(function (line) {
-        wrappedInP += `<p>${line}</p>`
+        let newP = document.createElement('p')
+        newP.innerText = line
+        // newDiv.innerText += newP
+        newDiv.appendChild(newP)
     })
-    return wrappedInP
+    results.insertBefore(newDiv, results.firstChild)
 }
 
 // figure out if in total money was won or lost
@@ -108,5 +111,5 @@ submitButton.addEventListener('click', function() {
     linesVar.push(`In total, you ${wonLost(balance, spent)} ${processMoney(balance - spent)}.`)
     linesVar.push(`Your ROI for this session is ${((balance - spent)/spent).toFixed(2)}`)
     // display results
-    results.innerHTML = wrapInP(linesVar)
+    wrapInP(linesVar)
 })
