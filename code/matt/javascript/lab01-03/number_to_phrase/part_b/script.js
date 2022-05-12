@@ -38,42 +38,56 @@ teensNames = {
     19:'nineteen',
 }
 
-// ask for a number
-let numberDigit = prompt('Please enter a number (0-999): ')
+// assign elements to variables
+let numberDigit = document.querySelector('#number-digit')
+let submitButton = document.querySelector('#submit-button')
+let results = document.querySelector('#results')
 
-// declare variable for response
-let numberPhrase = ''
+// function to handle conversion
+function numberToPhrase (numberDigit) {
+    // declare variable for response
+    let numberPhrase = ''
 
-// handle "0" input
-if (numberDigit == 0) {
-    numberPhrase = 'zero'
-} else {
-    // handle hundreds
-    if (numberDigit > 99) {
-        numberPhrase += onesNames[numberDigit[0]] + '-hundred '
-        // subtract hundreds from input
-        numberDigit -= numberDigit[0] * 100
-    }
-    // handle tens that are not teens
-    if (numberDigit > 19) {
-        numberPhrase += tensNames[numberDigit.toString()[0]]
-        // subtract tens from input
-        numberDigit -= numberDigit.toString()[0] * 10
-        // add a hyphen if there is a non-zero ones digit remaining
-        if (numberDigit) {
-            numberPhrase += '-'
+    // handle "0" input
+    if (numberDigit == 0) {
+        numberPhrase = 'zero'
+    } else {
+        // handle hundreds
+        if (numberDigit > 99) {
+            numberPhrase += onesNames[numberDigit[0]] + '-hundred '
+            // subtract hundreds from input
+            numberDigit -= numberDigit[0] * 100
         }
-    // handle teens
-    } else if (numberDigit > 9) {
-        numberPhrase += teensNames[numberDigit.toString()]
-        // make variable zero to help ones handling
-        numberDigit -= numberDigit
+        // handle tens that are not teens
+        if (numberDigit > 19) {
+            numberPhrase += tensNames[numberDigit.toString()[0]]
+            // subtract tens from input
+            numberDigit -= numberDigit.toString()[0] * 10
+            // add a hyphen if there is a non-zero ones digit remaining
+            if (numberDigit) {
+                numberPhrase += '-'
+            }
+        // handle teens
+        } else if (numberDigit > 9) {
+            numberPhrase += teensNames[numberDigit.toString()]
+            // make variable zero to help ones handling
+            numberDigit -= numberDigit
+        }
+        // handle ones
+        if (numberDigit) {
+            numberPhrase += onesNames[numberDigit]
+        }
     }
-    // handle ones
-    if (numberDigit) {
-        numberPhrase += onesNames[numberDigit]
-    }
+
+    // return result
+    return numberPhrase
 }
 
-// display results
-alert(numberPhrase)
+// add event listener
+submitButton.addEventListener('click', function() {
+    // get result from function
+    let numberPhrase = numberToPhrase(numberDigit.value)
+
+    // display result
+    results.innerHTML = numberPhrase
+})

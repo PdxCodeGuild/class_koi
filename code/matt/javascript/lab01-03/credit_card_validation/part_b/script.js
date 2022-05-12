@@ -20,18 +20,19 @@ function checkCC (inputNum) {
     })
     // compare last digit of numSum to checkDigie
     if (numSum % 10 == checkDigie) {
-        return true
+        return 'Valid!'
     } else {
-        return false
+        return 'Invalid.'
     } 
 }
 
-// prompt for input
-let inputNum = prompt('Gimme your credit card: ')
+// assign elements to variables
+let inputNum = document.querySelector('#input-num')
+let submitButton = document.querySelector('#submit-button')
+let results = document.querySelector('#results')
 
-// display results from function
-if (checkCC(inputNum)) {
-    alert('Valid!')
-} else {
-    alert('Invalid.')
-}
+// add event listener
+submitButton.addEventListener('click', function () {
+    // display results from function
+    results.innerHTML = checkCC(inputNum.value)
+})
