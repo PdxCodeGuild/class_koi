@@ -18,7 +18,7 @@ function valleys() {
     let previous = data[Math.floor((i - 1) % len)]; //
     let next = data[Math.floor((i + 1) % len)];
     if ((current < next) & (current < previous))
-      console.log(data[i] + "valley");
+      console.log(data[i] + "valley \x20;");
   }
 }
 
@@ -28,14 +28,24 @@ function peaks_and_valleys() {
     let current = data[i];
     let previous = data[Math.floor((i - 1) % len)]; //
     let next = data[Math.floor((i + 1) % len)];
-    if ((current > next) & (current > previous)) console.log(data[i] + " peak");
+    if ((current > next) & (current > previous))
+      display.innerText += data[i] + "  peak \x0A";
 
     if ((current < next) & (current < previous))
-      console.log(data[i] + "valley");
+      display.innerText += data[i] + " valley \x0A";
   }
 }
+let display = document.querySelector("#display");
+let p = document.querySelector("p");
+const submit = document.querySelector("#submit");
+p.innerText = data;
+let x;
 
 peaks();
 valleys();
 console.log("----------------------");
-peaks_and_valleys();
+// peaks_and_valleys();
+
+submit.addEventListener("click", function () {
+  peaks_and_valleys();
+});
