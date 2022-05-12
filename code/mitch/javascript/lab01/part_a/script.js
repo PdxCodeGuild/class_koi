@@ -13,13 +13,6 @@ while (true) {
     
 }
 
-// run_bt.onclick = function() {
-//   let name = name_input.value;
-//   //alert(name);
-//   output_div.innerText = 'Hello, ' + name + '!';
-//   //output_div.innerHTML = '<b>Hello, ' + name + '!</b>';
-// }
-
 let average = running_sum / nums.length
 
 alert(`The average of ${nums} is ${average}`)

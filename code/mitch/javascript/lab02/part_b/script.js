@@ -9,18 +9,24 @@ let conversion_ratios = {
     in: 0.0254,
 }
 
-function conversion_to_m(value, unit_from, unit_to){
-    // """Converts input float to a float of another unit. Accepts inputs/outputs: 'ft', 'mi', 'm', 'km', 'yd', or 'in'."""
-    let meters_output = value * conversion_ratios[unit_from]
-    let unit_output = meters_output / conversion_ratios[unit_to]
-    return unit_output.toPrecision(4)
+
+let number_input = document.getElementById('number_input')
+let unit_from = document.getElementById('input_unit')
+let unit_to = document.getElementById('output_unit')
+let convert_button = document.getElementById('convert_button')
+let output_div = document.getElementById('output_div')
+
+
+
+convert_button.onclick = function() {
+    let number = number_input.value
+    let meters_output = number * conversion_ratios[unit_from.value]
+    let output = meters_output / conversion_ratios[unit_to.value]
+
+
+    output_div.innerText = `${number} ${unit_from.value} \nis equal to\n${output.toPrecision(3)} ${unit_to.value}`
 }
 
-let value = prompt("What is the distance? ")
-let unit_from = prompt("What are the input units? ('ft', 'mi', 'm', 'km', 'yd', 'in') ")
-let unit_to = prompt("What are the output units? ('ft', 'mi', 'm', 'km', 'yd', 'in') ")
-
-let output = conversion_to_m(value, unit_from, unit_to)
 
 
-alert(`${value} ${unit_from} is ${output} ${unit_to}`)
+

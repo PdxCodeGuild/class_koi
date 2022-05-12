@@ -12,6 +12,7 @@ let payouts_for_matches = {
 
 let num_of_winning_tickets = 0
 let balance = 0
+let earnings = 0
 let expences = 0
 
 
@@ -42,7 +43,7 @@ let winning_numbers = pick6()
 for (let i = 0; i < 100000; i++){
     let ticket_numbers = pick6()
     balance -= 2
-    expences -= 2
+    expences += 2
 
     let matches = num_matches(winning_numbers, ticket_numbers)
 
@@ -50,10 +51,11 @@ for (let i = 0; i < 100000; i++){
         num_of_winning_tickets += 1
     }
     balance += payouts_for_matches[matches]
+    earnings += payouts_for_matches[matches]
 }
 
 
-let return_on_investment = ( balance - expences ) / expences * 100
+let return_on_investment = ( earnings - expences ) / expences * 100
 
 alert(`****** This gambling simulator just played the 'Pick Six' lottery 100,000 times. ******
       \nThere were ${num_of_winning_tickets} winning tickets.

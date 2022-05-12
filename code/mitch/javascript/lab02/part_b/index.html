@@ -4,10 +4,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@1.1.0/modern-normalize.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
     <title>Unit Converter</title>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
-<body>
+<body class="bg-black-30 pa4">
     <h1>Unit Converter</h1>
+
+    <label for="number_input">Enter distance:</label>
+    <input id="number_input" autofocus onfocus="this.value=''" type="number"/>
+    
+    <br>
+    
+    <label for="input_unit">Choose the input unit:</label>
+    <select name="input_unit" id="input_unit">
+        <option value="ft">ft</option>
+        <option value="mi">mi</option>
+        <option value="m">m</option>
+        <option value="km">km</option>
+        <option value="yd">yd</option>
+        <option value="in">in</option>
+    </select>
+    
+    <br>
+    
+    <label for="output_unit">Choose unit to convert to:</label>
+    <select name="output_unit" id="output_unit">
+        <option value="ft">ft</option>
+        <option value="mi">mi</option>
+        <option value="m">m</option>
+        <option value="km">km</option>
+        <option value="yd">yd</option>
+        <option value="in">in</option>
+    </select>
+    
+    <br>
+    
+    <button class="grow" id="convert_button" type="button">Convert</button>
+    
+    <br>
+    <br>
+
+    <div id="output_div"></div>
+
 </body>
 </html>
