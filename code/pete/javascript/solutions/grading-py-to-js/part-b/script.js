@@ -19,6 +19,7 @@ button.addEventListener('click', function () {
 		letterGrade = 'A'
 	}
 
+	// ternary operator
 	// let aOrAn = (letterGrade === 'F' || letterGrade === 'A')
 	let aOrAn = ['A', 'F'].includes(letterGrade)
 		? 'an'
