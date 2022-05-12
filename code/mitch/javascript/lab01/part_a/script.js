@@ -3,7 +3,7 @@ let nums = []
 let running_sum = 0
 
 while (true) {
-    let user_input = prompt("Enter a number or 'done'.")
+    let user_input = prompt("Please enter a number or 'done'.")
     if (user_input == 'done') {
         break
     }else {
@@ -12,6 +12,13 @@ while (true) {
     }
     
 }
+
+// run_bt.onclick = function() {
+//   let name = name_input.value;
+//   //alert(name);
+//   output_div.innerText = 'Hello, ' + name + '!';
+//   //output_div.innerHTML = '<b>Hello, ' + name + '!</b>';
+// }
 
 let average = running_sum / nums.length
 
