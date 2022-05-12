@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 01-B Unit Converter</title>
+</head>
+<body>
+    <h1>Welcome to JavaScript Lab 1 - Unit Converter</h1>
+
+   
+        <label for="distance">Enter the distance</label>
+        <input type="number" id="distance">
+        <br>
+        <label for="input">Select the unit of measurement</label>
+        <select name="input" id="input">
+            <option value="inches">Inches</option>
+            <option value="feet">Feet</option>
+            <option value="miles">Miles</option>
+            <option value="meters">Meters</option>
+            <option value="yards">Yards</option>
+            <option value="kilometers">Kilometers</option>
+        </select>
+        <br>
+        <label for="output">Select the unit of measurement to convert to</label>
+        <select name="output" id="output">
+            <option value="inches">Inches</option>
+            <option value="feet">Feet</option>
+            <option value="miles">Miles</option>
+            <option value="meters">Meters</option>
+            <option value="yards">Yards</option>
+            <option value="kilometers">Kilometers</option>
+        </select>
+        <br>
+        <button id="submit">Convert</button>
+   
+    <h2 id="conversion"></h2>
+    <script>
+        // I only did version 4 for this because doing everything separately didn't seem logical
+
+        let units = {
+            'feet': .3048,
+            'miles': 1609.34,
+            'meters': 1,
+            'kilometers': 1000,
+            'yards': .9144,
+            'inches': .0254
+        }       
+        // get values from form
+        let distance = document.querySelector('#distance')
+        let input = document.querySelector('#input')
+        let output = document.querySelector('#output')
+        let conversion = document.querySelector('#conversion')
+
+        // event listener
+        let submit = document.querySelector('#submit')
+        submit.addEventListener('click', function() {
+            // convert
+            let result = distance.value * units[input.value] / units[output.value]
+            conversion.innerHTML = `${distance.value} ${input.value} is ${Math.round(result)} ${output.value}`
+        })
+
+    </script>
+</body>
+</html>
