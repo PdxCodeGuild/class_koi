@@ -7,8 +7,28 @@ addBtn.addEventListener("click", function (e) {
   const newItem = addItem.value;
   const ul = document.getElementById("grocery-list");
   li.innerText = newItem;
+  li.id = newItem
+  let removeBtn = document.createElement("button");
+  removeBtn.innerHTML = "Remove";
+  removeBtn.type = "submit";
+  removeBtn.id = `${li.innerText}`
+  console.log(li)
+  console.log(removeBtn)
+  li.appendChild(removeBtn); 
   ul.appendChild(li);
+  document.querySelector('#grocery-input').value='';
+  removeBtn.addEventListener('click', function(){
+    console.log(removeBtn.id)
+    li.remove(removeBtn.id)
+    // removeItem = document.getElementById('removeBtn.id')
+  })
+
 });
+
+// function removeListItem(removeBtn) {
+  // let listItem = document.querySelector(`${li.innerText}`)
+// }
+
 
 // form.addEventListener("submit", function (e) {
 //   e.preventDefault(); // this stops the default form submission of the event, so the page doesn't refresh
