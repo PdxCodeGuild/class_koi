@@ -1,3 +1,5 @@
+localStorage.clear()
+
 let newItem = document.querySelector("#type_text")
 let addButton = document.querySelector("#add_button")
 let todoList = document.querySelector("#todo_list")
@@ -35,11 +37,19 @@ function buildItem (newItem) {
     toDoRemove.addEventListener("click", function(_) {
 
         toDoArray.remove(toDoTask)
+        localStorage.setItem('toDoArray', JSON.stringify(toDoArray))
     })
     toDoComplete.addEventListener("click", function(evt) {
        toDoTask.remove() 
        toDoComplete.remove()
        completeList.appendChild(toDoTask)
+       let index = toDoArray.indexOf(newItem)
+    //    alert(newItem)
+       let completed = toDoArray.splice(index,1)
+       completedArray.push(completed)
+       alert(`todo:${toDoArray}completed:${completedArray}`)
+       localStorage.setItem('toDoArray', JSON.stringify(toDoArray))
+       localStorage.setItem('completedArray', JSON.stringify(completedArray))
     })
 }
 
