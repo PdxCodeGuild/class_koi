@@ -6,24 +6,78 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blackjack Advice</title>
+    <style>
+        div {
+            margin: 1rem;
+        }
+        label {
+            display: flex;
+            align-items: center
+        }
+    </style>
 </head>
 <body>
     <h1>Blackjack Advice</h1>
-    <div>
-        <select id="card1Input">
-            <option value="">Ace</option>
-            <option value="">2</option>
-            <option value="">3</option>
-            <option value="">4</option>
-            <option value="">5</option>
-            <option value="">6</option>
-            <option value="">7</option>
-            <option value="">8</option>
-            <option value="">9</option>
-            <option value="">10</option>
-            <option value="">Jack</option>
-            <option value="">Queen</option>
-            <option value="">King</option>
-        </select>
+    <div style="display: flex;">
+        <div>
+            <label for="card1Input">Select the 1st card</label>
+            <select id="card1Input" style="min-width: 5.5rem">
+                <option value="1">Ace-1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="10">Jack</option>
+                <option value="10">Queen</option>
+                <option value="10">King</option>
+                <option value="11">Ace-11</option>
+            </select>
+        </div>
+        <div>
+            <label for="card2Input">Select the 2nd card</label>
+            <select id="card2Input" style="min-width: 5.5rem">
+                <option value="1">Ace-1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="10">Jack</option>
+                <option value="10">Queen</option>
+                <option value="10">King</option>
+                <option value="11">Ace-11</option>
+            </select>
+        </div>
+        <div>
+            <label for="card3Input">Select the 3nd card</label>
+            <select id="card3Input" style="min-width: 5.5rem">
+                <option value="1">Ace-1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="10">Jack</option>
+                <option value="10">Queen</option>
+                <option value="10">King</option>
+                <option value="11">Ace-11</option>
+                <option value="0">No Card</option>
+            </select>
+        </div>
     </div>
+    <button id="button" style="margin: 1rem">Get Advice</button>
+    <p id="output" style="font-size: 25px; padding: 1rem">What Should you do?</p>
 </html>
