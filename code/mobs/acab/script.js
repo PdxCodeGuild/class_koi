@@ -8,20 +8,37 @@ addBtn.addEventListener("click", function (e) {
   const ul = document.getElementById("grocery-list");
   li.innerText = newItem;
   li.id = newItem
+  
   let removeBtn = document.createElement("button");
   removeBtn.innerHTML = "Remove";
   removeBtn.type = "submit";
   removeBtn.id = `${li.innerText}`
-  console.log(li)
-  console.log(removeBtn)
-  li.appendChild(removeBtn); 
+  
+  let completeBtn = document.createElement("button");
+  completeBtn.innerHTML = "Complete";
+  completeBtn.type = "submit";
+  completeBtn.id = `${li.innerText}`
+  
+  li.appendChild(removeBtn);
+  li.appendChild(completeBtn);
   ul.appendChild(li);
+  
   document.querySelector('#grocery-input').value='';
+
   removeBtn.addEventListener('click', function(){
     console.log(removeBtn.id)
     li.remove(removeBtn.id)
     // removeItem = document.getElementById('removeBtn.id')
   })
+
+  completeBtn.addEventListener('click', function() {
+    // let x = completeBtn.id;
+    // li.remove(completeBtn.id);
+    // li.appendChild(completeBtn.id);
+    li.style.textDecoration = li.style.textDecoration === 'line-through' ? 'none' : 'line-through'
+    completeBtn.innerText = li.style.textDecoration === 'line-through' ?  'Undo' : 'Complete'
+  })
+  
 
 });
 
