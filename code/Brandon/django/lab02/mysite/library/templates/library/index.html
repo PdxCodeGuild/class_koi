@@ -1,9 +1,67 @@
-{{ author }}
-{{ books }}
-{{ all_books }}
+
+<nav class="mb-3">
+    {% if user.is_authenticated %}
+        <form action="{% url 'accounts:logout' %}" method="post">
+            {% csrf_token %}
+            <button class="btn btn-primary btn-sm" type="submit">Log Out</button>
+            <p>User: {{ user }}</p>
+        </form>
+    {% else %}
+    <form action="{% url 'accounts:login' %}" method="post">
+	{% csrf_token %}
+        
+        <button class="btn btn-primary btn-sm" type="submit">Log In</button>
+
+    </form>
+    {% endif %}
+</nav>
+<h1>Authors</h1>
+    
+
+{% for author in books %}
+<form action="{% url 'library:checkout' author.id %}" method="post">
+{% csrf_token %}
+    <a href="{{ author.id }}">{{ author.author }} {{ author.name }}</a>
+    <p></p>
+     {{ author.publish_date }}
 
 
-{% for name in all_books %} 
-<h1>{{ name }}</h1>
-<p>{{ author }}</p>
-{% endfor %}
+       
+        {% if author.checked_out %}
+        <p>Avaialable: &#9745;</p>
+        <input type="text" name="checkout" id="checkout"  value={{ user }} method="POST">
+        <a href="{% url 'library:checkout' author.id %}">
+            <button>Check Out</button>				
+        </a>
+    </form>
+    <form action="{% url 'library:checked_in' author.id %}" method="post"></form>
+	{% csrf_token %}
+
+        {% else %}
+        <p>Not Available, checked out by {{ author.who_checked_out }} at {{ author.who_checked_out_time }}</p>
+        <a href="{% url 'library:checked_in' author.id %}">
+            <button method="POST">Check In</button>
+        </a>
+        {% endif %}
+    <br>
+	</form>
+    </a>
+    <br><br>
+    {% endfor %}
+
+
+<form action="{% url 'library:index'  %}" method="POST">
+	{% csrf_token %}
+    <h3>Add a Book: </h3>
+    <h4>Title:</h4>
+    <input type="text" name="name" id="name">
+
+    <h4>Author:</h4>
+    <input type="text" name="author" id="author">
+
+    <h4> Publish Year:</h4>
+    <input type="number" min="1800" max="2022" step="1" value="2022" name="publish_date" id="publish_date">
+ 
+    <button type="submit">Save</button>
+</form>
+

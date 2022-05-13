@@ -1,23 +1,30 @@
 from django.db import models
+from django.urls import reverse
 
 
-class Author(models.Model):
-    author = models.CharField(max_length=40)
+class Authors(models.Model):
+    author_name = models.CharField(max_length=40)
 
     def __str__(self):
-        return self.author
+        return self.author_name
+
+    class Meta:
+        verbose_name_plural = 'Authors'
 
 
 class Books(models.Model):
-    name = models.CharField(max_length=60)
-    publish_date = models.DateField(null=True)
-    author = models.ForeignKey(Author,
-                               on_delete=models.PROTECT, related_name='authors')
-    checked_out = models.BooleanField('available', default=True)
 
-    other_books = models.ManyToManyField(
-        Author, related_name='other_books', blank=True)
+    name = models.CharField(max_length=60)
+    publish_date = models.CharField(max_length=4)
+    author = models.ForeignKey(
+        Authors, on_delete=models.PROTECT, related_name='auth', blank=True, null=True)
+    checked_out = models.BooleanField('available', default=True)
+    who_checked_out = models.CharField(max_length=60, null=True)
+    who_checked_out_time = models.CharField(max_length=60, null=True)
 
     def __str__(self):
-        checked_status = 'available' if self.checked_out else 'unavailable'
+
         return self.name
+
+    class Meta:
+        verbose_name_plural = 'Books'
