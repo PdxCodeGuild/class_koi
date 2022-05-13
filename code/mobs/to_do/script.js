@@ -5,6 +5,14 @@ let completeList = document.querySelector("#complete_list")
 
 
 // alert("script's runnin'")
+let toDoArray
+let completedArray
+
+if(localStorage.getItem('toDoArray')) {
+    toDoArray = JSON.parse(localStorage.getItem('toDoArray'))
+} else {
+    toDoArray = []
+}
 
 addButton.addEventListener("click", function(evt){
     evt.preventDefault()
@@ -22,6 +30,8 @@ addButton.addEventListener("click", function(evt){
     toDoTask.appendChild(toDoComplete)
     todoList.appendChild(toDoTask)
 
+    // localStorage.setItem('toDoTask', JSON.stringify(toDoArray))
+
     toDoRemove.addEventListener("click", function(_) {
         toDoTask.remove()
 
@@ -30,8 +40,9 @@ addButton.addEventListener("click", function(evt){
     })
 
     toDoComplete.addEventListener("click", function(evt) {
-        
-
+       toDoTask.remove() 
+       toDoComplete.remove()
+       completeList.appendChild(toDoTask)
     })
 
 
