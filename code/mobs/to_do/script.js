@@ -14,37 +14,45 @@ if(localStorage.getItem('toDoArray')) {
     toDoArray = []
 }
 
-addButton.addEventListener("click", function(evt){
-    evt.preventDefault()
+if(localStorage.getItem('completedArray')) {
+    completedArray = JSON.parse(localStorage.getItem('completedArray'))
+} else {
+    completedArray = []
+}
+
+function buildItem (newItem) {
     let toDoTask = document.createElement("li")
     let toDoName = document.createElement("p")
-    toDoName.innerText = newItem.value
+    toDoName.innerText = newItem
     toDoTask.appendChild(toDoName)
     let toDoRemove = document.createElement("button")
-    // toDoRemove.setAttribute("id", "remove_button" )
     let toDoComplete = document.createElement("button")
-    // toDoComplete.setAttribute("id", "complete_button")
     toDoRemove.innerText = "Remove"
     toDoComplete.innerText = "Complete"
     toDoTask.appendChild(toDoRemove)
     toDoTask.appendChild(toDoComplete)
     todoList.appendChild(toDoTask)
 
-    // localStorage.setItem('toDoTask', JSON.stringify(toDoArray))
-
     toDoRemove.addEventListener("click", function(_) {
         toDoTask.remove()
 
 
-
     })
-
     toDoComplete.addEventListener("click", function(evt) {
        toDoTask.remove() 
        toDoComplete.remove()
        completeList.appendChild(toDoTask)
     })
+}
 
 
+addButton.addEventListener("click", function(evt){
+    evt.preventDefault()
+
+    // toDoArray.push(newItem.value)
+    // localStorage.setItem('toDoArray', JSON.stringify(toDoArray))
+
+
+    buildItem(newItem.value)
 
 })
