@@ -1,0 +1,22 @@
+{% extends 'posts/base.html' %}
+
+{% block content %}
+<div class="container p-1">
+    {% for chirp in chirps %}
+    <br>
+    <div class="card">
+        <div class="card-header">
+              <a href="#"><h4>{{ chirp.uname }}</h4></a>
+              <small>{{ chirp.datetime }}</small>
+
+        </div>
+        <div class="card-body">
+
+          <h5 class="card-text">{{ chirp.text }}</h5>
+
+        </div>
+      </div>
+
+    {% endfor %}
+  </div>
+{% endblock %}
