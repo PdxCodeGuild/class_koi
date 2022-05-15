@@ -29,15 +29,20 @@
 
             </div>
 
-            <a href="#"><p>Create a new account</p></a>
+            <a href="{% url 'register' %}"><p>Create a new account</p></a>
 
         </form>
 
     </div>
+
+   
     {% if messages %}
         {% for message in messages %}
+        <div class="alert alert-success" role="alert">
             {{ message }}
+        </div>
         {% endfor %}
     {% endif %}
+  
 </body>
 </html>
