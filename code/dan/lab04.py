@@ -75,7 +75,7 @@ for char in answer:
         
 value = int(answer)
 ones = value % 10
-tens = (value % 100) // 10 #not right
+tens = (value % 100) // 10 
 hundreds = value // 100
 print (f"{hundreds} hundreds {tens} tens {ones} ones")
         
