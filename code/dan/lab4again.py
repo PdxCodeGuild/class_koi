@@ -46,15 +46,29 @@ tens ={
  8: "eighty", 
  9: "ninety",
 }
+hundreds ={
+ 1: "one hundred",
+ 2 : "two hundred",
+ 3 : "three hundred",
+ 4 : "four hundred" ,  
+ 5 : "five hundred",
+ 6 : "six hundred",
+ 7 : "seven hundred",
+ 8: "eight hundred", 
+ 9: "nine hundred",
+}
 
 
 if tens_place == 0:
     print(f"Your total is {ones[ones_place]}")
+elif hundreds_place >= 1:
+    print(f"Your total is {hundreds[hundreds_place]} {tens[tens_place]} {ones[ones_place]}")
 elif tens_place == 1:
     print(f"Your total is {teens[ones_place]}")
 elif tens_place > 1 and ones_place == 0:
     print(f"Your total is {tens[tens_place]}")
 elif tens_place > 1 and ones_place >= 0:
     print(f"Your total is {tens[tens_place]} {ones[ones_place]}")
+
 
 
