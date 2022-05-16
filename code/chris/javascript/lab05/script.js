@@ -1,1 +1,5 @@
 // Vue ToDo
+
+const App = {
+    
+}
