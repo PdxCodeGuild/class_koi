@@ -8,19 +8,33 @@ let x = document.getElementById('x')
 let y = document.getElementById('y')
 
 let ball = {
-    radius: 6,
+    radius: 20*Math.random(),
     px: Math.random()*width,
     py: Math.random()*height,
     vx: (2*Math.random()-1)*5,
     vy: (2*Math.random()-1)*5,
-};
+}
+
+let colors = [
+    'red',
+    'orange',
+    'yellow',
+    'green',
+    'blue',
+    'purple',
+]
+
+let i = 0
+
+while (ball.radius < 4){
+    ball.radius = 20*Math.random()
+}
 
 function mainLoop () {
     ctx.clearRect(0,0,width,height)
     ctx.beginPath()
-    ball.radius = 6
     ctx.arc(ball.px, ball.py, ball.radius, 0, 2 * Math.PI, false)
-    ctx.fillStyle = 'green'
+    ctx.fillStyle = colors[i]
     ctx.fill()
 
     if ((ball.px += ball.vx > ball.radius) || (ball.px += ball.vx < width - ball.radius)) {
@@ -53,6 +67,7 @@ function mainLoop () {
     if (ball.py <= ball.radius || ball.py >= height - ball.radius) {
         ball.vy *= -.9
         ball.vx *= .9
+        i++
     } else {
         ball.vy += 0.1
         ball.vy *= 0.99
@@ -60,17 +75,16 @@ function mainLoop () {
     if (ball.px <= ball.radius || ball.px >= width - ball.radius) {
         ball.vx *= -.9
         ball.vy *= .9
+        i++
     }
-
+    
     if (ball.py <= ball.radius || ball.py >= height - ball.radius) {
         ball.vy *=.9
     }
-
-
-
-
-    x.innerHTML = `X ${ball.px}`
-    y.innerHTML = `Y ${ball.py}`
+    
+    if (i == colors.length) {
+        i = 0
+    }
     
     window.requestAnimationFrame(mainLoop)
 }
