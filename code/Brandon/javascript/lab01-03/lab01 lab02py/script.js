@@ -46,7 +46,7 @@ submit.onclick = function () {
 
 button1.addEventListener("click", function () {
   for (let i = 0; i < number_list.length; i++) {
-    sums += number_list[i];
+    sums += +number_list[i];
   }
   total = sums / number_list.length;
   p.innerText = `Your average is ${total}. `;

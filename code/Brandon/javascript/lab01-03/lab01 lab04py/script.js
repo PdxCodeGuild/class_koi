@@ -150,7 +150,7 @@ submit_numbers.addEventListener("click", function () {
   } else if (ones_digit === 0) {
     p.innerText = single_digit[hundreths] + " hundred and " + tens[tens_digit];
   } else if (tens_digit === 1) {
-    p.innerText = single_digit[hundreths] + " hundred" + tens[tens_digit];
+    p.innerText = single_digit[hundreths] + " hundred and " + tens[tens_digit];
   } else if (tens_digit === 0) {
     p.innerText =
       single_digit[hundreths] + " hundred and " + single_digit[ones_digit];
