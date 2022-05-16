@@ -27,7 +27,7 @@ let ones = {
     9 : "nineteen",
    }
    let tens ={
-    0 : "zero" 
+    0 : "zero",
     2 : "twenty",
     3 : "thirty",
     4 : "fourty" ,  
@@ -50,9 +50,8 @@ let ones = {
 }
    
 
-let onesDigit = someNum[0]
+let hundredsDigit = someNum[0]
 let tensDigit = someNum[1]
-let hundredsDigit = someNum[2]
+let onesDigit = someNum[2]
 
-
-console.log(`This is ${hundreds[hundredsDigit]} ${tens[tensDigit]} ${ones[onesDigit]}`)
+alert(`This is ${hundreds[hundredsDigit]} ${tens[tensDigit]} ${ones[onesDigit]}`)
