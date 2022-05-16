@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Dos!</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    
+    <div id = "app">
+        <h1> {{ headline }} </h1>
+
+        <form v-on:submit.prevent="addTask">
+            <label for="input-task"> add a task to the list </label>
+            <input v-model="txtInput" type="text" placeholder="" id ="input-message">
+            <button type="submit"> submit </button>
+        </form>
+
+        <br>
+        <br>
+
+        <h2>Incompleted Tasks</h2>
+        
+            <!-- {% for toDo in toDoInc  %}
+            {% endfor %} -->
+
+            <!-- {{toDoInc}} -->
+
+        <br>
+        <br>
+
+        <h2>Completed Tasks</h2>
+
+    </div>
+
+
+
+</body>
+</html>
