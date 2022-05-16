@@ -60,7 +60,9 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
              {% csrf_token %}
              <button class="btn btn-primary btn-sm" type="submit">Log Out</button>
              <p>User: {{ user }}</p>
-             <button class="btn btn-primary btn-sm" type="button" url="users:account">Account</button>
+             <a href="{% url 'posts:userpage' user.id %}">
+             <button class="btn btn-primary btn-sm" type="button">Account</button>
+            </a>
              <p></p>
          </form>
      {% else %}

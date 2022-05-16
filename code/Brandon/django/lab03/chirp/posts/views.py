@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from .models import Posts, Users
 
 
@@ -29,13 +29,12 @@ def index(request):
     return render(request, 'posts/index.html', context)
 
 
-def user_page(request):
-
-    posts = Posts.objects.all()
-    authors = Users.objects.all()
+def user_page(request, id: int):
+    authors = get_object_or_404(Users, id=id)
+    posts = Posts.objects.filter(author_id=id)
     context = {
         'posts': posts,
         'authors': authors
     }
 
-    return render(request, '<int:id>/account.html', context)
+    return render(request, 'posts/account.html', context)
