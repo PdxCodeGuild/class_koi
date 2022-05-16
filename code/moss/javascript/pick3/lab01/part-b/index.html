@@ -4,9 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
     <title>Unit Converter</title>
 </head>
 <body>
+    <header>
+        
+        <h1>Unit Converter</h1>
+
+    </header>
+
+    <main>
+        
+        <input id="distance_input" type="number" placeholder="Enter Distance"/>
+        
+        <!-- <input id="unit_in" type="text" placeholder="From Units"/> -->
+        <select id="from_unit">
+            <option value="in">inches</option>
+            <option value="ft">feet</option>
+            <option value="yrd">yard</option>
+            <option value="mi">miles</option>
+            <option value="m">meters</option>
+            <option value="km">kilometers</option>
+        </select>
+        <!-- <input id="unit_out" type="text" placeholder="To Units"/> -->
+        <select id="to_unit">
+            <option value="in">inches</option>
+            <option value="ft"> feet</option>
+            <option value="yrd">yard</option>
+            <option value="mi">miles</option>
+            <option value="m">meters</option>
+            <option value="km">kilometers</option>
+        </select>
+        
+        <button id="convert_btn">Convert</button>
+
+        <h3 id="result"></h3>
+                
+    </main>
     <script src="main.js"></script>
 </body>
 </html>
