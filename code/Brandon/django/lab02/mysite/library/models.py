@@ -18,7 +18,7 @@ class Books(models.Model):
     publish_date = models.CharField(max_length=4)
     author = models.ForeignKey(
         Authors, on_delete=models.PROTECT, related_name='auth', blank=True, null=True)
-    checked_out = models.BooleanField('available', default=True)
+    checked_out = models.BooleanField('available', default=False)
     who_checked_out = models.CharField(max_length=60, null=True)
     who_checked_out_time = models.CharField(max_length=60, null=True)
 

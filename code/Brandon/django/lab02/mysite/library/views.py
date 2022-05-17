@@ -52,16 +52,8 @@ def index(request):
 #     return render(request, 'library/book.html', context)
 def checked_in(request, id):
     checked = Books.objects.get(id=id)
-    checked.checked_out = True
+    checked.checked_out = False
     checked.save()
-    who_checked_out_time = timezone.now
-    who_checked_out = request.user.username
-    Books.objects.update(
-        who_checked_out=who_checked_out,
-        who_checked_out_time=who_checked_out_time
-    )
-    print('hi')
-    return redirect('library:index')
     # if request.method == 'POST':
     #     who_checked_out = request.POST.get('checkout')
     # # checked.save()
@@ -71,21 +63,10 @@ def checked_in(request, id):
 
 def checked_outs(request, id):
     checked = Books.objects.get(id=id)
-    checked.checked_out = False
+    checked.checked_out = True
+    checked.who_checked_out_time = timezone.now
+    checked.who_checked_out = request.user.username
     checked.save()
+
+    print('hi')
     return redirect('library:index')
-
-
-# def who_checked(request, id):
-#     who_check = Books.objects.get(id=id)
-#     who_check.checked_out = True
-#     who_check.
-#     if request.method == 'POST':
-#         who_checked_out_time = timezone.now()
-#         who_checked_out = request.POST.get('who_checked_out')
-#         Books.objects.update(
-#             who_checked_out=who_checked_out,
-#             who_checked_out_time=who_checked_out_time,
-#         )
-#         who_check.save()
-#         return redirect('library:index')

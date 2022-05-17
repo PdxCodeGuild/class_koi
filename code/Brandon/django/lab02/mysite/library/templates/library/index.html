@@ -19,7 +19,7 @@
     
 
 {% for author in books %}
-<form action="{% url 'library:checkout' author.id %}" method="post">
+<form action="{% url 'library:checkout' author.id %}">
 {% csrf_token %}
     <a href="{{ author.id }}">{{ author.author }} {{ author.name }}</a>
     <p></p>
@@ -34,13 +34,13 @@
             <button>Check Out</button>				
         </a>
     </form>
-    <form action="{% url 'library:checked_in' author.id %}" method="post"></form>
+    <form action="{% url 'library:checked_in' author.id %}"></form>
 	{% csrf_token %}
 
         {% else %}
         <p>Not Available, checked out by {{ author.who_checked_out }} at {{ author.who_checked_out_time }}</p>
         <a href="{% url 'library:checked_in' author.id %}">
-            <button method="POST">Check In</button>
+            <button">Check In</button>
         </a>
         {% endif %}
     <br>
