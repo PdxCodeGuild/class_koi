@@ -16,7 +16,11 @@
         <button v-on:click="addTodo">Submit</button>
 
         <ul>
-            <li v-for="(todo) in todoList"><input type="checkbox" v-model="checked" name="completed" id="todoBox">{{ todo }} <button v-on:click="removeTodo(todo)">Remove</button></li>
+            <li v-for="(todo, index) in todoList">
+                <!-- <input type="checkbox" v-model="checked" name="completed" id="todoBox"> -->
+                <p :id="todo + index">{{ todo }}
+                <button :id="'complete-button' + index" v-on:click="completeTodo(todo, index)">Complete</button>
+                <button v-on:click="removeTodo(todo)">Remove</button></p></li>
         </ul>
     </div>
     <script src="script.js"></script>

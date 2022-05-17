@@ -25,11 +25,14 @@ const App = {
             todoList.splice(todoIndex, 1)
         },
 
-        completeTodo(todo) {
+        completeTodo(todo, index) {
             const todoList = this.todoList
             const todoIndex = todoList.indexOf(todo)
+            const completeButton = document.getElementById("complete-button" + index)
+            const todoItem = document.getElementById(todo + index)
 
-
+            completeButton.style.display = "none"
+            todoItem.style.textDecoration = "line-through"
         }
     }
 }
