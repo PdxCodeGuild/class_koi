@@ -10,8 +10,46 @@
 </head>
 <body>
     <div id="app">
-        <h1 class="text-center text-5xl my-5 mx-10 bg-white/75 rounded">To Do List</h1>
+        <h1 class="text-center text-5xl my-5 mx-10 rounded font-sans">To Do List</h1>
+        <form @submit.prevent="addNewToDo" class="m-10 p-2 bg-white/75 rounded">
+            <label for="new-ToDo">Add a New To Do Item:</label>
+            <input v-model="newToDo" id="new-ToDo" type="text" placeholder=" new to do item"
+            class="border-black border-2 rounded-md ml-5" autofocus>
+            <button type="submit" 
+            class="border-black border-2 rounded-md px-3 ml-5">Add</button>
+        </form>
+        <h3 class="text-3xl text-center my-3 mx-10 rounded">
+			<u>List of To Do Items</u>
+		</h3>
+        <main>
+            <p v-for="todo in todos" id="todo" class="text-center">
+                <span class="text-xl">
+                    {{ todo }}
+                </span>
+                <button type="submit" id="delete"
+                class="border-black border-2 rounded-md px-2 ml-4">Delete</button>
+            </p>
+        </main>
     </div>
+    <script>
+        const App = {
+            data () {
+                return {
+                    pageTitle: 'To Do List',
+                    newToDo: '',
+                    todos: []
+                }
+            },
+            methods: {
+                addNewToDo () {
+                    this.todos.push(this.newToDo)
+                    this.newToDo = ''
+                },
+            }
+        }
+        const app = Vue.createApp(App)
+        app.mount('#app')
+    </script>
     
 </body>
 </html>
