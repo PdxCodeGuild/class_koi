@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlackJack Advice</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <h1><u>BlackJack Advice</u></h1>
+        <h2>So, you need some advice...</h2>
+        <h3>Enter the cards in your Blackjack hand</h3>
+        <form v-on:submit.prevent="getAdvice">
+            <label for="card1">Select your 1st card: </label>
+            <select v-model="card1Input" id="card1">
+                <option v-for="(card, i) in cards" :value="card" :selected="i===0">{{  card.name  }}</option>
+            </select>
+            <label for="card2" style="margin-left: 1rem;">Select your 2nd card: </label>
+            <select v-model="card2Input" id="card2">
+                <option v-for="(card, i) in cards" :value="card" :selected="i===0">{{  card.name  }}</option>
+            </select>
+            <label for="card3" style="margin-left: 1rem;">Select your 3rd card: </label>
+            <select v-model="card3Input" id="card3">
+                <option v-for="(card, i) in cards" :value="card" :selected="i===0">{{  card.name  }}</option>
+                <option value="0">No Card</option>
+            </select>
+            <button type="submit" style="margin: 1rem;">Get Advice</button>
+            <p>{{ output }}</p>
+        </form>
+
+    </div>
+    <script>
+        const cards = [
+        {name: 'Ace as One', cardValue: '1'},
+        {name: '2', cardValue: '2'},
+        {name: '3', cardValue: '3'},
+        {name: '4', cardValue: '4'},
+        {name: '5', cardValue: '5'},
+        {name: '6', cardValue: '6'},
+        {name: '7', cardValue: '7'},
+        {name: '8', cardValue: '8'},
+        {name: '9', cardValue: '9'},
+        {name: '10', cardValue: '10'},
+        {name: 'Jack', cardValue: '10'},
+        {name: 'Queen', cardValue: '10'},
+        {name: 'King', cardValue: '10'},
+        {name: 'Ace as 11', cardValue: '11'},
+        ]
+        const App = {
+            data () {
+                return {
+                    cards,
+                    card1Input: cards[10],
+                    card2Input: cards[11],
+                    card3Input: cards[0],
+                    output: ''
+                }
+            },
+            methods: {
+                getAdvice () {
+                    console.log(+this.card1Input.cardValue, typeof +this.card1Input.cardValue)
+                    this.output = `Play a different game`
+                }
+            }
+        }
+        const app = Vue.createApp(App)
+        app.mount('#app')
+    </script>
+</body>
+</html>
