@@ -17,6 +17,9 @@ button.addEventListener('click', function (e) {
     if (handValue(card1, card2, card3) == 21) {
         output.innerText = `Blackjack!! \nYou Win!!`
     }
+    else if (handValue(card1, card2, card3) > 21) {
+        output.innerText = `Your hand value = ${handValue(card1, card2, card3)}\nAlready Busted!`
+    }
     else if (handValue(card1, card2, card3) > 16) {
         output.innerText = `Your hand value = ${handValue(card1, card2, card3)}\nStay`
     }

@@ -24,10 +24,10 @@
             <label for="card3" style="margin-left: 1rem;">Select your 3rd card: </label>
             <select v-model="card3Input" id="card3">
                 <option v-for="(card, i) in cards" :value="card" :selected="i===0">{{  card.name  }}</option>
-                <option value="0">No Card</option>
+                <!-- <option name='No Card' value="0" selected>No Card</option> -->
             </select>
             <button type="submit" style="margin: 1rem;">Get Advice</button>
-            <p>{{ output }}</p>
+            <p style="background-color: skyblue; font-size: 25px">{{ output }}</p>
         </form>
 
     </div>
@@ -47,6 +47,7 @@
         {name: 'Queen', cardValue: '10'},
         {name: 'King', cardValue: '10'},
         {name: 'Ace as 11', cardValue: '11'},
+        {name: 'No Card', cardValue: '0'},
         ]
         const App = {
             data () {
@@ -54,14 +55,32 @@
                     cards,
                     card1Input: cards[10],
                     card2Input: cards[11],
-                    card3Input: cards[0],
+                    card3Input: cards[14],
                     output: ''
                 }
             },
             methods: {
                 getAdvice () {
+                    const handValue = parseInt(this.card1Input.cardValue) + parseInt(this.card2Input.cardValue) + parseInt(this.card3Input.cardValue)
                     console.log(+this.card1Input.cardValue, typeof +this.card1Input.cardValue)
-                    this.output = `Play a different game`
+                    console.log(+this.card2Input.cardValue, typeof +this.card2Input.cardValue)
+                    console.log(+this.card3Input.cardValue, typeof +this.card3Input.cardValue)
+                    console.log(handValue, typeof handValue)
+                    
+                    if (handValue == 21) {
+                        this.output = `Blackjack!! You Win!!`
+                    }
+                    else if (handValue > 21) {
+                        this.output = `Your hand value = ${handValue} Already Busted!`
+                    }
+                    else if (handValue > 16) {
+                        this.output = `Your hand value = ${handValue} Stay`
+                    }
+                    else {
+                        this.output = `Your hand value = ${handValue} Hit`
+                    }
+
+                    //this.output = `Play a different game`
                 }
             }
         }
