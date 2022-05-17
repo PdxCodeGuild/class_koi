@@ -1,0 +1,9 @@
+body {
+    background: url("images/ramsay.png") no-repeat;
+    background-position: center;
+}
+
+hr{ 
+    width: 15%;
+    margin-left: 0;  
+}
