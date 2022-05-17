@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="main.js" defer></script>
+    <title>Unit Converter</title>
+</head>
+<body>
+    <div id="app">
+        <header>
+            
+            <h1>{{ header_title }}</h1>
+
+        </header>
+
+        <main>
+            
+            <input v-model="distance_input" type="number" placeholder="Enter Distance"/>
+            
+            <select v-model="from_unit">
+                <option value="in">inches</option>
+                <option value="ft">feet</option>
+                <option value="yrd">yard</option>
+                <option value="mi">miles</option>
+                <option value="m">meters</option>
+                <option value="km">kilometers</option>
+            </select>
+            
+            <select v-model="to_unit">
+                <option value="in">inches</option>
+                <option value="ft"> feet</option>
+                <option value="yrd">yard</option>
+                <option value="mi">miles</option>
+                <option value="m">meters</option>
+                <option value="km">kilometers</option>
+            </select>
+            
+            <button v-on:click="convert_btn">Convert</button>
+
+            <h3 id="result"></h3>
+                    
+        </main>
+    </div>   
+</body>
+</html>

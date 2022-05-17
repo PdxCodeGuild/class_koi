@@ -3,7 +3,7 @@ let user_num_list = []
 while (true) {
 
     let user_num = prompt ("\nWelcome to the averaging tool, enter your number or 'done' to quit:\n")
-    // console.log(user_num)
+   
     if (user_num === "done") {
 
         let sum_user_num_list = 0
