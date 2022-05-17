@@ -18,16 +18,20 @@
             <button type="submit" 
             class="border-black border-2 rounded-md px-3 ml-5">Add</button>
         </form>
-        <h3 class="text-3xl text-center my-3 mx-10 rounded">
+        <h3 class="text-xl text-center my-3 mx-10 rounded">
 			<u>List of To Do Items</u>
 		</h3>
         <main>
-            <p v-for="todo in todos" id="todo" class="text-center">
-                <span class="text-xl">
+            <p v-for="(todo, index) in todos" id="todo" class="text-center">
+                <span class="text-lg w-35 {{ text-decoration }}">
                     {{ todo }}
                 </span>
                 <button type="submit" id="delete"
+                v-on:click="deleteItem(index)"
                 class="border-black border-2 rounded-md px-2 ml-4">Delete</button>
+                <button type="submit" id="toggle"
+                v-on:click="toggleComplete(index)"
+                class="border-black border-2 rounded-md px-2 ml-4">{{ complete === ''? 'finish' : complete }}</button>
             </p>
         </main>
     </div>
@@ -37,13 +41,21 @@
                 return {
                     pageTitle: 'To Do List',
                     newToDo: '',
-                    todos: []
+                    todos: [],
+                    complete: '',
+                    textDecoration: 'line-through'
                 }
             },
             methods: {
                 addNewToDo () {
                     this.todos.push(this.newToDo)
                     this.newToDo = ''
+                },
+                deleteItem (index) {
+                    this.todos.splice(index, 1)
+                },
+                toggleComplete (index) {
+                    this.complete = 'Undo'
                 },
             }
         }
