@@ -24,31 +24,83 @@
 
         <h2>Incompleted Tasks</h2>
 
-            <ul v-for="toDo in toDoInc">
+            <ul> 
+            <li v-for="toDo in toDoInc">
 
-                {{toDo.innerText}}
-                <!-- <button v-on:click.prevent="compTask" type="click"> complete </button>
-                <button v-on:click.prevent="remTask" type="click"> remove </button> -->
+                {{toDo.name}}
 
-                <!-- <li v-for="toDo in toDoInc">
-                    {{ toDo }}
-                </li>
+                <!-- <button type = "button" v-on:click.prevent = "compTaskAlt"> 
+                    
+                    complete 
+
+                </button>
+
+                <button type="button"> remove  </button> -->
+
+            </li>
 
             </ul>
 
 
         <br>
         <br>
+
 
         <h2>Completed Tasks</h2>
-            <ul v-for="toDo in toDoComp">
-                {{toDo.innerText}}
-                <!-- <button v-on:click.prevent="remTask" type="click"> remove </button> -->
+
+            <ul> 
+            <li v-for="toDo in toDoComp">
+
+                {{toDo.name}}
+
+                <!-- <button type = "click">
+                     remove  
+                    </button> -->
+
+            </li>
+
             </ul>
 
-    </div>
+            <br>
+            <br>
+    
+        <h2>Mark Complete</h2>
+
+        <form v-on:submit.prevent="compTask">
+            <label for="input-task"> complete a task</label>
+            <input v-model="compInput" type="text" placeholder="" id ="input-message">
+            <button type="submit"> submit </button>
+        </form>
+
+        <br>
+        <br>
+
+        <h2>Mark Incomplete</h2>
+
+        <form v-on:submit.prevent="incompTask">
+            <label for="input-task"> complete a task</label>
+            <input v-model="incompInput" type="text" placeholder="" id ="input-message">
+            <button type="submit"> submit </button>
+        </form>
+
+        <br>
+        <br>
+            
+        <h2>Remove</h2>
+
+        <form v-on:submit.prevent="remTask">
+            <label for="input-task"> complete a task</label>
+            <input v-model="remInput" type="text" placeholder="" id ="input-message">
+            <button type="submit"> submit </button>
+        </form>
 
 
+        
+    
+        </div>
 
 </body>
 </html>
+
+
+<!-- v-on:click.prevent = "remTask" -->
