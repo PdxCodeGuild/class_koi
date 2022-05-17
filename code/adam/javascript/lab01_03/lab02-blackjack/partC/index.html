@@ -7,7 +7,7 @@
     <title>BlackJack Advice</title>
     <script src="https://unpkg.com/vue@3"></script>
 </head>
-<body>
+<body style="margin-left: 1.5rem;">
     <div id="app">
         <h1><u>BlackJack Advice</u></h1>
         <h2>So, you need some advice...</h2>
@@ -15,19 +15,28 @@
         <form v-on:submit.prevent="getAdvice">
             <label for="card1">Select your 1st card: </label>
             <select v-model="card1Input" id="card1">
-                <option v-for="(card, i) in cards" :value="card" :selected="i===0">{{  card.name  }}</option>
+                <template v-for="(card, i) in cards">
+                    <option :value="card" :selected="i===0" v-if="card.name!='No Card'">{{  card.name  }}</option>
+                </template>
             </select>
             <label for="card2" style="margin-left: 1rem;">Select your 2nd card: </label>
             <select v-model="card2Input" id="card2">
-                <option v-for="(card, i) in cards" :value="card" :selected="i===0">{{  card.name  }}</option>
+                <template v-for="(card, i) in cards">
+                    <option :value="card" :selected="i===0" v-if="card.name!='No Card'">{{  card.name  }}</option>
+                </template>>
             </select>
             <label for="card3" style="margin-left: 1rem;">Select your 3rd card: </label>
             <select v-model="card3Input" id="card3">
                 <option v-for="(card, i) in cards" :value="card" :selected="i===0">{{  card.name  }}</option>
                 <!-- <option name='No Card' value="0" selected>No Card</option> -->
             </select>
+            <br>
             <button type="submit" style="margin: 1rem;">Get Advice</button>
-            <p style="background-color: skyblue; font-size: 25px">{{ output }}</p>
+            <p style="font-size: 25px">
+                <span :style="`background-color: ${outputStyle}`">
+                    {{ output }}
+                </span>
+            </p>
         </form>
 
     </div>
@@ -56,7 +65,8 @@
                     card1Input: cards[10],
                     card2Input: cards[11],
                     card3Input: cards[14],
-                    output: ''
+                    output: '',
+                    outputStyle: ''
                 }
             },
             methods: {
@@ -69,15 +79,19 @@
                     
                     if (handValue == 21) {
                         this.output = `Blackjack!! You Win!!`
+                        this.outputStyle = "lightgreen"
                     }
                     else if (handValue > 21) {
                         this.output = `Your hand value = ${handValue} Already Busted!`
+                        this.outputStyle = "tomato"
                     }
                     else if (handValue > 16) {
                         this.output = `Your hand value = ${handValue} Stay`
+                        this.outputStyle = "khaki"
                     }
                     else {
                         this.output = `Your hand value = ${handValue} Hit`
+                        this.outputStyle = "skyblue"
                     }
 
                     //this.output = `Play a different game`

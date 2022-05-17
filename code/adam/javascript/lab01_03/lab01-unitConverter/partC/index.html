@@ -13,7 +13,7 @@
         <h3>{{  message }}</h3>
         <form v-on:submit.prevent="convertUnits">
             <label for="distance-number">Please enter the distance: </label>
-            <input v-model="distanceInput" type="number" id="distance-number" autofocus>
+            <input v-model="distanceInput" type="number" id="distance-number" autofocus required>
             <br>
             <div style="margin-top: 1rem; margin-bottom: 1rem;">
                 <label for="fromUnit-select">Select units to convert From: </label>
