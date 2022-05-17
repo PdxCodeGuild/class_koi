@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Todo List</title>
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+
+<body class = "avenir" style="background-image: url(sand.jpg); background-repeat: no-repeat; background-attachment: fixed; background-size:cover;">
+    <div class ="pa3 pa5-ns" id="app">
+        <header>
+            <div class="cover center bg-left bg-center-l br3 mw6">
+                <div class="tc bg-black-40 br3 pb4">
+                    <h1 class="f1 fw2 white-90 mb0 lh-title pt3 ttu athelas">Todo List</h1>
+
+                    <form @submit.prevent="addnewTask" class="pt3 pt4-ns flex justify-center items-center">
+                        <label for="new-task" class="pr3 white-90">Task:  </label>
+                        <input
+                            v-model="newTask" id="new-task" type="text"
+                            class="bg-white-80 br2 h2 bn shadow-2"
+                        />
+                        <button type="submit" class="bg-transparent ph2 h2 br2 white-90 grow pointer">Add</button>
+                    </form>
+                </div>
+            </div>
+        </header>
+		<main class="pa3 pa5-ns">
+			<ul
+                v-for="task in incompleteTasks"
+                class="bg-blue bb b--light-silver list pl0 ml0 center mw6 ba br3"
+                :id="incomplete-task"
+                >
+                <li class="ph3 pv3">{{ task }}</li>
+                <div class="flex justify-between">
+                    <button @click="markComplete(task)" type="submit" class="br3 bn grow bg-green pointer">Mark Complete</button>
+                    <button @click="deleteTask(incompleteTasks, index)" type="submit" class="br3 bn grow bg-red pointer">Delete</button>
+                </div>
+            </ul>
+            <ul
+                v-for="task in completeTasks"
+                class="bg-green bb b--light-silver list pl0 ml0 center mw6 ba br3"
+                :id="complete-task"
+                >
+                <li class="strike ph3 pv3 flex w-100">{{ task }}</li>
+                <div class="flex justify-between">
+                    <button @click="markIncomplete(task)" type="submit" class="br3 bn grow bg-blue pointer">Mark Incomplete</button>
+                    <button @click="deleteTask(completeTasks, index)" type="submit" class="br3 bn grow bg-red pointer">Delete</button>
+                </div>
+            </ul>
+		</main>
+        
+    </div>
+
+
+	<script>
+		const App = {
+			data () {
+				return {
+					newTask: '',
+					incompleteTasks: [],
+                    completeTasks: []
+				}
+			},
+            created () {
+                if (localStorage.getItem('incompleteTasks')) {
+                    this.incompleteTasks = JSON.parse(localStorage.getItem('incompleteTasks'))
+                }
+                if (localStorage.getItem('completeTasks')) {
+                    this.completeTasks = JSON.parse(localStorage.getItem('completeTasks'))
+                }
+            },
+			methods: {
+				addnewTask () {
+					this.incompleteTasks.push(this.newTask)
+					this.newTask = ''
+                    this.saveToLocal()
+				},
+                markComplete (task) {
+                    this.incompleteTasks.splice(this.incompleteTasks.indexOf(task), 1)
+                    this.completeTasks.push(task)
+                    this.saveToLocal()
+                },
+                markIncomplete (task) {
+                    this.completeTasks.splice(this.completeTasks.indexOf(task), 1)
+                    this.incompleteTasks.push(task)
+                    this.saveToLocal()
+                },
+				deleteTask:function (listName, task) {
+                    listName.splice(this.incompleteTasks.indexOf(task), 1)
+                    this.saveToLocal()
+				},
+                saveToLocal () {
+                    const parsedIncomplete = JSON.stringify(this.incompleteTasks)
+                    localStorage.setItem('incompleteTasks', parsedIncomplete)
+                    const parsedComplete = JSON.stringify(this.completeTasks)
+                    localStorage.setItem('completeTasks', parsedComplete)
+                }
+			}
+		}
+
+		const app = Vue.createApp(App)
+		app.mount('#app')
+	</script>
+</body>
+</html>
