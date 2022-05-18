@@ -83,7 +83,9 @@ main section {
 }
 
 #warning {
-    background-color: khaki;
+    background-image: linear-gradient(to bottom right, khaki, gold);
+    padding: 10px;
+    text-align: center;
 }
 
 #to-do-list {
@@ -92,7 +94,11 @@ main section {
 
 #completed-list {
     background-image: linear-gradient(to bottom right, lightsalmon, lightcoral);
+}
+
+#completed-list span {
     text-decoration: line-through;
+    color: rgba(0,0,0,.5)
 }
 
 #to-do-list div, #completed-list div {
