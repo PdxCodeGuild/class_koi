@@ -35,9 +35,31 @@
                         <button type="submit" id="toggle"
                         v-on:click="toggleComplete(index)"
                         class="border-black border-2 rounded-md px-2 ml-4">{{ todo.completed? 'Undo': 'Complete' }}</button>
+                        <!-- <button type="submit" id="toggle"
+                        v-on:click="moveTodo(index)"
+                        class="border-black border-2 rounded-md px-2 ml-4">{{ todo.completed? 'Undo': 'Move Item' }}</button> -->
                     </li>
                 </ul>
             </div>
+
+            <!-- <h3 class="text-xl ml-8 my-3 mx-10 rounded text-center">
+                <u>Completed Items</u>
+            </h3>
+            <div class="text-center">
+                <ul class="list-disc text-left inline-block">
+                    <li v-for="(todo, index) in todosComplete" id="todo" class="ml-8">
+                        <span :class="`text-lg w-35`">
+                            {{ todo.text }}
+                        </span>
+                        <button type="submit" id="delete"
+                        v-on:click="deleteItem(index)"
+                        class="border-black border-2 rounded-md px-2 ml-4">Delete</button>
+                        <button type="submit" id="toggle"
+                        v-on:click="moveTodo(index)"
+                        class="border-black border-2 rounded-md px-2 ml-4">{{ todo.completed? 'Undo': 'Complete' }}</button>
+                    </li>
+                </ul>
+            </div> -->
         </main>
     </div>
     <script>
@@ -48,6 +70,7 @@
                     newToDo: '',
                     todos: [],
                     complete: 'Complete',
+                    todosComplete: [],
                 }
             },
             methods: {
@@ -64,6 +87,11 @@
                     console.log(todo)
                     todo.completed = !todo.completed
                 },
+                /*moveTodo (index) {
+                    console.log(this.todosComplete[index])
+                    this.todosComplete.push({text: this.todo, completed: true})
+                    this.todos.splice(index,1)
+                }*/
             }
         }
         const app = Vue.createApp(App)
