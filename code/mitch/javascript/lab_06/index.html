@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Fav Qs</title>
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="https://unpkg.com/vue@3"></script>
+    <script src="script.js" defer></script>
+</head>
+<body class="bg-lightest-blue navy">
+	<div class="pa4" id="app">
+		<h1 class="tc f1 ">Fav Qs</h1>
+
+		<form @submit.prevent="searchQuotes" class="">
+			<label for="quote-search" class="pr2">Search for quotes:</label>
+			<input v-model="quoteSearchTerm" id="quote-search" type="text"class="">
+            <select v-model="searchType" name="search-options" id="search-options">
+                <option value="Keyword">Keyword</option>
+                <option value="Author">Author</option>
+                <option value="Tag">Tag</option>
+              </select>
+			<button @click="searchQuotes" type="submit" class="">Search</button>
+		</form>
+		<main class="">
+			<ul v-for="quote in quotes" class="" :id="quote">
+				<li>
+					{{ quote.body }} -{{quote.author}}
+				</li>
+			</ul>
+		</main>
+	</div>
+</body>
+</html>
