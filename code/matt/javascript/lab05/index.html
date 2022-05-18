@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FavQs in Vue</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize-css@2.3.1/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>
+                Quotes & Stuff
+            </h1>
+            <h5>
+                (just quotes, no stuff)
+            </h5>
+        </header>
+        <main>
+            <nav>
+                <form @submit.prevent="updateSearchTerm(); resetPage(); getQuotes();">
+                    <input type="text" v-model="searchTermField" id="search-term">
+                    <select v-model="searchType" id="search-type">
+                        <option v-for="type in searchTypes" :value="type">{{ type }}</option>
+                    </select>
+                    <button type="submit">search</button>
+                </form>
+            </nav>
+            
+            {{ searchTerm }}:
+            
+            <div v-for="quote in quotesObj">
+                {{ quote.body }}
+                --{{ quote.author }}
+            </div>
+
+
+
+            <button @click="resetPage(); getRandomQuotes();">rando quotes</button>
+            <button @click="prevPage(); getQuotes();">prev</button>
+            <button @click="nextPage(); getQuotes();">next</button>
+
+
+
+            <div id="debug-stuff">
+                <!-- <p>{{ currentPage }}</p> -->
+                <!-- <p>{{ lastPage }}</p> -->
+                <!-- <p>{{ quotesObj }}</p> -->
+            </div>
+        </main>
+    </div>
+</body>
+</html>
