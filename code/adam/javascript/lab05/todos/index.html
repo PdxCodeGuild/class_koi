@@ -8,31 +8,36 @@
     <script src="https://cdn.tailwindcss.com/"></script>
 	<script src="https://unpkg.com/vue@3"></script>
 </head>
-<body>
+<body class="bg-cyan-100">
     <div id="app">
         <h1 class="text-center text-5xl my-5 mx-10 rounded font-sans">To Do List</h1>
-        <form @submit.prevent="addNewToDo" class="m-10 p-2 bg-white/75 rounded">
+        <form @submit.prevent="addNewToDo" class="m-10 p-2 bg-white/75 rounded bg-cyan-300">
             <label for="new-ToDo">Add a New To Do Item:</label>
             <input v-model="newToDo" id="new-ToDo" type="text" placeholder=" new to do item"
-            class="border-black border-2 rounded-md ml-5" autofocus>
+            class="border-black border-2 rounded-md ml-5 bg-cyan-200" autofocus required>
             <button type="submit" 
             class="border-black border-2 rounded-md px-3 ml-5">Add</button>
         </form>
-        <h3 class="text-xl text-center my-3 mx-10 rounded">
+
+        <h3 class="text-xl ml-8 my-3 mx-10 rounded text-center">
 			<u>List of To Do Items</u>
 		</h3>
         <main>
-            <p v-for="(todo, index) in todos" id="todo" class="text-center">
-                <span class="text-lg w-35 {{ text-decoration }}">
-                    {{ todo }}
-                </span>
-                <button type="submit" id="delete"
-                v-on:click="deleteItem(index)"
-                class="border-black border-2 rounded-md px-2 ml-4">Delete</button>
-                <button type="submit" id="toggle"
-                v-on:click="toggleComplete(index)"
-                class="border-black border-2 rounded-md px-2 ml-4">{{ complete === ''? 'finish' : complete }}</button>
-            </p>
+            <div class="text-center">
+                <ul class="list-disc text-left inline-block">
+                    <li v-for="(todo, index) in todos" id="todo" class="ml-8">
+                    <span :class="`text-lg w-35 ${ todo.completed ? 'line-through' : '' }`">
+                        {{ todo.text }}
+                    </span>
+                    <button type="submit" id="delete"
+                    v-on:click="deleteItem(index)"
+                    class="border-black border-2 rounded-md px-2 ml-4">Delete</button>
+                    <button type="submit" id="toggle"
+                    v-on:click="toggleComplete(index)"
+                    class="border-black border-2 rounded-md px-2 ml-4">{{ todo.completed? 'Undo': 'Complete' }}</button>
+                    </li>
+                </ul>
+            </div>
         </main>
     </div>
     <script>
@@ -42,20 +47,22 @@
                     pageTitle: 'To Do List',
                     newToDo: '',
                     todos: [],
-                    complete: '',
-                    textDecoration: 'line-through'
+                    complete: 'Complete',
                 }
             },
             methods: {
                 addNewToDo () {
-                    this.todos.push(this.newToDo)
+                    this.todos.push({text: this.newToDo, completed: false})
                     this.newToDo = ''
+                    //console.log(todos(index).completed)
                 },
                 deleteItem (index) {
                     this.todos.splice(index, 1)
                 },
                 toggleComplete (index) {
-                    this.complete = 'Undo'
+                    const todo = this.todos[index]
+                    console.log(todo)
+                    todo.completed = !todo.completed
                 },
             }
         }
