@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Vue Dad Jokes</title>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="https://unpkg.com/vue@3"></script>
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<div id="app">
+		<h1>Vue Dad Jokes</h1>
+		<!-- @click is an alias for v-on:click -->
+		<button @click="getDadJoke">Get A Random Dad Joke</button>
+		<p>{{ dadJoke }}</p>
+		<form @submit.prevent="searchDadJokes">
+			<label for="search-term">Enter Search Term:</label>
+			<input v-model="searchTerm" type="text" id="search-term">
+			<input type="submit" value="Search for Dad Jokes">
+		</form>
+		<ul>
+			<li v-for="joke in jokes">{{ joke.joke }}</li>
+		</ul>
+	</div>
+</body>
+</html>
