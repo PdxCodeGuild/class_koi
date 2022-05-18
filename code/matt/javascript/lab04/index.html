@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue To-Do List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize-css@2.3.1/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>{{ pageTitle }}</h1>
+            <section id="input-form">
+                <form @submit.prevent="addItem">
+                    <input type="text" v-model="itemInput" id="item-input" placeholder="Enter new item: ">
+                    <button type="submit">➕</button>
+                </form>
+            </section>
+        </header>
+        <main>
+            <section id="warning" :style="{ display: showWarning }">
+                {{ warning }}
+            </section>
+            <section id="to-do-list">
+                <h4>To do:</h4>
+                <div v-for="item in toDoList">
+                    <button @click="toggleItem(item, toDoList)">✅</button>
+                    <button @click="deleteItem(item, toDoList)">❌</button>
+                    <span>{{ item }}</span>
+                </div>
+            </section>
+            <section id="completed-list">
+                <h4>Completed:</h4>
+                <div v-for="item in completedList">
+                    <button @click="toggleItem(item, completedList)">✅</button>
+                    <button @click="deleteItem(item, completedList)">❌</button>
+                    <span>{{ item }}</span>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

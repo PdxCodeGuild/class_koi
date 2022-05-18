@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;500&display=swap');
+
+body {
+    font-family: 'Work Sans', sans-serif;
+    display: flex;
+    justify-content: center;
+    /* background-color: white; */
+    background-image: linear-gradient(to bottom right, lavender, blueviolet);
+}
+
+section {
+    margin: 20px;
+}
+
+h4 {
+    margin: 0px;
+    padding: 5px;
+}
+
+button {
+    font-family: 'Work Sans', sans-serif;
+    border-width: 0px;
+    background-color: rgba(0,0,0,0);
+    padding: 5px;
+    border-radius: 20px;
+}
+
+button:hover {
+    background-color: rgba(0,0,0,.2);
+}
+
+button:active {
+    background-color: rgba(0,0,0,.4);
+}
+
+#input-form, header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    /* background-color: lightblue; */
+    background-image: linear-gradient(to bottom right, paleturquoise, lightskyblue);
+    padding: 10px;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+#input-form button {
+    padding: 5px;
+    border-radius: 20px;
+    border: 2px solid transparent;
+    margin-left: 5px;
+    font-size: 13.5px;
+}
+
+#input-form button:hover {
+    background-color: rgba(255,255,255,.6);
+}
+
+#input-form button:active {
+    background-color: rgba(255,255,255,1);
+}
+
+input {
+    font-family: 'Work Sans', sans-serif;
+    padding: 5px;
+    border-radius: 20px;
+    border: 2px solid transparent;
+}
+
+input:hover {
+    background-color: rgba(255,255,255,.6);
+}
+
+input:focus {
+    outline: 0px;
+    background-color: rgba(255,255,255,1);
+}
+
+main section {
+    padding: 10px;
+    border-radius: 20px;
+}
+
+#warning {
+    background-color: khaki;
+}
+
+#to-do-list {
+    /* background-color: lightgreen; */
+    background-image: linear-gradient(to bottom right, mediumspringgreen, lightgreen);
+}
+
+#completed-list {
+    /* background-color: lightcoral; */
+    background-image: linear-gradient(to bottom right, lightsalmon, lightcoral);
+}
+
+#to-do-list div, #completed-list div {
+    border-radius: 20px;
+}
+
+#completed-list span {
+    text-decoration: line-through;
+}
+
+section div:hover {
+    background-color: rgba(0,0,0,.2);
+}
