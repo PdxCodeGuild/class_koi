@@ -7,6 +7,7 @@
     <title>To Do List</title>
     <script src ="script.js" defer></script>
     <script src="https://unpkg.com/vue@3"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="app">
@@ -15,15 +16,12 @@
         <button v-on:click="clickButton">Add Item</button>
 
         <ul>
-            <li v-for="item in listItems" @click="completeItem()">
-                <span v-if="item.complete">{{ item }}</span>
-                <del v-else>{{ item }}</del>
+            <li v-for="item in listItems">
                 <button v-on:click="deleteItem()" id="del">Delete</button>
-                <input type="checkbox" @click="completeItem"></input>
+                <input type="checkbox" v-model="item.complete">Complete: </input>
+                <span :class="{ complete: item.complete }">{{ item.task }}</span>
             </li>
         </ul>
     </div>
-
-    <!-- Include Vue from a CDN of your choice, I chose unpkg -->
 </body>
 </html>
