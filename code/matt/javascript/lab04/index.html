@@ -16,28 +16,28 @@
             <h1>{{ pageTitle }}</h1>
             <section id="input-form">
                 <form @submit.prevent="addItem">
-                    <input type="text" v-model="itemInput" id="item-input" placeholder="Enter new item: ">
-                    <button type="submit">➕</button>
+                    <input type="text" v-model="itemInput" id="item-input" placeholder="Enter new item: " class="hover">
+                    <button type="submit" class="hover">➕</button>
                 </form>
             </section>
         </header>
         <main>
-            <section id="warning" :style="{ display: showWarning }">
-                {{ warning }}
+            <section id="warning" :style="{ display: showWarning }" class="hover">
+                <span>{{ warning }}</span>
             </section>
             <section id="to-do-list">
                 <h4>To do:</h4>
-                <div v-for="item in toDoList">
-                    <button @click="toggleItem(item, toDoList)">✅</button>
-                    <button @click="deleteItem(item, toDoList)">❌</button>
+                <div v-for="item in toDoList" class="hover">
+                    <button @click="toggleItem(item, toDoList)" class="hover">✅</button>
+                    <button @click="deleteItem(item, toDoList)" class="hover">❌</button>
                     <span>{{ item }}</span>
                 </div>
             </section>
             <section id="completed-list">
                 <h4>Completed:</h4>
-                <div v-for="item in completedList">
-                    <button @click="toggleItem(item, completedList)">✅</button>
-                    <button @click="deleteItem(item, completedList)">❌</button>
+                <div v-for="item in completedList" class="hover">
+                    <button @click="toggleItem(item, completedList)" class="hover">✅</button>
+                    <button @click="deleteItem(item, completedList)" class="hover">❌</button>
                     <span>{{ item }}</span>
                 </div>
             </section>

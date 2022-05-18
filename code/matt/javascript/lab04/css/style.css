@@ -4,7 +4,6 @@ body {
     font-family: 'Work Sans', sans-serif;
     display: flex;
     justify-content: center;
-    /* background-color: white; */
     background-image: linear-gradient(to bottom right, lavender, blueviolet);
 }
 
@@ -40,7 +39,6 @@ button:active {
 }
 
 header {
-    /* background-color: lightblue; */
     background-image: linear-gradient(to bottom right, paleturquoise, lightskyblue);
     padding: 10px;
     border-radius: 20px;
@@ -89,23 +87,22 @@ main section {
 }
 
 #to-do-list {
-    /* background-color: lightgreen; */
     background-image: linear-gradient(to bottom right, mediumspringgreen, lightgreen);
 }
 
 #completed-list {
-    /* background-color: lightcoral; */
     background-image: linear-gradient(to bottom right, lightsalmon, lightcoral);
+    text-decoration: line-through;
 }
 
 #to-do-list div, #completed-list div {
     border-radius: 20px;
 }
 
-#completed-list span {
-    text-decoration: line-through;
-}
-
 section div:hover {
     background-color: rgba(0,0,0,.2);
+}
+
+.hover {
+    transition: .4s;
 }
