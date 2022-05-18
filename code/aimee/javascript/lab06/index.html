@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FavQs in Vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Vue Quotes</h1>
+        <button @click="getQuote">Get a random quote</button>
+        <p>{{ quote }}</p>
+        <form @submit.prevent="searchQuotes">
+            <label for="search-term">Enter search term: </label>
+            <input v-model="searchTerm" type="text" id="search-term">
+            <input type="submit" value="Search for quotes">
+        </form>
+        <ul>
+            <li v-for="quote in quotes">{{ quote.quote }}</li>
+        </ul>
+    </div>
+		
+
+    <script>
+        // axios({
+        //     url: 'https://favqs.com/api/',
+        //     method: 'get',
+        //     headers: { Accept: 'application/json', Authorization: 'Token token="06b5ba48b266683d9365ed0741b7c574"' }
+        // }).then(res => console.log(res.data))
+
+        // const App = {
+        //     data () {
+        //         return {
+        //             quote: '',
+        //             searchTerm: '',
+        //             baseUrl: 'https://favqs.com/api/',
+        //             quotes: []
+        //         }
+        //     },
+        //     created () {
+        //         this.getQuote
+        //     },
+        //     methods: {
+        //         getQuote () {
+        //             // console.log({ 'this in getQuote': this})
+        //             axios({
+        //                 url:'https://favqs.com/api/quotes',
+        //                 headers:{Accept: 'application/json', Authorization: 'Token token="06b5ba48b266683d9365ed0741b7c574"'}, 
+        //                 method:'get'
+        //             }).then(res => 
+        //                 console.log(res.data))
+                        
+        //         },
+        //         // searchQuotes () {
+        //         //     axios({
+        //         //         method:'get', 
+        //         //         url:this.baseUrl + 'search',
+        //         //         headers: { Accept:'application/json'},
+        //         //         params: { term: this.searchTerm }
+        //         // }).then(res => {
+        //         //     console.log(res.data)
+        //         //     // this.quotes = res.data.results
+        //         // })
+        //         // },
+        //     }
+        // }
+        const App = {
+            data ()  {
+                return {
+                    quote: null
+                }
+            },
+            mounted () {
+                axios
+                .get('https://favqs.com/api/quotes')
+                .then(response => (this.quote = response))
+            }
+        }
+
+        const app = Vue.createApp(App)
+        app.mount('#app')
+    </script>
+</body>
+</html>
