@@ -29,13 +29,17 @@
 
                 {{toDo.name}}
 
-                <!-- <button type = "button" v-on:click.prevent = "compTaskAlt"> 
+                <button type = "button" v-on:click.prevent = "compTaskAlt (toDo)">
                     
                     complete 
 
                 </button>
 
-                <button type="button"> remove  </button> -->
+                <button type="button" v-on:click.prevent = "remTaskAlt (toDo)"> 
+                    
+                    remove  
+
+                </button>
 
             </li>
 
@@ -53,9 +57,17 @@
 
                 {{toDo.name}}
 
-                <!-- <button type = "click">
-                     remove  
-                    </button> -->
+                <button type = "button" v-on:click.prevent = "incompTaskAlt (toDo)">
+                    
+                    incomplete 
+
+                </button>
+
+                <button type="button" v-on:click.prevent = "remTaskAlt (toDo)"> 
+                    
+                    remove  
+
+                </button>
 
             </li>
 

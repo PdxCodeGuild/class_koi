@@ -7,7 +7,7 @@ const App = {
       return {
         // test:"jabberwocky",
         // test2: {name:"jabberwocky"},
-        headline: 'Hello World',
+        headline: 'To Dos',
         toDoInc: [],
         toDoComp: [],
         txtInput: "",
@@ -15,6 +15,7 @@ const App = {
         incompInput: "",
         compInput: "",
         remInput: "",
+        toDo: ""
 
 
       }
@@ -118,20 +119,40 @@ const App = {
 
         },
 
-        compTaskAlt () {
-          // let parent = undefined
-          // let index = toDoInc.indexOf(parent)
-          // this.toDoInc.splice(index, 1)
+        compTaskAlt (toDo) {
+          
+          let i = this.toDoInc.indexOf(toDo)
+          this.toDoComp.push(this.toDoInc[i])
+          this.toDoInc.splice(i, 1)
 
-        }
+        },
 
-    }
+        remTaskAlt (toDo) {
+          // fix
+          let i = 0
+          while (i < this.toDoInc.length) {
+            if (this.toDoInc[i] == toDo)
+            // {this.toDoComp.push(this.toDoInc[i])
+              {this.toDoInc.splice(i, 1)}
+            i++
+          }
 
+          i = 0
+          while (i < this.toDoComp.length) {
+            if (this.toDoComp[i] == toDo)
+            // {this.toDoComp.push(this.toDoInc[i])
+              {this.toDoComp.splice(i, 1)}
+            i++
+          }
 
+    },
 
+        incompTaskAlt (toDo) {
+          let i = this.toDoComp.indexOf(toDo)
+          this.toDoInc.push(this.toDoComp[i])
+          this.toDoComp.splice(i, 1)
 
-
-
+  },
 }
-
+}
 Vue.createApp(App).mount('#app')
