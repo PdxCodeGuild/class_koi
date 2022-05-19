@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+.bg-image{
+    background: #000000;
+    background-image: url("./dominik-schroder-FIKD9t5_5zQ-unsplash.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: bottom center;
+}
+
+.main{
+    padding: 275px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.main-heading{
+    font-size: 100px;
+    margin-bottom: 24px;
+    color: #2052a4;
+}
+
+.main-heading span{
+    color: #ee1115;
+}
+
+.main-description{
+    font-size: 60px;
+    color: #000000;
+}
+
+button{
+    color: #fff;
+    background: #b2c2dd;
+    font-size: 2rem;
+    padding: 20px 50px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 2rem;
+    cursor: pointer;
+    transition: 0.2s ease-in;
+}
+
+button a{
+    text-decoration: none;
+    color: #2657a6;
+}
+
+button:hover{
+    transform: scale(1.1);
+    transition: 0.2s ease-in;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.about{
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.about-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
+    max-width: 1300px;
+    padding: 0 50px;
+}
+
+.about-img{
+    margin: 10px;
+    height: 500px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.about-content h1{
+    color: #2657a6;
+    font-size: 3rem;
+    margin-bottom: 32px;
+}
+
+.about-content p{
+    color:#000000;
+    font-size: 2rem;
+}
+
+.about-content li{
+    color: #000000;
+    font-size: 2rem;
+    list-style-type: circle;
+    margin-top: 1rem;
+}

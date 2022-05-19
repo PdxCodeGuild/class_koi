@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ book.title }}</title>
+</head>
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 5px;
+        text-align: left;
+    }
+</style>
+<body>
+    <a href="/library_app"><button style="margin-top: 1rem;">Home</button></a>
+    <h1>{{ book.title }}</h1>
+    <h2>by {{ book.author }}</h2>
+    <table style="width:100%">
+        <thead>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Date Published</th>
+            <th>Checked Out</th>
+            <th>Date Checked Out</th>
+            <th>Checked Out By</th>
+            <th>Genre</th>
+        </thead>
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author}}</td>
+            <td>{{ book.publish_date }}</td>
+            {% if book.checked_out is False %}
+                <td>No</td>
+                <td style="padding-left: 1rem">---</td>
+                <td style="padding-left: 1rem">---</td>
+                <td>{{ book.comma_separated_genres }}</td>
+            {% else %}
+                <td>Yes</td>
+                <td>{{ book.checkouts.all.last.checked_out_date }}</td>
+                <td>{{ book.checkouts.all.last.checked_out_by }}</td>
+                <td>
+                    {% for genre in book.genres.all %}
+                    {{ genre }}{% if genre != book.genres.all.last %},
+                    {% endif %}
+                    {% endfor %}      
+                </td>
+            {% endif %}
+        </tr>
+    </table>
+    
+    <div style="margin-top: 1rem;">
+        {% if book.checked_out is False %}
+        <form action="/library_app/checkout/{{ book.id }}" method="POST">
+            {% csrf_token %}
+            <label for="name-input">Name</label>
+            <input id="name-input" type="text" name="name">
+            <button type="submit">Checkout Book</button>
+        </form>
+        {% else %}
+            <a href="/library_app/checkin/{{ book.id }}">
+                <button>Check Book In</button>
+            </a>            
+        {% endif %}
+    </div>
+    <section>
+        <h2 style="margin-bottom: .25rem; margin-top: 2rem">Check-out History</h2>
+        <table>
+            <thead>
+                <th>Checked Out By</th>
+                <th>Date Checked Out</th>
+                <th>Date Checked In</th>
+            </thead>
+            {% for checkout in book.checkouts.all %}
+            <tr>
+                <td>{{ checkout.checked_out_by }}</td>
+                <td>{{ checkout.checked_out_date }}</td>
+                <td>{{ checkout.checked_in_date }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+    
+</body>
+</html>

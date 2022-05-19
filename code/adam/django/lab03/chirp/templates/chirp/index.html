@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chirp</title>
+    <script src="https://cdn.tailwindcss.com/"></script>
+</head>
+<body>
+    <nav class="bg-sky-600 text-green-300 flex justify-between py-5 px-10">
+        <h1 class="text-2xl">Chirp  --  {{ message }}</h1>
+    </nav>
+    
+    <div class="pt-1 ml-6 mr-72 mt-3 border-4 rounded-md border-sky-800">
+        <h2 class="text-indigo-600 text-2xl mt-5 ml-10">Post Something:</h2>
+        <form action="{% url 'posts:home' %}" method="POST" class="m-6" enctype="multipart/form-data">
+                {% csrf_token %}    
+                <div class="flex justify-between w-1/2">
+                    <label for="author" class="pr-5">Name:</label>
+                    <input type="text" id="author" name="author" class="border-black border-2 rounded-md mr-4">
+                </div>
+                <div class="my-3 flex justify-between w-1/2">
+                    <label for="message" class="pr-5">Message (max 128 characters):</label>
+                    <input type="text" id="message" name="message" class="border-black border-2 rounded-md mr-4">
+                </div>
+                <button type="submit" class="border-2 rounded-md border-cyan-700">Post</button>
+        </form>
+    </div>
+    <h3 class="text-2xl mt-5 ml-10">Recent Posts</h3>
+    <ul class="ml-25 mb-20">
+        {% for post in posts %}
+        <li class="pt-1 ml-6 mr-72 mt-3 border-4 rounded-md">
+            <a href="#" class="ml-2 font-semibold text-cyan-600 underline">{{ post.author }}</a>
+            <p class="ml-2">{{ post.post_text }}</p>
+            <p class="ml-2 italic text-xs pb-1">{{ post.date_posted }}</p>
+        </li>
+        {% endfor %}
+
+    </ul> 
+    
+
+</body>
+</html>
