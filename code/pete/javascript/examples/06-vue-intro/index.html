@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Vue Intro</title>
+	<script src="https://unpkg.com/vue@3"></script>
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<div id="app">
+		<h1>Vue Intro</h1>
+		<p>{{ message }}</p>
+		<!-- an element with v-on:click="methodName"
+		will perform that method from the vue App's
+		methods object, when clicked -->
+		<button v-on:click="clickButton">Click Me</button>
+		<br>
+		<!-- an element with v-model="propertyName" will have a 2-way binding
+		between its value on the DOM and its value in the data object 
+		you have to also add it to the data object for this to work -->
+		<input type="text" v-model="inputText" placeholder="type somethin'">
+		<p id="output">Here is the input text: {{ inputText }}</p>
+		<ul>
+			<li v-for="color in colors" v-bind:style="`color: ${color};`">
+				{{ color }}
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

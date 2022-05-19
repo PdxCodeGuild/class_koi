@@ -12,21 +12,36 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 
 from pathlib import Path
+import os
+
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-2=f3-9s8tsprf4enlschu6xm_4()(%l((j_33)b3p_0ze$ghw)'
+SECRET_KEY = os.environ.get('SECRET_KEY') or 'change-me-im-very-insecure'
+print(SECRET_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG_MODE = os.environ.get('DEBUG_MODE')
 
-ALLOWED_HOSTS = []
+DEBUG = bool(int(DEBUG_MODE)) # turns into True if DEBUG_MODE is '1', turns into False if DEBUG_MODE is '0'
+if DEBUG:
+    print('debug mode on')
+else:
+    print('debug mode off')
+
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -125,6 +140,9 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # this essentially creates a new directory for saving files like images
-import os
 MEDIA_URL = '/uploads/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+MEDIA_ROOT = BASE_DIR / 'uploads'
+
+# API_KEYS
+API_KEY = os.environ.get('API_KEY')
+SECRET_MESSAGE = os.environ.get('SECRET_MESSAGE')
