@@ -2,55 +2,56 @@
 const App = {
 	data () {
 		return {
-                quoteSearchTerm: '',
+                quoteSearchTerm: null,
                 quotes: [],
-                searchType: ''
+                searchType: '',
+                page: 1,
+                lastPage: false,
+                
 		}
 	},
 
+    mounted() {
+        this.$refs.input.focus()
+    },
+
     created () {
-        this.getQuotes()
+        this.searchQuotes()
+    },
+
+    updated() {
+        this.$refs.input.focus()
     },
 
 	methods: {
-        getQuotes () {
-			axios({
-				method: 'get',
-				url: 'https://favqs.com/api/quotes/',
-				headers: { 
+ 
+        scrollToTop() {
+            window.scrollTo(0,0);
+        },
+          
+        searchQuotes () {
+            axios({
+                method: 'get',
+                url: 'https://favqs.com/api/quotes/',
+                headers: { 
                     Accept: 'application/json',
                     Authorization: 'Token token="bd5ff2c92ebe246e003253c172340874"'
                 },
-
-			}).then(res => {
-				this.quotes = res.data.quotes
-			})
-		},
-		searchQuotes () {
-			axios({
-				method: 'get',
-				url: 'https://favqs.com/api/quotes/',
-				headers: { 
-                    Accept: 'application/json',
-                    Authorization: 'Token token="bd5ff2c92ebe246e003253c172340874"'
-                },
-
-                if (_searchType === "Keyword") {
-				    params: { filter: this.quoteSearchTerm }
+                params: {
+                    filter:this.quoteSearchTerm, 
+                    type:this.searchType,
+                    page: this.page
                 }
-                elif (this.searchType === "Author") {
-				    params: { filter: this.quoteSearchTerm + "%type=author" }
-                }
-                elif (this.searchType === "Tag") {
-				    params: { filter: this.quoteSearchTerm  + "%type=tag"}
-                }
-			}).then(res => {
-				console.log(res.data)
-				this.quotes = res.data.quotes
-			})
-		}
-	}
+            }).then(res => {
+                console.log(res.data)
+                this.quotes = res.data.quotes
+                this.page = res.data.page
+                this.lastPage = res.data.last_page
+            })
+        }
+    }
 }
+
 
 const app = Vue.createApp(App)
 
