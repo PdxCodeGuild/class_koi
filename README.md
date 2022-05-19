@@ -28,10 +28,13 @@ Capstone proposal due: TBD
 
 Presentation Day: June 24th, 2022  
 
-<!-- ## JavaScript Labs Assigned:
+## JavaScript Labs Assigned:
+| Lab   | Name                                                                         | Date Assigned | Due By      | Hard Due Date |
+| ----- | ---------------------------------------------------------------------------- | ------------- | ------------| ------------- |
+| 01-03 | [Pick3](5%20JavaScript/labs/01-03%20Pick%203.md)                             | May 10th      | May 16th    | May 24th      |
 
- * [Labs 01-03 Pick3](5%20JavaScript/labs/01-03%20Pick%203.md)
- * [Lab 04 Mob Todo List](5%20JavaScript/labs/04%20Todo%20List.md)
+
+<!-- * [Lab 04 Mob Todo List](5%20JavaScript/labs/04%20Todo%20List.md)
  * [Lab 05 Vue Todos](5%20JavaScript/labs/05%20Vue%20Todos.md)
  * [Lab 06 JavaScript Mini-Capstone](5%20JavaScript/labs/07%20Mini-Capstone.md) -->
 
@@ -45,8 +48,8 @@ Presentation Day: June 24th, 2022
 | 00    | [Polls](4%20Django/labs/00%20Polls.md)                                       | Apr 25th      | Apr 29th    | May  9th      |
 | 01    | [Grocery List](4%20Django/labs/01%20Grocery%20List.md)                       | Apr 27th      | May  4th    | May 11th      |
 | 02    | [Library](4%20Django/labs/02%20Library.md)                                   | Apr 29th      | May  4th    | May 13th      |
+| 02    | [Chirp](4%20Django/labs/03%20Chirp.md)                                       | May  4th      | May 11th    | May 18th      |
 
-<!-- * [Lab 03 Chirp](4%20Django/labs/03%20Chirp.md) -->
 
 #### Optional Django Labs  
 

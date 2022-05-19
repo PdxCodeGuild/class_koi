@@ -1,0 +1,33 @@
+{% extends "base_generic.html" %}
+
+{% block title %}: Login{% endblock %}
+
+{% block content %}
+
+  <form method="post" action="{% url 'accounts:login' %}">
+    {% csrf_token %}
+      {{ form.username.label_tag }}
+      <input
+        type="text"
+        name="username"
+        class="form-control"
+        maxlength="150"
+        id="id_username"
+        required
+      />
+      {{ form.password.label_tag }}
+      <input
+        type="password"
+        name="password"
+        class="form-control"
+        id="id_password"
+        required
+      />
+    {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+    {{ error|escape }}
+    {% endfor %} {% endif %}
+    <button type="submit">Login</button>
+  </form>
+
+{% endblock %}

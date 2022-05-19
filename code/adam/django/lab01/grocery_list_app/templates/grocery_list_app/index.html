@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery List</title>
+    <style>
+        th, td {padding: 0.5rem}
+        a {text-decoration: none;}
+    </style>
+</head>
+<body>
+    <h1>{{ message }}</h1>
+    <ul>
+        {% for item in grocery_list %}
+        <li>
+            {% if item in completed_list %}
+            <a href="/grocery_list_app/delete/{{ item.id }}">
+                <button>Delete</button>
+            </a>
+            <span><s>{{ item }}</s> &#9745; {{ item.completed_date }}</span>
+            <a href="/grocery_list_app/incomplete/{{ item.id }}">
+                <button>Incomplete</button>
+            </a>
+            {% else %}
+            <a href="/grocery_list_app/complete/{{ item.id }}">
+                <button>Complete</button>
+            </a>
+            <span>{{ item }} &#9744;</span>
+            {% endif %}   
+        </li>
+        {% endfor %}
+    </ul>
+    <form action="/grocery_list_app/" method="POST" style="padding: 1rem">
+        {% csrf_token %}
+        <label for="description-input">Grocery Item</label>
+        <input type="description-input" type="text" name="description" autofocus>
+        <button type="submit">Add New Item</button>
+    </form>
+    <div style="display: flex; justify-content:space-evenly">
+        <div>
+            <h2>Completed List:</h2>
+            <ul style="padding-right: 1rem;">
+                {% for item in completed_list %}
+                <li style="padding: 0.30rem;">
+                    <a href="/grocery_list_app/delete/{{ item.id }}">
+                        <button>Delete</button>
+                    </a>
+                    <a href="/grocery_list_app/incomplete/{{ item.id }}">
+                        <button>Incomplete</button>
+                    </a>  
+                    <span>{{ item }}</span>
+                    <br>
+                    <span>Date Completed: {{ item.completed_date }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <h2>List of Incompleted Items:</h2>
+            <ul>
+                {% for item in incomplete_list %}
+                <li>
+                    <a href="/grocery_list_app/delete/{{ item.id }}">
+                        <button>Delete</button>
+                    </a>
+                    <a href="/grocery_list_app/complete/{{ item.id }}">
+                        <button>Complete</button>
+                    </a>                    
+                    <span>{{ item }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!-- <table>
+        <thead>
+            <th>Item</th>
+            <th>Date Created</th>
+            <th>Completed</th>
+            <th>Date Completed</th>
+        </thead>
+        <tr>
+            <td>
+                <ul>
+                {% for item in grocery_list %}
+                <li>
+                    <a>{{ item }}</a>
+                </li>
+                {% endfor %}
+
+                </ul>
+            </td>
+        </tr>
+    </table> -->
+    
+</body>
+</html>

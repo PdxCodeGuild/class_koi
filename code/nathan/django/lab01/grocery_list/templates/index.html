@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery List</title>
+</head>
+<body>
+    <h1>Full Grocery List</h1>
+    <ul>
+        {% for grocery in grocery_list %}
+        <form action="delete_grocery/" method="POST">
+            {% csrf_token %}
+            <li><label for="{{ grocery }}"> {{ grocery }} </label><input type="hidden" name="grocery" id="{{ grocery }}" value="{{ grocery }}">
+            <input type="submit" value="Delete"></li>
+        </form>
+        {% endfor %}
+    </ul>
+
+    <form action="add_grocery/" method="POST">
+        {% csrf_token %}
+
+        <input type="text" id="description" name="description">
+        <input type="submit" value="Add Grocery">
+    </form>
+
+    <h1>Incomplete Grocery List</h1>
+    <ul>
+        {% for grocery in incompleted_list %}
+        <form action="mark_complete/" method="POST">
+            {% csrf_token %}
+            <li><label for="{{ grocery }}"> {{ grocery }} </label><input type="hidden" name="grocery" id="{{ grocery }}" value="{{ grocery }}">
+            <input type="submit" value="Complete"></li>
+        </form>
+        {% endfor %}
+    </ul>
+
+    <h1>Complete Grocery List</h1>
+    <ul>
+            {% for grocery in completed_list %}
+            <li>{{ grocery }}</li>
+            {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Helper</title>
+</head>
+<body style="padding:20px">
+    <h1>Grocery List</h1>
+    {% if groceries %}
+    <ul>
+    {% for item in groceries %}
+        <li>
+        <a href="{{ item.id }}/glist">{{ item.item }} </a>
+        {% if not item.completed %}
+        <p style="color:red">Not Completed</p>
+        {% else %}
+        <p>Completed: &#9745;</p>
+        {% endif %}</a>
+        </li>
+    {% endfor %}
+    </ul>
+    {% else %}
+    <p>No items in grocery list</p>
+    {% endif %}
+    <h1>{{ message }}</h1>
+
+  
+    <form action="/grocerylist/" method="POST" style="padding: 1rem">
+        {% csrf_token %}
+
+        <label for="item-input">Item</label>
+        <input id="item" type="text" name="item">
+        <br>
+        <label for="quantity-input">Quantity</label>
+        <input id="quantity" type="number" name="quantity">
+        <br>
+
+        <label for="date-added-select">Date Added</label>
+        <input id="created_date" type="date" name="created_date" id="id_created_date">
+        <br>
+
+
+
+        <br>
+
+        <input type="submit" method="POST" value="Add New Item"/>
+
+    </form>
+</body>
+</html>

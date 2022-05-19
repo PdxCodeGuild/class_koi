@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery List</title>
+</head>
+
+<!-- MAIN PAGE -->
+
+<body>
+    <h1>Grocery List</h1>
+  
+    <h4><em>crossed off items have been purchased</em></h4>
+    <ul>
+        {% for grocery_item in grocery_list %}
+        <table>
+            {% if grocery_item.check_completed == False %} 
+            <a href="/grocery_list/detail/{{ grocery_item.id }}">
+                {{ grocery_item.description }}
+            </a>
+            {% endif %}
+        </table>
+        {% endfor %}
+    </ul>
+   
+    <ul>
+        {% for grocery_item in grocery_list %}
+        <table>
+            <del>
+            {% if grocery_item.check_completed == True %}
+            <a href="/grocery_list/{{ grocery_item.id }}">{{ grocery_item.description }}
+            </a>
+            </del>
+            {% endif %}
+        </table>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>There are no items on your grocery list.</p>
+    {% endif %}
+    <h3>Add more items</h3>
+    <form name="AddItem" action="/grocery_list/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>
+
