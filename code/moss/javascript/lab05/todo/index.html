@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Todo List</title>
+    <!-- Add your styles here! -->
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+    <div id="app">
+        
+        <h1>Vue Todos</h1>
+        <form>
+            <input type="text" v-model="newTask" palceholder="Enter Task">
+            <button type="submit">Add Task</button>
+        </form>
+
+        <h3>Incomplete Tasks</h3>
+        <ul>
+            <li>
+                <span>
+
+                </span>
+                <button>Complete</button>
+                <button>Delete</button>
+            </li>
+        </ul>
+
+        <h3>Complete Tasks</h3>
+        <ul>
+            <li>
+                <span>
+
+                </span>
+                <button>Incomplete</button>
+                <button>Delete</button>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Include Vue from a CDN of your choice, I chose unpkg -->
+    <script src="https://unpkg.com/vue@3"></script>
+    <!-- Include your code here... -->
+    <script src="/js/main.js"></script>
+</body>
+</html>
