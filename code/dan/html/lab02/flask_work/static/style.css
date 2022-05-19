@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300&family=News+Cycle&display=swap');
+
+nav{
+    display: flexbox;
+    background-color: #36FA00;
+    justify-content: space-evenly;
+    
+}
+a{
+    font-family: 'Hind', sans-serif;
+    font-size: 25px;
+    color: #6211AD ;
+    
+}
+
+body{
+background-color:#FA1300 ;
+
+}
+.grid-container{
+display: grid;
+    
+}
+#homepage_title{
+    font-family: 'Hind', sans-serif;
+
+
+}
+
+

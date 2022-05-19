@@ -1,0 +1,9 @@
+{
+    "name": "Peter Gibbons",
+    "bio": "Peter Gibbons is a frustrated and unmotivated programmer who works at Initech. One day he engages in a hypnotherapy session that permanently immerses him in a relaxed state.",
+    "link": "https://en.wikipedia.org/wiki/Office_Space",
+    "photo": "https://readinginbeddotcom.files.wordpress.com/2015/04/peter-gibbons.jpg",
+    "locations": "Texas",
+    "quote": "The thing is, Bob, it's not that I'm lazy, it's that I just don't care.",
+    "attacks": {"overwhelming relaxation": 30, "friendliness": 7, "frustration": 2}
+}
