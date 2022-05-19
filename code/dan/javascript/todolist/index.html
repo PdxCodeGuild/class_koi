@@ -5,24 +5,37 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>To Do List</title>
-	<style src="style.css"></style>
 	<script src="https://unpkg.com/vue@3"></script>
 </head>
 <body>
 	<div id="app">
 		<h1>{{ pageTitle }}</h1>
 
-        <ul>
-            <li>
-				{{ for (let item=0; item < taskList.length; i++) {
-				item
-				}}}
-            </li>
+		<p>
+			<form @submit.prevent ='addTask'>
+				<input type="text" v-model="inputText" placeholder="Add a Task'">
+				<button type="submit">submit</button>
+			  </form>
+		</p>
+        
+		<ul>
+			<li v-for="task in taskList"> 
+				{{task}}
+				<button @click="completed(task)">Complete</button>
+				<button @click="del(task)">Delete</button>
+			</li>
+		</ul
 
-
-        </ul>
-
+    	<h3>Here is a list of Completed Items</h3>
 		
+		<ul>
+			<li style="text-decoration:line-through" v-for="task in compList"> 
+				{{task}}
+			</li>
+			
+		</ul
+
+
 	</div>
 	<script>
 		const App = {
@@ -31,14 +44,31 @@
 					pageTitle: 'Task List',
                     inputText:'',
                     taskList: [],
+					compList:[],
 			
 				}
 			},
 		
 			methods: {
 				addTask () {
+					this.taskList.push(this.inputText)
 					
-				}
+				},
+				del (task){
+					let index = this.taskList.indexOf(task) 
+					this.taskList.splice(index,1)
+
+
+				},
+				completed (task){
+					this.compList.push(task)
+
+		
+					
+					
+					
+
+				},
 			}
 		}
 
