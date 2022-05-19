@@ -11,11 +11,45 @@
 <body>
     <div id="app">
         <h1>SourceBook</h1>
-        <h4><em>the</em> social media site for citizens of the Source</h4>
+        <h4><em>the</em> social media app for the Source</h4>
+
+        <!-- search for a character by name -->
+        <label for="name">Search by name</label>
+        <input type="text" id="search-name" v-model="name">
+        <input type="submit" value="search" @click="searchName"></input>
+        <p>{{ character }}</p>
+
+
+
+
     </div>
     
     <script>
-        
+        const App = {
+            data() {
+                return {
+                    baseUrl: 'https://xivapi.com/',
+                    name: '',
+                    character: '',
+
+                }
+            },
+            methods: {
+                searchName() {
+                    axios({
+                        url: 'https://xivapi.com/character/search?name=${name}',
+                        headers: { Accept: 'application/json' },
+                        method: 'get',
+                        params: { name: this.name }
+                    }).then(res => {
+                        console.log({ 'this in .then': this })
+                        this.character = res.data.character
+                    })
+                }
+            }
+        }
+        const app = Vue.createApp(App)
+        app.mount('#app')
     </script>
 </body>
 </html>
