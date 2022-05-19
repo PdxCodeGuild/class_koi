@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Flask App</title>
+</head>
+<body>
+	<nav>
+		<a href="/">Home</a>
+		<a href="/form">Form</a>
+	</nav>
+	<h1>Flask App</h1>
+	<p>Welcome to the Flask App, {{ name }}!</p>
+	<h3>Possible Names:</h3>
+	<ul>
+		{% for possible_name in possible_names %}
+		<li>{{ possible_name }}</li>
+		{% endfor %}
+	</ul>
+</body>
+</html>

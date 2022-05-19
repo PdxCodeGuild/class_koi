@@ -1,0 +1,51 @@
+{% extends 'game_of_thrones/base.html' %}
+
+{% block title %}
+<title>House {{ house.name }}</title>
+{% endblock %}
+
+{% block content %}
+<h1 class="text-2xl text-center">House {{ house.name }}</h1>
+
+<!-- container div to give a bit of margin all around the table -->
+<div class="m-16"> 
+
+	<!-- the entire table element -->
+	<table class="min-w-full divide-y divide-gray-300 shadow ring-1 ring-black ring-opacity-5 rounded-md">
+
+		<!-- the table header, where the column names are -->
+		<thead class="bg-gray-50">
+			<tr>
+				<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Name</th>
+				<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">House</th>
+			</tr>
+		</thead>
+		
+		<!-- the table boady, where the values are -->
+		<tbody class="divide-y divide-gray-200 bg-white">
+			{% for character in house.characters.all %}
+			<tr>
+				<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ character.name }}</td>
+				<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ character.house.name }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+		
+	</table>
+</div>
+
+<form
+	action="{% url 'thrones:house' house.name|lower %}"
+	method="POST"
+	class="space-y-8 divide-y divide-gray-200 py-16 px-32"
+>
+	{% csrf_token %}
+	<h3 class="text-lg leading-6 font-medium text-gray-900"> Add Character to House {{ house.name }} </h3>
+	<label for="name" class="block text-sm font-medium text-gray-700"> Name </label>
+	<!-- the most important thing about this entire form is name="caracter_name"... check out the view that creates a new character to see why -->
+	<input type="text" name="character_name" id="name" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+	<button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</button>
+</form>
+
+
+{% endblock %}
