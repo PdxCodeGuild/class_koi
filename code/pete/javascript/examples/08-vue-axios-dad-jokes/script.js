@@ -21,6 +21,8 @@ axios({ // in JavaScript, it is common that a function will take an options/conf
 // print(data) # the dictionary with the joke
 
 
+alert(API_KEY)
+
 // VUE
 
 const App = {
@@ -29,7 +31,8 @@ const App = {
 			dadJoke: '',
 			searchTerm: '',
 			baseUrl: 'https://icanhazdadjoke.com/',
-			jokes: []
+			jokes: [],
+			error: ''
 		}
 	},
 
@@ -54,15 +57,18 @@ const App = {
 		},
 
 		searchDadJokes () {
+			this.error = ''
 			axios({
 				method: 'get',
 				url: this.baseUrl + 'search',
 				headers: { Accept: 'application/json' },
 				params: { term: this.searchTerm }
 			}).then(res => {
+				// throw new Error('Something went wrong. Please try again.')
 				console.log(res.data)
 				this.jokes = res.data.results
-			})
+			}).catch(err => this.error = err.message) // .catch will run if an error occurs
+			.finally(() => alert('finally ran')) // .finally is always going to run
 		}
 	}
 }
