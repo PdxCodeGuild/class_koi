@@ -1,0 +1,2 @@
+/Users/shainewarren/.local/share/vi
+rtualenvs/lab00-eDCQTX8V/bin/activate

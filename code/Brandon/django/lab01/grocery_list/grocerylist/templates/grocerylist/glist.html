@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="{% url 'index' %}">Back to Grocery List</a>
+    <h1 id="item">{{ groceries.item }}</h1>
+    <p id="quantity">Quantity: {{ groceries.quantity }}</p>
+
+    <p id="date_created">Created: {{ groceries.created_date }}</p>
+
+    {% if not groceries.completed %}
+    <form action="complete/">
+        {% csrf_token %}
+        <input type="submit" value="Completed?">
+    </form>
+    {% else %}
+    <p>Completed: &#9745;</p>
+    {% endif %}</a>
+
+    <a href="{{ item.id }}/glist.html">{{ item.item }} </a>
+  
+    <form action="delete/{{ item.id }}">
+        {% csrf_token %}
+        <input type="submit" value="Delete?">
+    </form>
+  
+
+</body>
+</html>
