@@ -24,31 +24,42 @@
         <main>
             <nav>
                 <form @submit.prevent="wasSearchTrue(); updateSearchTerm(); resetPage(); getQuotes();">
-                    <input type="text" v-model="searchTermField" id="search-term" placeholder="Enter a search term:">
+                    <input type="text" v-model="searchTermField" id="search-term" placeholder="search for quotes:">
                     <select v-model="searchType" id="search-type">
-                        <option v-for="type in searchTypes" :value="type">{{ type }}</option>
+                        <option v-for="(key, value) in searchTypes" :value="value">{{ value }}</option>
                     </select>
                     <button type="submit">search</button>
                 </form>
+                <p class="or">
+                    or 
+                </p>
+                <button @click="wasSearchFalse(); clearSearchField(); toTop(); getQuotes();">see some randos</button>
             </nav>
             
             <h2 v-if="wasSearch">{{ searchTerm }} quotes:</h2>
             
-            <div v-for="quote in quotesObj">
-                <p>{{ quote.body }}</p>
-                <p>--{{ quote.author }}</p>
+            <div class="quote-wrapper" v-for="quote in quotesObj">
+                <p class="quote">{{ quote.body }}</p>
+                <div class="author-wrapper">
+                    <p class="author" v-if="hasQuotes">-{{ quote.author }}</p>
+                </div>
             </div>
 
 
 
-            <button @click="wasSearchFalse(); clearSearchField(); getQuotes();">rando quotes</button>
-            <button v-if="firstPage" @click="prevPage(); getQuotes();">prev</button>
-            <button v-if="lastPage" @click="nextPage(); getQuotes();">next</button>
-
-
-
-
+            
+            
+            
+            
         </main>
+        <footer>
+            <div class="buttons" v-if="wasSearch">
+                <button v-if="firstPage" @click="prevPage(); toTop(); getQuotes();">prev</button>
+                <span>page {{ currentPage }}</span>
+                <button v-if="lastPage" @click="nextPage(); toTop(); getQuotes();">next</button>
+            </div>
+            <p>&copy; 2022 Ugly Websites Incorporated</p>
+        </footer>
     </div>
 </body>
 </html>
