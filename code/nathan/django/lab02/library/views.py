@@ -7,35 +7,14 @@ from .models import Book, Author, User
 def index(request):
     books = Book.objects.all()
     available_books = Book.objects.filter(checked_out = False)
-    # show all users with the checkout bool as true and 
-        # show only the first of those users
-    check_in_books = User.objects.filter(checkout = True)
-    hide_list = []
-    show_list = []
-    for index, i in enumerate(check_in_books):
-        if(i in hide_list or i in show_list):
-            continue
-        elif(i.checkout == False and i in show_list):
-            show_list.pop(i.name)
-        elif(i.checkout == False and i not in hide_list):
-            hide_list.append(i)
-        elif(i.checkout == True and i not in hide_list and i not in show_list):
-            show_list.append(i)
-        # if(index == len(check_in_books)):
-        #     hide_list = hide_list.clear()
-    
-    print(f'show list {show_list}')
-    print(f'hide list {hide_list}')
-    # hide_list = []
-    # show_list = []
+    check_in_books = Book.objects.filter(checked_out = True)
 
     library_history = User.objects.all()
     print(type(library_history))
     context = {
         'books': books,
         'available_books': available_books,
-        # 'check_in_books': check_in_books,
-        'check_in_books': show_list,
+        'check_in_books': check_in_books,
         'library_history': library_history,
     }
 
@@ -55,7 +34,7 @@ def user_checkout(request):
 
         return redirect('/')
 
-def user_checkin(request, show_list):
+def user_checkin(request):
     if(request.method == 'POST'):
         name = request.POST.get('check_in_book')
         target_user:User = User.objects.filter(name = name).first()
@@ -66,5 +45,4 @@ def user_checkin(request, show_list):
         target_book.checked_out = False
         target_book.save()
 
-        show_list = []
         return redirect('/')

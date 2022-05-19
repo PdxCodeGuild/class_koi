@@ -38,7 +38,7 @@
         {% for check_in_book in check_in_books %}
             <li>
                 <input type="radio" name="check_in_book" value="{{ check_in_book }}" id="{{ check_in_book }}">
-                <label for="{{ check_in_book }}">{{ check_in_book.name }} - {{ check_in_book.book }}</label>
+                <label for="{{ check_in_book }}">{{ check_in_book.title }} - {{ check_in_book.author }}</label>
             </li>
         {% endfor %}<input type="submit" value="Check In Book">
     </form>
