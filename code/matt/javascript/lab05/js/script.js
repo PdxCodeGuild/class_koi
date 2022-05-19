@@ -18,44 +18,68 @@ createApp({
     data () {
         return {
             // set up variables
+            fullURL: ``,
             quotesObj: '',
             currentPage: 1,
-            lastPage: '',
-            searchTypes: ['keyword','tag','author'],
+            firstPage: true,
+            lastPage: true,
+            searchTypes: {
+                keyword: '',
+                tag: 'tag',
+                author: 'author',
+            },
             searchType: 'keyword',
-            searchTermField: '',
-            searchTerm: '',
+            searchTermField: null,
+            searchTerm: null,
+            baseURL: 'https://favqs.com/api/quotes/',
+            wasSearch: false,
         }
     },
     created () {
-        this.getRandomQuotes()
+        this.getQuotes()
     },
     methods: {
-        getRandomQuotes () {
-            axios({
-                url: `https://favqs.com/api/quotes/`,
-                method: 'get',
-                headers: {
-                    Accept: 'application/json',
-                    Authorization: 'Token token="855df50978dc9afd6bf86579913c9f8b"'
-                }
-            }).then(res => {
-                this.quotesObj = res.data.quotes
-                this.lastPage = res.data.last_page
-            })
-        },
         getQuotes () {
             axios({
-                url: `https://favqs.com/api/quotes/?page=${this.currentPage}&filter=${this.searchTerm}`,
+                url: this.baseURL,
                 method: 'get',
                 headers: {
                     Accept: 'application/json',
                     Authorization: 'Token token="855df50978dc9afd6bf86579913c9f8b"'
+                },
+                params: {
+                    page: this.currentPage,
+                    filter: this.searchTerm,
+                    type: this.searchTypes[this.searchType],
                 }
             }).then(res => {
                 this.quotesObj = res.data.quotes
-                this.lastPage = res.data.last_page
+                if (this.wasSearch){
+                    if (res.data.page == 1) {
+                        this.firstPage = false
+                    } else {
+                        this.firstPage = true
+                    }
+                    if (res.data.last_page) {
+                        this.lastPage = false
+                    } else {
+                        this.lastPage = true
+                    }
+                } else {
+                    this.firstPage = true
+                    this.lastPage = true
+                }
             })
+        },
+        clearSearchField () {
+            this.searchTermField = null
+            this.searchTerm = null
+        },
+        wasSearchTrue() {
+            this.wasSearch = true
+        },
+        wasSearchFalse () {
+            this.wasSearch = false
         },
         updateSearchTerm () {
             this.searchTerm = this.searchTermField

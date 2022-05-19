@@ -23,8 +23,8 @@
         </header>
         <main>
             <nav>
-                <form @submit.prevent="updateSearchTerm(); resetPage(); getQuotes();">
-                    <input type="text" v-model="searchTermField" id="search-term">
+                <form @submit.prevent="wasSearchTrue(); updateSearchTerm(); resetPage(); getQuotes();">
+                    <input type="text" v-model="searchTermField" id="search-term" placeholder="Enter a search term:">
                     <select v-model="searchType" id="search-type">
                         <option v-for="type in searchTypes" :value="type">{{ type }}</option>
                     </select>
@@ -32,26 +32,22 @@
                 </form>
             </nav>
             
-            {{ searchTerm }}:
+            <h2 v-if="wasSearch">{{ searchTerm }} quotes:</h2>
             
             <div v-for="quote in quotesObj">
-                {{ quote.body }}
-                --{{ quote.author }}
+                <p>{{ quote.body }}</p>
+                <p>--{{ quote.author }}</p>
             </div>
 
 
 
-            <button @click="resetPage(); getRandomQuotes();">rando quotes</button>
-            <button @click="prevPage(); getQuotes();">prev</button>
-            <button @click="nextPage(); getQuotes();">next</button>
+            <button @click="wasSearchFalse(); clearSearchField(); getQuotes();">rando quotes</button>
+            <button v-if="firstPage" @click="prevPage(); getQuotes();">prev</button>
+            <button v-if="lastPage" @click="nextPage(); getQuotes();">next</button>
 
 
 
-            <div id="debug-stuff">
-                <!-- <p>{{ currentPage }}</p> -->
-                <!-- <p>{{ lastPage }}</p> -->
-                <!-- <p>{{ quotesObj }}</p> -->
-            </div>
+
         </main>
     </div>
 </body>
