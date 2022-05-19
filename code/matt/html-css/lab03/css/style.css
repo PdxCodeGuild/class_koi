@@ -1,0 +1,250 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+@import url(https://cdn.jsdelivr.net/npm/@mdi/font@6.6.96/css/materialdesignicons.min.css);
+
+nav ul a,
+nav .brand-logo {
+  color: #444;
+}
+
+p {
+  line-height: 2rem;
+}
+
+.sidenav-trigger {
+  color: #26a69a;
+}
+
+.parallax-container {
+  min-height: 380px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.9);
+}
+  .parallax-container .section {
+    width: 100%;
+  }
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+footer.page-footer {
+  margin: 0;
+}
+
+.logo {
+  min-height: 50px;
+  max-height: 70px;
+  max-width: 100%;
+}
+
+a.anchor {
+  display: block;
+  position: relative;
+  top: -63px;
+  visibility: hidden;
+}
+
+footer a {
+  color: white;
+  transition: 500ms;
+}
+
+footer a:hover {
+  color: #c8e6c9;
+  transition: 500ms;
+}
+
+.sidenav-overlay {
+  z-index: 100;
+}
+
+nav li .nav-top-items {
+  font-size: 13px;
+  transition: 500ms;
+}
+
+nav li .nav-top-items:hover {
+  color: #303F9F !important;
+  transition: 500ms;
+}
+
+footer i {
+  transition: 500ms;
+}
+
+footer i:hover {
+  color: #c8e6c9;
+  transition: 500ms;
+}
+
+.card .card-title {
+  font-weight: 400;
+}
+
+.btn-custom {
+  width: 100%;
+}
+
+#disclaimer {
+  font-size: xx-small;
+  font-style: italic;
+}
+
+a.disc-link {
+  transition: 500ms;
+}
+
+a.disc-link:hover {
+  transition: 500ms;
+  color:#b71c1c !important;
+}
+
+.gofast:hover {
+  color: #b71c1c !important;
+}
+
+.track {
+  background-image: url("../racetrack.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 500px;
+  width: 835px;
+  position: absolute;
+}
+
+.track2 {
+  height: 500px;
+  width: 835px;
+  position: absolute;
+}
+
+.racerboi {
+  width: 40px;
+  height: 20px;
+  background-image: url("../racerboi.png");
+  background-size: contain;
+  position: relative;
+  animation: racerboi 5s infinite;
+  animation-direction: normal;
+  left: 500px;
+  top: 420px;
+  transform: rotate(0deg);
+  animation-timing-function: linear;
+}
+
+.racercar {
+width: 40px;
+height: 20px;
+background-image: url("../racercar.png");
+background-size: contain;
+position: relative;
+animation: racercar 5s infinite;
+animation-direction: normal;
+left: 558px;
+top: 420px;
+transform: rotate(0deg);
+animation-timing-function: linear;
+}
+
+@keyframes racerboi {
+  0%      {left: 500px; top: 420px; transform: rotate(0deg);}
+
+  10%     {left: 120px; top: 420px; transform: rotate(0deg);}
+  12%     {left: 90px; top: 393px; transform: rotate(45deg);}
+  14%     {left: 60px; top: 365px; transform: rotate(90deg);}
+  16%     {left: 90px; top: 338px; transform: rotate(135deg);}
+  18%     {left: 120px; top: 310px; transform: rotate(180deg);}
+
+  28%     {left: 440px; top: 310px; transform: rotate(180deg);}
+  30%     {left: 470px; top: 283px; transform: rotate(135deg);}
+  32%     {left: 500px; top: 255px; transform: rotate(90deg);}
+  34%     {left: 470px; top: 228px; transform: rotate(45deg);}
+  36%     {left: 440px; top: 200px; transform: rotate(0deg);}
+
+  46%     {left: 120px; top: 200px; transform: rotate(0deg);}
+  48%     {left: 90px; top: 173px; transform: rotate(45deg);}
+  50%     {left: 60px; top: 145px; transform: rotate(90deg);}
+  52%     {left: 90px; top: 118px; transform: rotate(135deg);}
+  54%     {left: 120px; top: 90px; transform: rotate(180deg);}
+
+  58%     {left: 230px; top: 90px; transform: rotate(180deg);}
+  60%     {left: 297px; top: 60px; transform: rotate(135deg);}
+  63%     {left: 365px; top: 30px; transform: rotate(180deg);}
+  66%     {left: 433px; top: 60px; transform: rotate(225deg);}
+  68%     {left: 500px; top: 90px; transform: rotate(180deg);}
+
+  76%     {left: 700px; top: 90px; transform: rotate(180deg);}
+  78%     {left: 725px; top: 115px; transform: rotate(225deg);}
+  80%     {left: 750px; top: 140px; transform: rotate(270deg);}
+
+  90%     {left: 750px; top: 370px; transform: rotate(270deg);}
+  92%     {left: 725px; top: 395px; transform: rotate(315deg);}
+  94%     {left: 700px; top: 420px; transform: rotate(360deg);}
+
+  100%    {left: 500px; top: 420px; transform: rotate(360deg);}
+} 
+
+@keyframes racercar {
+  0%      {left: 616px; top: 420px; transform: rotate(0deg);}
+
+  13%     {left: 120px; top: 420px; transform: rotate(0deg);}
+  15%     {left: 90px; top: 393px; transform: rotate(45deg);}
+  17%     {left: 60px; top: 365px; transform: rotate(90deg);}
+  19%     {left: 90px; top: 338px; transform: rotate(135deg);}
+  21%     {left: 120px; top: 310px; transform: rotate(180deg);}
+
+  31%     {left: 440px; top: 310px; transform: rotate(180deg);}
+  33%     {left: 470px; top: 283px; transform: rotate(135deg);}
+  35%     {left: 500px; top: 255px; transform: rotate(90deg);}
+  37%     {left: 470px; top: 228px; transform: rotate(45deg);}
+  39%     {left: 440px; top: 200px; transform: rotate(0deg);}
+
+  49%     {left: 120px; top: 200px; transform: rotate(0deg);}
+  51%     {left: 90px; top: 173px; transform: rotate(45deg);}
+  53%     {left: 60px; top: 145px; transform: rotate(90deg);}
+  55%     {left: 90px; top: 118px; transform: rotate(135deg);}
+  57%     {left: 120px; top: 90px; transform: rotate(180deg);}
+
+  61%     {left: 230px; top: 90px; transform: rotate(180deg);}
+  63%     {left: 297px; top: 60px; transform: rotate(135deg);}
+  66%     {left: 365px; top: 30px; transform: rotate(180deg);}
+  69%     {left: 433px; top: 60px; transform: rotate(225deg);}
+  71%     {left: 500px; top: 90px; transform: rotate(180deg);}
+
+  79%     {left: 700px; top: 90px; transform: rotate(180deg);}
+  81%     {left: 725px; top: 115px; transform: rotate(225deg);}
+  83%     {left: 750px; top: 140px; transform: rotate(270deg);}
+
+  93%     {left: 750px; top: 370px; transform: rotate(270deg);}
+  95%     {left: 725px; top: 395px; transform: rotate(315deg);}
+  97%     {left: 700px; top: 420px; transform: rotate(360deg);}
+
+  100%    {left: 616px; top: 420px; transform: rotate(360deg);}
+}
