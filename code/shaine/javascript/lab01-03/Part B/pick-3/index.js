@@ -1,6 +1,6 @@
 // #  *'-.-'*'-.-'*'-.-'*'--'*
 // #     Project: Python 
-// #   Lab 4: Number to Phrase
+// #   Lab 3: Make Change 
 // #       Version: 1.0
 // #   Author: Shaine Warren
 // #   Email: mwarren86@gmail.com
@@ -57,4 +57,4 @@ document.getElementById("theButton").onclick = function(){
         document.write('Your number is ' + highNum[tensDigit] +  '-' + lowNum[onesDigit])
     }
 
-}  
+}   
