@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery List</title>
+</head>
+<body>
+    <h1>
+        Welcome to your Grocery List!
+    </h1>
+    {% if groceries|length < 1 %}
+    <p>
+        Your list is empty.
+    </p>
+    {% endif %}
+    <ul>
+        {% for grocery in groceries %}
+        <li>
+            {% if grocery in groceries_complete %}
+            <del>
+                <a href="/groceries/{{ grocery.id }}">
+                    {{ grocery }}
+                </a>
+            </del>
+            {% else %}
+            <a href="/groceries/{{ grocery.id }}">
+                {{ grocery }}
+            </a>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    <form action="/groceries/" method="POST">
+        <h2>
+            Add item to list:
+        </h2>
+        {% csrf_token %}
+        <label for="item-input">
+            Item
+        </label>
+        <input type="text" id="item-input" name="item"/>
+        <br />
+        <label for="quantity-input">
+            Quantity
+        </label>
+        <input type="number" id="quantity-input" name="quantity" />
+        <br />
+        <label for="note-input">
+            Note
+        </label>
+        <input type="text" id="note-input" name="note" />
+        <br />
+        <button type="submit">
+            Add Item
+        </button>
+    </form>
+</body>
+</html>

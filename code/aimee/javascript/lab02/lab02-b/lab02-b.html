@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Lab 02-B Averaging Numbers</title>
+    
+</head>
+
+<body>
+    <h1>Welcome to JavaScript Lab 02 Part B, Averaging Numbers </h1>
+    <div>
+        <label for="numbers-input">Enter a number:</label>
+        <input type="number" id="numbers-input">
+        <br>
+        <button id="add">Add to numbers list</button>
+    </div>
+    <h3 id="numbers-list"></h3>
+
+    <button id="calculate">Average the numbers</button>
+    <h3 id="average-numbers"></h3>
+
+<script>
+    // get values from form
+    let numbersInput = document.querySelector('#numbers-input');
+    // adding parseInt around ^ gives undefined
+    let numbersList = document.querySelector('#numbers-list');
+    let averageNumbers = document.querySelector('#average-numbers')
+    const array = [];
+    let sum = 0;
+
+    let add = document.querySelector('#add')
+    add.addEventListener('click', function() {
+        // add numbers to array
+        array.push(Number(numbersInput.value))
+        parseInt(array)
+        console.log(array)
+        // show user their list
+        numbersList.innerHTML = `${array}`       
+    })
+    
+    calculate.addEventListener('click', function() {
+        // add numbers together
+        // let sum = [array].reduce((a,b) => a + b, 0)
+        for (let i in array) {
+                    sum += array[i];
+                }
+            // parseInt(sum)
+        console.log(sum) // array was [3,3,3] "sum" was 333/3 = average 111
+        // show user average
+        averageNumbers.innerHTML = `${sum / array.length}`
+        })
+    
+    // ^ above is just smooshing numbers together instead of adding
+     
+</script>
+</body>
+
+</html>
