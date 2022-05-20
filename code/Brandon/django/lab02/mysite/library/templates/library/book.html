@@ -1,28 +1,35 @@
 <a href = "{% url 'library:index'  %}">Home</a>
 
 <h1>{{ author }}</h1>
-{% for author in book %}
-{{ author.author_id }}
-{% endfor %}
+{% for check in books %}
+<p id="name">Title: {{ check.name }}</p>
+<p>Author: {{ check.author }} </p>
 
-{% for name in book %}
-{{ name.author }}
-<!-- {{ name }} -->
-{% endfor %}
-
-
-<form action="{% url 'library:index'  %}" method="POST">
-	{% csrf_token %}
+{% if check.checked_out == False %}
+<form action = "/checkout/{{ check.id }}" method="post">
+    {% csrf_token %}
     
-    <h3>Author</h3>
-    <input type="text" name="author" id="author" >
-
-    <h3>Add a Book: </h3>
-    <input type="text" name="name" id="name">
-
-    <h3> Publish_date </h3>
-    <input type="number" min="1800" max="2022" step="1" value="2022" name="publish_date" id="publish_date">
-    <button type="submit">Save</button>
-
-
+    <p>Avaialable: &#9745;</p>
+    <input type="text" name="checkout" id="checkout"  value={{ user }} >
+    <button>Check Out</button>				
 </form>
+
+{% else %}
+<form action="/checked_in/{{ check.id }}">
+    {% csrf_token %}
+    
+    <button type="submit">Check In</button>
+    
+    {% endif %}
+    <br>
+</form>
+{% endfor %}
+{% for book in checked %}
+{% if book.who_checked_out %}
+<p>{{ book.who_checked_out }} checked out at {{ book.who_checked_out_time }} </p>
+{% else %}
+<p>{{ book.who_checked_in }} checked in at {{ book.who_checked_in_time }} </p>
+{%  endif %}
+{% endfor %}
+
+

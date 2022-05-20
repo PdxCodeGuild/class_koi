@@ -18,6 +18,7 @@
 <h1>Authors</h1>
     
 
+<<<<<<< Updated upstream
 {% for author in books %}
 <form action="{% url 'library:checkout' author.id %}">
 {% csrf_token %}
@@ -45,10 +46,20 @@
         {% endif %}
     <br>
 	</form>
+=======
+    {% for book in books %}
+    
+    <a href="/{{ book.id }}">
+    <p>{{ book.author }} {{ book.name }}</p>
+>>>>>>> Stashed changes
     </a>
-    <br><br>
+    <p>{{ book.publish_date }}</p>
+    
+
+  
     {% endfor %}
 
+    <!--  -->
 
 <form action="{% url 'library:index'  %}" method="POST">
 	{% csrf_token %}
