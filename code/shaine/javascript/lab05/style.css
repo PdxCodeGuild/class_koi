@@ -159,7 +159,7 @@ ul {
 }
 
 .delete-btn {
-    margin-left: auto;
+    margin-left: 20px;
     margin-right: 5px;
     display: block;
     width: 16px;

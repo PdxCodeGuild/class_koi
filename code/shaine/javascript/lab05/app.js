@@ -2,7 +2,11 @@ const app = Vue.createApp({
     data() {
         return {
             title: 'todo list',
-            tasks: []
+            tasks: [
+                {name: 'test 1'},
+                {name: 'test 2'},
+                {name: 'test 3'},
+        ]
         }
     },
     methods:{
@@ -17,7 +21,7 @@ const app = Vue.createApp({
             this.tasks.name = "";
         },
         delItem(task) {
-            this.tasks.splice(this.tasks.indexOf(task), 1)
+            this.tasks.splice(this.tasks.indexOf(task), 1);
         }
     }
 })
