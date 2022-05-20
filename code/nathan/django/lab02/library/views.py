@@ -36,10 +36,11 @@ def user_checkout(request):
 
 def user_checkin(request):
     if(request.method == 'POST'):
-        name = request.POST.get('check_in_book')
+        book = request.POST.get('check_in_book')
+        name = request.POST.get('user')
         target_user:User = User.objects.filter(name = name).first()
         
-        target_book:Book = Book.objects.filter(title = target_user.book).first()
+        target_book:Book = Book.objects.filter(title = book).first()
 
         User.objects.create(name = target_user.name, book = target_user.book, checkout = False, timestamp = timezone.now())
         target_book.checked_out = False
