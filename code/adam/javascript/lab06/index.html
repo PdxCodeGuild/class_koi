@@ -11,18 +11,31 @@
 <body>
     <div id="app">
         <h1>FavQs Quotes</h1>
-        <button @click="getQuote">Get Random Quote</button>
-        <p>{{ quote }}</p>
-        <p style="margin-left: 1rem;">{{ author }}</p>
+        <button @click="getQuote">Get Another Random Quote</button>
+        <p>"{{ quote }}"</p>
+        <p style="margin-left: 1rem;">-{{ author }}</p>
         <form @submit.prevent="searchQuote">
-            <label for="search-term">Enter Search Term:</label>
-            <input v-model="searchTerm" type="text" id="search">
-            <input type="submit" value="Search for Quotes" style="margin-left: 0.5rem">
+            <label for="searchType">Select search type :</label> 
+            <select v-model="searchType" id="searchId" required>
+                <option value="keyword">keyword</option>
+                <option value="author">author</option>
+                <option value="tag">tag</option>
+            </select>
+            <br>
+            <div style="margin-top: 0.5rem;">
+                <label for="search-term">Enter Search Term:</label>
+                <input v-model="searchTerm" type="text" id="search-term" required>
+                <input type="submit" value="Search for Quotes" style="margin-left: 0.5rem">
+            </div>
         </form>
-        <button @click="getQuoteList" style="margin-top:1rem">Get List of Random Quote</button>
+        <br>
+        <button @click="getQuoteList" style="margin-top:1rem">Get List of 25 Random Quote</button>
+        <h4 v-if = 'message'>{{ message }}</h4>
         <ol>
-            <li v-for="(quote,index) in quotes">
-                {{  quote[index].author  }}
+            <li v-for="(quote,index) in quotes" id="quote" style="margin-top: 8px">
+                <span>"{{ quote.body }}"</span>
+                <br>
+                <span>- {{  quote.author }}</span>
             </li>
         </ol>
 
