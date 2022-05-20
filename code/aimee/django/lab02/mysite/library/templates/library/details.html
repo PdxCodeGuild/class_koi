@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aimee's Library: {{book.title}}</title>
+</head>
+ <!-- DETAIL PAGE-->
+<body>
+   
+    <h2><i>{{ book.title }}</i> by {{ book.author }}</h2>
+    {% if status.checkout %} 
+    <p><i>{{ book.title }}</i> has been checked out.</p>
+    <p>This book is checked out.</p>
+    <h3>If you have this book checked out, would you like to return it? <br> Enter your username.</h3>
+    {% else %}
+    <p><i>{{ book.title }}</i> is available for checkout. Would you like to check this book out?</p>
+    {% endif %}
+    <form action="/library/checkouts/{{ book.id }}/" method="POST">
+        {% csrf_token %}
+        <label for="user_name">Username:</label>
+        <input type="text" name="username">
+        {% if status.checkout %}
+        <input type="hidden" value="False" name="status_update">
+        <button type="submit">Return</button>
+        {% else %}
+        <input type="hidden" value="True" name="status_update">
+        <button type="submit">Check out</button>
+        {% endif %}
+    </form>
+   <!-- when trying to return/checkout: library/details/1/library/checkouts/1, -->
+   <a href="/library/">Back home</a>
+</body>
+</html>
+
+
