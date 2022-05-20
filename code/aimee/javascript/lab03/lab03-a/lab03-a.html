@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Lab 03-A - Blackjack Advice</title>
+    <script>
+cards = {
+    'A':1,
+    '2':2,
+    '3':3,
+    '4':4,
+    '5':5,
+    '6':6,
+    '7':7,
+    '8':8,
+    '9':9,
+    '10':10,
+    'J':10,
+    'Q':10,
+    'K':10,
+}
+
+let cardOne = prompt('Enter your first card: ')
+let cardTwo = prompt('Enter your second card: ')
+let cardThree = prompt('Enter your third card: ')
+
+// change value of each card to integer
+let valueOne = Number(cards[cardOne])
+// console.log(valueOne) works
+let valueTwo = Number(cards[cardTwo])
+let valueThree = Number(cards[cardThree])
+
+let total = valueOne + valueTwo + valueThree
+console.log(total)
+
+if (total < 17) {
+    alert(`${total} - hit!`)
+} else if (total >= 17 && total < 21) {
+    alert(`${total} - stay!`)
+} else if (total === 21) {
+    alert(`${total} - Blackjack!`)
+} else {
+    alert('Busted!')
+}
+
+
+    </script>
+</head>
+<body>
+    <h1>Blackjack Advice</h1>
+</body>
+</html>

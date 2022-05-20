@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack Advice in Vue</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Blackjack Advice</h1>
+        <input type="text" v-model="inputText1" placeholder="Enter your first card">
+        <br>
+        <input type="text" v-model="inputText2" placeholder="Enter your second card">
+        <br>
+        <input type="text" v-model="inputText3" placeholder="Enter your third card">
+        <br>
+        <h3 id="output">Your cards are: <br>{{ inputText1 }}<br> {{ inputText2 }}<br> {{ inputText3 }}</h3>
+        <button v-on:click="clickButton">Get advice</button>
+    </div>
+
+    <script>
+        const App = {
+            data() {
+                return {
+                    inputText1: '',
+                    inputText2: '',
+                    inputText3: '',
+                    cards: {
+                        'ace': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, 'joker': 10, 'queen': 10, 'king': 10,
+                    }
+                }
+            },
+            methods: {
+                clickButton() {
+                    let valueOne = Number(this.cards[this.inputText1])
+                    let valueTwo = Number(this.cards[this.inputText2])
+                    let valueThree = Number(this.cards[this.inputText3])
+                    let total = valueOne + valueTwo + valueThree
+                    if (total < 17) {
+                        alert(`${total} - hit!`)
+                    } else if (total >= 17 && total < 21) {
+                        alert(`${total} - stay!`)
+                    } else if (total === 21) {
+                        alert(`${total} - Blackjack!`)
+                    } else {
+                        alert('Over 21 - Busted!')
+                    }
+                }
+            }
+        }
+
+        const app = Vue.createApp(App)
+        app.mount('#app')
+
+    </script>
+</body>
+
+</html>
