@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DOM Manipulation Advanced</title>
+	<style>
+		main {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-evenly;
+		}
+		figure {
+			width: 200px;
+			height: 200px;
+			text-align: center;
+			padding: 1rem;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<h1>Color Divs</h1>
+	<form>
+		<label for="color">Add New Color Div:</label>
+		<input type="text" id="color">
+		<input type="submit" value="Add">
+	</form>
+	<main>
+	</main>
+	<script>
+		const form = document.querySelector('form')
+		const input = document.querySelector('input')
+		const main = document.querySelector('main')
+
+		form.addEventListener('submit', function (e) {
+			e.preventDefault() // this stops the default form submission of the event, so the page doesn't refresh
+			const color = input.value
+			// creating the figure, settting backgound color, appending to main
+			const figure = document.createElement('figure')
+			figure.style.backgroundColor = color
+			main.appendChild(figure)
+
+			// creating the p tag, setting innerText, appending to figure
+			const p = document.createElement('p')
+			p.innerText = `Click me to set the background color to ${color}.`
+			figure.appendChild(p)
+			
+			figure.addEventListener('click', function (_e) {
+				// console.log(_e)
+				document.body.style.backgroundColor = color
+			})
+		})
+
+	</script>
+</body>
+</html>
