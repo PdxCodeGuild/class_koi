@@ -1,55 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SourceBook</title>
+    <title>Dictionary</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue@3"></script>
 </head>
+
 <body>
     <div id="app">
-        <h1>SourceBook</h1>
-        <h4><em>the</em> social media app for the Source</h4>
+        <h1>Dictionary</h1>
 
-        <!-- search for a character by name -->
-        <label for="name">Search by name</label>
-        <input type="text" id="search-name" v-model="name">
-        <input type="submit" value="search" @click="searchName"></input>
-        <p>{{ character }}</p>
+        <label for="headWord">Enter a word </label>
+        <input type="text" id="head-word" v-model="headWord" autofocus><br>
+        <input type="submit" value="thesaurus" @click="getSynonyms"></input>
+        <input type="submit" value="dictionary" @click="getDefinitions"></input>
+        <ul>
+            <li v-for="synonym in synonyms">{{ synonym['syns'] }}</li>
+            <li v-for="definition in definitions">{{ def }}</li>
+        </ul>
+        <p>{{ definitions }}</p>
+        <p>{{ synonyms }}</p>
+
 
 
 
 
     </div>
-    
+
     <script>
         const App = {
             data() {
                 return {
-                    baseUrl: 'https://xivapi.com/',
-                    name: '',
-                    character: '',
-
+                    synonyms: [],
+                    synonym: '',
+                    definitions: [],
+                    definition: '',
+                    headWord: '',
                 }
             },
+            // created() {
+            //     this.getSynonyms()
+            // },
             methods: {
-                searchName() {
+                getSynonyms() {
                     axios({
-                        url: 'https://xivapi.com/character/search?name=${name}',
-                        headers: { Accept: 'application/json' },
                         method: 'get',
-                        params: { name: this.name }
+                        url: 'https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${headWord}?key=5cdfdfef-e6ac-42fc-8a07-beb5e8e0eeea',
+                        headers: { Accept: 'application/json', },
+                        params: { headword: this.headWord}
                     }).then(res => {
-                        console.log({ 'this in .then': this })
-                        this.character = res.data.character
+                        console.log(res.data)
+                        this.synonyms = res.data.synonyms
+                    })
+                    console.log(this.headWord)
+                },
+                getDefinitions() {
+                    axios({
+                        method: 'get',
+                        url: 'https://www.dictionaryapi.com/api/v3/references/collegiate/json/${headWord}?key=82e55bee-008e-46ae-b061-2bd64ee2f0e7',
+                        headers: { Accept: 'application/json', },
+                        params: { headword: this.headWord }
+                    }).then(res => {
+                        console.log(res.data)
+                        this.definitions = res.data.definitions
                     })
                 }
             }
         }
+
         const app = Vue.createApp(App)
         app.mount('#app')
     </script>
 </body>
+
 </html>
+
+
+<!-- dictionary 82e55bee-008e-46ae-b061-2bd64ee2f0e7 -->
+<!-- thesaurus 5cdfdfef-e6ac-42fc-8a07-beb5e8e0eeea -->
