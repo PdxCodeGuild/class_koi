@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Vehicle Info</title>
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="https://unpkg.com/vue@3"></script>
+	<script src="secrets.js"></script>
+	<script src="script.js" defer></script>
+</head>
+<body class="pa3 mw7 helvetica">
+	<div id="app">
+		<h1 class="tc ttu bg-black-20 br3 pv2">Vehicle Info Machine</h1>
+		<form @submit.prevent="searchByVIN">
+			<label class="pr2" for="search-VIN">Search by VIN:</label>
+			<input class="" v-model="userVIN" type="text" id="search-VIN">
+			<input type="submit" value="Search VIN">
+		</form>
+        <!-- = ('0 - VIN decoded clean. Check Digit (9th position) is correct') -->
+		<ul class="bg-light-red br3 pv1" v-if="output && output.ErrorText[0] !== '0'">
+            <h3 class="">The following error(s) occured:</h3>
+            <li class="pb2" v-for="error in output.ErrorText.split(';')">{{ error }}</li>
+        </ul>
+		<ul class="list measure" v-else>
+            <li v-if="output.VIN">VIN: {{ output.VIN }}</li>
+            <li v-if="output.ModelYear">Year: {{ output.ModelYear }}</li>
+            <li v-if="output.Make">Make: {{ output.Make }}</li>
+            <li v-if="output.Model">Model: {{ output.Model }}</li>
+            <li v-if="output.Trim">Trim: {{ output.Trim }}</li>
+            <li v-if="output.Doors">Doors: {{ output.Doors }}</li>
+            <li v-if="output.BodyClass">Body Type: {{ output.BodyClass }}</li>
+            <li v-if="output.GVWR">GVWR: {{ output.GVWR }}</li>
+            <li v-if="output.TransmissionSpeeds">Transmission Speeds: {{ output.TransmissionSpeeds }}</li>
+            <li v-if="output.TransmissionStyle">Transmission Type: {{ output.TransmissionStyle }}</li>
+            <li v-if="output.FuelTypePrimary">Fuel Type: {{ output.FuelTypePrimary }}</li>
+            <li v-if="output.EngineModel">Engine Model: {{ output.EngineModel }}</li>
+            <li v-if="output.EngineHP">Engine HP: {{ output.EngineHP }} hp</li>
+            <li v-if="output.DisplacementL">Displacement: {{ output.DisplacementL }} L</li>
+            <li v-if="output.EngineConfiguration">Engine Configuration: {{ output.EngineConfiguration }}</li>
+            <li v-if="output.EngineCylinders">Engine Cylinders: {{ output.EngineCylinders }}</li>
+            <li v-if="output.ValveTrainDesign">Valvetrain Design: {{ output.ValveTrainDesign }}</li>
+            <li v-if="output.PlantCity">Plant City: {{ output.PlantCity }}</li>
+            <li v-if="output.PlantState">Plant State: {{ output.PlantState }}</li>
+            <li v-if="output.PlantCountry">Plant Country: {{ output.PlantCountry }}</li>
+
+		</ul>
+	</div>
+</body>
+</html>
