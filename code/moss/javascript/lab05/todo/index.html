@@ -4,36 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Todo List</title>
+    <title>My Task List</title>
     <!-- Add your styles here! -->
     <link rel="stylesheet" href="/css/main.css" />
 </head>
 <body>
     <div id="app">
         
-        <h1>Vue Todos</h1>
-        <form>
-            <input type="text" v-model="newTask" palceholder="Enter Task">
+        <h1>Vue Tasks</h1>
+        <form @submit.prevent="addTask">
+            <input v-model="newTask" placeholder="Enter Task">
             <button type="submit">Add Task</button>
         </form>
 
-        <h3>Incomplete Tasks</h3>
+        <h3>Incomplete</h3>
         <ul>
-            <li>
-                <span>
-
-                </span>
-                <button>Complete</button>
-                <button>Delete</button>
+            <li v-for="task in tasks" >
+                {{ task }}
+        
+                <button @click="removeTask(task)">Complete</button>
+                <!-- <button>Delete</button> -->
             </li>
         </ul>
 
-        <h3>Complete Tasks</h3>
+        <h3>Complete</h3>
         <ul>
             <li>
-                <span>
-
-                </span>
+    
                 <button>Incomplete</button>
                 <button>Delete</button>
             </li>
