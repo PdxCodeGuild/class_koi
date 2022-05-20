@@ -1,0 +1,79 @@
+
+<!-- This is a simple Vue.js application that works that shows Quotes: Click for a Random Quote or Search by term for a quote -->
+<head>
+    <script src="secrets.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+  </head>
+  <body>
+    <div id="app">
+      {{ message }}
+      <br>
+    
+      <button @click="getRandomQuote">Get Random Quote</button>
+
+  
+
+      <p>
+          {{info}}
+      </p>
+
+      <p>
+        <form @submit.prevent ="searchQuotes">
+        <input type="text" v-model="inputText" placeholder="Enter a Search Term'">
+        <button type="submit">submit</button>
+        </form>
+      </p>
+
+      
+
+      <ul v-for="quote in search.quotes">
+        <li>
+          {{ quote.body }}
+        </li>
+      </ul>
+    
+    
+    
+    <script>
+      const App = {
+        
+        data() {
+          return {
+            message: 'Welcome',
+            info: '',
+            search: '',
+            inputText:'',
+
+          }
+        },
+     
+        methods: {
+
+            getRandomQuote (){
+                axios({ 
+                    url: 'https://favqs.com/api/qotd',
+                    method: 'get'
+                }).then(response => (this.info = response.data.quote.body))
+                console.log(response)
+
+
+            },
+
+
+          
+          searchQuotes () {
+		          	axios({
+				            method: 'get',
+				            url: 'https://favqs.com/api/quotes',
+				            headers: { Authorization: `Token token=${VUE_APP_API_KEY}`},
+                     params: { filter: this.inputText , type: ""} 
+                  }).then(response => (this.search = response.data))
+                  console.log(search)
+                  }  
+             }
+            }
+      
+      Vue.createApp(App).mount('#app')
+    </script>
+  </body>
