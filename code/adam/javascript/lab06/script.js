@@ -4,7 +4,7 @@ axios({
     headers: {
         Accept: 'application/json'
     }
-}).then(res => console.log(res.data))
+})//.then(res => console.log(res.data))
 
 const App = {
     data () {
@@ -13,9 +13,12 @@ const App = {
             author: '',
             searchTerm: '',
             searchType: '',
+            page: 1,
+            lastPage: 'true',
             baseUrl: 'https://favqs.com/api/',
             quotes: [],
-            message: ''
+            message: '',
+            listStart: 1,
 
         }
     },
@@ -34,34 +37,38 @@ const App = {
             }).then(res => {
                 this.quote = res.data.quote.body
                 this.author = res.data.quote.author
-                console.log(res.data)
-                console.log(res.data.quote.body)
-                console.log(res.data.quote.author)
             })
         },
 
         searchQuote () {
             axios({
                 method: 'get',
-                url: this.baseUrl + 'quotes/?filter=' + this.searchTerm,
+                url: this.baseUrl + 'quotes/',
                 headers: { 'Authorization': 'Token token="855df50978dc9afd6bf86579913c9f8b"' },
-                params: { filter: this.searchTerm }
+                params: { filter: this.searchTerm, type: this.searchType, page: this.page}
             }).then(res => {
-                console.log(res.data.quotes)
                 this.quotes = res.data.quotes
-                this.message = this.quotes.length + " Quotes about " + this.searchTerm
-                console.log(this.searchType)
+                this.lastPage = res.data.last_page
+                this.page = res.data.page
+                console.log(res.data)
                 if (this.searchType === 'keyword') {
-                    this.searchTerm = this.searchTerm
+                    console.log(res.data.quotes)
+                    this.message = this.quotes.length + " Quotes containing the word " + "'" + this.searchTerm + "'"
                 }
                 else if (this.searchType === 'author') {
-                    console.log(this.searchTerm)
+                    this.message = this.quotes.length + " Quotes by " + this.quotes[0].author
                 }
                 else {
-                    this.searchTerm = this.searchTerm + '&type=tag'
-                    console.log(searchTerm)
+                    this.message = this.quotes.length + " Quotes tagged with " + "'" + this.searchTerm + "'"
                 }
             })
+        },
+
+        nextPage() {
+            this.page++
+            this.searchQuote()
+            this.listStart += 25
+
         },
 
         getQuoteList () {
@@ -71,12 +78,9 @@ const App = {
                 headers: { 'Authorization': 'Token token="855df50978dc9afd6bf86579913c9f8b"' },
 
             }).then(res => {
-                console.log(res.data.quotes)
-                console.log(res.data.quotes[0].body)
-                console.log(res.data.quotes[0].author)
                 this.quotes = res.data.quotes
                 this.message = "25 Random Quotes"
-                console.log(this.message)
+                this.lastPage = true
             })
         }
     }

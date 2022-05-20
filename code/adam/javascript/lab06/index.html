@@ -8,7 +8,7 @@
     <script src="https://unpkg.com/vue@3"></script>
     <script src="script.js" defer></script>
 </head>
-<body>
+<body style="margin-left: 2rem;">
     <div id="app">
         <h1>FavQs Quotes</h1>
         <button @click="getQuote">Get Another Random Quote</button>
@@ -30,8 +30,10 @@
         </form>
         <br>
         <button @click="getQuoteList" style="margin-top:1rem">Get List of 25 Random Quote</button>
-        <h4 v-if = 'message'>{{ message }}</h4>
-        <ol>
+        <h4 v-if = 'message'>{{ message }}
+        </h4>
+        <button @click="nextPage" v-if = "! lastPage">Next page of quotes</button>
+        <ol :start="listStart">
             <li v-for="(quote,index) in quotes" id="quote" style="margin-top: 8px">
                 <span>"{{ quote.body }}"</span>
                 <br>
