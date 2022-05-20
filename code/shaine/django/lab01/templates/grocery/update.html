@@ -1,0 +1,15 @@
+{% extends 'partials/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="border p-3">
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form|crispy }}
+
+        <input class="btn btn-info w-100" type="submit" value="Update">
+    </form>
+
+</div>
+
+{% endblock %}

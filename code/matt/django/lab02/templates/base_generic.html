@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library{% block title %}{% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+    {% block links %}
+    {% if request.user.is_authenticated %}
+    <p>Welcome {{ request.user }}! <a href="{% url 'accounts:logout' %}">Logout</a></p>
+    {% else %}
+    <p>You are not logged in. Would you like to <a href="{% url 'accounts:login' %}">login</a> or <a href="{% url 'accounts:register' %}">register</a>?</p>
+    {% endif %}
+    <p><a href="{% url 'library:index' %}">Go back home</a></p>
+    <p><a href="{% url 'library:history' %}">View full check in/out history.</a></p>
+    <h5>For this lab, I am practicing the zen art of CSS minimalism.</h5>
+    {% endblock %}
+</body>
+</html>
