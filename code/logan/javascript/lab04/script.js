@@ -7,9 +7,9 @@ const App = {
             qAuthor: "",
             qotdURL: "https://favqs.com/api/qotd",
 			baseURL: "https://favqs.com/api/quotes/",
-            fQuotes: [],
+            fQuotes: undefined,
             searchTerm: "",
-			error: ""
+			error: "",
 
 		}
 	},
@@ -29,7 +29,7 @@ const App = {
 				headers: { Accept: 'application/json' },
 				method: 'get'
 			}).then(res => {
-				console.log({ 'this in .then': this }) // this is the Window if not in an arrow function
+				// console.log({ 'this in .then': this }) // this is the Window if not in an arrow function
 				// this will still be the vue app if in an arrow function
 
                 this.faveQ = res.data.quote.body
@@ -42,15 +42,16 @@ const App = {
 			this.error = ''
 		axios({
 			method: 'get',
-			url: this.baseUrl + 'filter=' + `${searchTerm}` + "&type=tag",
-			headers: { Accept: 'application/json' },
-			params: { term: this.searchTerm }
+			url: this.baseURL,
+			headers: { Accept: 'application/json', Authorization: "Token token=75781e1e8edbf2eb68848384abbbd2bb"}, // doesn't work
+			params: { filter: this.searchTerm },
 		}).then(res => {
 			// throw new Error('Something went wrong. Please try again.')
 			console.log(res.data)
-			this.jokes = res.data.results
+			this.fQuotes = res.data.quotes // might need to fool with this .results
 		}).catch(err => this.error = err.message) // .catch will run if an error occurs
-		.finally(() => alert('finally ran')) // .finally is always going to run},
+		// alert(this.fQuotes)
+		// .finally(() => alert('finally ran')) // .finally is always going to run},
 	}
 }
 }

@@ -35,7 +35,7 @@
        <br>
        <br>
 
-        <form @submit.prevent="searchQuote">
+        <form @submit.prevent="searchQuote ()">
             <label for="search-term">Enter Search Term:</label>
             <input v-model="searchTerm" type="text" id="search-term" class = "mh2">
             <input type="submit" value="Search FaveQs">
