@@ -6,8 +6,10 @@ const App = {
             faveQ: "",
             qAuthor: "",
             qotdURL: "https://favqs.com/api/qotd",
+			baseURL: "https://favqs.com/api/quotes/",
             fQuotes: [],
             searchTerm: "",
+			error: ""
 
 		}
 	},
@@ -17,6 +19,7 @@ const App = {
     },
 
 	methods: {
+		// heavily indebted to that Pete code
         getQuote () {
 			// console.log({ 'this in getDadJoke': this }) // this is the vue app
 			// this.dadJoke = 'Dad joke incoming...'
@@ -34,12 +37,23 @@ const App = {
 
                 // alert(this.faveQ)
 	})},
-
-        searchQuote () {},
-
-
-}}
-
+		// heavily indebted to that Pete code
+        searchQuote () {
+			this.error = ''
+		axios({
+			method: 'get',
+			url: this.baseUrl + 'filter=' + `${searchTerm}` + "&type=tag",
+			headers: { Accept: 'application/json' },
+			params: { term: this.searchTerm }
+		}).then(res => {
+			// throw new Error('Something went wrong. Please try again.')
+			console.log(res.data)
+			this.jokes = res.data.results
+		}).catch(err => this.error = err.message) // .catch will run if an error occurs
+		.finally(() => alert('finally ran')) // .finally is always going to run},
+	}
+}
+}
 
 const app = Vue.createApp(App)
 app.mount('#app')
