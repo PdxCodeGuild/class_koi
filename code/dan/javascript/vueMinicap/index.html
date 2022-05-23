@@ -1,48 +1,58 @@
 <head>
     <!-- Vue 3 CDN tag: -->
-    <script src="secrets.js"></script>
     <script src="https://unpkg.com/vue@3"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+    <script src="https://cdn.tailwindcss.com/"></script>
+    <script src="secrets.js"></script>
     <title>Party Barge </title>
   </head>
   <body>
     <h1>Welcome to Party Barge</h1>
     <div id="app">
-      {{ message }}
 
       <form @submit.prevent="getweather">
         <label for="zip">Enter Zip Code:</label>
         <input v-model="zip" type="text" id="zip">
         <input type="submit" value="Is it Party Weather?">
 
+      <h3> Here is Today's Party Tempature</h3>
+       <p>The tempature today is  {{info}} degrees F</p>
+      
+       <div v-if= "info > 70">
+        <p> Party Weather!</p>
+      </div>
+        <div v-else-if="info < 70 && info != ''">
+        Sorry, we think you should stay in. 
+        </div>
 
     </div>
    
-   
-   
-   
-   
-   
-    <script>
+   <script>
       const App = {
-        // the data property is a function that returns an object
+        
         data() {
           return {
-            message: 'Are you ready to Party?',
             zip: '',
-            getweather:'',
+            info: '',
+            todaystemp:''
           }
         },
         methods: {
           getweather () {
             
-            axios({ // this entire thing will return a promise
-              url: 'http://api.openweathermap.org/geo/1.0/zip?zip='${this.zip}',{1}&appid='${API KEY},
-              headers: { Accept: 'application/json' },
+            axios({
+              url: `https://api.openweathermap.org/data/2.5/weather?zip=${this.zip},us&appid=${API_key}`,
               method: 'get',
-            })
-          },
+              params: {units: 'imperial'}
+            }).then(response => (this.info = response.data.main.temp)
+            )
+            this.todaystemp = this.info
+            console.log (typeof(todaystemp))
+
+        }
       }
+    }
+      
       // this is how you create & mount the app in Vue 3:
       Vue.createApp(App).mount('#app')
     </script>
