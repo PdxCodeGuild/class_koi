@@ -10,7 +10,7 @@ const App = {
                 'Javascript Vue ToDo',
                 'Javascript Vue Quotes',
             ],
-            completeTasks :[
+            completedTasks :[
 
             ]
         }
@@ -20,14 +20,23 @@ const App = {
         addTask() {
             console.log(this.newTask)
             // this.tasks.push({ id: id++, text: this.newTask })
-            this.tasks.push(this.newTask)
+            this.incompleteTasks.push(this.newTask)
+            this.newTask = ''
         },
 
-        removeTask(tasks) {
-            this.incompleteTasks = tasks.value.filter((t) => t !== task)   
-        },  this.completeTasks
+        removeTask(task) {
+            this.incompleteTasks = incompleteTasks.filter((t) => t !== incompleteTasks)   
+            // this.completeTasks.push(t)
+            
+        },  
+
+        checkTask() {
+            this.completeTasks.push(this.incompleteTasks)
+
+        },
     },
 }
+
 
 const app = Vue.createApp(App)
 app.mount('#app')

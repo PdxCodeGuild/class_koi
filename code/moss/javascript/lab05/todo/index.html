@@ -19,20 +19,21 @@
 
         <h3>Incomplete</h3>
         <ul>
-            <li v-for="task in tasks" >
+            <li v-for="task in incompleteTasks">
                 {{ task }}
         
                 <button @click="removeTask(task)">Complete</button>
-                <!-- <button>Delete</button> -->
+                <button>Delete</button>
             </li>
         </ul>
 
-        <h3>Complete</h3>
+        <h3>Completed</h3>
         <ul>
-            <li>
+            <li v-for="task in completeTasks">
+                {{ task }}
     
-                <button>Incomplete</button>
-                <button>Delete</button>
+                <button @click="removeTask(task)">Incomplete</button>
+                <button @click="removeTask(task)">Delete</button>
             </li>
         </ul>
     </div>
