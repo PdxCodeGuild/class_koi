@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> The Vue-tiful Game </title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+</head>
+<body>
+
+    <div id="app">
+
+
+
+       <h1>{{headline}}</h1>
+
+       <!-- <br> -->
+
+       <button type = "button" @click.prevent = "getQuote">
+
+            Get Quote
+
+       </button>
+
+       <br>
+       <br>
+
+       <h2> {{faveQ}} </h2>
+       <h3> {{qAuthor}} </h3>
+
+       <br>
+       <br>
+
+        <form @submit.prevent="searchQuote">
+            <label for="search-term">Enter Search Term:</label>
+            <input v-model="searchTerm" type="text" id="search-term" class = "mh2">
+            <input type="submit" value="Search FaveQs">
+        </form>
+
+
+
+       <!-- <li v-for="quote in quotes">
+
+        {{quote}}
+
+       </li> -->
+
+    </div>
+    
+</body>
+</html>
