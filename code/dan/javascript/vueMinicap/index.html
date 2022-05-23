@@ -1,0 +1,49 @@
+<head>
+    <!-- Vue 3 CDN tag: -->
+    <script src="secrets.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+    <title>Party Barge </title>
+  </head>
+  <body>
+    <h1>Welcome to Party Barge</h1>
+    <div id="app">
+      {{ message }}
+
+      <form @submit.prevent="getweather">
+        <label for="zip">Enter Zip Code:</label>
+        <input v-model="zip" type="text" id="zip">
+        <input type="submit" value="Is it Party Weather?">
+
+
+    </div>
+   
+   
+   
+   
+   
+   
+    <script>
+      const App = {
+        // the data property is a function that returns an object
+        data() {
+          return {
+            message: 'Are you ready to Party?',
+            zip: '',
+            getweather:'',
+          }
+        },
+        methods: {
+          getweather () {
+            
+            axios({ // this entire thing will return a promise
+              url: 'http://api.openweathermap.org/geo/1.0/zip?zip='${this.zip}',{1}&appid='${API KEY},
+              headers: { Accept: 'application/json' },
+              method: 'get',
+            })
+          },
+      }
+      // this is how you create & mount the app in Vue 3:
+      Vue.createApp(App).mount('#app')
+    </script>
+  </body>
