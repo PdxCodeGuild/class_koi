@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="script.js" defer></script>
+    <script src="secrets.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Quote of the Day</h1>
+        <button @click="getQotd()">Get Quote of the Day</button>
+        <p>{{ qotd.author }}</p>
+        <p>{{ qotd.body }}</p>
+        <form @submit.prevent="getSearchQuotes">
+            <label for="search-term">Enter Search Term:</label>
+            <input v-model="searchTerm" type="text" id="search-term">
+            <div>
+                <div>
+                    <label for="Keyword">Keyword Search</label>
+                    <input v-model="searchType" type="radio" value="Keyword" name="search" checked>
+                </div>
+                <div>
+                    <label for="Tag">Tag Search</label>
+                    <input v-model="searchType" type="radio" value="Tag" name="search">
+                </div>
+                <div>
+                    <label for="Author Search">Author Search</label>
+                    <input v-model="searchType" type="radio" value="Author" name="search">
+                </div>
+                <input type="submit" value="Search for Quotes">
+            </div>
+        </form>
+        <!-- <p>{{ searchQuotes }}</p> -->
+        <br>
+
+        <ul v-for="quote in searchQuotes">
+            <!-- <li>{{ randomQuote }}</li> -->
+            <li>{{ quote.author }} - {{ quote.body }}</li>
+        </ul>
+        <hr>
+        <ul v-for="quote in randomQuote">
+            <!-- <li>{{ randomQuote }}</li> -->
+            <li>{{ quote.author }} - {{ quote.body }}</li>
+        </ul>
+    </div>
+</body>
+
+</html>
