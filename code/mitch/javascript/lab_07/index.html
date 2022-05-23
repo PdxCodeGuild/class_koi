@@ -13,21 +13,49 @@
 </head>
 <body class="pa3 mw7 helvetica">
 	<div id="app">
-		<h1 class="tc ttu bg-black-20 br3 pv2">Vehicle Info Machine</h1>
-		<form @submit.prevent="searchByVIN">
-			<label class="pr2" for="search-VIN">Search by VIN:</label>
+		<h1 class="b tc ttu bg-black-20 br3 pv2">Vehicle Info Machine</h1>
+        <p class="b">Search by Vehicle Identification Number (VIN):</p>
+		<form class="pb2" @submit.prevent="searchByVIN">
+			<label class="pr2" for="search-VIN">VIN:</label>
 			<input class="" v-model="userVIN" type="text" id="search-VIN">
 			<input type="submit" value="Search VIN">
 		</form>
-        <!-- = ('0 - VIN decoded clean. Check Digit (9th position) is correct') -->
+        
+        <p class="i">OR</p>
+
+        <p class="b">Search by Year, Make, and Model:</p>
+
+        <form class="pb2">
+			<label class="pr2" for="search-year">Year:</label>
+			<select v-model="userYear" name="year" id="search-year" @change="getAllMakes">
+                <option v-for="year in 50" :key="year" :value="2023 -year">{{2023 - year}}</option>
+            </select>
+		</form>
+        <form v-if="userYear" class="pv2">
+			<label class="pr2" for="search-make">Make:</label>
+			<select v-model="userMake" name="make" id="search-make" @change="searchByManAndYear">
+                <option v-for="make in makeList" :key="make" :value="make">{{make}}</option>
+            </select>
+		</form>
+        <form v-if="userMake" class="pv2" @submit="xxxxxxxxxxxxxxxxxxx">
+			<label class="pr2" for="search-model">Model:</label>
+			<select v-model="userModel" name="model" id="search-model">
+                <option v-for="model in modelList" :key="model" :value="model">{{model}}</option>
+            </select>
+		</form>
+
+
+
+
 		<ul class="bg-light-red br3 pv1" v-if="output && output.ErrorText[0] !== '0'">
             <h3 class="">The following error(s) occured:</h3>
             <li class="pb2" v-for="error in output.ErrorText.split(';')">{{ error }}</li>
         </ul>
 		<ul class="list measure" v-else>
-            <li v-if="output.VIN">VIN: {{ output.VIN }}</li>
+
+            <li v-if="output.VIN">VIN: {{ userVIN }}</li>
             <li v-if="output.ModelYear">Year: {{ output.ModelYear }}</li>
-            <li v-if="output.Make">Make: {{ output.Make }}</li>
+            <li v-if="output.make">Make: {{ output.make }}</li>
             <li v-if="output.Model">Model: {{ output.Model }}</li>
             <li v-if="output.Trim">Trim: {{ output.Trim }}</li>
             <li v-if="output.Doors">Doors: {{ output.Doors }}</li>
