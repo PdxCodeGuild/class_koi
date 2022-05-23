@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This is a JS mini-capstone, allegedly</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize-css@2.3.1/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="js/secrets.js"></script>
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <input type="text" v-model="ingredientSearchInput" @keyup="ingredientSearch">
+            <ul>
+                <li v-for="ingredient in filteredIngredients">
+                    <a @click="addToMyIngredients(ingredient);">
+                        {{ ingredient }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h1>mine:</h1>
+            {{ myIngredients }}
+        </div>
+
+        <div>
+            <button @click="clearLocal">clear local storage</button>
+        </div>
+
+    </div>
+</body>
+</html>
