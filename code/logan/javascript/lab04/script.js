@@ -12,9 +12,10 @@ const App = {
             searchTerm: "",
 			error: "",
 			sQuoteData: undefined,
-			pagButton: undefined,
+			pagButton: false,
 			pagData: undefined,
 			pagCounter: 1,
+			results: "",
 
 		}
 	},
@@ -26,8 +27,6 @@ const App = {
     	i++
 		this.getQuote()
 		}
-
-
     },
 
 	methods: {
@@ -53,8 +52,10 @@ const App = {
 	})},
 		// heavily indebted to that Pete code
         searchQuote () {
+			this.pagButton = false
 			this.pagCounter = 1
 			this.error = ''
+			this.results = "Results"
 		axios({
 			method: 'get',
 			url: this.baseURL,
@@ -66,6 +67,48 @@ const App = {
 			this.sQuotes = res.data.quotes // might need to fool with this .results
 			this.sQuoteData = res.data
 			this.pagData = res.data.last_page
+			// alert(this.pagData)
+			if (this.pagData === false){
+				this.pagButton = true}
+		}).catch(err => this.error = err.message) // .catch will run if an error occurs
+		// alert(this.fQuotes)
+		// .finally(() => alert('finally ran')) // .finally is always going to run},
+			// alert(this.pagData)
+			// if (this.pagData === false){
+			// 	alert("conditional tripped")}
+			
+		// this.pagButton = "dog"
+
+			// if (this.pagData == false){
+			// 	this.pagButton = true}
+
+
+				///////////
+
+
+
+
+		// alert("we here")
+	},
+
+	nextPage () {
+			this.error = ''
+			this.pagCounter += 1
+			// alert("this is working")
+		axios({
+			method: 'get',
+			url: this.baseURL,
+			headers: { Accept: 'application/json', Authorization: "Token token=75781e1e8edbf2eb68848384abbbd2bb"}, // doesn't work
+			params: { filter: this.searchTerm, page: this.pagCounter},
+		}).then(res => {
+			// throw new Error('Something went wrong. Please try again.')
+			console.log(res.data)
+			this.sQuotes = res.data.quotes // might need to fool with this .results
+			this.sQuoteData = res.data
+			this.pagData = res.data.last_page
+			if (this.pagData === false){
+				this.pagButton = true}
+			else {pagButton = false}
 
 		}).catch(err => this.error = err.message) // .catch will run if an error occurs
 		// alert(this.fQuotes)
@@ -73,18 +116,17 @@ const App = {
 
 		// this.pagButton = "dog"
 
-			if (this.pagData === false){
-				this.pagButton = [1]
-		}
-		// alert("we here")
-	},
+			// if (this.pagData === false){
+			// 	this.pagButton = true}
 
-	nextPage () {
+			///////////
 
 
-	}
-}
-}
+
+			// else {this.pagButton = []}
+			
+}}}
+
 
 const app = Vue.createApp(App)
 app.mount('#app')
