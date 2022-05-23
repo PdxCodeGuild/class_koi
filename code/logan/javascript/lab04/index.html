@@ -17,41 +17,53 @@
 
 
        <h1>{{headline}}</h1>
+       <!-- {{pagData}}
+       {{pagButton}} -->
 
        <!-- <br> -->
 
-       <button type = "button" @click.prevent = "getQuote">
+       <br>
+       <br>
+
+       <h3> {{faveQ}} </h3>
+       <h4> {{qAuthor}} </h4>
+
+        <br>
+
+       <h3>Random Quotes</h3>
+
+       <li v-for="quote in fQuotes" class = "courier mb2">
+        {{quote}}
+        </li>
+
+        <br>
+        <br>
+
+        <button type = "button" @click.prevent = "getQuote" class = "mb3">
 
             Get Quote
 
        </button>
 
-       <br>
-       <br>
-
-       <h2> {{faveQ}} </h2>
-       <h3> {{qAuthor}} </h3>
-
-       <br>
-       <br>
-
-        <form @submit.prevent="searchQuote ()">
+        <form @submit.prevent="searchQuote ()" class = "mt3">
             <label for="search-term">Enter Search Term:</label>
             <input v-model="searchTerm" type="text" id="search-term" class = "mh2">
             <input type="submit" value="Search FaveQs">
         </form>
 
-        <br>
-        <br>
+        <li v-for="quote in sQuotes" class = "courier mb3 mt3">
+            {{quote.body}}
+            </li>
 
-        {{fQuotes}}
-        
+            <div v-for="butt in pagButton">
+                <button @click.prevent = "nextPage"> next page </button>
 
-       <!-- <li v-for="quote in quotes">
 
-        {{quote}}
+            </div>
+            
 
-       </li> -->
+
+        {{sQuoteData}}
 
     </div>
     

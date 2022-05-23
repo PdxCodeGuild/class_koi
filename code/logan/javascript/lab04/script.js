@@ -7,15 +7,27 @@ const App = {
             qAuthor: "",
             qotdURL: "https://favqs.com/api/qotd",
 			baseURL: "https://favqs.com/api/quotes/",
-            fQuotes: undefined,
+            fQuotes: [],
+			sQuotes: undefined,
             searchTerm: "",
 			error: "",
+			sQuoteData: undefined,
+			pagButton: undefined,
+			pagData: undefined,
+			pagCounter: 1,
 
 		}
 	},
     
     created () {
-        this.getQuote()
+
+		let i = 0
+		while (i < 5) {
+    	i++
+		this.getQuote()
+		}
+
+
     },
 
 	methods: {
@@ -34,11 +46,14 @@ const App = {
 
                 this.faveQ = res.data.quote.body
                 this.qAuthor = res.data.quote.author
+				this.fQuotes.push(this.faveQ)
+
 
                 // alert(this.faveQ)
 	})},
 		// heavily indebted to that Pete code
         searchQuote () {
+			this.pagCounter = 1
 			this.error = ''
 		axios({
 			method: 'get',
@@ -48,10 +63,25 @@ const App = {
 		}).then(res => {
 			// throw new Error('Something went wrong. Please try again.')
 			console.log(res.data)
-			this.fQuotes = res.data.quotes // might need to fool with this .results
+			this.sQuotes = res.data.quotes // might need to fool with this .results
+			this.sQuoteData = res.data
+			this.pagData = res.data.last_page
+
 		}).catch(err => this.error = err.message) // .catch will run if an error occurs
 		// alert(this.fQuotes)
 		// .finally(() => alert('finally ran')) // .finally is always going to run},
+
+		// this.pagButton = "dog"
+
+			if (this.pagData === false){
+				this.pagButton = [1]
+		}
+		// alert("we here")
+	},
+
+	nextPage () {
+
+
 	}
 }
 }
