@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Amazing Vue Change Machine!</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id = "app">
+        <h1>{{ headline }}</h1>
+
+        <form v-on:submit.prevent="makeChange">
+            <label for="make-change"> Please enter a number. </label>
+            <input v-model="dollarAmount" type="float" placeholder="0" id ="make-change">
+            <button type="submit"> Submit </button>
+        </form>
+
+        <p>
+            {{output}}
+        </p>
+
+
+
+
+
+
+    </div>
+</body>
+</html>
