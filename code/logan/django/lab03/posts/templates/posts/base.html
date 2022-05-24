@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        a{font-family: 'Lato', sans-serif; color:whitesmoke}
+        h2{font-family: 'Lato', sans-serif; color:#137752}
+        body{background-color: whitesmoke;}
+        footer{font-family: 'Lato', sans-serif; color:whitesmoke}
+
+
+    </style>
+
+</head>
+<body>
+    
+    <header class="bg-dark-green fixed w-100 ph3 pv3 pv4-ns ph4-m ph5-l">
+        
+        <nav class="f6 fw6 ttu tracked">
+            <a class="link dim white dib mr3" href="/" title="Home"> Home </a>          
+            <a class="link dim white dib mr3" href="/posts/worldextend" title="World"> World </a>
+          <a class="link dim white dib mr3" href="/posts/profileextend" title="Profile"> Profile </a>
+        </nav>
+
+    </header>
+    <main class="pt6 pl3">
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+    <footer class = "tr pr6 pt7">
+        <h2> © 2022 Birdhouse</h2>
+
+    </footer>
+</body>
+</html>
+
+<!-- scrap -->
+<!-- <a class="link dim white dib mr3" href="#" title="Store">Store</a>
+<a class="link dim white dib" href="#" title="Contact">Contact</a> -->
