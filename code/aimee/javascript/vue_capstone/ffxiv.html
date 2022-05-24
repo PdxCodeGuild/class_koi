@@ -14,24 +14,50 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue@3"></script>
     <style>
+        * {
+            margin: auto;
+            max-height: 60rem;
+        }
         body {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             flex-wrap: wrap;
-            background-color: #235C8E;
+            background-color: #FFFBFC;
+            max-width: 60rem;
+            max-height: 70rem;
+            justify-content: center;
         }
-
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
         .info {
+            border: 2px 2px #A0A0A0;
+            border-radius: 20px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .display-row {
+            font-family: 'Source Sans Pro';
+            color: #C8F5FF;
             display: flex;
             flex-direction: column;
-            flex-wrap: wrap;
-            border: 2px #A0A0A0;
-            border-radius: 20px;
-            padding: 2rem;
+            border: 1px solid #2660A4;
+            border-radius: 30px;
+            box-shadow: 4px 4px 4px rgb(11, 70, 110);
+            margin: 1rem;
+            background-color: #56CBF9;
+            justify-content: center;
+            overflow: scroll;
+        }
+
+        input {
+            color: #2660A4;
         }
 
         h1 {
-            color: #C8F5FF;
+            color: #FF729F;
             font-family: 'Koulen';
             font-size: 5rem;
             margin-top: -2rem;
@@ -39,17 +65,24 @@
             text-shadow: 2px 2px 10px #A0A0A0;
         }
 
+        h2 {
+            font-family: 'Koulen';
+            color: #235C8E;
+        }
+
         h3 {
             font-family: 'Source Sans Pro';
-            color: #fff;
+            color: #2660A4;
             font-weight: 400;
             font-style: italic;
+            padding: 1rem;
         }
 
         label {
             font-family: 'Source Sans Pro';
-            color: #fff;
+            color: #FF729F;
             padding-right: 1rem;
+            
         }
 
         input {
@@ -58,56 +91,115 @@
 
         p {
             font-family: 'Source Sans Pro';
-            color: #C8F5FF;
+            color: #000;
         }
 
         .character-results {
             font-family: 'Source Sans Pro';
             color: #C8F5FF;
+            display: flex;
+            flex-direction: row;
+            border: 1px solid #2660A4;
+            border-radius: 30px;
+            box-shadow: 4px 4px 4px rgb(11, 70, 110);
+            margin: 1rem;
+            background-color: #56CBF9;
+            overflow: scroll;
+        }
+        .fc-results {
+            font-family: 'Source Sans Pro';
+            color: #C8F5FF;
+            display: flex;
+            flex-direction: row;
+            border: 1px solid #2660A4;
+            border-radius: 30px;
+            box-shadow: 4px 4px 4px rgb(11, 70, 110);
+            margin: 1rem;
+            background-color: #56CBF9;
+            overflow: scroll;
+        }
+        .image {
+            width: 50%;
+        }
+
+        .text-info {
+            width: 50%;
+            text-align: right;
+        }
+        img.portrait {
+            width: 70%;
+            padding:1rem;
+            align-self: center;
+        }
+        img.avatar {
+            box-shadow: 2px 2px 2px rgb(11, 70, 110);
+        }
+        hr {
+            margin: 1rem;
         }
     </style>
 </head>
 
 <body>
     <div id="app">
+        <div class="header">
         <h1>FFXIV Character Info</h1>
         <h3>look up character data</h3>
 
-        <!-- search for a character by name -->
-        <label for="name">Search by name:</label>
-        <input type="text" id="name" v-model="name">
+        <input type="text" id="name" v-model="name" placeholder="search by name">
         <input type="submit" value="search" @click="searchName"></input><br>
 
-        <label for="fc">Search by FC:</label>
-        <input type="text" id="fc" v-model="fcname">
+        <input type="text" id="info" v-model="ID" placeholder="search by Lodestone ID">
+        <input type="submit" value="search" @click="displayCharacter"><br>
+
+        <input type="text" id="fc" v-model="fcname" placeholder="search by FC">
         <input type="submit" value="search" @click="searchFC"></input><br>
 
-        <div class="info">
-            <p v-for="result in results">{{ result.Name }}, {{ result.Server }}<br>
+        <input type="text" id="fcinfo" v-model="FCID" placeholder="search by FC ID">
+        <input type="submit" value="search" @click="displayFC"><br>
+        </div>
+
+        <hr>
+
+        <!-- general FC and character search  -->
+        <div class="display-row">
+            <p v-for="result in results" class="info">{{ result.Name }}, {{ result.Server }}<br>
                 Lodestone ID: {{ result.ID }} <br><br>
-                <a href="https://na.finalfantasyxiv.com/lodestone/character/${result.ID}/"><img
-                        v-bind:src="result.Avatar"></a><br>
-                <input type="submit" value="more info" @click="displayCharacter">
-                <div v-for="char in character" class="character-results">
-                    Part of {{ char.FreeCompanyName }} Free Company on {{ char.DC }} <br>
-                    Nameday: {{ char.Nameday }}<br>
-                    <img v-bind:src="char.Portrait">
-                    <ul>
-                        <li>{{ char.ClassJobs }}</li>
-                    </ul>
-                </div>
+                <a href="https://na.finalfantasyxiv.com/lodestone/character/`${result.ID}`"><img
+                        v-bind:src="result.Avatar" class="avatar"></a><br>
+                <input type="submit" value="more info" @click="`https://xivapi.com/character/${characterID}`">
+                <!-- <img v-bind:src="result.Crest[2]"> -->
             </p>
-            <div v-for="char in character" class="character-results">
-                Part of {{ char.FreeCompanyName }} Free Company on {{ char.DC }} <br>
-                Nameday: {{ char.Nameday }}<br>
-                <img v-bind:src="char.Portrait">
-                <ul>
-                    <li>{{ char.ClassJobs }}</li>
-                </ul>
+        </div>
+
+        <!-- detailed character/fc information - needs to be invisible till searched for -->
+        <div v-bind="character" class="character-results">
+            <div class="text-info">
+                <h2>{{character.Name}}</h2><br>
+                <p>FC: {{ character.FreeCompanyName }} on {{ character.DC }} Data Center</p>
+                <p>Nameday: {{ character.Nameday }}</p>
+            </div>
+            <div class="image">
+                <img class="portrait" v-bind:src="character.Portrait">
             </div>
         </div>
-        
-        
+
+        <!-- detailed FC information -->
+        <div v-bind="freecompany" class="fc-results">
+            <div class="text-info">
+                <h2>{{ freecompany.Name }}</h2>
+                <p>{{ freecompany.Tag }}</p>
+
+            </div>
+            <!-- <img class="portrait" v-bind:src="freecompany.Crest[2]"> -->
+            
+            <div class="members-list">
+            <p v-for="member in freecompany.FCM">
+                {{ member.Name }}
+            </p>
+            </div>
+        </div>
+
     </div>
 
     <script>
@@ -119,14 +211,19 @@
                     fcname: '',
                     character: '',
                     avatar: '',
+                    crest: '',
                     results: [],
+                    FCID: '',
+                    freecompany: '',
+                    freecompanymembers: '',
                     ID: '', // this needs to be each individual character's id
-                    character: [],
+                    characterID: '',
+                    character: '',
+                    output: '',
+                    char: '',
+                    FCM: '',
                 }
             },
-            // created() {
-            //     this.searchName()
-            // },
             methods: {
                 searchName() {
                     axios({
@@ -150,15 +247,26 @@
                         this.results = res.data.Results
                     }).catch(error => console.log(error.message))
                 },
-                displayCharacter() {
+                displayCharacter(characterID) {
                     axios({
-                        url: 'https://xivapi.com/character/8413258',
+                        url: `https://xivapi.com/character/${characterID}`,
                         headers: { Accept: 'application/json', private_key: '0d86bbfc3e384fbd8e154e5c23d06d2231cde9d7af75449b92cf531a92c080e1' },
                         method: 'get',
-                        params: { lodestone_id: this.ID }
+                        // 8413258 is an example ID
                     }).then(res => {
                         console.log(res.data)
-                        this.results = res.data.Character
+                        this.character = res.data.Character
+                    }).catch(error => console.log(error.message))
+                },
+                displayFC() {
+                    axios({
+                        url: 'https://xivapi.com/freecompany/9228297848947338844?data=FCM',
+                        headers: { Accept: 'application/json', private_key: '0d86bbfc3e384fbd8e154e5c23d06d2231cde9d7af75449b92cf531a92c080e1' },
+                        method: 'get',
+                        params: { data: this.FCM }
+                    }).then(res => {
+                        console.log(res.data)
+                        this.freecompany = res.data.FreeCompany
                     }).catch(error => console.log(error.message))
                 }
             }
