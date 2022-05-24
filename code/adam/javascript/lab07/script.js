@@ -1,19 +1,19 @@
 axios({
-    url: 'https://lldev.thespacedevs.com/2.2.0/spacecraft',
+    url: 'https://lldev.thespacedevs.com/2.2.0/launch',
     method: 'get',
     headers: {
         Accept: 'application/json'
     }
 }).then(res => {
-    console.log(res.data.next)
+    console.log(res.data.results)
 })
 
 const App = {
     data () {
         return {
+            searchType: '',
             searchTerm: '',
             baseUrl: 'https://lldev.thespacedevs.com/2.2.0/',
-            imageUrl: '',
             spacecraft: [],
             searchCraft: '',
             nextUrl:'',
@@ -26,17 +26,17 @@ const App = {
 
     methods: {
         getCraft () {
-            //console.log(res.data.results[0])
+            //console.log(res.data)
             axios({
                 url: this.baseUrl + 'spacecraft/', // url: this.url,
                 headers: { Accept: 'application/json' },
                 method: 'get',
-                // params: { limit: 10, offset: 0 }
+                params: { status: this.searchType,} //limit: 10, offset: 0
             }).then(res=> {
                 console.log(res.data)
+                console.log(this.searchType)
                 this.spacecraft = res.data.results
-                console.log(this.spacecraft)
-                this.imageUrl = res.data.results[0].spacecraft_config.image_url
+                console.log(this.spacecraft[0].spacecraft_config.in_use)
                 this.nextUrl = res.data.next
                 console.log(res.data.next)
                 // this.url = res.data.next
@@ -73,14 +73,25 @@ const App = {
             axios({
                 url: this.baseUrl + 'spacecraft/',
                 headers: { Accept: 'application/json' },
-                params: { search: this.searchTerm },
+                params: { search: this.searchTerm, status: this.searchType },
                 method: 'get',
             }).then(res=> {
                 console.log(res.data)
                 console.log(res.data.results[0].name)
+                console.log(res.data.results[0].spacecraft_config.in_use)
                 this.spacecraft = res.data.results
                 this.nextUrl = res.data.next
                 this.previousUrl = res.data.previous
+            })
+        },
+
+        getLaunch() {
+            axois({
+                url: this.baseUrl + 'launch/',
+                headers: { Accept: 'application/json'},
+                method: 'get',
+            }).then(res=> {
+                console.log(res.data)
             })
         }
             
