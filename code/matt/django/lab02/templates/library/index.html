@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block title %}: Home{% endblock %}
+
+{% block content %}
+    <h1>{{ message }}</h1>
+    <h2><a href="{% url 'library:authors' %}">Authors:</a></h2>
+    <ul>
+        {% for author in authors %}
+        <li><a href="{% url 'library:author_detail' author.slug %}">{{ author }}</a></li>
+        {% endfor %}
+    </ul>
+    <h2><a href="{% url 'library:books' %}">Books:</a></h2>
+    <ul>
+        {% for book in books %}
+        <li><a href="{% url 'library:book_detail' book.slug %}">{{ book }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block home_link %}
+{% endblock %}
