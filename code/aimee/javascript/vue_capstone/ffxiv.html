@@ -16,29 +16,37 @@
     <style>
         * {
             margin: auto;
-            max-height: 60rem;
+            max-height: 70rem;
+            max-width: 30rem;
         }
+
         body {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             background-color: #FFFBFC;
-            max-width: 60rem;
+            max-width: 30rem;
             max-height: 70rem;
             justify-content: center;
+            border: 4px solid #FF729F;
+            border-radius: 15px;
         }
+
         .header {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: flex-start;
         }
+
         .info {
             border: 2px 2px #A0A0A0;
             border-radius: 20px;
             padding: 1rem;
             text-align: center;
+
         }
-        .display-row {
+
+        .display-characters {
             font-family: 'Source Sans Pro';
             color: #C8F5FF;
             display: flex;
@@ -48,19 +56,38 @@
             box-shadow: 4px 4px 4px rgb(11, 70, 110);
             margin: 1rem;
             background-color: #56CBF9;
-            justify-content: center;
+            padding-top: 3rem;
+        }
+
+        .display-fcs {
+            font-family: 'Source Sans Pro';
+            color: #C8F5FF;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #2660A4;
+            border-radius: 30px;
+            box-shadow: 4px 4px 4px rgb(11, 70, 110);
+            margin: 1rem;
+            background-color: #56CBF9;
+            padding-top: 3rem;
+        }
+
+        .profile {
+            display: flex;
+            flex-direction: column;
             overflow: scroll;
+            max-height: 50rem;
         }
 
         input {
             color: #2660A4;
+            font-family: 'Source Sans Pro';
         }
 
         h1 {
             color: #FF729F;
             font-family: 'Koulen';
-            font-size: 5rem;
-            margin-top: -2rem;
+            font-size: 3rem;
             margin-bottom: -2rem;
             text-shadow: 2px 2px 10px #A0A0A0;
         }
@@ -76,17 +103,21 @@
             font-weight: 400;
             font-style: italic;
             padding: 1rem;
+            text-align: center;
+        }
+
+        h3.details {
+            font-family: 'Source Sans Pro';
+            color: #2660A4;
+            font-weight: 600;
+            font-style: italic;
         }
 
         label {
             font-family: 'Source Sans Pro';
             color: #FF729F;
             padding-right: 1rem;
-            
-        }
 
-        input {
-            font-family: 'Source Sans Pro';
         }
 
         p {
@@ -94,18 +125,25 @@
             color: #000;
         }
 
+        .image {
+            max-width: 28rem;
+        }
+
         .character-results {
             font-family: 'Source Sans Pro';
             color: #C8F5FF;
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             border: 1px solid #2660A4;
             border-radius: 30px;
             box-shadow: 4px 4px 4px rgb(11, 70, 110);
             margin: 1rem;
             background-color: #56CBF9;
             overflow: scroll;
+            max-height: 50rem;
+            max-width: 28rem;
         }
+
         .fc-results {
             font-family: 'Source Sans Pro';
             color: #C8F5FF;
@@ -118,22 +156,16 @@
             background-color: #56CBF9;
             overflow: scroll;
         }
-        .image {
-            width: 50%;
-        }
 
         .text-info {
-            width: 50%;
-            text-align: right;
+            text-align: center;
+            margin: 1rem;
         }
-        img.portrait {
-            width: 70%;
-            padding:1rem;
-            align-self: center;
-        }
+
         img.avatar {
             box-shadow: 2px 2px 2px rgb(11, 70, 110);
         }
+
         hr {
             margin: 1rem;
         }
@@ -143,61 +175,86 @@
 <body>
     <div id="app">
         <div class="header">
-        <h1>FFXIV Character Info</h1>
-        <h3>look up character data</h3>
+            <h1>FFXIV Character Info</h1>
+            <div class="sub-header">
+                <h3>look up character data</h3>
 
-        <input type="text" id="name" v-model="name" placeholder="search by name">
-        <input type="submit" value="search" @click="searchName"></input><br>
+                <input type="text" id="name" v-model="name" placeholder="search by name">
+                <input type="submit" value="search" @click="searchName" v-on:click="isHidden=false"
+                    v-on:click="hideButton=false"></input><br>
 
-        <input type="text" id="info" v-model="ID" placeholder="search by Lodestone ID">
-        <input type="submit" value="search" @click="displayCharacter"><br>
-
-        <input type="text" id="fc" v-model="fcname" placeholder="search by FC">
-        <input type="submit" value="search" @click="searchFC"></input><br>
-
-        <input type="text" id="fcinfo" v-model="FCID" placeholder="search by FC ID">
-        <input type="submit" value="search" @click="displayFC"><br>
+                <input type="text" id="fc" v-model="fcname" placeholder="search by FC">
+                <input type="submit" value="search" @click="searchFC" v-on:click="isHiddenFC=false"></input><br>
+            </div>
         </div>
 
         <hr>
 
-        <!-- general FC and character search  -->
-        <div class="display-row">
-            <p v-for="result in results" class="info">{{ result.Name }}, {{ result.Server }}<br>
-                Lodestone ID: {{ result.ID }} <br><br>
-                <a href="https://na.finalfantasyxiv.com/lodestone/character/`${result.ID}`"><img
-                        v-bind:src="result.Avatar" class="avatar"></a><br>
-                <input type="submit" value="more info" @click="`https://xivapi.com/character/${characterID}`">
-                <!-- <img v-bind:src="result.Crest[2]"> -->
-            </p>
-        </div>
-
-        <!-- detailed character/fc information - needs to be invisible till searched for -->
-        <div v-bind="character" class="character-results">
-            <div class="text-info">
-                <h2>{{character.Name}}</h2><br>
-                <p>FC: {{ character.FreeCompanyName }} on {{ character.DC }} Data Center</p>
-                <p>Nameday: {{ character.Nameday }}</p>
-            </div>
+        <!-- detailed character info -->
+        <div v-bind="character" class="character-results" v-if="!hideDetails">
             <div class="image">
                 <img class="portrait" v-bind:src="character.Portrait">
             </div>
+            <div class="text-info">
+                <h2>{{character.Name}}</h2>
+                <!-- <h3 class="details">Active Job/Class</h3> -->
+                <!-- <p>{{ character.ActiveClassJob }}</p> would like to figure out later -->
+                <h3 class="details">Free Company</h3>
+                <p>{{ character.FreeCompanyName }}</p>
+                <h3 class="details">Data Center</h3>
+                <p>{{ character.DC }}</p>
+                <h3 class="details">Nameday</h3>
+                <p>{{ character.Nameday }}</p>
+                <h3 class="details">Race</h3>
+                <p>{{ races[character.Race] }}</p>
+                <h3 class="details">Gender</h3>
+                <p>{{ gender[character.Gender] }}</p>
+            </div>
         </div>
 
-        <!-- detailed FC information -->
-        <div v-bind="freecompany" class="fc-results">
-            <div class="text-info">
-                <h2>{{ freecompany.Name }}</h2>
-                <p>{{ freecompany.Tag }}</p>
+        <!-- character results -->
+        <div class="display-characters" v-if="!isHidden">
+            <div class="profile">
+                <p v-for="result in results" class="info">{{ result.Name }}, {{ result.Server }}<br>
+                    Lodestone ID: {{ result.ID }} <br><br>
+                    <a target="_blank"
+                        v-bind:href="`https://na.finalfantasyxiv.com/lodestone/character/${result.ID}`"><img
+                            v-bind:src="result.Avatar" class="avatar"></a><br>
+                    <input type="submit" value="more info" @click="displayCharacter(result.ID)"
+                        v-on:click="hideDetails=false; isHidden=true">
+                </p>
+            </div>
+        </div>
 
+        <!-- fc results -->
+        <div class="display-fcs" v-if="!isHiddenFC">
+            <div class="profile">
+                <p v-for="result in results" class="info">{{ result.Name }}, {{ result.Server }}<br>
+                    Lodestone ID: {{ result.ID }} <br><br>
+                    <a target="_blank"
+                        v-bind:href="`https://na.finalfantasyxiv.com/lodestone/character/${result.ID}`"><img
+                            v-bind:src="result.Avatar" class="avatar"></a><br>
+                    <input type="submit" value="more info" @click="displayFC(result.ID)"
+                        v-on:click="hideFC=false; isHiddenFC=true">
+                    <img v-bind:src="result.Crest[2]">
+                </p>
             </div>
-            <!-- <img class="portrait" v-bind:src="freecompany.Crest[2]"> -->
-            
-            <div class="members-list">
-            <p v-for="member in freecompany.FCM">
-                {{ member.Name }}
-            </p>
+        </div>
+
+
+        <!-- detailed FC information -->
+        <div v-bind="freecompany" class="fc-results" v-if="!hideFC">
+            <div class="text-info">
+                <h2>{{ freecompany.Name }} - "{{ freecompany.Tag }}"</h2>
+                <h3 class="details">Active Members</h3>
+                <p>{{ freecompany.ActiveMemberCount }}</p>
+                <h3 class="details">Grand Company</h3>
+                <p>{{ freecompany.GrandCompany }}</p>
+                <h3 class="details">Slogan</h3>
+                <p>{{ freecompany.Slogan }}</p><br>
             </div>
+            <img class="portrait" v-bind:src="result.Crest[2]">
+
         </div>
 
     </div>
@@ -207,6 +264,11 @@
             data() {
                 return {
                     baseUrl: 'https://xivapi.com/',
+                    isHidden: true,
+                    isHiddenFC: true,
+                    hideFC: true,
+                    hideDetails: true,
+                    hideButton: true,
                     name: '',
                     fcname: '',
                     character: '',
@@ -216,12 +278,31 @@
                     FCID: '',
                     freecompany: '',
                     freecompanymembers: '',
-                    ID: '', // this needs to be each individual character's id
+                    ID: '',
                     characterID: '',
                     character: '',
                     output: '',
                     char: '',
                     FCM: '',
+                    FC: '',
+                    estate: '',
+                    races: [
+                        "",
+                        "Hyur",
+                        "Elezen",
+                        "Lalafell",
+                        "Miqo'te",
+                        "Roegadyn",
+                        "Au Ra",
+                        "Hrothgar",
+                        "Viera"
+                    ],
+                    gender: [
+                        "",
+                        "male",
+                        "female"
+                    ]
+
                 }
             },
             methods: {
@@ -248,22 +329,23 @@
                     }).catch(error => console.log(error.message))
                 },
                 displayCharacter(characterID) {
+                    console.log(characterID)
                     axios({
                         url: `https://xivapi.com/character/${characterID}`,
                         headers: { Accept: 'application/json', private_key: '0d86bbfc3e384fbd8e154e5c23d06d2231cde9d7af75449b92cf531a92c080e1' },
                         method: 'get',
-                        // 8413258 is an example ID
+                        params: { data: this.FC }
                     }).then(res => {
                         console.log(res.data)
                         this.character = res.data.Character
                     }).catch(error => console.log(error.message))
                 },
-                displayFC() {
+                displayFC(fcid) {
+                    console.log(fcid)
                     axios({
-                        url: 'https://xivapi.com/freecompany/9228297848947338844?data=FCM',
+                        url: `https://xivapi.com/freecompany/${fcid}`,
                         headers: { Accept: 'application/json', private_key: '0d86bbfc3e384fbd8e154e5c23d06d2231cde9d7af75449b92cf531a92c080e1' },
                         method: 'get',
-                        params: { data: this.FCM }
                     }).then(res => {
                         console.log(res.data)
                         this.freecompany = res.data.FreeCompany
