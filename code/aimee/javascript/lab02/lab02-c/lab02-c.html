@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Averaging Numbers in Vue</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Average Numbers in Vue</h1>
+        <input type="number" v-model="inputNumber" placeholder="Enter a number">
+        <br>
+        <button v-on:click="addToList">Add to list</button>
+
+        <p id="output">Your numbers are: {{ inputNumbers }}</p>
+        <br>
+        <button v-on:click="averageNumbers">Average!</button>
+       
+
+        
+        
+    </div>
+
+    <script>
+        const App = {
+            data() {
+                return {
+                    inputNumbers: [],
+                    inputNumber: '',
+                    }
+                },
+            methods: {
+                addToList() {
+                    this.inputNumbers.push(Number(this.inputNumber))
+                    this.inputNumber = '';
+                    console.log(this.inputNumbers)
+                },
+                averageNumbers() {
+                    let sum = 0;
+                    for (let i in this.inputNumbers) {
+                        sum += this.inputNumbers[i]
+                    }
+                    alert(`The average is ${sum / this.inputNumbers.length}`)
+                }
+            }
+        }
+
+        const app = Vue.createApp(App)
+        app.mount('#app')
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+{% extends "library/core.html" %}
+
+{% block title %}: Home{% endblock %}
+
+{% block content %}
+    <h3 class="f3 navy">Books by {{ author }}:</h3>
+	
+	<h3 class="f3 navy"></h3>
+	<ul class="list pl0 pl3">
+		{% for book in author.books.all %}
+		<li>
+            <a class= "lh-copy black link" href="/book/{{ book.id }}">{{ book }}</a>
+        </li> 
+        {% endfor %}
+	</ul>
+
+{% endblock %}
+
+
+
