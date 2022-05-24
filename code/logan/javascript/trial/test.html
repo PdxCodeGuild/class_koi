@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="testscript.js" defer></script>
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+    
+    
+    
+    
+    
+    <title>Capstone</title>
+</head>
+<body class="bg-near-white">
+
+    <div id = "app">
+
+        <h1 class = "calisto purple">{{message}}</h1>
+       
+        <p class = "calisto green">
+        {{urlFetch}} <br> <br>
+       <!-- {{breedData}} -->
+        {{breedList}} <br> <br>
+        {{breedIDList}} <br> <br>
+        {{shortDict}} <br> <br>
+        </p>
+        
+        <br>
+        <div class = "flex flex-wrap justify-center ph4">
+            <button class = "mt3" type="button" @click.prevent = "getCat" > Random Cat </button>
+        </div>
+
+        <br>
+
+        
+        
+        <div class = "flex flex-wrap justify-center ph4">
+            <button v-for = "breed in breedList" class = "ma1"> {{breed}} </button>
+        </div>
+
+        <!-- <button class = "mt3" type="button" @click.prevent = "breedGrab" > Get Breeds </button> -->
+
+        <!-- <img v-for="image in imgURLs" :src="image.url"/> -->
+     
+     
+     
+     
+     
+     
+     
+    <!-- <form id="myForm">
+        <select id="selectBreed">
+              <option>Select a breed</option>
+        </select>
+    </form> -->
+     
+     
+     
+    <!-- <form @submit.prevent="searchCat" class = "mt3">
+        <label for="search-term">Enter Search Term:</label>
+        <input v-model="searchTerm" type="text" id="search-term" class = "mh2">
+        <input type="submit" value="Search 4 Cats">
+    </form> -->
+
+
+
+    </div>
+    
+
+
+
+
+
+</body>
+</html>
