@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab07</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>MiniCapstone API</h1>
+        <button @click="getCraft">get 10 craft</button>
+        <form @submit.prevent="searchKeyword" style="margin-top: 0.5rem;">
+            <label for="keyword-search">Enter keyword search for space craft: </label>
+            <input v-model="searchTerm" type="text" id="keyword-search" required autofocus>
+            <input type="submit" value="Search" style="margin-left: 0.5rem">
+
+
+        </form>
+
+        <button @click="nextPage" v-if='nextUrl' style="margin: 0.5rem;">next Page</button>
+        <button @click="previousPage" v-if='previousUrl' style="margin: 0.5rem;">previous Page</button>
+        <div v-for="(craft,index) in spacecraft" id="craft" style="display:flex; justify-content:flex-right; width:40rem; height:20rem; background-color: coral; margin-bottom: 0.5rem;">
+            <img style="max-height: 20rem;" v-bind:src="craft.spacecraft_config.image_url">
+            <ul>
+                <li style="margin: 0.5rem;">{{ craft.name }}</li>
+                <li style="margin: 0.5rem;">{{ craft.description }}</li>
+                <li style="margin: 0.5rem;">{{ craft.status.name }}</li>
+            </ul>
+        </div>
+        <div>
+            <form @submit.prevent="getCraft" style="margin-top: 1rem;">
+                <label for="searchCraft" >Search Craft by :</label>
+                <select v-model="searchCraft" id="searchCraftId" required>
+                    <option value="name">name</option>
+                    <option value="manufacturer">manufacturer</option>
+                    <option value="in_use">in-use</option>
+                </select>
+
+            </form>
+        </div>
+
+
+
+    </div>
+
+    
+</body>
+</html>
