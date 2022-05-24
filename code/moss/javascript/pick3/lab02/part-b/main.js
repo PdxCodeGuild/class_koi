@@ -1,29 +1,32 @@
-let user_num_list = []
+let numberInput = document.getElementById("number-input")
+let numberArray = document.getElementById("number-array")
+let avrgButton = document.getElementById("average-btn")
+let avrgResult= document.getElementById("result")
 
-while (true) {
+let number_array = []
 
-    let user_num = prompt ("\nWelcome to the averaging tool, enter your number or 'done' to quit:\n")
-    // console.log(user_num)
-    if (user_num === "done") {
+avrgButton.addEventListener("click", function() {
 
-        let sum_user_num_list = 0
+    let sum_number = 0
 
-        for (let i = 0; i < user_num_list.length; i++) {
-            sum_user_num_list += user_num_list[i]
-            console.log(sum_user_num_list)
-        }
+    let number = numberInput.value 
+    console.log(`${number} is the input number`)
 
-        let answer = sum_user_num_list/user_num_list.length
+    number_array.push(number)
+    console.log(`${number_array} is an array of input numbers`)
 
-        alert(`The average is : ${answer}`)
-
-        break
-
-
-    } else {
-
-        user_num_list.push(parseInt(user_num))
-        console.log(user_num_list)
-        console.log(user_num)
+    for (let numberarrays of numberArray){
+        sum_number += parseInt(numberarrays)
+        console.log(sum_number)
     }
-}
+ 
+    let total = number_array.length
+    console.log(total)
+
+    let average = sum_number/total
+    console.log(`${average} is the average`)
+
+    numberArray.innerText = `Numbers : ${number_array}`
+    avrgResult.innerText = `Average : ${average}`
+
+})
