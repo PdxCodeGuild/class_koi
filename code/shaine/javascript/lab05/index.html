@@ -19,13 +19,16 @@
         </div>
 
         <ul class="task-list">
-            <li class="task-list-item" v-for="(task, index) in tasks">
+            <div v-for="(task, index) in tasks">
+            <li class="hide" v-if="task.delete === true"></li>
+            <li class="task-list-item" v-else-if="task.delete === false">
                 <label class="task-list-item-label">
                     <input type="checkbox">
                     <span>{{task.name}}</span>
-                    <span class="delete-btn" title="Delete Task" @click="delItem(task)">{{task.del}}</span>
                 </label>
+                <span class="delete-btn" title="Delete Task" @click="task.delete=true">{{task.del}}</span>
             </li>
+        </div>
         </ul>
     </div>
 

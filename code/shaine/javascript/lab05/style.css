@@ -170,3 +170,6 @@ ul {
     background-position: center;
     cursor: pointer;
 }
+.hide {
+  display: none;  
+}

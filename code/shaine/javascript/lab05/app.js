@@ -3,9 +3,13 @@ const app = Vue.createApp({
         return {
             title: 'todo list',
             tasks: [
-                {name: 'test 1'},
-                {name: 'test 2'},
-                {name: 'test 3'},
+                {name: 'test 1', delete: false},
+                {name: 'test 2', delete: false},
+                {name: 'test 3', delete: false},
+                {name: 'test 4', delete: false},
+                {name: 'test 5', delete: false},
+                {name: 'test 6', delete: false},
+                {name: 'test 7', delete: false},
         ]
         }
     },
@@ -20,8 +24,13 @@ const app = Vue.createApp({
             });
             this.tasks.name = "";
         },
-        delItem(task) {
-            this.tasks.splice(this.tasks.indexOf(task), 1);
+        delItem(index) {
+            // this.delete(this.tasks, index);
+            // this.tasks.splice(index, 1);
+            // this.tasks.splice(this.tasks.indexOf(task), 1);
+            this.tasks.splice(index, 1);
+            // delete this.tasks[(this.tasks.indexOf(task))];
+            console.log(this.tasks);
         }
     }
 })
