@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DOM Manipulation</title>
+	<style>
+		#button-1 {
+			background-color: pink;
+		}
+		p {
+			color: chartreuse;
+			background-color: black;
+		}
+	</style>
+	<!-- don't leave your script tag up here if it doesn't have the defer attribute -->
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<!-- you can set the onclick attribute in the element,
+	but it's better just to combine document.querySelector
+	and element.addEventListener -->
+	<h1 class="header" onclick="clickH1()">DOM Manipulation</h1>
+	<button id="button-1">Click Me</button>
+	<p></p>
+	<form id="color-form">
+		<label for="color">Pick a Background Color</label>
+		<input type="text" id="color">
+		<input type="submit" value="submit form">
+	</form>
+	<!-- if not using defer, leave the script tag here: -->
+	<!-- <script src="script.js"></script> -->
+</body>
+</html>

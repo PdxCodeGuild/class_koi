@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Nutrition DataBase</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+	<h1 class="text-center bg-zinc-700 text-yellow-100 py-5 text-3xl">Nutrition DataBase</h1>
+	<main class="pt-10">
+		<!-- This example requires Tailwind CSS v2.0+ -->
+		<section class="px-4 sm:px-6 lg:px-8">
+			<div class="sm:flex sm:items-center">
+				<div class="sm:flex-auto">
+					<h1 class="text-xl font-semibold text-gray-900">Nutrition Facts</h1>
+					<p class="mt-2 text-sm text-gray-700">A list of all the users in your account including their name, title,
+						email and role.</p>
+				</div>
+				<div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+					<button type="button"
+						class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Add
+						user</button>
+				</div>
+			</div>
+			<div class="mt-8 flex flex-col">
+				<div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+					<div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+						<div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+							<table class="min-w-full divide-y divide-gray-300">
+								<thead class="bg-gray-50">
+									<tr>
+										<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Name
+										</th>
+										<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Calories</th>
+										<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Fat (g)</th>
+										<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Carbs (g)</th>
+										<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Protein (g)</th>
+										<!-- <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Serving Size (g)</th> -->
+
+									</tr>
+								</thead>
+								<tbody class="divide-y divide-gray-200 bg-white">
+									{% for fact in nutrition_facts %}
+									<tr>
+										<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
+											<div class="flex items-center">
+												<div class="h-10 w-10 flex-shrink-0">
+													<img class="h-10 w-10 rounded-full" src="{{ fact.image.url }}" alt="">
+												</div>
+												<div class="ml-4">
+													<div class="font-medium text-gray-900">{{ fact.name }}</div>
+													<div class="text-gray-500">Serving Size: {{ fact.serving_size }}g</div>
+												</div>
+											</div>
+										</td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+											{{ fact.calories }}
+										</td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+											{{ fact.fat }}
+										</td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+											{{ fact.carbs }}
+										</td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+											{{ fact.protein }}
+										</td>
+									</tr>
+									{% endfor %}
+									<!-- More people... -->
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<p class="hidden">{{ secret_message }}</p>
+
+		<!-- <form action="{% url 'nutrition:index' %}" method="POST" class="m-32" enctype="multipart/form-data">
+			{% csrf_token %}
+
+			<div class="my-3 flex justify-between w-1/2">
+				<label for="name" class="pr-5">Name:</label>
+				<input type="text" id="name" name="name" class="border-black border-2 rounded-md mr-4">
+			</div>
+
+			<div class="my-3 flex justify-between w-1/2">
+				<label for="serving_size" class="pr-5">Serving Size (g):</label>
+				<input type="number" id="serving_size" name="serving_size" class="border-black border-2 rounded-md mr-4">
+			</div>
+
+			<div class="my-3 flex justify-between w-1/2">
+				<label for="calories" class="pr-5">Calories:</label>
+				<input type="number" id="calories" name="calories" class="border-black border-2 rounded-md mr-4">
+			</div>
+
+			<div class="my-3 flex justify-between w-1/2">
+				<label for="fat" class="pr-5">Fat (g):</label>
+				<input type="number" id="fat" name="fat" class="border-black border-2 rounded-md mr-4">
+			</div>
+
+			<div class="my-3 flex justify-between w-1/2">
+				<label for="carbs" class="pr-5">Carbs (g):</label>
+				<input type="number" id="carbs" name="carbs" class="border-black border-2 rounded-md mr-4">
+			</div>
+
+			<div class="my-3 flex justify-between w-1/2">
+				<label for="protein" class="pr-5">Protein (g):</label>
+				<input type="number" id="protein" name="protein" class="border-black border-2 rounded-md mr-4">
+			</div>
+
+			<div class="my-3 flex justify-between w-1/2">
+				<label for="image" class="pr-5">Image:</label>
+				<input type="file" accept="image/*" id="image" name="image" class="border-black border-2 rounded-md mr-4" value="Add Image">
+			</div>
+
+			<div class="my-3 flex justify-end w-1/2">
+				<input type="submit" value="Add Nutrition Facts" class="
+				border-zinc-700 border-2 rounded-md
+				hover:bg-zinc-800 hover:text-white
+				cursor-pointer px-3 my-2 mr-4
+				">
+			</div>
+		</form> -->
+
+		<form action="{% url 'nutrition:index' %}" method="POST" class="m-32" enctype="multipart/form-data">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<div class="my-3 flex justify-end w-1/2">
+				<input type="submit" value="Add Nutrition Facts" class="
+				border-zinc-700 border-2 rounded-md
+				hover:bg-zinc-800 hover:text-white
+				cursor-pointer px-3 my-2 mr-4
+				">
+			</div>
+		</form>
+
+	</main>
+</body>
+
+</html>
