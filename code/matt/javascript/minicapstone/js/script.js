@@ -6,6 +6,7 @@ createApp({
             // main API endpoint and modifiers
             baseURL: `https://www.thecocktaildb.com/api/json/v2/${API_KEY}/`,
             listURL: 'list.php',
+            lookupURL: 'lookup.php',
             searchURL: 'search.php',
             filterURL: 'filter.php',
             // object to hold full ingredient list
@@ -18,6 +19,8 @@ createApp({
             myIngredients: [],
             // recipes containing at least one of user's ingredients
             myRecipes: {},
+            // array of arrays of recipes indexed according to number of missing ingredients
+            possibleRecipes: [],
         }
     },
     created () {
@@ -45,7 +48,7 @@ createApp({
                     // add name key with string value and recipes key with empty array to each ingredient
                     this.ingredientsObj[itemName] = {
                         name: itemName,
-                        recipes: [],
+                        recipes: {},
                     }
                 })
                 console.log(this.ingredientsObj)
@@ -71,10 +74,10 @@ createApp({
                 // add to array and sort
                 this.myIngredients.push(ingredient)
                 this.myIngredients.sort()
-                // save to local storage
-                this.saveToLocal()
                 // get list of recipes for this ingredient
                 this.ingredientRecipes(ingredient)
+                // save to local storage
+                this.saveToLocal()
             }
         },
         // gets all cocktails that a given ingredient is used in
@@ -89,88 +92,97 @@ createApp({
                     i: ingredient,
                 }
             }).then(res => {
-                // iterate through response and add recipe names to ingredient object
-                res.data.drinks.forEach(item => {
-                    this.ingredientsObj[ingredient].recipes.push(item.strDrink)
+                // iterate through response and add recipes to ingredient object as objects
+                if (!(res.data.drinks == "None Found")) {
+                    res.data.drinks.forEach(item => {
+                        // format each object as drinkNameString: drinkID
+                        this.ingredientsObj[ingredient].recipes[item.strDrink] = item.idDrink
+                        // request full recipe for each drink returned
+                        this.recipeDetails(item.idDrink)
                     })
-                    // console.log(this.ingredientsObj)
+                }
+                // console.log(this.ingredientsObj)
             })
-            //////////////////////////THIS IS WHERE I'M AT - STARTED recipeDetails AND I NEED TO FINISH THAT AND CALL IT AFTER I ADD RECIPE NAMES
         },
         // gets details of recipes
-        recipeDetails (recipeName) {
+        recipeDetails (recipeID) {
             axios({
-                url: this.baseURL + this.searchURL,
+                url: this.baseURL + this.lookupURL,
                 method: 'get',
                 headers: {
                     Accept: 'application/json',
                 },
                 params: {
-                    s: recipeName,
+                    i: recipeID,//change to int id
                 }
+            }).then(res => {
+                // assign drink response to variable for easier access
+                let recipeResponse = res.data.drinks[0]
+                // construct recipe object
+                this.myRecipes[recipeResponse.strDrink] = {
+                    name: recipeResponse.strDrink,
+                    id: recipeID,
+                    glass: recipeResponse.strGlass,
+                    instructions: recipeResponse.strInstructions,
+                    image: recipeResponse.strDrinkThumb,
+                    ingredients: {}
+                }
+                // get arrays of keys for ingredients and measures
+                let recipeIngredients = Object.keys(recipeResponse).filter(eachString => {return eachString.includes('Ingredient')})
+                let recipeMeasures = Object.keys(recipeResponse).filter(eachString => {return eachString.includes('Measure')})
+                // iterate over non-null ingredients and add them and their measures to object
+                recipeIngredients.forEach((item, index) => {
+                    if (recipeResponse[item]) {
+                        this.myRecipes[recipeResponse.strDrink].ingredients[recipeResponse[item]] = recipeResponse[recipeMeasures[index]]
+                    }
+                })
+                this.saveToLocal()
+                // console.log(this.myRecipes)
             })
         },
-        // saves myIngredients array to local storage
+        // finds number of missing ingredients per recipe
+        missingIngredientCount () {
+            // iterate through each recipe
+            Object.keys(this.myRecipes).forEach(thisRecipe => {
+                // reset counter for missing ingredients
+                let numMissing = 0
+                // iterate through each ingredient in the recipe
+                Object.keys(this.myRecipes[thisRecipe].ingredients).forEach(thisIngredient => {
+                    // increment counter if a missing ingredient is found
+                    if (!(this.myIngredients.includes(thisIngredient))) {
+                        numMissing++
+                    }
+                })
+                // add an empty array at the index matching the number of missing ingredients if an array is not already present
+                if (!(this.possibleRecipes[numMissing])) {
+                    this.possibleRecipes[numMissing] = []
+                }
+                // add recipe to possibleRecipes array at the index position matching the number of missing ingredients
+                this.possibleRecipes[numMissing].push(thisRecipe)
+            })
+            // console.log(this.possibleRecipes)
+        },
+        // saves myIngredients and myRecipes arrays to local storage
         saveToLocal () {
             const parsedMyIngredients = JSON.stringify(this.myIngredients)
             localStorage.setItem('myIngredients', parsedMyIngredients)
+            const parsedMyRecipes = JSON.stringify(this.myRecipes)
+            localStorage.setItem('myRecipes', parsedMyRecipes)
         },
-        // loads myIngredients array from local storage
+        // loads myIngredients and myRecipes arrays from local storage
         loadFromLocal () {
             if (localStorage.getItem('myIngredients')) {
                 this.myIngredients = JSON.parse(localStorage.getItem('myIngredients'))
+            }
+            if (localStorage.getItem('myRecipes')) {
+                this.myRecipes = JSON.parse(localStorage.getItem('myRecipes'))
             }
         },
         // resets local storage
         clearLocal () {
             this.myIngredients = []
+            this.myRecipes = {}
             localStorage.clear()
         },
     }
 }).mount('#app')
-
-
-/*
-***API call to get all ingredients
-?Save ingredients to local storage
-***List all possible ingredients
-***User selects ingredients they have
-***Save user's ingredients to local storage
-***API call per ingredient -> save drink name/ID
-API call per saved drink
-?? save drinks to local storage ??
-per drink, check if all ingredients are on user ingredient list (increment counter if not)
-
-*/
-
-/*
-filter = {
-    "drinks": [
-        {
-            "strDrink": "155 Belmont",
-            "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/yqvvqs1475667388.jpg",
-            "idDrink": "15346"
-        },
-    ]
-}
-
-*/
-
-
-/*
-
-myRecipes Object of Objects {
-    ==strDrink==: {
-        name: string, // strDrink
-        glass: string, // strGlass
-        instructions: string, // strInstructions
-        image: string, // strDrinkThumb
-        ingredients: {
-            ==strIngredient[1-15]==: ==strMeasure[1-15]==
-        }
-    
-    }
-}
-    
-
-*/

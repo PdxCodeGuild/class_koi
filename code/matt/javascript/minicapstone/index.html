@@ -25,8 +25,11 @@
             </ul>
         </div>
         <div>
+            <a @click="missingIngredientCount">let's gooooo</a>
             <h1>mine:</h1>
             {{ myIngredients }}
+            <h1>also mine:</h1>
+            {{ Object.keys(myRecipes) }}
         </div>
 
         <div>
