@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Log In</title>
+{% endblock %}
+
+{% block content %}
+<!-- <div class="container text-center"> -->
+    <main class="form-signin justify-content-center" style="max-width:330px;margin:auto;">
+        <p>{{ message }}</p>
+        <h1 class="h3 mb-3 fw-normal">Please Log In</h1>
+        <form action="{% url 'users:login' %}" method="POST" class="justify-content-center">
+        {% csrf_token %}
+            <div class="form-floating">
+                <input type="text" id="floatingInput" class="form-control" name="username" placeholder="Username">
+                <label for="floatingInput">Username</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" id="floatingPassword" class="form-control" name="password" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        </form>
+    </main>
+<!-- </div>     -->
+{% endblock %}
