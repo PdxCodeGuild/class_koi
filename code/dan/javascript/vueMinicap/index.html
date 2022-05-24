@@ -6,25 +6,31 @@
     <script src="secrets.js"></script>
     <title>Party Barge </title>
   </head>
-  <body>
-    <h1>Welcome to Party Barge</h1>
+  <body class="bg-cyan-700">
+    <h1 class="text-xl font-bold font-mono text-center pt-20 bg-cyan-300">Welcome to Party Barge</h1>
     <div id="app">
 
-      <form @submit.prevent="getweather">
-        <label for="zip">Enter Zip Code:</label>
-        <input v-model="zip" type="text" id="zip">
-        <input type="submit" value="Is it Party Weather?">
+      <div class="flex justify-center pt-10">
 
-      <h3> Here is Today's Party Tempature</h3>
-       <p>The tempature today is  {{info}} degrees F</p>
+      <form class="flex space-x-3" @submit.prevent="getweather">
+        <label class="font-bold" for="zip">Please enter Zip Code:</label>
+        <input v-model="zip" type="text" id="zip">
+        <input class="bg-yellow-100 font-semibold"type="submit" value="Is it Party Weather?">
+        </form>
+      </div>
+      <h3 class="pt-10 text-lg flex justify-center bg-white"> Here is Today's Party Tempature:</h3>
+       
       
-       <div v-if= "info > 70">
+       <div class="pt-10 text-center bg-white" v-if= "info > 70">
+        <p>The tempature today is {{info}} degrees F</p>
         <p> Party Weather!</p>
       </div>
-        <div v-else-if="info < 70 && info != ''">
+        <div class="pt-10 text-center bg-white" v-else-if="info < 70 && info != ''">
         Sorry, we think you should stay in. 
         </div>
-
+      
+      
+    
     </div>
    
    <script>
