@@ -1,0 +1,47 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'posts/style.css' %}">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> World </title>
+</head>
+<body>
+
+    <h1>Chirp World</h1> 
+    <a href="profile"><h1>Profile</h1></a>
+    <a href="profileextend"><h1>Profile Extend</h1></a>
+
+    
+    <br>
+    <br>
+    <br>
+
+        {% for chirp in all_chirps  %}
+
+        <b>{{chirp.user}}</b> {{chirp.date}}
+        <br>
+        <h2>{{chirp.content}}</h2>
+
+        {% endfor %}
+
+    <br>
+    <br>
+    <br>
+
+<form action="{% url 'posts:worldextend' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}    
+    <input type="submit" value="Chirp">
+</form>
+
+
+
+
+
+</body>
+</html>
