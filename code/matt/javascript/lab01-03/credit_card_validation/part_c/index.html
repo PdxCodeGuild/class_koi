@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Credit Card Validation</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="inputNum" id="input-num" placeholder="Gimme your credit card: ">
+        <button v-on:click="clickButton" id="submit-button">Validate</button>
+        <p id="results">{{ results }}</p>
+    </div>
+</body>
+</html>

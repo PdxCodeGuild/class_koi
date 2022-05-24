@@ -261,7 +261,7 @@ The latest version of Vue, Vue 3, has many under-the-hood performance improvemen
 ```html
 <head>
   <!-- Vue 3 CDN tag: -->
-  <script src="https://unpkg.com/vue@next"></script>
+  <script src="https://unpkg.com/vue@3"></script>
 </head>
 <body>
   <div id="app">
