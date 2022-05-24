@@ -1,0 +1,40 @@
+{% extends 'chirp/core.html' %}
+
+{% block title %}
+<title>Sign Up</title>
+{% endblock %}
+
+
+{% block header %}
+    <a href="/users/login" class="flex content-center justify-around link grow f6 black-80 fw6 ttu pa1 bt2 tracked">Log In</a>
+{% endblock %}
+
+
+{% block content %}
+<body>
+    <main class="pa1 black-80">
+        <form class="measure center" action="{% url 'users:signup' %}" method="POST">
+            {% csrf_token %}
+            <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
+                <legend class="f4 fw6 ph0 mh0">Sign Up</legend>
+                <div class="mt3">
+                    <label class="db fw6 lh-copy f6" for="username">Username</label>
+                    <input class="br2 pa2 input-reset ba bg-light-gray w-100" type="text" name="username"  id="username">
+                </div>
+                <div class="mv3">
+                    <label class="db fw6 lh-copy f6" for="password1">Password</label>
+                    <input class="br2 pa2 input-reset ba bg-light-gray w-100" type="password" name="password1"  id="password1">
+                </div>
+                <div class="mv3">
+                    <label class="db fw6 lh-copy f6" for="password2">Re-Enter Password</label>
+                    <input class="br2 pa2 input-reset ba bg-light-gray w-100" type="password" name="password2"  id="password2">
+                </div>
+        </fieldset>
+        <div class="">
+            <input class="br2 b ph3 pv2 input-reset ba b--black bg-light-gray grow pointer f6 dib" type="submit" value="Sign Up">
+        </div>
+        <p class="red">{{ message }}</p>
+        </form> 
+</body>
+</html>
+{% endblock %}
