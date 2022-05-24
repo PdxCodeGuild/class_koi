@@ -31,22 +31,28 @@
                 <option v-for="year in 50" :key="year" :value="2023 -year">{{2023 - year}}</option>
             </select>
 		</form>
+
+        <span class="db">userYear: {{ userYear }}</span>
+
         <form v-if="userYear" class="pv2">
 			<label class="pr2" for="search-make">Make:</label>
 			<select v-model="userMake" name="make" id="search-make" @change="searchByManAndYear">
-                <option v-for="make in makeList" :key="make" :value="make">{{make}}</option>
+                <option v-for="makeObject in makeList" :key="make" :value="makeObject['Make_Name']">{{ makeObject["Make_Name"] }}</option>
             </select>
 		</form>
-        <form v-if="userMake" class="pv2" @submit="xxxxxxxxxxxxxxxxxxx">
+        
+        <span class="db">userMake: {{ userMake }}</span>
+
+        <form v-if="userMake" class="pv2" @submit="searchByYear">
 			<label class="pr2" for="search-model">Model:</label>
 			<select v-model="userModel" name="model" id="search-model">
-                <option v-for="model in modelList" :key="model" :value="model">{{model}}</option>
+                <option v-for="modelObject in modelList" :key="model" :value="modelObject['Model_Name']">{{ modelObject["Model_Name"] }}</option>
             </select>
 		</form>
 
+        <span class="db">userModel: {{ userModel }}</span>
 
-
-
+        
 		<ul class="bg-light-red br3 pv1" v-if="output && output.ErrorText[0] !== '0'">
             <h3 class="">The following error(s) occured:</h3>
             <li class="pb2" v-for="error in output.ErrorText.split(';')">{{ error }}</li>

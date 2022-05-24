@@ -9,10 +9,9 @@ const App = {
             userYear: '',
             userMake: '',
             userModel: '',
-            makeList: ["A","B","C",],
+            makeList: [],
             modelList: [],
 			baseUrl: 'https://vpic.nhtsa.dot.gov/api/vehicles/',
-			error: ''
 		}
 	},
 
@@ -27,7 +26,6 @@ const App = {
                 },
 				params: { 
                     format: 'json',
-                    data: this.userVIN
                 },
 			}).then(response => {
 				console.log(response)
@@ -36,34 +34,32 @@ const App = {
 		},
         getAllMakes () {
 			axios({
-				url: this.baseUrl + "GetMakesForManufacturerAndYear/" + this.userYear,
+				url: this.baseUrl + "GetAllMakes/",
 				method: 'get',
                 headers: {
                     Accept: 'application/json'
                 },
 				params: { 
                     format: 'json',
-                    data: this.userYear
                 },
 			}).then(response => {
 				console.log(response)
-				this.makeList = response.data.Results[0]
+				this.makeList = response.data.Results
 			})
 		},
-        searchByYear () {
+        searchByManAndYear () {
 			axios({
-				url: this.baseUrl + "GetMakesForManufacturerAndYear/" + this.userYear,
+				url: this.baseUrl + "GetModelsForMakeYear/make/" + this.userMake + "/modelyear/" + this.userYear,
 				method: 'get',
                 headers: {
                     Accept: 'application/json'
                 },
 				params: { 
                     format: 'json',
-                    data: this.userYear
                 },
 			}).then(response => {
 				console.log(response)
-				this.makeList = response.data.Results[0]
+				this.modelList = response.data.Results
 			})
 		},
 	}
