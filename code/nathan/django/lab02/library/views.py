@@ -7,30 +7,17 @@ from .models import Book, Author, User
 def index(request):
     books = Book.objects.all()
     available_books = Book.objects.filter(checked_out = False)
-    # check_in_books = User.objects.filter(checkout = True)
-    check_in_books = User.objects.all()
-    hide_list = []
-    show_list = []
-    for i in check_in_books:
-        if(i in hide_list or i in show_list):
-            continue
-        elif(i.checkout == False):
-            hide_list.append(i)
-        elif(i.checkout == True and i not in hide_list and i not in show_list):
-            show_list.append(i)
-    
-    print(show_list)
-    print(hide_list)
+    check_in_books = Book.objects.filter(checked_out = True)
 
     library_history = User.objects.all()
     print(type(library_history))
     context = {
         'books': books,
         'available_books': available_books,
-        # 'check_in_books': check_in_books,
-        'check_in_books': show_list,
+        'check_in_books': check_in_books,
         'library_history': library_history,
     }
+
     return render(request, 'index.html', context)
 
 def user_checkout(request):
@@ -49,12 +36,14 @@ def user_checkout(request):
 
 def user_checkin(request):
     if(request.method == 'POST'):
-        name = request.POST.get('check_in_book')
+        book = request.POST.get('check_in_book')
+        name = request.POST.get('user')
         target_user:User = User.objects.filter(name = name).first()
         
-        target_book:Book = Book.objects.filter(title = target_user.book).first()
+        target_book:Book = Book.objects.filter(title = book).first()
 
         User.objects.create(name = target_user.name, book = target_user.book, checkout = False, timestamp = timezone.now())
         target_book.checked_out = False
         target_book.save()
+
         return redirect('/')

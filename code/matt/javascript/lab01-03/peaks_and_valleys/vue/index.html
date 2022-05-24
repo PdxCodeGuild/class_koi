@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Peaks and Valleys</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="script.js" defer></script>
+    <style>
+        table {
+            border-spacing: 0px;
+        }
+        td {
+            width: 20px;
+            height: 20px;
+        }
+        .sky {
+            background: skyblue;
+        }
+        .land {
+            background: green;
+        }
+        .water {
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-html="results"></div>
+    </div>
+</body>
+</html>
