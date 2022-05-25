@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversion</title>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h1>Unit Converter</h1>
+    <div style="padding: .5rem">
+        <input id="input" type="number" placeholder="enter distance" autofocus>
+        <select id="convertFrom">
+            <option value="in">inches</option>
+            <option value="ft" selected>feet</option>
+            <option value="yd">yards</option>
+            <option value="mi">miles</option>
+            <option value="cm">centimeters</option>
+            <option value="m">meters</option>
+            <option value="km">kilometers</option>
+        </select>
+    </div>
+    <br>
+    <div style="padding: .5rem">
+        <label for="convertTo">Select Units to Convert to :</label>
+        <select id="convertTo">
+            <option value="in">inches</option>
+            <option value="ft" selected>feet</option>
+            <option value="yd">yards</option>
+            <option value="mi">miles</option>
+            <option value="cm">centimeters</option>
+            <option value="m">meters</option>
+            <option value="km">kilometers</option>
+        </select>
+    </div>
+    <button id="button1" style="margin: .5rem">Submit</button>
+    <p id="output"></p>
+  
+</body>
+</html>
