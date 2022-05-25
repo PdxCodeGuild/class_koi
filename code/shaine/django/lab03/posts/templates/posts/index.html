@@ -1,0 +1,40 @@
+{% extends 'posts/base.html' %}
+
+{% block content %}
+
+<div class="container mt-3">
+<div class="jumbotron">
+  <h1 class="display-4">Hello {{ user.username }}</h1>
+  <p class="lead">Welcome to 🐦 Chirp</p>
+  <hr class="my-4">
+  <p>Click below to create a chirp</p>
+  <a class="btn btn-primary btn-lg" href="{% url 'chirpcreate' %}" role="button">Create</a>
+</div>
+</div>
+
+
+<div class="container p-1">
+    {% for chirp in object_list %}
+    <br>
+    <div class="card">
+        <div class="card-header">
+              <a href="#"><h4>{{ chirp.uname }}</h4></a>
+              <small>{{ chirp.datetime }}</small>
+
+        </div>
+        <div class="card-body">
+
+          <h5 class="card-text">{{ chirp.text }}</h5>
+
+          {% if chirp.uname == user %}
+          <a href="{% url 'chirpupdate' chirp.id %}"><button class="btn btn-outline-info" type="submit">Edit</button></a> 
+          <a href="{% url 'chirpdelete' chirp.id %}"><button class="btn btn-outline-danger" type="submit">Delete</button></a> 
+          
+          {% endif %}
+
+        </div>
+      </div>
+
+    {% endfor %}
+  </div>
+{% endblock %}

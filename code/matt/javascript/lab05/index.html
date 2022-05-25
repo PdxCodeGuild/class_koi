@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FavQs in Vue</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize-css@2.3.1/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>
+                Quotes & Stuff
+            </h1>
+            <h5>
+                (just quotes, no stuff)
+            </h5>
+        </header>
+        <main>
+            <nav>
+                <form @submit.prevent="wasSearchTrue(); updateSearchTerm(); resetPage(); getQuotes();">
+                    <input type="text" v-model="searchTermField" id="search-term" placeholder="search for quotes:">
+                    <select v-model="searchType" id="search-type">
+                        <option v-for="(key, value) in searchTypes" :value="value">{{ value }}</option>
+                    </select>
+                    <button type="submit">search</button>
+                </form>
+                <p class="or">
+                    or 
+                </p>
+                <button @click="wasSearchFalse(); clearSearchField(); toTop(); getQuotes();">see some randos</button>
+            </nav>
+            
+            <h2 v-if="wasSearch">{{ searchTerm }} quotes:</h2>
+            
+            <div class="quote-wrapper" v-for="quote in quotesObj">
+                <p class="quote">{{ quote.body }}</p>
+                <div class="author-wrapper">
+                    <p class="author" v-if="hasQuotes">-{{ quote.author }}</p>
+                </div>
+            </div>
+
+
+
+            
+            
+            
+            
+        </main>
+        <footer>
+            <div class="buttons" v-if="wasSearch">
+                <button v-if="firstPage" @click="prevPage(); toTop(); getQuotes();">prev</button>
+                <span>page {{ currentPage }}</span>
+                <button v-if="lastPage" @click="nextPage(); toTop(); getQuotes();">next</button>
+            </div>
+            <p>&copy; 2022 Ugly Websites Incorporated</p>
+        </footer>
+    </div>
+</body>
+</html>
