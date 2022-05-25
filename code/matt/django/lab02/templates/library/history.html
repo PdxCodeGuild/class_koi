@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+
+{% block title %}: Check In/Out History{% endblock %}
+
+{% block content %}
+    <h1>
+        Check In/Out History
+    </h1>
+    <table>
+        <thead>
+            <th>Title</th>
+            <th>User</th>
+            <th>Date & Time</th>
+            <th>In/Out</th>
+        </thead>
+        {% for item in history %}
+        <tr>
+            <td>{{ item.book }}</td>
+            <td>{{ item.user }}</td>
+            <td>{{ item.timestamp }}</td>
+            <td>{% if item.checkout %} OUT {% else %} IN {% endif %}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

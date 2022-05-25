@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ author }}</title>
+    <script src="https://cdn.tailwindcss.com/"></script>
+</head>
+<body>
+    <nav class="bg-sky-600 text-green-300 flex justify-between py-5 px-10">
+        {% if request.user.is_authenticated %}
+            <h1 class="text-2xl">Chirp || <a href="/chirp/{{ user.id }}">
+                {{ user.username }}</a></h1>
+            <div>
+                <a href="{% url 'posts:home' %}" class="
+                            px-3 py-1 border-green-300 border-2 rounded-md
+                            hover:bg-white-800 hover:text-zinc ml-1">Home</a>
+                <a href="{% url 'users:logout' %}" class="
+                        px-3 py-1 border-green-300 border-2 rounded-md
+                        hover:bg-white-800 hover:text-zinc ml-1">Log Out</a>
+            </div>
+        {% else %}
+            <div>
+                <a href="{% url 'users:signup' %}" class="
+                        px-6 py-1 border-green-300 border-2 rounded-md
+                        hover:bg-white-800 hover:text-zinc ml-1">Sign Up</a>
+                <a href="{% url 'users:login' %}" class="
+                        px-6 py-1 border-green-300 border-2 rounded-md
+                        hover:bg-white-800 hover:text-zinc ml-1">Log In</a>
+            </div>
+                <span class="text-xl">Chirp || Guest</span>
+                <a href="{% url 'posts:home' %}"><button class="px-6 py-1 mr-8 border-2 rounded-md border-green-300">Home</button></a>
+        {% endif %}
+    </nav>
+       
+    </div>
+    <h3 class="mt-5 ml-10">
+        <span class="text-2xl">Recent Posts by </span>
+        <span class="text-2xl font-semibold text-cyan-600">{{ author }} </span>
+        <!-- <a href="#" class="px-1 text-sm mr-8 border-2 rounded-md border-zinc-300">Order By <></a> -->
+    </h3>
+    <ul class="ml-25 mb-20">
+        {% for post in posts %}
+        <li class="pt-1 ml-6 mr-72 mt-3 border-4 rounded-md">
+            <p class="ml-2">{{ post.post_text }}</p>
+            <p class="ml-2 italic text-xs pb-1">{{ post.date_posted }}</p>
+        </li>
+        {% endfor %}
+
+    </ul>
+    <footer class="w-full h-10 bg-gray-900 fixed bottom-0 items-center">
+        <p class="text-white text-center pt-1"> &copy Chirp - Class Koi</p>
+    </footer>
+    
+
+</body>
+</html>
