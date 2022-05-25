@@ -10,13 +10,13 @@ const App = {
   data() {
     return {
       alerts: "",
+      searchTerm: "",
+      state: "",
       baseUrl: "https://api.weather.gov/",
     };
   },
 
-  created() {
-    this.getAlerts();
-  },
+  created() {},
 
   methods: {
     getAlerts() {
@@ -27,6 +27,20 @@ const App = {
           Accept: "application/json",
         },
         method: "get",
+      }).then((res) => {
+        console.log({ "this in .then": this });
+        this.alerts = res.data.features;
+      });
+    },
+
+    getState() {
+      console.log({ "this in getAlerts": this });
+      axios({
+        url: this.baseUrl + "alerts/active",
+        headers: {
+          Accept: "application/json",
+        },
+        params: { area: this.searchTerm },
       }).then((res) => {
         console.log({ "this in .then": this });
         this.alerts = res.data.features;
