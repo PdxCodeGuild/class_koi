@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 01-A Unit Converter</title>
+    <script>
+
+        let units = {
+            'feet': .3048,
+            'miles': 1609.34,
+            'meters': 1,
+            'kilometers': 1000,
+            'yard': .9144,
+            'inch': .0254
+        }
+        // version 1 ---------------------------
+
+        // let measurement = prompt('Enter the distance: ')
+        // meters = units['feet']
+        // measurement = parseInt(measurement)
+        // // let total = measurement * meters
+        // // alert(`${measurement} ft is ${total} meters.`)
+
+        // // version 2 ---------------------------
+        // let userUnit = prompt('Enter the unit of measurement: ')
+        // meters = units[userUnit]
+        // let total = measurement * meters
+        // alert(`${measurement} ${userUnit} is ${Math.round(total)} meters.`)
+
+        // version 3 ----------------------------
+
+        // added support for yards and inches in dict above
+
+        // version 4 ----------------------------
+        let measurement = prompt('Enter the distance: ')
+        let inputUnit = prompt('Enter the unit of measurement: ')
+        let outputUnit = prompt('Enter the measurement you want to convert to: ')
+
+        // store and covert
+        meters = units[inputUnit]
+        measurement = parseInt(measurement)
+
+        // convert to meters
+        let total = measurement * meters
+
+        // convert to user's output unit
+        result = total / units[outputUnit]
+
+        alert(`${measurement} ${inputUnit} is ${Math.round(result)} ${outputUnit}`)
+
+
+    </script>
+</head>
+
+<body>
+    <h1>Welcome to JavaScript Lab 1 - Unit Converter</h1>
+</body>
+
+</html>
