@@ -2,7 +2,7 @@ const App = {
     // the data property is a function that returns an object
     data() {
       return {
-        message: 'Cats! (under construction)',
+        message: 'CAT JUDGMENT',
         baseURL: " https://api.thecatapi.com/v1/images/search",
         breedURL: "https://api.thecatapi.com/v1/breeds",
         catFetch: undefined,
@@ -10,11 +10,14 @@ const App = {
         imgObj: undefined,
         searchTerm: "",
         imgURLs: [],
+        hallOfFame: [],
+        hallOfShame: [],
         breedData: undefined,
         breedList: [],
         breedIDList: [],
         breedDict: {},
         shortDict: {},
+        clickCheck: false
         // newKey: undefined,
         // newVal: undefined,
         // select: document.getElementById("selectBreed"),
@@ -39,6 +42,8 @@ const App = {
 
     methods: {
       getCat () {
+        this.imgURLs = []
+        this.clickCheck=true
         axios({
           url: this.baseURL,
           headers: { Accept: 'application/json', Authorization:"9bf907ff-5c70-40c1-93a1-16d55b35d6bb" },
@@ -91,6 +96,15 @@ const App = {
     
 
   })},
+    rFame () {
+      this.hallOfFame.push(this.imgObj)
+
+    },
+
+    rShame () {
+      this.hallOfShame.push(this.imgObj)
+
+    },
 
 
 
