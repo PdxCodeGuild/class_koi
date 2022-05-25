@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+	{% block title %}
+        <!-- title here -->
+	{% endblock %}
+</head>
+
+
+<header class="tc pt4 pt5-ns avenir">
+    <a href="/"><img src="{% static 'chirp/chirp_logo.png' %}" class="flex justify center br-100 ba b--black-10 h4 w4" alt="Chirp Logo"></a>
+    {% block header %}
+        <!-- header here -->
+    {% endblock %}
+  </header>
+
+
+<body class="bg-black-20">
+    
+    {% block content %}
+        <!-- content here -->
+    {% endblock %}
+
+</body>
+
+<footer class="pv4 ph3 ph5-m ph6-l mid-gray">
+    <small class="f6 db tc">© 2022 <b class="ttu">Chirp Inc</b>., All Rights Reserved</small>
+    <div class="tc mt3">
+      <a href="/language/" title="Language" class="f6 dib ph2 link mid-gray dim">Language</a>
+      <a href="/terms/"    title="Terms" class="f6 dib ph2 link mid-gray dim">Terms of Use</a>
+      <a href="/privacy/"  title="Privacy" class="f6 dib ph2 link mid-gray dim">Privacy</a>
+    </div>
+  </footer>
+  
+</html>

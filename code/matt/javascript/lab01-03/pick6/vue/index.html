@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Pick 6</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="app">
+        <label for="num-tickets">How many times do you want to play?</label>
+        <input type="number" v-model="numTickets" id="num-tickets">
+        <button v-on:click="clickButton" id="submit-button">Try your luck</button>
+        <div v-html="results"></div>
+    </div>
+</body>
+</html>
