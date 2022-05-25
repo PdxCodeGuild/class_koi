@@ -8,12 +8,20 @@
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script src="https://unpkg.com/vue@3"></script>
-	<script src="secrets.js"></script>
+
+
+	<link type="text/css" rel="stylesheet" href="https://unpkg.com/vue-next-select/dist/index.min.css" />
+    <script src="https://unpkg.com/vue-next-select/dist/vue-next-select.iife.prod.js"></script>
+
+    <script src="secrets.js"></script>
 	<script src="script.js" defer></script>
 </head>
 <body class="pa3 mw7 helvetica">
 	<div id="app">
-		<h1 class="b tc ttu bg-black-20 br3 pv2">Vehicle Info Machine</h1>
+        <h1 class="b tc ttu bg-black-20 br3 pv2">Vehicle Info Machine</h1>
+
+        <vue-select :options="['Canada', 'United States']"></vue-select>
+        
         <p class="b">Search by Vehicle Identification Number (VIN):</p>
 		<form class="pb2" @submit.prevent="searchByVIN">
 			<label class="pr2" for="search-VIN">VIN:</label>
