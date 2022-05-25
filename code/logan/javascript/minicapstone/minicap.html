@@ -22,18 +22,11 @@
     <div id = "app">
 
         <h1 class = "calisto purple tc f1">{{message}}</h1>
-       
-        <p class = "calisto green">
-        {{urlFetch}} <br> <br>
-       <!-- {{breedData}} -->
-        {{breedList}} <br> <br>
-        {{breedIDList}} <br> <br>
-        {{shortDict}} <br> <br>
-        </p>
-        
+        <!-- {{breedIDList}} -->
+
         <br>
 
-        <div class = "flex items-center justify-around ph4">
+        <div class = "flex items-center justify-around ph4 mb7">
 
         <div>
 
@@ -55,7 +48,7 @@
         
         
         <div class = "flex flex-column items-center justify-center ph4" v-show = "clickCheck">
-            <h2 class = "blue calisto">Random Cat </h2>
+            <h2 class = "blue calisto"> Judge Me </h2>
             <img class = "h5 w5 mt2 mb4" v-for="image in imgURLs" :src="image.url"/>
             <button class = "bg-washed-green" @click.prevent = "rFame" > Hall of Fame </button>
             <button class = "bg-washed-red" @click.prevent = "rShame" > Hall of Shame </button>
@@ -69,10 +62,15 @@
 
         <br>
 
+
+        <hr class = "mb4">
+
+        <h1 class = "calisto purple tc f1">FUN FACTS BY BREED</h1>
         
-        
-        <div class = "flex flex-wrap justify-center ph4" v-for = "breed in breedList">
+        <div class = "flex flex-wrap justify-center">
+        <div class = "" v-for = "breed in breedList">
             <button class = "ma1" @click.prevent = "searchCat (breed)"> {{breed}} </button>
+        </div>
         </div>
 
         <!-- <button class = "mt3" type="button" @click.prevent = "breedGrab" > Get Breeds </button> -->

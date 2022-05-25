@@ -5,6 +5,8 @@ const App = {
         message: 'CAT JUDGMENT',
         baseURL: " https://api.thecatapi.com/v1/images/search",
         breedURL: "https://api.thecatapi.com/v1/breeds",
+        breedSearchURL: "https://api.thecatapi.com/v1/breeds/search",
+        breedParam: undefined,
         catFetch: undefined,
         urlFetch: undefined,
         imgObj: undefined,
@@ -17,7 +19,8 @@ const App = {
         breedIDList: [],
         breedDict: {},
         shortDict: {},
-        clickCheck: false
+        clickCheck: false,
+        desc: undefined,
         // newKey: undefined,
         // newVal: undefined,
         // select: document.getElementById("selectBreed"),
@@ -26,17 +29,6 @@ const App = {
     },
     created () {
       this.breedGrab()
-    //   for(let i = 0; i < this.breedList.length; i++) {
-    //     var opt = this.breedList[i];
-    //     var el = document.createElement("option");
-    //     el.textContent = opt;
-    //     el.value = opt;
-    //     this.select.appendChild(el);
-    // }
-    // didn't work
-      let i = 0 // under construction might not work
-
-
 
       },
 
@@ -65,14 +57,27 @@ const App = {
 
 
 
-      searchCat () {
+      searchCat (breed) {
+        this.imgURLs = []
+        let i = this.breedList.indexOf(breed)
+        this.breedParam = this.breedIDList[i]
+        // alert(this.breedParam)
+        this.clickCheck=true
+
+
 			  axios({
-        url: this.baseURL,
+        url: this.breedSearchURL,
+        // url: this.baseURL,
 				headers: { Accept: 'application/json', Authorization:"9bf907ff-5c70-40c1-93a1-16d55b35d6bb" },
 				method: 'get',
-        parameters: "",
+        parameters: {q:this.breedParam},
 
 			}).then(res => {
+        this.catFetch = res.data //
+        alert(this.catFetch)
+        // this.urlFetch = this.catFetch[0].url
+        // this.imgObj = {"url": this.urlFetch}
+        // this.imgURLs.push(this.imgObj)
 
 
 	})},
