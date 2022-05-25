@@ -14,28 +14,74 @@
 </head>
 <body>
     <div id="app">
-        <div>
-            <input type="text" v-model="ingredientSearchInput" @keyup="ingredientSearch">
-            <ul>
-                <li v-for="ingredient in filteredIngredients">
-                    <a @click="addToMyIngredients(ingredient);">
-                        {{ ingredient }}
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div>
-            <a @click="missingIngredientCount">let's gooooo</a>
-            <h1>mine:</h1>
-            {{ myIngredients }}
-            <h1>also mine:</h1>
-            {{ Object.keys(myRecipes) }}
-        </div>
+        <div style="display:flex;">
+            <div id="ing-select" :class="[isActive[0] ? 'active' : 'inactive']" class="transition">
+                
+                
+                <button @click="makeActive(0);">open</button>
 
-        <div>
-            <button @click="clearLocal">clear local storage</button>
-        </div>
 
+                <input type="text" v-model="ingredientSearchInput" @keyup="ingredientSearch">
+                <div id="ing-search-results">
+                    <ul v-if="filteredIngredients.length > 0">
+                        <li v-for="ingredient in filteredIngredients">
+                            <a href="" @click.prevent="addToMyIngredients(ingredient);">
+                                {{ ingredient }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <h3>my ingredients:</h1>
+                {{ myIngredients }}
+                <button @click="clearLocal">clear local storage</button>
+
+
+            </div>
+            <div id="recipe-select" :class="[isActive[1] ? 'active' : 'inactive']" class="transition">
+                
+                
+                <button @click="makeActive(1);">open</button>
+
+
+                <div v-for="x,index in possibleRecipes.length">
+                    <ul v-if="possibleRecipes[index]">
+                        <h3>{{ index }} missing ingredients</h2>
+                        <li v-for="recipe in possibleRecipes[index]">
+                            <a href="" @click.prevent="showCurrentRecipe(recipe); makeActive(2);">
+                                {{ recipe }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+            <div id="recipe-view" :class="[isActive[2] ? 'active' : 'inactive']" class="transition">
+                
+                
+                <button @click="makeActive(2);">open</button>
+
+                
+                <div v-if="currentRecipe">
+                    <h1>{{ currentRecipe.name }}</h1>
+                    <img :src="currentRecipe.image" alt="currentrecipe.name">
+                    <ul>
+                        <li v-for="(measure, ingredient) in currentRecipe.ingredients">
+                            {{ ingredient }} - {{ measure }}
+                        </li>
+                    </ul>
+                    <p>
+                        {{ currentRecipe.glass }}
+                    </p>
+                    <p>
+                        {{ currentRecipe.instructions }}
+                    </p>
+                    <button @click="hideCurrentRecipe">close</button>
+                </div>
+
+
+            </div>
+        </div>
     </div>
 </body>
 </html>

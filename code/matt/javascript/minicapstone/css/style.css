@@ -1,0 +1,31 @@
+#ing-select {
+    height: 100vh;
+    background-color: #faa;
+    overflow: auto;
+}
+#ing-search-results {
+    background-color: white;
+    position: absolute;
+    overflow: auto;
+    min-height: 0vh;
+    max-height: 80vh;
+}
+#recipe-select {
+    height: 100vh;
+    background-color: #afa;
+    overflow: auto;
+}
+#recipe-view {
+    height: 100vh;
+    background-color: #aaf;
+    overflow: auto;
+}
+.active {
+    width: 70vw
+}
+.inactive {
+    width: 15vw;
+}
+.transition {
+    transition: .5s;
+}

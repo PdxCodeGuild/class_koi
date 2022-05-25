@@ -1,6 +1,5 @@
 // generate app
-const { createApp } = Vue
-createApp({
+Vue.createApp({
     data () {
         return {
             // main API endpoint and modifiers
@@ -21,6 +20,9 @@ createApp({
             myRecipes: {},
             // array of arrays of recipes indexed according to number of missing ingredients
             possibleRecipes: [],
+            currentRecipe: null,
+            // array holding active states for each panel
+            isActive: [true,false,false],
         }
     },
     created () {
@@ -29,6 +31,16 @@ createApp({
         // console.log(this.ingredientsObj)
     },
     methods: {
+        // handles activating/deactivating panels by flipping their boolean
+        makeActive (element) {
+            this.isActive.forEach((item, index) => {
+                if (index == element) {
+                    this.isActive[index] = true
+                } else {
+                    this.isActive[index] = false
+                }
+            })
+        },
         // gets full list of ingredients from API
         getIngredients () {
             axios({
@@ -51,7 +63,7 @@ createApp({
                         recipes: {},
                     }
                 })
-                console.log(this.ingredientsObj)
+                // console.log(this.ingredientsObj)
             })
         },
         // searches full list of ingredients against user input
@@ -137,11 +149,14 @@ createApp({
                     }
                 })
                 this.saveToLocal()
+                this.missingIngredientCount()
                 // console.log(this.myRecipes)
             })
         },
         // finds number of missing ingredients per recipe
         missingIngredientCount () {
+            // reset array
+            this.possibleRecipes = []
             // iterate through each recipe
             Object.keys(this.myRecipes).forEach(thisRecipe => {
                 // reset counter for missing ingredients
@@ -159,8 +174,19 @@ createApp({
                 }
                 // add recipe to possibleRecipes array at the index position matching the number of missing ingredients
                 this.possibleRecipes[numMissing].push(thisRecipe)
+                this.possibleRecipes[numMissing].sort()
             })
+            // save to local storage
+            this.saveToLocal()
             // console.log(this.possibleRecipes)
+        },
+        // assigns a specific recipe to currentRecipe for display
+        showCurrentRecipe (recipeName) {
+            this.currentRecipe = this.myRecipes[recipeName]
+        },
+        // clears currentRecipe to hide display
+        hideCurrentRecipe () {
+            this.currentRecipe = null
         },
         // saves myIngredients and myRecipes arrays to local storage
         saveToLocal () {
@@ -168,6 +194,8 @@ createApp({
             localStorage.setItem('myIngredients', parsedMyIngredients)
             const parsedMyRecipes = JSON.stringify(this.myRecipes)
             localStorage.setItem('myRecipes', parsedMyRecipes)
+            const parsedPossibleRecipes = JSON.stringify(this.possibleRecipes)
+            localStorage.setItem('possibleRecipes', parsedPossibleRecipes)
         },
         // loads myIngredients and myRecipes arrays from local storage
         loadFromLocal () {
@@ -177,11 +205,15 @@ createApp({
             if (localStorage.getItem('myRecipes')) {
                 this.myRecipes = JSON.parse(localStorage.getItem('myRecipes'))
             }
+            if (localStorage.getItem('possibleRecipes')) {
+                this.possibleRecipes = JSON.parse(localStorage.getItem('possibleRecipes'))
+            }
         },
-        // resets local storage
+        // resets local storage and clears associated variables
         clearLocal () {
             this.myIngredients = []
             this.myRecipes = {}
+            this.possibleRecipes = []
             localStorage.clear()
         },
     }
