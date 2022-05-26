@@ -15,6 +15,9 @@ const App = {
 		}
 	},
     
+    created() {
+        this.getAllMakes()
+    },
     
 	methods: {
         searchByVIN () {
@@ -62,6 +65,9 @@ const App = {
 				this.modelList = response.data.Results
 			})
 		},
+        undo (userObject) {
+            this.userObject = ""
+        },
 	}
 }
 

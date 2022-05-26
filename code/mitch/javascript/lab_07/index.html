@@ -13,14 +13,13 @@
 	<link type="text/css" rel="stylesheet" href="https://unpkg.com/vue-next-select/dist/index.min.css" />
     <script src="https://unpkg.com/vue-next-select/dist/vue-next-select.iife.prod.js"></script>
 
+
     <script src="secrets.js"></script>
 	<script src="script.js" defer></script>
 </head>
 <body class="pa3 mw7 helvetica">
 	<div id="app">
         <h1 class="b tc ttu bg-black-20 br3 pv2">Vehicle Info Machine</h1>
-
-        <vue-select :options="['Canada', 'United States']"></vue-select>
         
         <p class="b">Search by Vehicle Identification Number (VIN):</p>
 		<form class="pb2" @submit.prevent="searchByVIN">
@@ -33,32 +32,46 @@
 
         <p class="b">Search by Year, Make, and Model:</p>
 
-        <form class="pb2">
+        <form v-if="!userYear" class="pb2">
 			<label class="pr2" for="search-year">Year:</label>
-			<select v-model="userYear" name="year" id="search-year" @change="getAllMakes">
-                <option v-for="year in 50" :key="year" :value="2023 -year">{{2023 - year}}</option>
-            </select>
+            <vue-select
+                :searchable="true"
+                :close-on-select="true"
+                :clear-on-close="true"
+                v-model="userYear"
+                :options = "[ ...Array(50).keys() ].map(x => 2023 - x)">
+            </vue-select>
 		</form>
 
-        <span class="db">userYear: {{ userYear }}</span>
+        <span v-if="userYear" class="db">Year: {{ userYear }}</span>
 
-        <form v-if="userYear" class="pv2">
+        <form v-if="userYear && !userMake" class="pv2">
 			<label class="pr2" for="search-make">Make:</label>
-			<select v-model="userMake" name="make" id="search-make" @change="searchByManAndYear">
-                <option v-for="makeObject in makeList" :key="make" :value="makeObject['Make_Name']">{{ makeObject["Make_Name"] }}</option>
-            </select>
+            <vue-select
+                :searchable="true"
+                :close-on-select="true"
+                :clear-on-close="true"
+                v-model="userMake"
+                @change="searchByManAndYear"
+                :options = "makeList.map(makeObject => makeObject.Make_Name)">
+            </vue-select>
 		</form>
         
-        <span class="db">userMake: {{ userMake }}</span>
+        <span v-if="userMake" class="db">Make: {{ userMake }}</span>
 
-        <form v-if="userMake" class="pv2" @submit="searchByYear">
+        <form v-if="userMake && !userModel" class="pv2">
 			<label class="pr2" for="search-model">Model:</label>
-			<select v-model="userModel" name="model" id="search-model">
-                <option v-for="modelObject in modelList" :key="model" :value="modelObject['Model_Name']">{{ modelObject["Model_Name"] }}</option>
-            </select>
+            <vue-select
+                :searchable="true"
+                :close-on-select="true"
+                :clear-on-close="true"
+                v-model="userModel"
+                :options = "modelList.map(modelObject => modelObject.Model_Name)">
+            </vue-select>
 		</form>
 
-        <span class="db">userModel: {{ userModel }}</span>
+        <span  v-if="userModel" class="db">Model: {{ userModel }}</span>
+        <button v-submit="undo(userModel)">Undo</button>
 
         
 		<ul class="bg-light-red br3 pv1" v-if="output && output.ErrorText[0] !== '0'">
