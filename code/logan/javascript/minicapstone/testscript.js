@@ -6,6 +6,7 @@ const App = {
         baseURL: " https://api.thecatapi.com/v1/images/search",
         breedURL: "https://api.thecatapi.com/v1/breeds",
         breedSearchURL: "https://api.thecatapi.com/v1/breeds/search",
+        breedSearchURLAlt: "https://api.thecatapi.com/v1/breeds/search?q=",
         breedParam: undefined,
         catFetch: undefined,
         urlFetch: undefined,
@@ -68,13 +69,15 @@ const App = {
 			  axios({
         url: this.breedSearchURL,
         // url: this.baseURL,
+        // url: this.breedSearchURLAlt,
 				headers: { Accept: 'application/json', Authorization:"9bf907ff-5c70-40c1-93a1-16d55b35d6bb" },
 				method: 'get',
-        parameters: {q:this.breedParam},
+        params: {q:this.breedParam},
 
 			}).then(res => {
         this.catFetch = res.data //
-        alert(this.catFetch)
+        this.desc = this.catFetch[0].description
+        // alert(this.catFetch)
         // this.urlFetch = this.catFetch[0].url
         // this.imgObj = {"url": this.urlFetch}
         // this.imgURLs.push(this.imgObj)
