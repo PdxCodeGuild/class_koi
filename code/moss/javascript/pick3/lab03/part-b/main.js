@@ -1,48 +1,53 @@
 let cardInput = document.getElementById("card-select")
 let addCardButton = document.getElementById("add-card")
-let adviseButton = document.getElementById("advise")
+let adviseButton = document.getElementById("advice")
+let cardHand = document.getElementById("card-hand")
 let output = document.getElementById("output")
 let advisor = document.getElementById("advisor")
 
-cardHand = []
+cardHandList = []
 
 addCardButton.addEventListener("click", function() {
+    
     let card_choice = cardInput.value
-    cardHand.push(card_choice)
-    console.log(`${cardHand} is the players hand`)
+    cardHandList.push(card_choice)
+    cardHand.innerText = `Hand : ${cardHandList}`
+    console.log(`${cardHandList} is the player's hand`)
 })
 
 adviseButton.addEventListener("click", function() {
         
+    function sum(numbers) {
+        total_score = 0
+        for (i of numbers) {
+            total_score += parseInt(i)
+        }
+        return total_score
+    }
+
+    let result = sum(cardHandList)
+    console.log(`${result} is the score`)
+
+
+
+    if (result <= 17) {
+        output.innerText = `Your score is : ${result}`
+        advisor.innerText = `HIT!`
+    }
+
+    else if (result >= 17 && result < 21) {
+        output.innerText = `Your score is : ${result}`
+        advisor.innerText = `STAY`
+    }
+
+    else if (result === 21 ) {
+        output.innerText = `Your score is : ${result}`
+        advisor.innerText = `BLACKJACK!`
+    }
+
+    else if (result > 21) {
+        output.innerText = `Your score is : ${result}`
+        advisor.innerText = `ALREADY BUSTED!`
+    }
 })
 
-if (user_points <= 17) {
-    alert(`${user_points}, HIT`)
-}
-
-else if (user_points >= 17 && user_points < 21) {
-    alert(`${user_points}, STAY`)
-}
-
-else if (user_points === 21 ) {
-    alert(`${user_points}, BLACKJACK!`)
-}
-
-else if (user_points > 21) {
-    alert(`${user_points}, ALREADY BUSTED!`)
-}
-
-// let card_value = { 'A':1, '1':1, '2':2, '3':3,'4':4, '5':5,
-// '6':6,'7':7, '8':8, '9':9,'10':10, 'J':10, 'Q':10, "K":10 }
-
-// let user_1 = prompt('\nWhat is your first card?\n').toUpperCase()
-// console.log(user_1)
-
-// let user_2 = prompt('\nWhat is your second card?\n').toUpperCase()
-// console.log(user_2)
-
-// let user_3 = prompt('\nWhat is your third card?\n').toUpperCase()
-// console.log(user_3)
-
-// let user_points = card_value[user_1] + card_value[user_2] + card_value[user_3]
-// console.log(user_points)

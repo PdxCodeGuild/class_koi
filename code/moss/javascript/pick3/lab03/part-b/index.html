@@ -5,14 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BlackJAck Advidsor</title>
+    <style>
+        
+        body {
+           text-align: center;
+        }
+       label {
+           font-size:20px;
+        }
+       select {
+           font-size:20px;   
+       }
+       option {
+           font-size:20px;
+       }
+       button {
+           font-size:20px;
+       }
+
+   </style>
 </head>
+
 <header>
     <h1>BlackJack Advisor</h1>
 </header>
+
 <body>
     <main>
         
-        <label for = "card-select">Card Drawn: </label>
+        <label for= "card-select">Card Drawn: </label>
         <select id="card-select">
             <option value="1">Ace</option>
             <option value="2">2</option>
@@ -30,8 +51,11 @@
         </select>
 
         <button id="add-card">Add</button>
-        <button id="advice">Advice</button> 
-           
+        <button id="advice">Advice</button>
+        <h3 id="card-hand"></h3>
+        <h3 id="output"></h3>
+        <h3 id="advisor"></h3>
+
     </main>
 
     <script src="main.js"></script>
