@@ -31,6 +31,7 @@ def index(request):
     form = Checkinoutform()
     booklist = Book.objects.all()
     thisform = Addbookform(request.POST)
+    
     context = {
         'booklist': booklist,
         'message': 'Welcome to the Library',

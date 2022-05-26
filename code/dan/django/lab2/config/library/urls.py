@@ -5,5 +5,5 @@ app_name = 'library'
 urlpatterns = [
     path('', views.index, name='index'),
     path('', views.addbook, name='addbook'),
-    path('/checkout',views.index, name='checkout')
+    path('checkout',views.index, name='checkout')
 ]

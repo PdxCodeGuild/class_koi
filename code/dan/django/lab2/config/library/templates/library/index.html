@@ -34,7 +34,7 @@
 <div>
   <form action="{% url 'library:addbook' %}"method="POST" class="m-32" enctype="multipart/form-data">
     {% csrf_token %}
-    {{thisform.as_p }}
+    {{thisform.as_p}}
     <input type="submit" value="Add Book to Inventory"</input>
   </form>
   
