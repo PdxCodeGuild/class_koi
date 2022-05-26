@@ -30,6 +30,7 @@ const App = {
       }).then((res) => {
         console.log({ "this in .then": this });
         this.alerts = res.data.features;
+        this.searchTerm = "the US";
       });
     },
 

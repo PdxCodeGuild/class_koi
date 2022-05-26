@@ -8,16 +8,17 @@
     <script src="https://unpkg.com/vue@3"></script>
     <script src="script.js" defer></script>
     <script src="secrets.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Weather Alerts</title>
 </head>
-<body>
-    <div id="app">
-        <h1>Weather Alerts</h1>
-        <button @click="getAlerts()">Click for Latest Alerts across the US</button>
+<body class="bg-slate-100">
+    <div id="app" class="bg-slate-100">
+        <h1 class="text-7xl font-medium text-center bg-slate-500 my-5 py-10 text-orange-200	">Weather Alerts</h1>
+        <div class="bg-slate-100 rounded-lg font-medium m-2 border-purple-900 text-center">
+        <button @click="getAlerts()" class="rounded-lg font-medium m-10 border-2 border-slate-400 border-solid bg-sky-200 p-4">Click for Latest Alerts in the US</button>
         <br>
-        <div>
-        <button @click="getState()">Click for Alerts</button>
-        <select v-model="searchTerm" id="country-state" name="country-state" default="Choose a State">
+        <h3>Select a State:</h3>
+        <select v-model="searchTerm" id="country-state" name="country-state" class="border-black font-large">
             <option selected disabled>Select a State</option>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
@@ -71,13 +72,17 @@
             <option value="WI">Wisconsin</option>
             <option value="WY">Wyoming</option>
         </select>
-        <!-- <p>{{ alerts }}</p> -->
-        <h2>10 latest weather alerts in {{ searchTerm }}</h2>
-        <ul v-for="item in alerts.slice(0, 10)">
-            <li>***{{ item.properties.areaDesc }}*** 
-                <br>{{ item.properties.description }}</li>
-        </ul>
+        <button @click="getState()" class="rounded-lg font-medium m-5 border-2 border-slate-400 border-solid bg-sky-200 p-1">Click for Alerts</button>
     </div>
+    <div class="mx-80">
+        <!-- <p>{{ alerts }}</p> -->
+        <h2 class="text-lg text-center">10 latest weather alerts for {{ searchTerm }}</h2>
+        <ul class="flex border-4 border-slate-500 font-large m-5 p-12 rounded-md mb-5 bg-slate-200 " v-for="item in alerts.slice(0, 10)">
+            <li class="text-xl text-center ">***{{ item.properties.areaDesc }}*** 
+                <br>{{ item.properties.description }}</li>
+            </ul>
+    </div>
+    
     </div>
 </body>
 </html>
