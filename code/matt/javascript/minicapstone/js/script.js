@@ -83,13 +83,31 @@ Vue.createApp({
         addToMyIngredients (ingredient) {
             // only run if the ingredient isn't already added
             if (!(this.myIngredients.includes(ingredient))) {
-                // add to array and sort
-                this.myIngredients.push(ingredient)
-                this.myIngredients.sort()
-                // get list of recipes for this ingredient
-                this.ingredientRecipes(ingredient)
-                // save to local storage
-                this.saveToLocal()
+                // case-insensitive search
+                const found = this.filteredIngredients.find(element => {
+                    return element.toLowerCase() === ingredient.toLowerCase()
+                })
+                // return ingredient with matching capitalization if case-insensitive search was successful
+                if (!(this.filteredIngredients.includes(ingredient)) && (found !== undefined)) {
+                    this.filteredIngredients.forEach(element => {
+                        if (element.toLowerCase() == ingredient.toLowerCase()) {
+                            ingredient = element
+                        }
+                    })
+                }
+                // only run if current input is a valid ingredient
+                if (this.filteredIngredients.includes(ingredient)) {
+                    // add to array and sort
+                    this.myIngredients.push(ingredient)
+                    this.myIngredients.sort()
+                    // get list of recipes for this ingredient
+                    this.ingredientRecipes(ingredient)
+                    // save to local storage
+                    this.saveToLocal()
+                    // clear search after adding
+                    this.filteredIngredients = []
+                    this.ingredientSearchInput = null
+                }
             }
         },
         // gets all cocktails that a given ingredient is used in
@@ -184,10 +202,6 @@ Vue.createApp({
         showCurrentRecipe (recipeName) {
             this.currentRecipe = this.myRecipes[recipeName]
         },
-        // clears currentRecipe to hide display
-        hideCurrentRecipe () {
-            this.currentRecipe = null
-        },
         // saves myIngredients and myRecipes arrays to local storage
         saveToLocal () {
             const parsedMyIngredients = JSON.stringify(this.myIngredients)
@@ -214,6 +228,7 @@ Vue.createApp({
             this.myIngredients = []
             this.myRecipes = {}
             this.possibleRecipes = []
+            this.currentRecipe = null
             localStorage.clear()
         },
     }
