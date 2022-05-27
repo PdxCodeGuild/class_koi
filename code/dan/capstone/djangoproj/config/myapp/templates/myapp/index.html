@@ -1,0 +1,23 @@
+<head>
+    
+    <script src="https://unpkg.com/vue@3"></script>
+  </head>
+  <body>
+    <div id="app">
+    [[ message ]]
+    </div>
+    <script>
+      const App = {
+        // the data property is a function that returns an object
+        data() {
+          return {
+            message: 'Vue 3 is cool'
+          }
+           
+        },
+         delimiters: ['[[', ']]'],
+      }
+      
+      Vue.createApp(App).mount('#app')
+    </script>
+  </body>
