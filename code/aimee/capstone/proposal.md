@@ -89,7 +89,7 @@ Really want to have:
 
 Nice to have: 
 - Custom icons 
-- 
+- User testing - several days minimum for feedback
 
 After capstone:
 - Figure out if there's a way to actually turn this into a mobile app
