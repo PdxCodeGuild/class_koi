@@ -33,6 +33,9 @@ const App = {
 			}).then(response => {
                 console.log(response)
 				this.output = response.data.Results[0]
+                this.userYear = this.output.ModelYear
+                this.userMake = this.output.Make
+                this.userModel = this.output.Model
 			})
 		},
         getAllMakes () {
@@ -50,7 +53,8 @@ const App = {
 				this.makeList = response.data.Results
 			})
 		},
-        searchByManAndYear () {
+        searchByMakeAndYear () {
+            if (this.userMake === "") return
             axios({
                 url: this.baseUrl + "GetModelsForMakeYear/make/" + this.userMake + "/modelyear/" + this.userYear,
 				method: 'get',
@@ -66,7 +70,18 @@ const App = {
 			})
 		},
         undo (userObject) {
-            this.userObject = ""
+            if (userObject == "year") {
+                this.userYear = ""
+                this.userMake = ""
+                this.userModel =""
+                this.modelList = []
+            }else if (userObject == "make") {
+                this.userMake = ""
+                this.userModel =""
+                this.modelList = []
+            }else if (userObject == "model") {
+                this.userModel = ""
+            }
         },
 	}
 }

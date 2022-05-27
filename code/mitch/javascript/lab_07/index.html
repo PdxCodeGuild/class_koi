@@ -8,29 +8,29 @@
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script src="https://unpkg.com/vue@3"></script>
-
-
 	<link type="text/css" rel="stylesheet" href="https://unpkg.com/vue-next-select/dist/index.min.css" />
     <script src="https://unpkg.com/vue-next-select/dist/vue-next-select.iife.prod.js"></script>
-
-
     <script src="secrets.js"></script>
 	<script src="script.js" defer></script>
 </head>
-<body class="pa3 mw7 helvetica">
-	<div id="app">
-        <h1 class="b tc ttu bg-black-20 br3 pv2">Vehicle Info Machine</h1>
-        
+<header>
+    <img src="vim_logo.jpeg" alt="Vehicle Info Machine Logo">
+</header>
+<body class="pa3 mw7 helvetica" style="background-color: #f79a26">
+	<div class="" id="app">
         <p class="b">Search by Vehicle Identification Number (VIN):</p>
 		<form class="pb2" @submit.prevent="searchByVIN">
 			<label class="pr2" for="search-VIN">VIN:</label>
 			<input class="" v-model="userVIN" type="text" id="search-VIN">
-			<input type="submit" value="Search VIN">
+			<input class="f6 pointer dim ph3 pv1 mb2 dib white bg-black" type="submit" value="Search VIN">
 		</form>
         
         <p class="i">OR</p>
 
         <p class="b">Search by Year, Make, and Model:</p>
+        
+        
+        
 
         <form v-if="!userYear" class="pb2">
 			<label class="pr2" for="search-year">Year:</label>
@@ -43,8 +43,8 @@
             </vue-select>
 		</form>
 
-        <span v-if="userYear" class="db">Year: {{ userYear }}</span>
-
+        <span v-if="userYear" class="db">Year: {{ userYear }} <button class="f6 pointer dim ph2 pv0 mb2 dib white bg-blue" v-on:click="undo('year')">Undo Year</button></span>
+        
         <form v-if="userYear && !userMake" class="pv2">
 			<label class="pr2" for="search-make">Make:</label>
             <vue-select
@@ -52,12 +52,13 @@
                 :close-on-select="true"
                 :clear-on-close="true"
                 v-model="userMake"
-                @change="searchByManAndYear"
+                @click="searchByMakeAndYear"
+                @change="searchByMakeAndYear"
                 :options = "makeList.map(makeObject => makeObject.Make_Name)">
             </vue-select>
 		</form>
         
-        <span v-if="userMake" class="db">Make: {{ userMake }}</span>
+        <span v-if="userMake" class="db">Make: {{ userMake }}<button class="f6 pointer dim ph2 pv0 mb2 dib white bg-blue" v-on:click="undo('make')">Undo Make</button></span>
 
         <form v-if="userMake && !userModel" class="pv2">
 			<label class="pr2" for="search-model">Model:</label>
@@ -70,8 +71,7 @@
             </vue-select>
 		</form>
 
-        <span  v-if="userModel" class="db">Model: {{ userModel }}</span>
-        <button v-submit="undo(userModel)">Undo</button>
+        <span  v-if="userModel" class="db">Model: {{ userModel }}<button class="f6 pointer dim ph2 pv0 mb2 dib white bg-blue" v-on:click="undo('model')">Undo Model</button></span>
 
         
 		<ul class="bg-light-red br3 pv1" v-if="output && output.ErrorText[0] !== '0'">
@@ -82,7 +82,7 @@
 
             <li v-if="output.VIN">VIN: {{ userVIN }}</li>
             <li v-if="output.ModelYear">Year: {{ output.ModelYear }}</li>
-            <li v-if="output.make">Make: {{ output.make }}</li>
+            <li v-if="output.Make">Make: {{ output.Make }}</li>
             <li v-if="output.Model">Model: {{ output.Model }}</li>
             <li v-if="output.Trim">Trim: {{ output.Trim }}</li>
             <li v-if="output.Doors">Doors: {{ output.Doors }}</li>
