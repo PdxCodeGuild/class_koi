@@ -11,6 +11,8 @@ M-F 9:30 am – 4:30 pm
 - April 4th (Day Off)
 - April 11th (Snow Day)
 - May 30th (Memorial Day)
+- June 13th (Day Off)
+- June 20th (Day Off)
 
 ### Staff
 
@@ -24,7 +26,7 @@ M-F 9:30 am – 4:30 pm
 
 ## Capstone Dates:
 
-Capstone proposal due: TBD 
+Capstone proposal due: May 31st, 2022  
 
 Presentation Day: June 24th, 2022  
 
@@ -32,14 +34,16 @@ Presentation Day: June 24th, 2022
 | Lab   | Name                                                                         | Date Assigned | Due By      | Hard Due Date |
 | ----- | ---------------------------------------------------------------------------- | ------------- | ------------| ------------- |
 | 01-03 | [Pick3](5%20JavaScript/labs/01-03%20Pick%203.md)                             | May 10th      | May 16th    | May 24th      |
+| 04    | [Mob Todo List](5%20JavaScript/labs/04%20Todo%20List.md)                     | NA            | NA          | NA            |
+| 05    | [Vue Todos](5%20JavaScript/labs/05%20Vue%20Todos.md)                         | May ??th      | May ??th    | Jun  3rd      |
+| 05    | [JavaScript Mini-Capstone](5%20JavaScript/labs/07%20Mini-Capstone.md)        | May ??th      | May ??th    | Jun  3rd      |
 
 
-<!-- * [Lab 04 Mob Todo List](5%20JavaScript/labs/04%20Todo%20List.md)
- * [Lab 05 Vue Todos](5%20JavaScript/labs/05%20Vue%20Todos.md)
- * [Lab 06 JavaScript Mini-Capstone](5%20JavaScript/labs/07%20Mini-Capstone.md) -->
-
-<!-- #### Optional JavaScript Labs
-[Bouncing Ball](5%20JavaScript/labs/Bouncing%20Ball.md), [Clock](5%20JavaScript/labs/Clock.md), [Hacker Typer](5%20JavaScript/labs/Hacker%20Typer.md), [Random Redirector](5%20JavaScript/labs/Random%20Redirector.md) -->
+#### Optional JavaScript Labs
+[Bouncing Ball](5%20JavaScript/labs/Bouncing%20Ball.md),
+[Clock](5%20JavaScript/labs/Clock.md),
+[Hacker Typer](5%20JavaScript/labs/Hacker%20Typer.md),
+[Random Redirector](5%20JavaScript/labs/Random%20Redirector.md)
  
 
 ## Django Labs Assigned:
