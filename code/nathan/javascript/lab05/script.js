@@ -6,7 +6,8 @@ const App = {
             works: 'APP WORKS',
             task: '',
             completed: false,
-            todoList: []
+            todoList: [],
+            completedList: []
         }
     },
 
@@ -25,14 +26,20 @@ const App = {
             todoList.splice(todoIndex, 1)
         },
 
-        completeTodo(todo, index) {
+        completeTodo(todo) {
             const todoList = this.todoList
             const todoIndex = todoList.indexOf(todo)
-            const completeButton = document.getElementById("complete-button" + index)
-            const todoItem = document.getElementById(todo + index)
+            const completedList = this.completedList
 
-            completeButton.style.display = "none"
-            todoItem.style.textDecoration = "line-through"
+            completedList.push(todo)
+            todoList.splice(todoIndex, 1)
+        },
+
+        removeCompleted(todo) {
+            const completedList = this.completedList
+            const todoIndex = completedList.indexOf(todo)
+
+            completedList.splice(todoIndex, 1)
         }
     }
 }
