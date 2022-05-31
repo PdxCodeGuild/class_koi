@@ -11,7 +11,7 @@ M-F 9:30 am – 4:30 pm
 - April 4th (Day Off)
 - April 11th (Snow Day)
 - May 30th (Memorial Day)
-- June 13th (Day Off)
+- June 6th (Day Off)
 - June 20th (Day Off)
 
 ### Staff
@@ -26,7 +26,7 @@ M-F 9:30 am – 4:30 pm
 
 ## Capstone Dates:
 
-Capstone proposal due: May 31st, 2022  
+Capstone proposal due: June 1st, 2022  
 
 Presentation Day: June 24th, 2022  
 
