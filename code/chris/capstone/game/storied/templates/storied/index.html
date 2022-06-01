@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Storied</title>
+{% endblock %}
+
+{% block content %}
+<main class="justify-content-center">
+    
+    <div class="row mx-auto mt-4 align-middle">
+        <div class="col text-center">
+            <h3>Map</h3>
+            <canvas id="grid" width="200" height="200"></canvas>
+        </div>
+        <div class="col">
+            {% for item in story_prompts %}
+            <p>>>> {{ item.prompt }}</p>
+            {% endfor %}
+            <form action="">
+                <input type="text">
+            </form>
+        </div>
+        <div class="col text-center">
+            <h3>Stats</h3>
+        </div>
+    </div>
+    
+    
+    <script>
+        window.onload = function() {
+            const canvas = document.getElementById('grid');
+            const ctx = canvas.getContext('2d');
+            ctx.strokeStyle = "darkolivegreen";
+            ctx.lineWidth = 4;
+        
+            // draw grid
+            for (let i = 0; i<= 5; i++) {
+                const x = i*40;
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, canvas.height);
+                ctx.stroke();
+        
+                const y = i*40;
+                ctx.moveTo(0, y);
+                ctx.lineTo(canvas.width, y);
+                ctx.stroke();
+            }
+
+            // draw images
+            const p = ctx.lineWidth / 2; // padding
+            for (let xCell = 0; xCell < 5; xCell++) {
+                for (let yCell = 0; yCell < 5; yCell++) {
+                    const x = xCell * 40;
+                    const y = yCell * 40;
+                    const img = new Image();
+                    img.onload = function() {
+                        ctx.drawImage(img, x+p, y+p, 40-p*2, 40-p*2);
+                    };
+
+                    img.src = `https://dummyimage.com/40x40/000/fff&text=${xCell},${yCell}`;
+                }
+            }
+        };
+    </script>
+</main>
+{% endblock %}
