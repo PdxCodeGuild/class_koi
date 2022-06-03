@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>{{ message }}</h1>
+
+
+
+    <h3>Here are some of the Books available for checkout</h3>
+    <ul>
+      {% for item in booklist %}
+        <li>
+        {{ item.title }}
+        </li>
+      {% endfor %}
+      
+
+
+
+<div>
+    <form action="{% url 'library:index' %}"method="POST" class="m-32" enctype="multipart/form-data">
+			{% csrf_token %}
+			{{ form.as_p }}
+      <input type="submit" value="Check-in/Check-out"</input>
+    </form>
+  </body>
+</div>
+
+
+<h2>Add Book to Inventory?</h2>
+<div>
+  <form action="{% url 'library:addbook' %}"method="POST" class="m-32" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{thisform.as_p}}
+    <input type="submit" value="Add Book to Inventory"</input>
+  </form>
+  
+</html>
