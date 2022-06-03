@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3"></script>
+    <title>Lab 05</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ works }}</h1>
+        <h1>Todo List</h1>
+        
+        <input type="text" v-model="task" placeholder="Enter a Task">
+        <button v-on:click="addTodo">Submit</button>
+
+        <ul>
+            <li v-for="(todo) in todoList">
+                <!-- <input type="checkbox" v-model="checked" name="completed" id="todoBox"> -->
+                <p :id="todo">{{ todo }}
+                <button :id="'complete-button' + todo" v-on:click="completeTodo(todo)">Complete</button>
+                <button v-on:click="removeTodo(todo)">Remove</button></p></li>
+        </ul>
+
+        <h1>Completed</h1>
+        <ul>
+            <li v-for="(todo) in completedList">
+                <!-- <input type="checkbox" v-model="checked" name="completed" id="todoBox"> -->
+                <p :id="todo">{{ todo }}
+                <button v-on:click="removeCompleted(todo)">Remove</button></p></li>
+        </ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
