@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lab 04 C</title>
+        <script src ="script.js" defer></script>
+        <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <h1 class="header">Number Average</h1>
+        <p>{{ message }}</p>
+        <form v-on:submit.prevent="numberConversion">
+        <label for="user-input">Enter a number 1-999 to convert to text</label>
+        <input v-model="userInput" type="number" id="user-input">
+        <button type="submit">Convert Number</button>
+        </form>    
+        <p>{{ output }}</p>
+    </div>
+
+    <script>
+        const App = {
+            data () {
+                return {
+                    message: 'Please enter a number between 1-199 to convert to text.',
+                    userInput: 0,
+                    numberText: '',
+                    output: '',
+                }
+            },
+
+            methods: {
+                numberConversion () {
+                    const single_digit = {
+                    0: "",
+                    1: "one",
+                    2: "two",
+                    3: "three",
+                    4: "four",
+                    5: "five",
+                    6: "six",
+                    7: "seven",
+                    8: "eight",
+                    9: "nine",
+                    };
+
+                    const double_digit = {
+                    0: "ten",
+                    1: "eleven",
+                    2: "twelve",
+                    3: "thirteen",
+                    4: "fourteen",
+                    5: "fifteen",
+                    6: "sixteen",
+                    7: "seventeen",
+                    8: "eighteen",
+                    9: "nineteen",
+                    };
+
+                    const tens = {
+                    0: "",
+                    1: "eleven",
+                    2: "twenty",
+                    3: "thirty",
+                    4: "forty",
+                    5: "fifty",
+                    6: "sixty",
+                    7: "seventy",
+                    8: "eighty",
+                    9: "Ninety",
+                    };
+                                
+                    let numberInput = +this.userInput
+                    let tens_digit = Math.floor((numberInput / 10) % 10);
+                    let ones_digit = Math.floor(numberInput % 10);
+                    let hundreths = Math.floor(numberInput / 100);
+
+                    if ((numberInput >= 1) & (numberInput <= 9)) {
+                        this.numberText = single_digit[numberInput];
+                    }
+                    if ((numberInput >= 10) & (numberInput <= 19)) {
+                        this.numberText = double_digit[numberInput];
+                    }
+                    if ((numberInput >= 20) & (numberInput <= 99)) {
+                        this.numberText = tens[tens_digit] + " " + single_digit[ones_digit];
+                    }
+                    if (
+                        (numberInput >= 100) &
+                        (numberInput <= 999) &
+                        (ones_digit != 0) &
+                        (tens_digit != 1) &
+                        (tens_digit != 0)
+                    ) {
+                        this.numberText =
+                        single_digit[hundreths] +
+                        " hundred and " +
+                        tens[tens_digit] +
+                        single_digit[ones_digit];
+                    } else if (ones_digit === 0) {
+                        this.numberText = single_digit[hundreths] + " hundred and " + tens[tens_digit];
+                    } else if (tens_digit === 1) {
+                        this.numberText = single_digit[hundreths] + " hundred and " + tens[tens_digit];
+                    } else if (tens_digit === 0) {
+                        this.numberText =
+                        single_digit[hundreths] + " hundred and " + single_digit[ones_digit];
+                    }
+
+                    this.output = `${numberInput} is ${this.numberText} `
+                }
+            }
+        }
+        const app = Vue.createApp(App)
+		app.mount('#app')
+    </script>
+</body>
+</html>
