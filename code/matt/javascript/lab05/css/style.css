@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;500&display=swap');
+
+body {
+    background-color: lightseagreen;
+    font-family: 'Work Sans', sans-serif;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header, main {
+    max-width: 800px;
+}
+
+header, nav, h2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav {
+    margin-bottom: 40px;
+}
+
+footer {
+    margin-bottom: 40px;
+}
+
+.quote-wrapper {
+    margin-bottom: 40px;
+    background-color: lavender;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.author-wrapper {
+    font-style: italic;
+    display: flex;
+    justify-content: right;
+}
+
+.author {
+    font-style: italic;
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+}
+
+h5 {
+    font-style: italic;
+    margin-top: 10px;
+    font-weight: normal;
+}
+
+.or {
+    margin: 5px;
+    font-style: italic;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.buttons * {
+    margin: 5px;
+}

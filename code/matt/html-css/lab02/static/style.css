@@ -1,0 +1,130 @@
+/* 70B4FF color.adobe.com seed color*/
+
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=EB+Garamond&display=swap');
+
+body {
+    background: url("bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    overflow-y:hidden;
+    height:100vh;
+    font-family: 'EB Garamond', serif;
+}
+
+header {
+    color: rgba(90, 122, 232, 1);
+    font-family: 'Bad Script', cursive;
+    font-size: 5rem;
+    padding: 10px 50px;
+    min-height: 12vh;
+}
+
+header a {
+    color: rgba(90, 122, 232, 1);
+    text-decoration: none;
+}
+
+header a:hover {
+    color: rgba(90, 196, 232, 1);
+}
+
+nav {
+    color: rgba(90, 122, 232, 1);
+    min-height: 3vh;
+    display: flex;
+    padding: 0px 50px;
+    font-size: 1.3rem;
+    background-color: rgba(90, 196, 232, .1);
+}
+
+nav span {
+    font-style: italic;
+    padding: 5px 10px;
+}
+
+nav a {
+    color: rgba(90, 122, 232, 1);
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+nav a:hover {
+    color: white;
+    background-color: rgba(90, 196, 232, .8);
+}
+
+main {
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.3rem;
+}
+
+article {
+    background-image: linear-gradient(rgba(90, 196, 232, .8), rgba(90, 196, 232, .2));
+    padding: 20px;
+    margin: 25px 50px;
+    color: white;
+}
+
+article a {
+    font-family: 'Bad Script', cursive;
+    font-size: 1.1rem;
+    margin: 0px 0px 20px 0px;
+    color: rgba(106, 99, 255, 1);
+    text-decoration: none;
+}
+
+article a:hover {
+    color: white;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+h1, h1 a {
+    font-family: 'Bad Script', cursive;
+    font-size: 3rem;
+    font-weight: normal;
+    margin: 0px;
+    color: white;
+    text-decoration: none;
+}
+
+h1 a:hover {
+    color: rgba(106, 99, 255, 1);
+}
+
+h3, h3 a {
+    font-family: 'Bad Script', cursive;
+    font-size: 1.1rem;
+    margin: 0px 0px 20px 0px;
+    color: rgba(106, 99, 255, 1);
+    text-decoration: none;
+}
+
+h3 a:hover {
+    color: white;
+}
+
+#banner {
+    color: white;
+    justify-content: center;
+    padding: 30px 50px;
+    background-color: rgba(106, 99, 255, .5);
+    text-align: center;
+    overflow: hidden;
+    font-size: 1.1rem;
+}
+
+#banner p {
+    margin:0px;
+}
+
+article img {
+    width: 100%;
+}

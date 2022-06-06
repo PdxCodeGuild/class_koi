@@ -1,0 +1,17 @@
+.main_container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1300px;
+}
+
+.main_img-card{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+}

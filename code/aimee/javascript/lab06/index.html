@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FavQs in Vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <style>
+        body {
+            margin: 3rem;
+        }
+        h4 {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        select {
+            margin: .5rem;
+        }
+        label {
+            margin: .5rem;
+        }
+        input {
+            margin: .5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Vue Quotes</h1>
+        <button @click="getQuote" type="button" class="btn btn-primary" >Generate a new random quote</button>
+        <h4>{{ quote['body'] }} - <i>{{ quote['author'] }}</i></h4>
+        
+            <label for="search-term">Enter search term: </label>
+            <input  type="text" id="search-term" v-model="searchTerm">
+            <br>
+            <input type="submit" value="Search by keyword" type="button" class="btn btn-primary" @click="searchKeyword">
+            <input type="submit" value="Search by tag" type="button" class="btn btn-danger" @click="searchTag">
+            <input type="submit" value="Search by author" type="button" class="btn btn-success" @click="searchAuthor">
+       
+        <ul>
+            <li v-for="quote in quotes">{{ quote['body'] }} - <i>{{ quote['author'] }}</i></li>
+        </ul>
+
+    </div>
+
+
+    <script>
+       
+        const App = {
+            data() {
+                return {
+                    quote: '',
+                    searchTerm: '',
+                    baseUrl: 'https://favqs.com/api/',
+                    quotes: [],
+                    pageNumber: 0,
+                }
+            },
+
+            created() {
+                this.getQuote()
+            },
+
+            methods: {
+                getQuote() {
+                    axios({
+                        url: 'https://favqs.com/api/qotd',
+                        headers: { Accept: 'application/json', Authorization: 'Token token="06b5ba48b266683d9365ed0741b7c574"' },
+                        method: 'get'
+                    }).then(res => {
+                        console.log({ 'this in .then': this })
+                        this.quote = res.data.quote
+                    })
+                },
+
+                // search by keyword
+                searchKeyword() {
+                    axios({
+                        method: 'get',
+                        url: 'https://favqs.com/api/quotes/?filter=${searchTerm}',
+                        headers: { Accept: 'application/json', Authorization: 'Token token="06b5ba48b266683d9365ed0741b7c574"'},
+                        params: { filter: this.searchTerm}
+                    }).then(res => {
+                        console.log(res.data)
+                        this.quotes = res.data.quotes
+                    })
+                },
+                // search by tag
+                searchTag() {
+                    axios({
+                        method: 'get',
+                        url: 'https://favqs.com/api/quotes/',
+                        headers: { Accept: 'application/json', Authorization: 'Token token="06b5ba48b266683d9365ed0741b7c574"' },
+                        params: { filter: this.searchTerm, type:'tag'}
+                    }).then(res => {
+                        console.log(res.data)
+                        this.quotes = res.data.quotes
+                    })
+                },
+                // search by author
+                searchAuthor() {
+                    axios({
+                        method: 'get',
+                        url: 'https://favqs.com/api/quotes/',
+                        headers: { Accept: 'application/json', Authorization: 'Token token="06b5ba48b266683d9365ed0741b7c574"' },
+                        params: { filter: this.searchTerm, type:'author'}
+                    }).then(res => {
+                        console.log(res.data)
+                        this.quotes = res.data.quotes
+                    })
+                }
+            }
+        }
+        const app = Vue.createApp(App)
+        app.mount('#app')
+
+    </script>
+</body>
+
+</html>

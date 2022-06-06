@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Grading</title>
+	<script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+	<div id="app">
+		<h1>Grading</h1>
+		<p>{{ message }}</p>
+		<!-- v-on:submit="methodName" will perform that method on form submission
+		v-on:submit.prevent="methodName" will perform that method and run event.preventDefault automatically -->
+		<form v-on:submit.prevent="checkGrade">
+			<label for="percentage-grade">Please enter the percentage:</label>
+			<input v-model="percentageGrade" type="number" id="percentage-grade">
+			<button type="submit">Submit Grade</button>
+		</form>
+		<p>{{ output }}</p>
+	</div>
+	<script>
+		const App = {
+			data () {
+				return {
+					message: 'please enter your grade below',
+					percentageGrade: 0, 
+					letterGrade: '',
+					output: ''
+				}
+			},
+
+			computed: {
+				aOrAn () {
+					return ['A', 'F'].includes(this.letterGrade) ? 'an' : 'a'
+				}
+			},
+
+			methods: {
+				checkGrade () {
+					// JavaScript will automatically do type coercion
+					// when comparing numberic strings to numbers
+					// i.e.: '70' === 70
+					// the following line is just to be extra explicit
+					// in getting a Number to do the comparisons
+					// const perctage = +this.percentageGrade would have the same effect
+					const percentage = parseInt(this.percentageGrade)
+					if (percentage < 60) {
+						this.letterGrade = 'F'
+					} else if (percentage < 70) {
+						this.letterGrade = 'D'
+					} else if (percentage < 80) {
+						this.letterGrade = 'C'
+					} else if (percentage < 90) {
+						this.letterGrade = 'B'
+					} else {
+						this.letterGrade = 'A'
+					}
+
+					// without computed property (aOrAn is a local variable):
+					// let aOrAn = ['A', 'F'].includes(this.letterGrade) ? 'an' : 'a'
+					// this.output = `Your Grade of ${this.percentageGrade} is ${aOrAn} ${this.letterGrade}.`
+			
+					// with computed property (this.aOrAn is a property of the vue app)
+					this.output = `Your Grade of ${this.percentageGrade} is ${this.aOrAn} ${this.letterGrade}.`
+				}
+			}
+		}
+		const app = Vue.createApp(App)
+		app.mount('#app')
+		// Vue.createApp({
+		// 	data () {
+		// 		return { message: 'hello world' }
+		// 	}
+		// }).mount('#app')
+	</script>
+</body>
+</html>
