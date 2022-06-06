@@ -8,8 +8,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('accounts/', include('accounts.urls')),
-    # path('<int:id>/', views.book, name='book'),
-    path('<int:id>/checkout/', views.checked_outs, name='checkout'),
-    # path('<int:id>/checkout_book/', views.who_checked, name='who_checked_out'),
-    path('<int:id>/checked_in/', views.checked_in, name='checked_in'),
+    path('<int:id>', views.book, name='booklog'),
+    path('checkout/<int:id>', views.checked_outs, name='checkout'),
+
+    path('checked_in/<int:id>', views.checked_in, name='checkin'),
 ]
