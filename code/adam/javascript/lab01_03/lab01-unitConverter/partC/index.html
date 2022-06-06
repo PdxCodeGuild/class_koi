@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Unit Converter</h1>
+        <h3>{{  message }}</h3>
+        <form v-on:submit.prevent="convertUnits">
+            <label for="distance-number">Please enter the distance: </label>
+            <input v-model="distanceInput" type="number" id="distance-number" autofocus required>
+            <br>
+            <div style="margin-top: 1rem; margin-bottom: 1rem;">
+                <label for="fromUnit-select">Select units to convert From: </label>
+                <select v-model="fromUnit" id="fromUnit-select" required>
+                    <option v-for="(conv, i) in conversions" :value="conv" :selected="i===0">{{ conv.name  }}</option>
+                </select>
+            </div>
+            <div style="margin-top: 1rem; margin-bottom: 1rem;">
+                <label for="toUnit-select">Select units to convert To: </label>
+                <select v-model="toUnit" id="toUnit-select" required>
+                    <option v-for="conv in conversions" :value="conv">{{ conv.name  }}</option>
+                </select>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <p style="background-color: skyblue;">{{ output }}</p>
+    </div>
+    <script>
+        const conversions = [
+        { name: 'inches', convToMeters: '0.0254' },
+        { name: 'feet', convToMeters: '0.3048' },
+        { name: 'yards', convToMeters: '0.9144' },
+        { name: 'miles', convToMeters: '1609.34' },
+        { name: 'centimeters', convToMeters: '0.01' },
+        { name: 'meters', convToMeters: '1' },
+        { name: 'kilometers', convToMeters: '1000' },
+        ]
+        const App = {
+            data () {
+                return {
+                    conversions,
+                    fromUnit: conversions[1],
+                    toUnit: conversions[5],
+                    message: 'Converting units of distance',
+                    distanceInput: null,
+                    conversion_output: 0,
+                    output: ''                    
+                }
+            },
+
+            methods: {
+                convertUnits () {
+                    console.log(+this.fromUnit.convToMeters, typeof +this.fromUnit.convToMeters)
+                    function convert(x, y, z){
+                        return (x*y)/(z)
+                    }
+                    const distance = parseInt(this.distanceInput)
+                    console.log(distance, typeof distance)
+                    const convOutput = ((distance)*(+this.fromUnit.convToMeters)/(+this.toUnit.convToMeters))
+                    console.log(convOutput)
+                    this.output = `${distance} ${this.fromUnit.name} is ${convOutput} ${this.toUnit.name}`
+                }
+            }
+        }
+        const app = Vue.createApp(App)
+        app.mount('#app')
+    </script>
+    
+</body>
+</html>

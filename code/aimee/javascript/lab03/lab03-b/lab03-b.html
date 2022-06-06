@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Lab 03 Part B - Blackjack Advice</title>
+
+</head>
+<body>
+    <h1>Blackjack Advice</h1>
+    <label for="card-one">1st card</label>
+    <select name="card-one" id="card-one">
+        <option value="ace">Ace</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="joker">Joker</option>
+        <option value="queen">Queen</option>
+        <option value="king">King</option>
+    </select>
+    <br>
+    <label for="card-two">2nd card</label>
+    <select name="card-two" id="card-two">
+        <option value="ace">Ace</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="joker">Joker</option>
+        <option value="queen">Queen</option>
+        <option value="king">King</option>
+    </select>
+    <br>
+    <label for="card-three">3rd card</label>
+    <select name="card-three" id="card-three">
+        <option value="ace">Ace</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="joker">Joker</option>
+        <option value="queen">Queen</option>
+        <option value="king">King</option>
+    </select>
+    <br><br>
+    <button id="submit">Give me advice!</button>
+    <h3 id="advice"></h3>
+</body>
+<script>
+let cards = {
+    'ace':1,
+    '2':2,
+    '3':3,
+    '4':4,
+    '5':5,
+    '6':6,
+    '7':7,
+    '8':8,
+    '9':9,
+    'joker':10,
+    'queen':10,
+    'king':10,
+}
+let cardOne = document.querySelector('#card-one')
+let cardTwo = document.querySelector('#card-two')
+let cardThree = document.querySelector('#card-three')
+
+// change values to integers based on dictionary
+let valueOne = Number(cards[cardOne.value])
+let valueTwo = Number(cards[cardTwo.value])
+let valueThree = Number(cards[cardThree.value])
+console.log(valueOne, valueTwo, valueThree) // to ensure correct values
+
+let submit = document.querySelector('#submit')
+submit.addEventListener('click', function(event) {
+    event.preventDefault()
+    let total = valueOne + valueTwo + valueThree
+    console.log(total)
+    if (total < 17) {
+    advice.innerHTML = `${total} - hit!`
+    } else if (total >= 17 && total < 21) {
+        advice.innerHTML = `${total} - stay!`
+    } else if (total === 21) {
+        advice.innerHTML = `${total} - Blackjack!`
+    } else {
+        advice.innerHTML = 'Busted!'
+    }
+})
+
+// page needs to be fully refreshed in order for this to function
+
+
+
+
+</script>
+</html>
