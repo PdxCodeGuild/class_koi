@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Unit Converter</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="app">
+        <input type="number" v-model="startDistance" placeholder="Enter a distance" id="start-distance">
+        <label for="start-unit">Select a unit of measurement to convert <strong>from</strong>:</label>
+        <select v-model="startUnit" id="start-unit">
+            <option v-for='unit in Object.keys(converter)' v-bind:value="unit">{{ unit }}</option>
+        </select>
+        <label for="end-unit">Select a unit of measurement to convert <strong>to</strong>:</label>
+        <select v-model="endUnit" id="end-unit">
+            <option v-for='unit in Object.keys(converter)' v-bind:value="unit">{{ unit }}</option>
+        </select>
+        <button v-on:click="clickButton" id="submit-button">Convert {{ startDistance }} {{ startUnit }} to {{ endUnit }}</button>
+        <p id="results">{{ results }}</p>
+    </div>
+</body>
+</html>

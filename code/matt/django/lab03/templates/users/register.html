@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title_addon %}
+: Register
+{% endblock %}
+
+{% block content %}
+<h1 class="">Register</h1>
+
+<form action="{% url 'users:register_user' %}" method="POST" class="">
+    {% csrf_token %}
+    
+    <div class="">
+        <!-- <label for="username" class="">Username:</label> -->
+        <input type="text" id="username" name="username" class="" placeholder="Enter your username">
+    </div>
+
+    <div class="">
+        <!-- <label for="password1" class="">Enter Password:</label> -->
+        <input type="password" id="password1" name="password1" class="" placeholder="Enter your password">
+    </div>
+
+    <div class="">
+        <!-- <label for="password2" class="">Enter Password Again:</label> -->
+        <input type="password" id="password2" name="password2" class="" placeholder="Re-enter your password">
+    </div>
+
+    <div class="">
+        <input type="submit" value="Register" class="">
+    </div>
+
+    <p class="">{{ message }}</p>
+</form>
+{% endblock %}

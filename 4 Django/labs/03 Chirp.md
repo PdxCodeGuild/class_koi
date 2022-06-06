@@ -1,5 +1,12 @@
 # Lab 03: Chirp (Twitter Clone)
 
+### Git Setup:
+```sh
+> git checkout main
+> git pull
+> git checkout -b your-name/django/lab03
+```
+
 **Write a simple MVP (minimum viable product) clone of Twitter!**
 
 
@@ -21,3 +28,11 @@ Your project will also need to have the following functionality:
 
 Make an Instagram clone! Your posts will need an associated image, check out the [instruction guide](../docs/06%20-%20Media%20Files.md).  
 You will need to `pip install pillow` to have ImageFields in your database.
+
+### Git Add, Commit & Push:
+```sh
+> git add files-to-be-added
+> git commit -m "your commit message goes here"
+> git push -u origin your-name/django/lab03
+```
+Then go to the repository to create a PR.

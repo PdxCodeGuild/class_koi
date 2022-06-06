@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number to Phrase</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+    <h1>Number to Phrase</h1>
+    <br>
+    <label>Enter a number:</label><br>
+    <p>Example: 48</p>
+    <input class="textBox" v-model="userInput" placeholder="Number between 1-99" @keyup.enter="numType"><br>
+    <button class="theButton" @click="numType">Submit</button>
+    </div>   
+    
+    <script src="index.js"></script> 
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <title>Lab 06</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ test }}</h1>
+        <!-- <button @click="getQuote">Click Me</button>
+        <ul>
+            <li v-for="quote in quotes">
+                {{ quote.body }}
+            </li>
+        </ul> -->
+
+        <input type="text" placeholder="e.g. Gilbert" v-model="userSearch">
+        <button @click="searchQuote(checkedName)">Search</button>
+        <br>
+        <input type="radio" name="search-type" id="keyword" value="keyword" v-model="checkedName">
+        <label for="keyword">Keyword</label>
+        <input type="radio" name="search-type" id="author" value="author" v-model="checkedName">
+        <label for="author">Author</label>
+        <input type="radio" name="search-type" id="tag" value="tag" v-model="checkedName">
+        <label for="tag">Tag</label>
+        <ul>
+            <li v-for="quote in quotes">
+                {{ quote.body }}
+                - {{ quote.author }}
+            </li>
+        </ul>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
