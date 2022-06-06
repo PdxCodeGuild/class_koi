@@ -1,0 +1,26 @@
+{% extends 'posts/base.html' %}
+
+{% block content %}
+
+<h2 class = "dark-blue"><b>World</b></h2>
+<br>
+<br>
+
+{% for chirp in all_chirps  %}
+
+<b>{{chirp.user}}</b> {{chirp.date}}
+<br>
+<h2>{{chirp.content}}</h2>
+
+{% endfor %}
+
+<br>
+<br>
+
+<form action="{% url 'posts:worldextend' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}    
+    <input type="submit" value="Chirp">
+</form>
+
+{% endblock %}

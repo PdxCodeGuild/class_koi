@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
+    <link rel="stylesheet" href="{% static 'css/library.css' %}">
+    <title>Library || Home</title>
+</head>
+<body>
+    <h1 class="title">Welcome to the Library!</h1>
+    <a href="">Home</a>
+    <table class="u-full-width">
+        <thead>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Date Published</th>
+            <th>Checked Out?</th>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td><a href="/library/{{ book.id }}">{{ book.title }}</a></td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.date_published }}</td>
+                <td>
+                    {% if not book.checked_out %}
+                        <a href="/library/{{ book.id }}">Check Out this Book!</a>
+                    {% else %}
+                        Book is checked out.
+                    {% endif %}
+            </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</body>
+</html>

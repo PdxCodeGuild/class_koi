@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sign Up</title>
+	<script src="https://cdn.tailwindcss.com/"></script>
+</head>
+<body>
+	<h1 class="text-slate-800 text-center text-2xl py-5">Sign Up</h1>
+	
+	<form action="{% url 'users:signup' %}" method="POST" class="m-32">
+		{% csrf_token %}
+		
+		<div class="my-3 flex justify-between w-1/2">
+			<label for="username" class="pr-5">Username:</label>
+			<input type="text" id="username" name="username"
+			class="border-black border-2 rounded-md mr-4"
+			>
+		</div>
+
+		<div class="my-3 flex justify-between w-1/2">
+			<label for="password1" class="pr-5">Enter Password:</label>
+			<input type="password" id="password1" name="password1"
+			class="border-black border-2 rounded-md mr-4"
+			>
+		</div>
+
+		<div class="my-3 flex justify-between w-1/2">
+			<label for="password2" class="pr-5">Enter Password Again:</label>
+			<input type="password" id="password2" name="password2"
+			class="border-black border-2 rounded-md mr-4"
+			>
+		</div>
+
+		<div class="my-3 flex justify-end w-1/2">
+			<input type="submit" value="Sign Up"
+			class="
+			border-zinc-700 border-2 rounded-md
+			hover:bg-zinc-800 hover:text-white
+			cursor-pointer px-3 my-2 mr-4
+			"
+			>
+		</div>
+
+		<p class="text-red-800 pt-3">{{ message }}</p>
+	</form>
+	
+</body>
+</html>

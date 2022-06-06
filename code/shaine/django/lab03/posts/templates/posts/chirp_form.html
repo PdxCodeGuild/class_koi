@@ -1,0 +1,27 @@
+{% extends 'posts/base.html' %}
+
+{% block content %}
+
+
+<div class="container mx-auto p-5 mt-3 ">
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <fieldset class="form-group">
+
+            <legend class="border-bottom mb-4">Write post</legend>
+            {{ form.as_p }}
+
+        </fieldset>
+
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Chirp</button>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock content %}

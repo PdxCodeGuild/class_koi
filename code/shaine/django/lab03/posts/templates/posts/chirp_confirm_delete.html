@@ -1,0 +1,31 @@
+{% extends 'posts/base.html' %}
+
+{% block content %}
+
+<div class="container mx-auto p-5 mt-3 ">
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <fieldset class="form-group">
+
+            <legend class="border-bottom mb-4">Confirm Delete</legend>
+
+        </fieldset>
+
+        <div class="form-group">
+            <button class="btn btn-outline-danger" type="submit">Delete</button>
+            <a href="{% url 'index' %}"><button class="btn btn-outline-info">Cancel</button></a> 
+
+
+        </div>
+
+    </form>
+
+</div>
+
+
+{% endblock content %}
+
+
+

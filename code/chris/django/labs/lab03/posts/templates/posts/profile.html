@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>{{ author }}'s Chirps</title>
+{% endblock %}
+
+{% block content %}
+{% for post in author.Posts.all reversed %}
+<div class="container mb-4 text-center shadow bg-body rounded">
+    <div class="container text-start"><h3>{{ post.content }}</h3></div>
+    <div class="text-start">-Chirped by <a href="{% url 'posts:profile' post.author %}">{{ post.author }}</a> on {{post.date_written}}</div>
+</div>
+{% endfor %}
+
+{% endblock %}
