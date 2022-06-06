@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Vue Todos</title>
+	<script src="https://unpkg.com/vue@3"></script>
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<div id="app">
+		<h1>Vue Todos</h1>
+		<form @submit.prevent="addTodo">
+			<label for="new-todo">New Todo:</label>
+			<input v-model="newTodo" type="text">
+		</form>
+		<h3>ToDos</h3>
+		<ul>
+			<!-- you can give yourself access to the element
+			and index of an array in a v-for loop with
+			v-for="(element, index) in array" syntax -->
+			<li v-for="todo in todos">
+				<span
+					:style="
+						todo.completed
+							? 'text-decoration: line-through;'
+							: ''
+					"
+				>
+					{{ todo.text }}
+				</span>
+				<button @click="deleteTodo(todo.id)">Delete</button>
+				<button @click="toggleCompleteTodo(todo)">Complete</button>
+			</li>
+		</ul>
+		<h3>ToDones</h3>
+		<ul>
+
+			<li v-for="todo in todones">
+				<span
+				:style="
+				todo.completed
+				? 'text-decoration: line-through;'
+				: ''
+				"
+				>
+				{{ todo.text }}
+			</span>
+			<button @click="deleteTodo(todo.id)">Delete</button>
+			<button @click="toggleCompleteTodo(todo)">De-Complete</button>
+		</li>
+	</ul>
+</div>
+</body>
+</html>
