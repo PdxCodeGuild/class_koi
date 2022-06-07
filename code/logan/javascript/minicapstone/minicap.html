@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="testscript.js" defer></script>
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+    
+    
+    
+    
+    
+    <title>Capstone</title>
+</head>
+<body class="bg-near-white">
+
+    <div id = "app">
+
+        <h1 class = "calisto purple tc f1">{{message}}</h1>
+        <!-- {{breedIDList}} -->
+        <!-- {{catFetch}} -->
+
+        <br>
+
+        <div class = "flex items-center justify-around ph4 mb7">
+
+        <div>
+
+            <h2 class = "green calisto tc"> Hall of Fame </h2>
+            <img class = "h5 w5 mt2 mb4" v-for="image in hallOfFame" :src="image.url"/>
+
+        </div>
+            
+        <div>
+
+            <h2 class = "red calisto tc"> Hall of Shame </h2>
+            <img class = "h5 w5 mt2 mb4" v-for="image in hallOfShame" :src="image.url"/>
+
+        </div>
+
+
+
+        </div>
+        
+        
+        <div class = "flex flex-column items-center justify-center ph4" v-show = "clickCheck">
+            <h2 class = "blue calisto"> Judge Me </h2>
+            <img class = "h5 w5 mt2 mb4" v-for="image in imgURLs" :src="image.url"/>
+            <button class = "bg-washed-green" @click.prevent = "rFame" > Hall of Fame </button>
+            <button class = "bg-washed-red" @click.prevent = "rShame" > Hall of Shame </button>
+        </div>
+
+
+
+        <div class = "flex flex-wrap justify-center ph4 mt2">
+            <button class = "mt3" type="button" @click.prevent = "getCat" > Random Cat </button>
+        </div>
+
+        <br>
+
+
+        <hr class = "mb4">
+
+        <h1 class = "calisto purple tc f1">FUN FACTS BY BREED</h1>
+
+        <p class = "courier f4 navy"> 
+            {{desc}}
+        </p>
+        
+        <div class = "flex flex-wrap justify-center">
+        <div class = "" v-for = "breed in breedList">
+            <button class = "ma1" @click.prevent = "searchCat (breed)"> {{breed}} </button>
+        </div>
+        </div>
+
+        <!-- <button class = "mt3" type="button" @click.prevent = "breedGrab" > Get Breeds </button> -->
+
+ 
+     
+     
+     
+     
+     
+     
+     
+    <!-- <form id="myForm">
+        <select id="selectBreed">
+              <option>Select a breed</option>
+        </select>
+    </form> -->
+     
+     
+     
+    <!-- <form @submit.prevent="searchCat" class = "mt3">
+        <label for="search-term">Enter Search Term:</label>
+        <input v-model="searchTerm" type="text" id="search-term" class = "mh2">
+        <input type="submit" value="Search 4 Cats">
+    </form> -->
+
+
+
+    </div>
+    
+
+
+
+
+
+</body>
+</html>
