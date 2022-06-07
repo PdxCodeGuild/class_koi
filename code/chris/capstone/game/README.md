@@ -9,7 +9,6 @@ Games are fun. For some, games are like sports and getting better at the game in
 ### MVP:
   * input field for user to enter commands
   * a place for responses to render
-  * an enemy for user to kill
   * an ending alert or change in state
   * track completion of this story
 

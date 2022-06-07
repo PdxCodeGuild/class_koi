@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Story, StoryPrompt
+from .models import Story, StoryTile
 
 admin.site.register(Story)
-admin.site.register(StoryPrompt)
+admin.site.register(StoryTile)
