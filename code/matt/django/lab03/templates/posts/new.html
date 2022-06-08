@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title_addon %}: index {% endblock %}
+
+{% block content %}
+
+<form action="{% url 'posts:new' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ new_post_form.as_p }}
+    <input type="submit" value="submit">
+</form>
+
+{% endblock %}

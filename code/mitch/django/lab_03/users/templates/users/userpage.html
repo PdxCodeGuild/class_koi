@@ -1,0 +1,56 @@
+{% extends 'chirp/core.html' %}
+
+{% block title %}
+<title>{{ username }}</title>
+{% endblock %}
+
+
+{% block header %}
+    {% if request.user.is_authenticated %}
+        <span class="flex content-center justify-around f6 black-80 fw6 ttu pa1 tracked">Logged in as {{ request.user.username }}</span>
+        <a href="/users/{{ request.user.username }}" class="flex content-center justify-around link grow f6 black-80 fw6 ttu pa1 tracked">My Page</a>
+        <a href="/users/logout" class="flex content-center justify-around link grow f6 black-80 fw6 ttu pa1 tracked">Logout</a>
+        {% else %}
+        <span class="flex content-center justify-around f6 black-80 fw6 ttu pa1 tracked">Log in to make chirps</span>
+        <a href="/users/signup" class="flex content-center justify-around link grow f6 black-80 fw6 ttu pa1 tracked">Sign Up</a>
+        <a href="/users/login" class="flex content-center justify-around link grow f6 black-80 fw6 ttu pa1 tracked w-auto">Log In</a>
+    {% endif %}
+{% endblock %}
+
+
+
+{% block content %}
+<form action="{% url 'chirp:index' %}" method="POST" class="pa4 black-80 flex justify-center">
+    {% csrf_token %}
+    <div>
+      <input type="submit" value="Chirp something:" class="black-80 br2 b ph3 pv2 input-reset ba b--black bg-light-gray grow pointer f6 dib">
+      <textarea required maxlength="280" id="post_text" name="post_text" rows="3" cols="70" class="db border-box bg-light-gray w-100 measure ba b--black pa2 br2 mb2" aria-describedby="post_text-desc"></textarea>
+      <small id="post_text-desc" class="f6 black-70">(280 characters maxium length.)</small>
+    </div>
+</form>
+
+{% if user.chirp_posts.all %}
+    <article class="tc" style="width:auto ;">
+        <h1 class="ph2 pt2 pb1 w-50 mw6 center avenir bg-dark-blue gold br3">{{ user }}'s Posts</h1>
+        <ul class="list pl0 dib">
+            {% for post in user.chirp_posts.all reversed %}
+                <li class="pb3 pb4-ns ph3 ph4-ns bb b--black-10">
+                    <h4 class="br2 tc db f6 mb1 bg-dark-blue gold">
+                        <a href="/users/{{ post.user }}" class="link gold">{{ post.user }}</a> 
+                        @ {{ post.date_time }}
+                    </h4>
+                    <span class="br2 tl pa3 f6 db f5-ns lh-copy measure mv0 bg-black-10 ws-normal">{{ post.text }}</span>
+                    <form action="{% url 'chirp:delete' post.user post.id %}" method="POST">
+                        {% csrf_token %}
+                        <button class="mt1 f6 bg-black-10 br-pill avenir grow pointer" type="submit">Delete This Chirp</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    </article>
+{% else %}
+<span class="center tc br2 tl pa3 f6 db f5-ns lh-copy measure mv0 bg-black-10 ws-normal">{{ user }} has no chirps!</span>
+
+{% endif %}
+
+{% endblock %}

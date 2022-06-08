@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title_addon %}: {{ post.author }}'s Boop{% endblock %}
+
+{% block content %}
+
+<section class="p-3 mb-3">
+    <header>
+        <div class="post_auth_date">
+            <p class="post_author"><a href="{% url 'posts:user_feed' post.author %}">{{ post.author }}</a></p>
+            <p class="post_date"> - <a href="{% url 'posts:post_detail' post.author post.id %}">{{ post.timestamp }}</a></p>
+        </div>
+        
+        {% if post.author == request.user %}
+        <div class="post_edit_delete">
+            <button onclick="toggleThings(['edit_form'],['close_edit_button'],['open_edit_button'{% if post.text_content %},'post_text_content'{% endif %}])" id="open_edit_button" class="m-1">Edit Boop</button>
+            <button onclick="toggleThings([{% if post.text_content %}'post_text_content'{% endif %}],['open_edit_button'],['edit_form','close_edit_button'])" id="close_edit_button" class="init_hidden m-1">Cancel Edit</button>
+            <form action="{% url 'posts:delete_post' post.author post.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit">Delete Boop</button>
+            </form>
+        </div>
+        {% endif %}
+    </header>
+    {% if post.image_content %}
+    <img src="{{ post.image_content.url }}" alt="{{ post.text_content }}" id="post_image_content">
+    {% endif %}
+    {% if post.text_content %}
+    <p id="post_text_content">{{ post.text_content }}</p>
+    {% endif %}
+    <div id="edit_form" class="init_hidden">
+        <form action="{% url 'posts:edit_post' post.author post.id %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="">
+                <input type="text" name="text_content" value="{{ post.text_content }}" class="testtest mb-1">
+            </div>
+            <div class="">
+                <button type="submit">Save Changes</button>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

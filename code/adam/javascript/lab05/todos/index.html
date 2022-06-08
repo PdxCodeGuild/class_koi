@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos</title>
+    <script src="https://cdn.tailwindcss.com/"></script>
+	<script src="https://unpkg.com/vue@3"></script>
+</head>
+<body class="bg-indigo-100">
+    <div id="app">
+        <h1 class="text-center text-5xl my-5 mx-10 rounded font-sans">To Do List</h1>
+        <form @submit.prevent="addNewToDo" class="m-10 p-2 bg-white/75 rounded bg-indigo-300">
+            <label for="new-ToDo">Add a New To Do Item:</label>
+            <input v-model="newToDo" id="new-ToDo" type="text" placeholder=" new to do item"
+            class="border-black border-2 rounded-md ml-5 bg-indigo-200" autofocus required>
+            <button type="submit" 
+            class="border-black border-2 rounded-md px-3 ml-5">Add</button>
+        </form>
+
+        <h3 class="text-xl ml-8 my-3 mx-10 rounded text-center">
+			<u>List of To Do Items</u>
+		</h3>
+        <main>
+            <div class="text-center">
+                <ul class="list-disc text-left inline-block">
+                    <li v-for="(todo, index) in todos" id="todo" class="ml-8">
+                        <span :class="`text-lg w-35 ${ todo.completed ? 'line-through' : '' }`">
+                            {{ todo.text }}
+                        </span>
+                        <button type="submit" id="delete"
+                        v-on:click="deleteItem(index)"
+                        class="border-black border-2 rounded-md px-2 ml-4">Delete</button>
+                        <button type="submit" id="toggle"
+                        v-on:click="toggleComplete(index)"
+                        class="border-black border-2 rounded-md px-2 ml-4">{{ todo.completed? 'Undo': 'Complete' }}</button>
+                        <!-- <button type="submit" id="toggle"
+                        v-on:click="moveTodo(index)"
+                        class="border-black border-2 rounded-md px-2 ml-4">{{ todo.completed? 'Undo': 'Move Item' }}</button> -->
+                    </li>
+                </ul>
+            </div>
+
+            <!-- <h3 class="text-xl ml-8 my-3 mx-10 rounded text-center">
+                <u>Completed Items</u>
+            </h3>
+            <div class="text-center">
+                <ul class="list-disc text-left inline-block">
+                    <li v-for="(todo, index) in todosComplete" id="todo" class="ml-8">
+                        <span :class="`text-lg w-35`">
+                            {{ todo.text }}
+                        </span>
+                        <button type="submit" id="delete"
+                        v-on:click="deleteItem(index)"
+                        class="border-black border-2 rounded-md px-2 ml-4">Delete</button>
+                        <button type="submit" id="toggle"
+                        v-on:click="moveTodo(index)"
+                        class="border-black border-2 rounded-md px-2 ml-4">{{ todo.completed? 'Undo': 'Complete' }}</button>
+                    </li>
+                </ul>
+            </div> -->
+        </main>
+    </div>
+    <script>
+        const App = {
+            data () {
+                return {
+                    pageTitle: 'To Do List',
+                    newToDo: '',
+                    todos: [],
+                    complete: 'Complete',
+                    todosComplete: [],
+                }
+            },
+            methods: {
+                addNewToDo () {
+                    this.todos.push({text: this.newToDo, completed: false})
+                    this.newToDo = ''
+                    //console.log(todos(index).completed)
+                },
+                deleteItem (index) {
+                    this.todos.splice(index, 1)
+                },
+                toggleComplete (index) {
+                    const todo = this.todos[index]
+                    console.log(todo)
+                    todo.completed = !todo.completed
+                },
+                /*moveTodo (index) {
+                    console.log(this.todosComplete[index])
+                    this.todosComplete.push({text: this.todo, completed: true})
+                    this.todos.splice(index,1)
+                }*/
+            }
+        }
+        const app = Vue.createApp(App)
+        app.mount('#app')
+    </script>
+    
+</body>
+</html>
