@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Vue Todos</title>
+	<script src="https://unpkg.com/vue@3"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		{% csrf_token %}
+		<h1>Vue ToDos</h1>
+		<form @submit.prevent="addTodo">
+			<label for="new-todo">New ToDo</label>
+			<input v-model="newTodo" type="text" id="new-todo">
+			<input type="submit" value="Add ToDo">
+		</form>
+		<ul>
+			<li v-for="todo in todos">[[ todo.text ]]</li>
+		</ul>
+	</div>
+	<script>
+		const App = {
+			data () {
+				return {
+					todos: [],
+					newTodo: '',
+					csrf_token: ''
+				}
+			},
+			// you will need to set custom delimiters
+			// because the django template renderer will replace
+			// any {{ var_in_delimiters }} before the vue app runs
+			delimiters: ['[[', ']]'], // ['d(', ')b'] // ears
+
+			created () { // the created hook is a function (is it a method?)
+				// that runs when the app is first created
+				// it is useful for things like ajax calls (axios, fetch, etc.)
+				// that you want to run right away
+				this.getTodos() // calling getTodos right away
+			},
+
+			mounted () { // the mounted hook runs when the DOM content has been loaded
+				// you can use tag-name[attribute="value"] in CSS selection
+				const input = document.querySelector('input[name="csrfmiddlewaretoken"]')
+				// console.log(input.value)
+				this.csrf_token = input.value
+				// this.csrf_token = document.querySelector('input[name="csrfmiddlewaretoken"]').value
+			},
+
+			methods: {
+				// this method is sending an axios call
+				// to the django app (/get-todos endpoint)
+				// that view returns a json response
+				// with the todos from the database
+				getTodos () {
+					axios({
+						method: 'get',
+						url: '/get-todos'
+					}).then(res => {
+						console.log(res.data)
+						this.todos = res.data.todos
+					})
+				},
+
+				addTodo () {
+					axios({
+						method: 'post',
+						url: '/add-todo/', // had to add slash to end of url because it's a post request
+						data: { // the data object of the axios call will be turned into JSON and be accessible
+							// via request.body on the backend 
+							text: this.newTodo // this will be the contents of that json: `{"text": "wash car" }`
+						},
+						headers: { // since the data is not passed with vanilla form submission,
+							// the csrf_token will be set here in the headers
+							'X-CSRFToken': this.csrf_token
+						}
+					}).then(res => this.getTodos()) // after the promise is resolved (in the .then)
+					// run the getTodos method again to get the new, updated version of the todos
+					this.newTodo = ''
+				}
+			}
+		}
+		const app = Vue.createApp(App)
+		app.mount('#app')
+	</script>
+</body>
+</html>

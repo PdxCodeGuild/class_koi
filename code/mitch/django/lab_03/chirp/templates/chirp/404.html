@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+    <title>Chirp 404 Page</title>
+</head>
+<body>
+    <article class="athelas">
+        <div class="vh-100 dt w-100 tc bg-dark-gray cover" style="background:url(https://upload.wikimedia.org/wikipedia/commons/9/92/Sort_sol_pdfnet.jpg) no-repeat center;">
+          <div class="dtc v-mid">
+            <header class="white-70">
+                <a href="/"><img src="{% static 'chirp/chirp_logo.png' %}" class="flex justify center br-100 ba b--black-10 h4 w4" alt="Chirp Logo"></a>
+            </header>
+            <h1 class="f1 fw1 i white bg-black-70">Error 404</h1>
+            <blockquote class="ph0 mh0 measure f4 lh-copy center bg-white-50 br2">
+              <p class="fw1">
+                “A bird does not sing because it has an answer, it sings because it has a song.”
+              </p>
+              <cite class="f6 ttu tracked fs-normal">-Maya Angelou</cite>
+            </blockquote>
+          </div>
+        </div>
+      </article>
+      
+</body>
+</html>

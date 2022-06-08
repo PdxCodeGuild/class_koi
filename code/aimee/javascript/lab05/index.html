@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List in Vue</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+        .body {
+            display: flex;
+        }
+        #app {
+            margin:10px;
+            padding: 10px;
+        }
+        .active {
+            text-decoration: line-through;
+        }
+        button {
+            margin:2px;
+            margin-left:5px;
+        }
+        h1 {
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="card">
+        <h1>Your To-Do List</h1>
+        <div v-for="(task, n) in tasks">
+            <h4>
+                <span class="task">{{ task.text }}</span>
+                <button @click="task.completed = !task.completed" :style="styleObject" v-bind:class="{active: task.completed}" type="button" class="btn btn-primary">Complete</button>
+                <button @click="removeTask(n)" type="button" class="btn btn-danger">Delete</button>
+            </h4>
+        </div>
+        <p>
+            <input v-model="newTask" autofocus placeholder="Enter a task...">
+            <button @click="addTask" type="button" class="btn btn-success">Add new task</button>
+        </p>
+        <br>
+    </div>
+
+    <script>
+        const App = {
+            data() {
+                return {
+                    tasks: [],
+                    newTask: null,
+                    styleObject: false,
+                }
+            },
+            created() {
+                if (localStorage.getItem('tasks')) {
+                    try {
+                        this.tasks = JSON.parse(localStorage.getItem('tasks'))
+                    } catch (e) {
+                        localStorage.removeItem('tasks')
+                    }
+                }
+            },
+            methods: {
+                addTask() {
+                    // validate
+                    if (!this.newTask) {
+                        return
+                    }
+                    this.tasks.push({text:this.newTask, completed:false})
+                    this.newTask = '';
+                    this.saveTasks()
+                },
+                removeTask(x) {
+                    this.tasks.splice(x, 1)
+                    this.saveTasks()
+                },
+                saveTasks() {
+                    const parsed = JSON.stringify(this.tasks)
+                    localStorage.setItem('tasks', parsed)
+                },
+            }
+        }
+
+        const app = Vue.createApp(App)
+        app.mount('#app')
+    </script>
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

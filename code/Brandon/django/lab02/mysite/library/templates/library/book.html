@@ -1,0 +1,35 @@
+<a href = "{% url 'library:index'  %}">Home</a>
+
+<h1>{{ author }}</h1>
+{% for check in books %}
+<p id="name">Title: {{ check.name }}</p>
+<p>Author: {{ check.author }} </p>
+
+{% if check.checked_out == False %}
+<form action = "/checkout/{{ check.id }}" method="post">
+    {% csrf_token %}
+    
+    <p>Avaialable: &#9745;</p>
+    <input type="text" name="checkout" id="checkout"  value={{ user }} >
+    <button>Check Out</button>				
+</form>
+
+{% else %}
+<form action="/checked_in/{{ check.id }}">
+    {% csrf_token %}
+    
+    <button type="submit">Check In</button>
+    
+    {% endif %}
+    <br>
+</form>
+{% endfor %}
+{% for book in checked %}
+{% if book.who_checked_out %}
+<p>{{ book.who_checked_out }} checked out at {{ book.who_checked_out_time }} </p>
+{% else %}
+<p>{{ book.who_checked_in }} checked in at {{ book.who_checked_in_time }} </p>
+{%  endif %}
+{% endfor %}
+
+

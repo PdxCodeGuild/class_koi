@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- List books and implement checkout-ability -->
+    <h1>All Books</h1>
+    <ul>
+        {% for book in books %}
+        <li>
+            {{ book }}
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h1>Available Books</h1>
+    <ul>
+    <form action="user_checkout/" method="POST">
+        {% csrf_token %}
+        {% for available_book in available_books %}
+            <li>
+                <input type="radio" name="available_book" value="{{ available_book }}" id="{{ available_book }}">
+                <label for="{{ available_book }}">{{ available_book }}</label>
+            </li>
+        {% endfor %}
+        <input type="text" name="user" placeholder="Enter username"><input type="submit" value="Check Out Book">
+    </form>
+    </ul>
+
+    <h1>Check In Books</h1>
+    <ul>
+    <form action="user_checkin/" method="POST">
+        {% csrf_token %}
+        {% for check_in_book in check_in_books %}
+            <li>
+                <input type="radio" name="check_in_book" value="{{ check_in_book }}" id="{{ check_in_book }}">
+                <label for="{{ check_in_book }}">{{ check_in_book.title }} - {{ check_in_book.author }}</label>
+            </li>
+        {% endfor %}<input type="text" name="user" placeholder="Enter username"><input type="submit" value="Check In Book">
+    </form>
+    </ul>
+
+    <h1>Check In/Out History</h1>
+    <ul>
+        {% for item in library_history %}
+        <li>
+            <li>
+                {{ item.name }}
+            </li>
+            <li>
+                {{ item.book }}
+            </li>
+            <li>
+                {% if item.checkout == False %}
+                    Checked in at {{ item.timestamp }}
+                {% elif item.checkout == True %}
+                    Checked out at {{ item.timestamp }}
+                {% endif %}
+            </li>
+        </li>
+        {% endfor %}
+    </ul>
+
+
+</body>
+</html>
