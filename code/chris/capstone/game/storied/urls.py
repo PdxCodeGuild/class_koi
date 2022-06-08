@@ -4,8 +4,8 @@ from storied import views
 
 app_name = 'storied'
 urlpatterns = [
-    path('', views.story_tile_list),
-    path('detail/<int:pk>', views.story_tile_detail)
+    path('api_view/', views.story_tile_list),
+    path('api_view/detail/<int:pk>', views.story_tile_detail)
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
