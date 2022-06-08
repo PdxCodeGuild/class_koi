@@ -1,11 +1,7 @@
-from django.contrib.auth.models import User, Group
 from rest_framework import serializers
+from storied.models import Story, StoryTile, CharacterPlayer
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class StoryTileSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Userfields = ['url', 'username', 'email', 'groups']
-
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Group
-        fields = ['url', 'name']
+        model = StoryTile
+        fields = ['id', 'x_coord', 'y_coord', 'prompt', 'enemy_tile', 'story']

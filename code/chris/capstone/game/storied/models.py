@@ -43,6 +43,6 @@ class UserOptions(models.Model):
     
     user_options = models.CharField(max_length=2, choices=USER_MOVES_CHOICES, null=True, blank=True)
 
-class UserPlayer(models.Model):
+class CharacterPlayer(models.Model):
     player_name = models.CharField(max_length=40)
     health_points = models.IntegerField()

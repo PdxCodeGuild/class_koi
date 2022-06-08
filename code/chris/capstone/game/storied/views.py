@@ -1,32 +1,48 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.contrib.auth.models import User, Group
-from rest_framework import viewsets
-from rest_framework import permissions
-from storied.serializers import UserSerializer, GroupSerializer
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from storied.models import StoryTile
+from storied.serializers import StoryTileSerializer
 
-from .models import StoryTile
-
-class UserViewSet(viewsets.ModelViewSet):
+@api_view(['GET', 'POST'])
+def story_tile_list(request, format=None):
     '''
-    API endpoint that allows users to be viewed or edited.
+    List all story tiles, or create a new story tile.
     '''
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
-class GroupViewSet(viewsets.ModelViewSet):
+    if request.method == 'GET':
+        story_tiles = StoryTile.objects.all()
+        serializer = StoryTileSerializer(story_tiles, many=True)
+        return Response(serializer.data)
+    
+    elif request.method == 'POST':
+        serializer = StoryTileSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def story_tile_detail(request, pk, format=None):
     '''
-    API endpoint that allows groups to be viewed or edited.
+    Retrieve, update or delete a code snippet.
     '''
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializerpermission_classes = [permissions.IsAuthenticated]
-# def index(request):
-#     story_tiles = StoryTile.objects.all().values()
+    try:
+        story_tile = StoryTile.objects.get(pk=pk)
+    except StoryTile.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'GET':
+        serializer = StoryTileSerializer(story_tile)
+        return Response(serializer.data)
 
-#     print(story_tiles)
-
-#     context = {
-#         'story_tiles': story_tiles,
-#     }
-#     return render(request, 'storied/index.html', context)
+    elif request.method == 'PUT':
+        serializer = StoryTileSerializer(story_tile, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    elif request.method == 'DELETE':
+        story_tile.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
