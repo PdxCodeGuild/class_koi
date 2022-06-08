@@ -1,0 +1,17 @@
+{% extends 'partials/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="border p-3">
+    <h4>Complete Item</h4>
+    <hr>
+    <div class="alert alert-danger">
+        <p>Has this item been purchased?</p>
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+        <a class="btn btn-secondary" href="{% url grocery-index %}">Cancel</a>
+        <input class="btn btn-danger" type="submit" value="Confirm">
+    </form>
+</div>
+
+{% endblock %}

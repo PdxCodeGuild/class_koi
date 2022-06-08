@@ -1,0 +1,148 @@
+.init_hidden {
+    display: none;
+}
+
+body {
+    color:#6667AB;
+    background-color: #EEF5DB;
+}
+
+button {
+    border-radius: 10px;
+    border: 0px;
+    transition: .25s;
+}
+
+nav button {
+    background-color: #6667AB;
+    color:#EEF5DB;
+}
+
+button:hover {
+    background-color: #F9ADA0;
+    color:#6667AB;
+}
+
+button:active {
+    background-color: #DBD56E;
+    color:#6667AB;
+}
+
+section {
+    background-color: #6667AB;
+    color:#EEF5DB;
+    border-radius: 25px;
+}
+
+section a {
+    color: #2CA58D;
+}
+
+section a:hover {
+    color: #F9ADA0
+}
+
+.post_author {
+    display: inline-block;
+    font-weight: bold;
+    font-size: large;
+}
+
+.post_date {
+    display: inline-block;
+    font-style: italic;
+    font-size: small;
+}
+
+#post_text_content {
+    font-size: larger;
+}
+
+#post_image_content {
+    display: block;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+}
+
+section header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+section button, section form {
+    display: inline-block;
+}
+
+section button {
+    background-color: #EEF5DB;
+    color:#6667AB;
+}
+
+.post_auth_date {
+
+}
+
+.post_edit_delete {
+
+}
+
+#edit_form form, #edit_form form div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.testtest {
+    width: 100%;
+    background-color: #EEF5DB;
+    color: #6667AB;
+    font-size: larger;
+    border: 0px;
+}
+
+.nav_logo {
+    max-width: 50%;
+}
+
+.nav_logo img {
+    max-width: 100%;
+}
+
+.nav_right {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav_buttons {
+    display: flex;
+    justify-content: right;
+}
+
+#new_post_form, #login_form, #register_form {
+    background-color: #6667AB;
+    color: #EEF5DB;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+#id_text_content {
+    width: 100%;
+}
+
+.center {
+    text-align: center;
+}

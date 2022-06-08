@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROT 13</title>
+    <script src="https://unpkg.com/vue@3"></script>
+	<script src="script.js" defer></script>
+</head>
+<body>
+    <div id = "app">
+        <h1>{{ headline }}</h1>
+
+    <form v-on:submit.prevent="encMessage">
+        <label for="input-message"> Please enter a message in lower case. </label>
+        <input v-model="txtInput" type="text" placeholder="message here" id ="input-message">
+        <button type="submit"> Submit </button>
+    </form>
+
+    <p>{{encodedString}}</p>
+
+    </div>
+
+</body>
+</html>

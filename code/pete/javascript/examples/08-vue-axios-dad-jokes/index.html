@@ -7,6 +7,7 @@
 	<title>Vue Dad Jokes</title>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script src="https://unpkg.com/vue@3"></script>
+	<script src="secrets.js"></script>
 	<script src="script.js" defer></script>
 </head>
 <body>
@@ -20,7 +21,8 @@
 			<input v-model="searchTerm" type="text" id="search-term">
 			<input type="submit" value="Search for Dad Jokes">
 		</form>
-		<ul>
+		<p v-if="error">{{ error }}</p>
+		<ul v-else>
 			<li v-for="joke in jokes">{{ joke.joke }}</li>
 		</ul>
 	</div>
