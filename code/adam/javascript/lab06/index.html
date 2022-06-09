@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FavQs</title><script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="script.js" defer></script>
+</head>
+<body style="margin-left: 2rem;">
+    <div id="app">
+        <h1>FavQs Quotes</h1>
+        <button @click="getQuote">Get Another Random Quote</button>
+        <p>"{{ quote }}"</p>
+        <p style="margin-left: 1rem;">-{{ author }}</p>
+        <form @submit.prevent="searchQuote">
+            <label for="searchType">Select search type :</label> 
+            <select v-model="searchType" id="searchId" required>
+                <option value="keyword">keyword</option>
+                <option value="author">author</option>
+                <option value="tag">tag</option>
+            </select>
+            <br>
+            <div style="margin-top: 0.5rem;">
+                <label for="search-term">Enter Search Term:</label>
+                <input v-model="searchTerm" type="text" id="search-term" required>
+                <input type="submit" value="Search for Quotes" style="margin-left: 0.5rem">
+            </div>
+        </form>
+        <br>
+        <button @click="getQuoteList" style="margin-top:1rem">Get List of 25 Random Quote</button>
+        <h4 v-if = 'message'>{{ message }}
+        </h4>
+        <button @click="nextPage" v-if = "! lastPage">Next page of quotes</button>
+        <ol :start="listStart">
+            <li v-for="(quote,index) in quotes" id="quote" style="margin-top: 8px">
+                <span>"{{ quote.body }}"</span>
+                <br>
+                <span>- {{  quote.author }}</span>
+            </li>
+        </ol>
+
+    </div>
+    
+</body>
+</html>

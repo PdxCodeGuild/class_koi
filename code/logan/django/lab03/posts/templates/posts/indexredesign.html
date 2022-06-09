@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title> Home </title>
+
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+    <style>
+
+        h1{font-family: 'Lato', sans-serif; color:whitesmoke}
+
+    </style>
+
+</head>
+
+<body>
+
+    <header class="bg-dark-green fixed w-100 ph3 pv3 pv4-ns ph4-m ph5-l">
+
+        <h1 class = "tc"><b>Chirp</b></h1>
+
+    </header>
+    
+    <main class = "pt7">
+
+    <form action="{% url 'users:user_login' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}    
+        <input type="submit" value="Log in">
+    </form>
+
+    {{message}}
+    <br>
+    <br>
+    <h2><a href='users/signup'> Sign Up </a></h2>  
+
+    </main>
+
+</body>
+
+</html>

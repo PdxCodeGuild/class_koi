@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title_addon %}: {{ author }}'s Boops{% endblock %}
+
+{% block content %}
+
+{% for post in posts reversed %}
+<section class="p-3 mb-3">
+    <p class="post_author"><a href="{% url 'posts:user_feed' post.author %}">{{ post.author }}</a></p>
+    <p class="post_date"> - <a href="{% url 'posts:post_detail' post.author post.id %}">{{ post.timestamp }}</a></p>
+    {% if post.image_content %}
+    <img src="{{ post.image_content.url }}" alt="{{ post.text_content }}" id="post_image_content">
+    {% endif %}
+    {% if post.text_content %}
+    <p id="post_text_content">{{ post.text_content }}</p>
+    {% endif %}
+</section>
+{% endfor %}
+
+{% endblock %}
