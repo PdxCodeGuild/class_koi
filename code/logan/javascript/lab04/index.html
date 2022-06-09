@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Vue-tiful Quotations </title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+</head>
+<body class = "bg-near-white pl4">
+
+    <div id="app">
+
+       <h1 class = "purple calisto">{{headline}}</h1>
+
+
+       <br>
+       <br>
+
+       <h3 class = "courier"> {{faveQ}} </h3>
+       <h4 class = "courier"> - {{qAuthor}} </h4>
+
+        <br>
+
+       <h3 class = "green calisto">Random Quotes</h3>
+
+       <li v-for="quote in fQuotes" class = "courier mb2">
+        {{quote}}
+        </li>
+
+        <br>
+        <br>
+
+        <button type = "button" @click.prevent = "getQuote" class = "mb3">
+
+            Get Quote
+
+       </button>
+
+        <form @submit.prevent="searchQuote" class = "mt3">
+            <label for="search-term">Enter Search Term:</label>
+            <input v-model="searchTerm" type="text" id="search-term" class = "mh2">
+            <input type="submit" value="Search FaveQs">
+        </form>
+
+        <h3 class = "green calisto">{{results}}</h3>
+
+            <li v-for="quote in sQuotes" class = "courier mb3 mt3">
+                {{quote.body}}
+            </li>
+
+            <div v-show="pagButton">
+                <button type = "button" @click.prevent = "nextPage"> next page </button>
+            </div>
+
+
+    </div>
+    
+</body>
+</html>
