@@ -1,0 +1,19 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block content %}
+    <h1>Log In</h1>
+    <a href="{% url 'users:signup' %}">No account? Click here to sign up.</a>
+    <br><br>
+    <form action="{% url 'users:login' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Log In">
+    </form>
+    {% if user.is_authenticated %}
+    <p>hi</p>
+    <a href="{% url 'posts:index' %}">Logged In Click HERE To Continue</a>
+    {% else %}
+    <h3>Not Logged In</h3>
+    {% endif %}
+{% endblock content %}
