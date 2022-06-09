@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Unit Converter Part B</title>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <input type="number" placeholder="Enter a distance" id="start-distance">
+    <label for="start-unit">Select a unit of measurement to convert <strong>from</strong>:</label>
+    <select name="start-unit" id="start-unit">
+        <option value="in">Inches</option>
+        <option value="ft">Feet</option>
+        <option value="yd">Yards</option>
+        <option value="mi">Miles</option>
+        <option value="m">Meters</option>
+        <option value="km">Kilometers</option>
+    </select>
+    <label for="end-unit">Select a unit of measurement to convert <strong>to</strong>:</label>
+    <select name="end-unit" id="end-unit">
+        <option value="in">Inches</option>
+        <option value="ft">Feet</option>
+        <option value="yd">Yards</option>
+        <option value="mi">Miles</option>
+        <option value="m">Meters</option>
+        <option value="km">Kilometers</option>
+    </select>
+    <button id="submit-button">Convert!</button>
+    <p id="results"></p>
+</body>
+</html>

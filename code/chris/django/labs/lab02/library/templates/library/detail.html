@@ -1,0 +1,74 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
+    <link rel="stylesheet" href="{% static 'css/library.css' %}">
+    <title>Library || {{ book.title }}</title>
+</head>
+<body>
+    <h1 class="title">{{ book.title }}</h1>
+    <a href="/library">Home</a>
+    <table>
+        <thead>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Date Published</th>
+            <th>Checked Out?</th>
+            <th>Checked out by</th>
+            <th>Date Checked Out</th>
+            <th>Date Returned</th>
+        </thead>
+        <tr>
+            <td>{{ book.id }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.date_published }}</td>
+            <td>{{ book.checked_out }}</td>
+            <td>
+                {% for checkout in checkouts %}
+                    <li>{{ checkout.reader }}</li>
+                {% endfor %}
+            </td>
+            <td>
+                {% for checkout in checkouts %}
+                    <li>{{ checkout.date_checked_out }}</li>
+                {% endfor %}
+            </td>
+            <td>
+                {% for checkout in checkouts %}
+                    {% if not checkout.date_returned %}
+                    <li>
+                        <form action="/library/return/{{ book.id }}" method="POST">
+                            {% csrf_token %}
+                            <input name="{{ checkout.reader }}" type="submit" value="Return this book!">
+                        </form>
+                    </li>    
+                    {% else %}
+                    <li>{{ checkout.date_returned }}</li>
+                    {% endif %}
+                {% endfor %}
+            </td>
+        </tr>
+    </table>
+    {% if not book.checked_out %}
+
+    <form action="/library/checkout/{{ book.id }}" method="POST">
+        {% csrf_token %}
+        <p>{{ book.title }}</p>
+        
+        <input name="reader" type="text" value="your name">
+        
+        <button type="submit">Check out this book!</button>
+        <!-- how do I get this to send data back to views to alter the BOOK! -->
+    </form>
+
+    {% endif %}
+</body>
+</html>
