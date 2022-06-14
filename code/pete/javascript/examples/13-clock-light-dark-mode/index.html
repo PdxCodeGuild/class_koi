@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Clock</title>
+	<script src="https://cdn.tailwindcss.com/"></script>
+	<style>
+		@font-face {
+			font-family: digital;
+			src: url('fonts/digital-7-mono.ttf');
+		}
+		* {
+			font-family: digital;
+		}
+		.black-text {
+			color: #222323;
+		}
+		.white-text {
+			color: #f0f6f0;
+		}
+		.black-background {
+			background-color: #222323;
+		}
+		.white-background {
+			background-color: #f0f6f0;
+		}
+	</style>
+</head>
+<body>
+	<main class="flex flex-col justify-center h-screen white-background black-text">
+		<h1 class="text-9xl text-center py-6">Clock</h1>
+		<figure class="text-9xl text-center py-6">00:00:00</figure>
+		<button class="text-2xl">Switch Mode</button>
+	</main>
+	<script>
+		const figure = document.querySelector('figure')
+		const button = document.querySelector('button')
+		const main = document.querySelector('main')
+		let mode = 'light'
+
+		button.addEventListener('click', () => {
+			if (mode === 'light') {
+				main.classList.remove('white-background')
+				main.classList.add('black-background')
+				main.classList.remove('black-text')
+				main.classList.add('white-text')
+				mode = 'dark'
+			} else if (mode === 'dark') {
+				main.classList.remove('black-background')
+				main.classList.add('white-background')
+				main.classList.remove('white-text')
+				main.classList.add('black-text')
+				mode = 'light'
+			}
+		})
+
+
+		const now = new Date()
+
+		// console.log(now)
+		// console.log(now.getHours(), now.getMinutes(), now.getSeconds())
+		figure.innerText = String(now.getHours()).padStart(2, '0') + ':' +
+			String(now.getMinutes()).padStart(2, '0') + ':' +
+			String(now.getSeconds()).padStart(2, '0')
+
+		setInterval(function () {
+			const now = new Date()
+			figure.innerText = String(now.getHours()).padStart(2, '0') + ':' +
+				String(now.getMinutes()).padStart(2, '0') + ':' +
+				String(now.getSeconds()).padStart(2, '0')
+		}, 1000)
+
+	</script>
+</body>
+</html>
