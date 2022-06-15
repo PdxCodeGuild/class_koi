@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Clock</title>
+	<script src="https://cdn.tailwindcss.com/"></script>
+	<script src="https://unpkg.com/vue@3"></script>
+	<style>
+		@font-face {
+			font-family: digital;
+			src: url('fonts/digital-7-mono.ttf');
+		}
+		* {
+			font-family: digital;
+		}
+		.black-text {
+			color: #222323;
+		}
+		.white-text {
+			color: #f0f6f0;
+		}
+		.black-background {
+			background-color: #222323;
+		}
+		.white-background {
+			background-color: #f0f6f0;
+		}
+		.green-text {
+			color: #212c28;
+		}
+		.green-background {
+			background-color: #72a488
+		}
+		.yellow-text {
+			color: #292b30
+		}
+		.yellow-background {
+			background-color: #cfab4a
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<main
+			:class="`
+				flex flex-col justify-center h-screen
+				${themeClasses}
+			`"
+		>
+			<h1 class="text-9xl text-center py-6">Clock</h1>
+			<figure class="text-9xl text-center py-6">{{ hours }}:{{ minutes }}:{{ seconds }}</figure>
+			<section class="flex justify-evenly">
+				<button @click="switchMode('black')" class="p-2 rounded-md text-2xl white-background black-text">Switch Mode</button>
+				<button @click="switchMode('green')" class="p-2 rounded-md text-2xl green-background green-text">Switch Mode</button>
+				<button @click="switchMode('yellow')" class="p-2 rounded-md text-2xl yellow-background yellow-text">Switch Mode</button>
+			</section>
+		</main>
+	</div>
+	<script>
+		const App = {
+			data () {
+				return {
+					hours: '12',
+					minutes: '34',
+					seconds: '56',
+					themeClasses: 'white-background black-text'
+				}
+			},
+			created () {
+				this.setTime()
+				setInterval(() => {
+					this.setTime()
+				}, 1000)
+			},
+			methods: {
+				setTime () {
+					const now = new Date()
+					this.hours = String(now.getHours()).padStart(2, '0')
+					this.minutes = String(now.getMinutes()).padStart(2, '0')
+					this.seconds = String(now.getSeconds()).padStart(2, '0')
+				},
+				switchMode (mode) {
+					if (mode === 'black') {
+						this.themeClasses = 'white-background black-text'
+					} else if (mode === 'green') {
+						this.themeClasses = 'green-background green-text'
+					} else if (mode === 'yellow') {
+						this.themeClasses = 'yellow-background yellow-text'
+					}
+				}
+			}
+		}
+
+		Vue.createApp(App).mount('#app')
+
+		</script>
+</body>
+</html>

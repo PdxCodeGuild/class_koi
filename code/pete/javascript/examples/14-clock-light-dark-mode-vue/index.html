@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Clock</title>
+	<script src="https://cdn.tailwindcss.com/"></script>
+	<script src="https://unpkg.com/vue@3"></script>
+	<style>
+		@font-face {
+			font-family: digital;
+			src: url('fonts/digital-7-mono.ttf');
+		}
+		* {
+			font-family: digital;
+		}
+		.black-text {
+			color: #222323;
+		}
+		.white-text {
+			color: #f0f6f0;
+		}
+		.black-background {
+			background-color: #222323;
+		}
+		.white-background {
+			background-color: #f0f6f0;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<main
+			:class="`
+				flex flex-col justify-center h-screen
+				${mode === 'light' ? 'white-background black-text' : 'black-background white-text'}
+			`"
+		>
+		<h1 class="text-9xl text-center py-6">Clock</h1>
+			<figure class="text-9xl text-center py-6">{{ hours }}:{{ minutes }}:{{ seconds }}</figure>
+			<button @click="switchMode" class="text-2xl">Switch Mode</button>
+		</main>
+	</div>
+	<script>
+		const App = {
+			data () {
+				return {
+					hours: '12',
+					minutes: '34',
+					seconds: '56',
+					mode: 'light'
+				}
+			},
+			created () {
+				this.setTime()
+				setInterval(() => {
+					this.setTime()
+				}, 1000)
+			},
+			methods: {
+				setTime () {
+					const now = new Date()
+					this.hours = String(now.getHours()).padStart(2, '0')
+					this.minutes = String(now.getMinutes()).padStart(2, '0')
+					this.seconds = String(now.getSeconds()).padStart(2, '0')
+				},
+				switchMode () {
+					// ternary operator
+					// expression ? value if truthy : value if falsey
+					this.mode = this.mode === 'light' ? 'dark' : 'light'
+
+					// this is the plain if/else if version:
+					// if (this.mode === 'light') {
+					// 	this.mode = 'dark'
+					// } else if (this.mode === 'dark') {
+					// 	this.mode = 'light'
+					// }
+				}
+			}
+		}
+
+		Vue.createApp(App).mount('#app')
+
+		</script>
+</body>
+</html>
