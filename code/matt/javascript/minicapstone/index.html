@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drink Decider 2000</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize-css@2.3.1/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="js/secrets.js"></script>
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <div id="app">
+        <main>
+            <div id="ing-select" :class="[isActive[0] ? 'active' : 'inactive']" class="transition">
+                
+                
+                <button @click="makeActive(0);" v-if="!(isActive[0])" class="open-button">expand</button>
+
+                <h1>
+                    Drink Decider 2000
+                </h1>
+
+                <div id="ing-search">
+                    <input type="text" v-model="ingredientSearchInput" @keyup="ingredientSearch" @keyup.enter="addToMyIngredients(ingredientSearchInput)" placeholder="search ingredients">
+                    <div id="ing-search-results" v-if="filteredIngredients.length > 0">
+                        <ul>
+                            <li v-for="ingredient in filteredIngredients">
+                                <a href="" @click.prevent="addToMyIngredients(ingredient)">
+                                    {{ ingredient }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="my-ingredients">
+                    <h3 v-if="myIngredients.length">my ingredients:</h1>
+                    <h3 v-else>select ingredients to continue</h3>
+                    <ul v-if="myIngredients.length">
+                        <li v-for="ingredient in myIngredients">
+                            {{ ingredient }}
+                        </li>
+                    </ul>
+                </div>
+                <a href="" @click.prevent="clearLocal">reset my ingredients</a>
+
+
+            </div>
+            <div id="recipe-select" :class="[isActive[1] ? 'active' : 'inactive']" class="transition">
+                
+                
+                <button @click="makeActive(1);" v-if="!(isActive[1]) && possibleRecipes.length" class="open-button">expand</button>
+
+                <h3 v-if="!(possibleRecipes.length)">
+                    add ingredients to continue
+                </h3>
+
+                <div v-if="possibleRecipes.length">
+                    <div v-for="x,index in possibleRecipes.length">
+                        <ul v-if="possibleRecipes[index]" class="num-missing">
+                            <h3>missing {{ index }} ingredients</h2>
+                            <li v-for="recipe in possibleRecipes[index]">
+                                <a href="" @click.prevent="showCurrentRecipe(recipe); makeActive(2);">
+                                    {{ recipe }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+            <div id="recipe-view" :class="[isActive[2] ? 'active' : 'inactive', currentRecipe ? 'has-recipe' : 'no-recipe']" class="transition">
+                
+                
+                <button @click="makeActive(2);" v-if="!(isActive[2]) && currentRecipe" class="open-button">expand</button>
+
+                <h3 v-if="!(currentRecipe)">
+                    select a recipe to continue
+                </h3>
+
+                <div id="current-recipe" v-if="currentRecipe" :class="[isActive[2] ? 'active' : 'inactive']">
+                    <h1 >{{ currentRecipe.name }}</h1>
+                    <img id="drink-image" :src="currentRecipe.image" alt="currentrecipe.name">
+                    <ul>
+                        <li v-for="(measure, ingredient) in currentRecipe.ingredients">
+                            {{ measure }} {{ ingredient }}
+                        </li>
+                    </ul>
+                    <p>
+                        Serve in a {{ currentRecipe.glass }}
+                    </p>
+                    <p>
+                        {{ currentRecipe.instructions }}
+                    </p>
+                </div>
+
+
+            </main>
+        </div>
+    </div>
+</body>
+</html>
