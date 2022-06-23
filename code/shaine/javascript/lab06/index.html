@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <div id="app">
+        <div class="col-md-6" style="margin: 1rem auto;padding: 1rem;">
+            <h1 style="text-align: center;margin: 1rem auto;">Search Quotes</h1>
+            <form ref="aQuery" @submit.prevent="getData">
+                <input placeholder="Search" type="search" class="form-control" v-model="query">
+                <select v-model="select" class="form-select">
+                    <option disabled value="">Please select one</option>
+                    <option v-for="selection in selections">{{ selection }}</option>
+                  </select>
+                <input type="submit" class="btn btn-primary" style="display: block;margin: 1rem auto;">
+            </form>
+        </div>
+        
+        <div class="results col-md-8" v-for="(item,index) in data" style="margin: .25rem auto;padding: .5rem;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"> <strong>{{index+1}}.</strong> {{item.body}}<br><small> &emsp;-{{item.author}}</small></li>
+              </ul>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>
