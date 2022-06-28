@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Author, Book
+from .models import Author, Book, Checkout
 
 
 def index(request):
@@ -12,7 +12,12 @@ def index(request):
 
     return render(request,'library/index.html', context)
 
-
-def check_in(request,pk):
+def author(request):
     pass
+
+
+def book(request):
+    pass
+
+
     

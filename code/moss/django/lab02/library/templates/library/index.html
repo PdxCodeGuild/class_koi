@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library</title>
-</head>
+{% extends 'library/base.html'%}
+
+{% block content %}
     <h1>ANOTHER READ THROUGH</h1>
     <h3>"Dinosaurs didn't read, coincidence?"</h3>
-<body>
 
-    <!-- FORM, SEARCH BY INPUT BOOK TITLE/AUTHOR -->
-    <!-- FORM, SELECT BOOK, CHECK-IN/OUT -->
-
-    
     <ul><h2>INVENTORY</h2>
         {% for item in books%}
             <li><h4>{{ item.title }}</h4> <i>{{ item.author }}</i>, <i>{{ item.pub_date }}</i></li>
@@ -25,6 +15,7 @@
 
     <h1>WHAT AM I DOING?</h1>
     
-</body>
-</html>
+
+
+{% endblock %}
 
