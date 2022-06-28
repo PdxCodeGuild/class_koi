@@ -1,6 +1,4 @@
-
 from django.db import models
-from django.utils import timezone
 class Author(models.Model):
     name = models.CharField(max_length=30)
     
@@ -18,8 +16,8 @@ class Book(models.Model):
 class Checkout(models.Model):
     book = models.ForeignKey(Book,on_delete=models.PROTECT,)
     user = models.CharField(max_length=50)
-    checkout = models.BooleanField(null=False, blank=True)
-    timestamp = models.DateTimeField(auto_now_add=True)
+    checkout = models.BooleanField(default=False, blank=True)
+    timestamp = models.DateTimeField(auto_now_add=True, blank=True)
 
     def __str__(self):
         return self.user

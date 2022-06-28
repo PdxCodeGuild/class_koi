@@ -1,19 +1,24 @@
 {% extends 'library/base.html'%}
 
 {% block content %}
+<center>
     <h1>ANOTHER READ THROUGH</h1>
     <h3>"Dinosaurs didn't read, coincidence?"</h3>
-
-    <ul><h2>INVENTORY</h2>
-        {% for item in books%}
-            <li><h4>{{ item.title }}</h4> <i>{{ item.author }}</i>, <i>{{ item.pub_date }}</i></li>
-            <input type="submit" value="Check-in">
+</center>
+<br/>
+    <ul><h2> BOOK INVENTORY</h2>
+        {% for book in books%}
+            <li><h4><a href="/book/{{ book.id }}">{{ book }}</a></h4> 
+                <i><a href="/author/{{ book.author.id }}">{{ book.author }}</a></i>, 
+                <i>{{ book.pub_date }}</i>
+            </li>
+            <br/>
+            {% comment %} <input type="submit" value="Check-in">
             <input type="submit" value="Check-out">
-            <input type="submit" value="Ledger">
+            <input type="submit" value="Ledger"> {% endcomment %}
         {% endfor %}
     </ul>
 
-    <h1>WHAT AM I DOING?</h1>
     
 
 
