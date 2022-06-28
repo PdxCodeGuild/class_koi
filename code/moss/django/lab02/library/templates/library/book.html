@@ -1,48 +1,53 @@
 {% extends 'library/base.html'%}
 
 {% block content %}
-
-    <h2> Title: {{ book.title }}</h3>
-    <h3>Author:<a href="/author/{{ book.author.id }}">{{ book.author }}</a></h3>
-    <br/>
-
-    {% if current_checkout.checkout %}
-        <strong>Book is CHECKED OUT.</strong>
-    {% else %}
-        <strong>Book is AVAILABLE.<strong>
-    {% endif %}
-
-    <form action="{% url 'library:book' book.id %}" method="POST">
-        {% csrf_token %}
-        
-        <label for="user">User:</label>
-        <input type="text" name="user" title="user">
-
+    <center>
+        <h2> Title: {{ book.title }}</h3>
+        <h3>Author:<a href="/author/{{ book.author.id }}">{{ book.author }}</a></h3>
+    </center>
+    <hr>
+    {% comment %} <br/> {% endcomment %}
+    <section class="ps-3">
         {% if current_checkout.checkout %}
-            <input type="hidden" value="False" name="lend_book">
-            <button type="submit" title="Check-In Button"> Check-In</button>
+            <strong>Book is CHECKED OUT.</strong>
         {% else %}
-            <input type="hidden" value="True" name="lend_book">
-            <button type="submit" title="Check-Out Button">Check-Out</button>
+            <strong>Book is AVAILABLE.<strong>
         {% endif %}
-    </form>
-    <br/>
+        
+        <form action="{% url 'library:book' book.id %}" method="POST">
+            {% csrf_token %}
+            
+            <label for="user">User:</label>
+            <input type="text" name="user" title="user">
 
-    {% if checkout_ledger %}
-        <h3>Check-Out Ledger</h3>
-    {% endif %}
-        {% for checkout_entry in checkout_ledger %}
-        <ul>
-            <li>
-                {% if checkout_entry.checkout %}
-                    <strong>Checked-Out by {{ user }}</strong>
-                {% else %}
-                    <strong>Checked-In {{ user }}</strong>
-                {% endif %}
-                    {{ checkout_entry.timestamp }}
-            </li>
-        </ul>
-    {% endfor %}
+            {% if current_checkout.checkout %}
+                <input type="hidden" value="False" name="lend_book">
+                <button type="submit" title="Check-In Button"> Check-In</button>
+            {% else %}
+                <input type="hidden" value="True" name="lend_book">
+                <button type="submit" title="Check-Out Button">Check-Out</button>
+            {% endif %}
+        </form>
+        
+        <br/>
+        
+
+        {% if checkout_ledger %}
+            <h3>Check-Out Ledger</h3>
+        {% endif %}
+            {% for checkout_entry in checkout_ledger %}
+            <ul>
+                <li>
+                    {% if checkout_entry.checkout %}
+                        <strong>Checked-Out by {{ user }}</strong>
+                    {% else %}
+                        <strong>Checked-In {{ user }}</strong>
+                    {% endif %}
+                        {{ checkout_entry.timestamp }}
+                </li>
+            </ul>
+        {% endfor %}
+    </section>
  
 
 {% endblock %}

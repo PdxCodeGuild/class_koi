@@ -2,7 +2,9 @@
 
 {% block content %}
 
-<h1>Books by {{ author }}</h1>
+<center>
+    <h1>Books by {{ author }}</h1>
+</center>
 
 <ul>
     {% for book in author.books.all %}
@@ -10,6 +12,7 @@
             <a  href="/book/{{ book.id }}"> {{ book }}</a>
         </li>
     {% endfor %}
+</ul>
 
 {% endblock %}
 

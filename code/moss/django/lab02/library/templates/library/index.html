@@ -1,9 +1,8 @@
 {% extends 'library/base.html'%}
 
 {% block content %}
-<center>
-    <h1>ANOTHER READ THROUGH</h1>
-    <h3>"Dinosaurs didn't read, coincidence?"</h3>
+<center class="border border-bottom-5 secondary bg-light">
+    <h5>"Dinosaurs didn't read, coincidence?"</h5>
 </center>
 <br/>
     <ul><h2> BOOK INVENTORY</h2>
@@ -12,6 +11,7 @@
                 <i><a href="/author/{{ book.author.id }}">{{ book.author }}</a></i>, 
                 <i>{{ book.pub_date }}</i>
             </li>
+            <hr>
             <br/>
             {% comment %} <input type="submit" value="Check-in">
             <input type="submit" value="Check-out">
