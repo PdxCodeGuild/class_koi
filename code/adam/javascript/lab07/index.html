@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab07</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="script.js" defer></script>
+    <!-- <script src="https://cdn.tailwindcss.com/"></script> -->
+</head>
+
+<body style="background-color: #2f4f4f;">
+    <div id="app">
+        <h1 style="text-align:center; color: cornsilk;">Exploring Space Craft & Launches</h1>
+        <h3 style="text-align:center; color: cornsilk;">MiniCapstone API</h3>
+        
+        <!-- <button @click="getCraft">Get First 10 Spacecraft</button> -->
+        <!-- <div>
+            <form @submit.prevent="getCraft" style="margin-top: 1rem;">
+                <label for="searchCraft" >Search Craft by :</label>
+                <select v-model="searchCraft" id="searchCraftId" required>
+                    <option value="name">name</option>
+                    <option value="manufacturer">manufacturer</option>
+                    <option value="status">in-use</option>
+                </select>
+            </form>
+        </div> -->
+
+        <hr>
+        <h2 style="text-align:center; color: cornsilk;">Space Craft 🌌</h2>
+        <form @submit.prevent="searchKeyword" style="margin-top: 0.5rem; margin-bottom: 0.5rem">
+            <label for="keyword-search" style="color: cornsilk;">Enter name of space craft : </label>
+            <input v-model="searchTerm" type="text" id="keyword-search" placeholder="space craft" autofocus>
+            <input type="submit" value="Search" style="margin-left: 0.5rem">
+        </form>
+
+
+        <button @click="previousPage" v-if='previousUrl' style="margin: 0.5rem;">previous Page</button>
+        <button @click="nextPage" v-if='nextUrl' style="margin: 0.5rem;">next Page</button>
+        <div v-for="(craft,index) in spacecraft" id="craft" style="display:flex; justify-content:flex-right; width:95%; background-color: coral; margin-bottom: 0.5rem; border-radius: 20px;">
+            <img style="max-height: 20rem; border-radius: 20px 0px 0px 20px" v-bind:src="craft.spacecraft_config.image_url">
+            <ul>
+                <li style="margin: 0.5rem;">{{ craft.name }}</li>
+                <li style="margin: 0.5rem;">{{ craft.description }}</li>
+                <li style="margin: 0.5rem;">{{ craft.status.name }}</li>
+            </ul>
+        </div>
+
+        <div style="margin-top: 2rem; margin-bottom: 1rem;">
+            <hr>
+            <h2 style="text-align:center; color: cornsilk; margin-bottom: 2rem;">Upcoming Launches 🚀</h2>
+            <div style="display: flex; justify-content: center;">
+                <button @click="getLaunch">Upcoming Launches</button><br>
+            </div>
+            <button @click="previousPageLaunch" v-if='previousUrlLaunch' style="margin: 0.5rem;">previous Page</button>
+            <button @click="nextPageLaunch" v-if='nextUrlLaunch' style="margin: 0.5rem;">next Page</button>
+            <div v-for="(launch,index) in upcomingLaunches" id="launch" style="display:flex; justify-content:flex-right; width:95%; background-color: coral; margin-bottom: 0.5rem; border-radius: 20px;">
+                <img style="max-height: 20rem; border-radius: 20px 0px 0px 20px" v-bind:src="launch.image">
+                <ul>
+                    <li style="margin: 0.5rem;">{{ launch.name }}</li>
+                    <li style="margin: 0.5rem;">{{ launch.launch_service_provider.name }}</li>
+                    <li style="margin: 0.5rem;">{{ launch.launch_service_provider.type }}</li>
+                    <li v-if="launch.mission" style="margin: 0.5rem;">{{ launch.mission.description }}</li>
+                    <li style="margin: 0.5rem;">{{ launch.status.name }}</li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <hr>
+            <h2 style="text-align:center; color: cornsilk;">Search Launches 🚀</h2>
+            <form @submit.prevent="launchSearch" style="margin-top: 0.5rem; margin-bottom: 0.5rem">
+                <label for="search-launch" style="color: cornsilk;">Enter search for launches :</label>
+                <input v-model="searchLaunch" type="text" id="search-launch" required placeholder="search">
+                <input type="submit" value="Search" style="margin-left: 0.5rem">
+                <br>
+                <button @click="previousPageLaunchSearch" v-if='previousUrlLaunchSearch' style="margin: 0.5rem;">previous Page</button>
+                <button @click="nextPageLaunchSearch" v-if='nextUrlLaunchSearch' style="margin: 0.5rem;">next Page</button>
+                <div v-for="(launch,index) in launchesSearched" id="launch-search" style="display:flex; justify-content:flex-right; width:95%; background-color: coral; margin-bottom: 0.5rem; border-radius: 20px;">
+                    <img style="max-height: 20rem; border-radius: 20px 0px 0px 20px" v-bind:src="launch.image">
+                    <ul>
+                        <li style="margin: 0.5rem;">{{ launch.lsp_name }}</li>
+                        <li style="margin: 0.5rem;">{{ launch.name }}</li>
+                        <li style="margin: 0.5rem;">{{ launch.location }}</li>
+                        <li v-if="launch.mission" style="margin: 0.5rem;">{{ launch.mission }}</li>
+                        <li style="margin: 0.5rem;">{{ launch.status.name }}</li>
+                        <ul>
+                            <li style="margin: 0.5rem;">{{ launch.status.description }}</li>
+                        </ul>
+                    </ul>
+            </form>
+        </div>
+
+    </div>
+
+    
+</body>
+</html>
