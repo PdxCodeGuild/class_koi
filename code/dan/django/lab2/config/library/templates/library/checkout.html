@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>{{ message }}</h1>
+
+
+
+<h3>Checkout List </h3>
+    <ul>
+        {% for item in checkoutlist %}
+        <li>
+        {{item.name}}
+        {% if item.in_out == True%}
+        Checked In  
+        {% else %}
+        Checked Out
+        {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+     
